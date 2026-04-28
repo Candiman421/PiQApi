@@ -1,0 +1,120 @@
+﻿{
+    "documentPath":  "docsflat/CertApi.Core.Validation.json",
+    "version":  "1.0.0",
+    "lastUpdated":  "2025-04-06",
+    "purpose":  "Summarizes the public API of CertApi.Core.Validation and provides usage guidance",
+    "guide_type":  "api-reference",
+    "development_contexts":  [
+                                 "development"
+                             ],
+    "applies_to":  [
+                       "CertApi.Core.Validation"
+                   ],
+    "overview":  {
+                     "description":  "The Validation namespace contains components for the CertApi.Core project.",
+                     "usage_pattern":  "Import and use classes from this namespace to work with Validation functionality."
+                 },
+    "components":  {
+                       "CertValidationResultFactory":  {
+                                                           "purpose":  "Provides CertValidationResultFactory functionality",
+                                                           "key_methods":  [
+                                                                               "Success() -\u003e ICertValidationResult",
+                                                                               "FromError(string propertyName, string errorMessage, string errorCode = \"ValidationError\", ValidationSeverityType severity = ValidationSeverityType.Error) -\u003e ICertValidationResult",
+                                                                               "FromErrors(IEnumerable\u003cCertValidationError\u003e errors) -\u003e ICertValidationResult",
+                                                                               "FromException(Exception exception) -\u003e ICertValidationResult",
+                                                                               "Combine(params ICertValidationResult[] results) -\u003e ICertValidationResult",
+                                                                               "CreateCancelled(string correlationId) -\u003e ICertValidationResult",
+                                                                               "CreateBuilder(string? correlationId = null) -\u003e CertValidationResultBuilder"
+                                                                           ]
+                                                       },
+                       "CertValidationProcessor":  {
+                                                       "purpose":  "Provides CertValidationProcessor functionality",
+                                                       "key_methods":  [
+
+                                                                       ]
+                                                   },
+                       "CertValidationContextFactory":  {
+                                                            "purpose":  "Provides CertValidationContextFactory functionality",
+                                                            "key_methods":  [
+                                                                                "CreateForService(string correlationId,\n        string serviceVersion,\n        CancellationToken cancellationToken = default) -\u003e CertValidationContext",
+                                                                                "CreateForService(string serviceVersion,\n        CancellationToken cancellationToken = default) -\u003e CertValidationContext",
+                                                                                "AddServiceVersion(CertValidationContext context,\n        string serviceVersion) -\u003e CertValidationContext"
+                                                                            ]
+                                                        },
+                       "CertValidationRuleFactory":  {
+                                                         "purpose":  "Provides CertValidationRuleFactory functionality",
+                                                         "key_methods":  [
+                                                                             "GetRulesForEntity\u003cTEntity\u003e() -\u003e IEnumerable\u003cICertValidationRule\u003cTEntity\u003e\u003e",
+                                                                             "CreateRule\u003cT\u003e() -\u003e T"
+                                                                         ]
+                                                     },
+                       "CertCoreValidationResult":  {
+                                                        "purpose":  "Provides CertCoreValidationResult functionality",
+                                                        "key_methods":  [
+                                                                            "AddError(CertValidationError error) -\u003e CertCoreValidationResult",
+                                                                            "AddError(string propertyName,\n        string message,\n        string code = \"ValidationError\",\n        ValidationSeverityType severity = ValidationSeverityType.Error) -\u003e CertCoreValidationResult",
+                                                                            "MergeErrors(CertValidationResult other) -\u003e CertCoreValidationResult"
+                                                                        ],
+                                                        "key_properties":  [
+                                                                               "Exception -\u003e Exception?"
+                                                                           ]
+                                                    },
+                       "CertValidationRuleResourceBuilder":  {
+                                                                 "purpose":  "Provides CertValidationRuleResourceBuilder functionality",
+                                                                 "key_methods":  [
+                                                                                     "WithResourceId(string resourceId) -\u003e CertValidationRuleResourceBuilder",
+                                                                                     "WithResourceType(string resourceType) -\u003e CertValidationRuleResourceBuilder",
+                                                                                     "WithName(string name) -\u003e CertValidationRuleResourceBuilder",
+                                                                                     "WithIsModified(bool isModified = true) -\u003e CertValidationRuleResourceBuilder",
+                                                                                     "WithIsDeleted(bool isDeleted = true) -\u003e CertValidationRuleResourceBuilder",
+                                                                                     "WithCreatedAt(DateTimeOffset createdAt) -\u003e CertValidationRuleResourceBuilder",
+                                                                                     "WithModifiedAt(DateTimeOffset? modifiedAt) -\u003e CertValidationRuleResourceBuilder",
+                                                                                     "WithProperties(Dictionary\u003cstring, object\u003e properties) -\u003e CertValidationRuleResourceBuilder",
+                                                                                     "AddProperty(string key, object value) -\u003e CertValidationRuleResourceBuilder",
+                                                                                     "Build() -\u003e CertValidationRuleResource"
+                                                                                 ],
+                                                                 "key_properties":  [
+                                                                                        "CertValidationRuleResourceBuilder -\u003e class"
+                                                                                    ]
+                                                             },
+                       "CertValidationRuleResource":  {
+                                                          "purpose":  "Provides CertValidationRuleResource functionality",
+                                                          "key_methods":  [
+                                                                              "Success(string resourceId,\n        string resourceType,\n        string name,\n        Dictionary\u003cstring, object\u003e? properties = null) -\u003e CertValidationRuleResource",
+                                                                              "Failure(string resourceId,\n        string resourceType,\n        string name,\n        ErrorCodeType errorCode,\n        Dictionary\u003cstring, object\u003e? properties = null) -\u003e CertValidationRuleResource"
+                                                                          ],
+                                                          "key_properties":  [
+                                                                                 "ResourceId -\u003e string",
+                                                                                 "ResourceType -\u003e string",
+                                                                                 "Name -\u003e string",
+                                                                                 "IsModified -\u003e bool",
+                                                                                 "IsDeleted -\u003e bool",
+                                                                                 "CreatedAt -\u003e DateTimeOffset",
+                                                                                 "ModifiedAt -\u003e DateTimeOffset?",
+                                                                                 "ErrorCode -\u003e ErrorCodeType?"
+                                                                             ]
+                                                      }
+                   },
+    "subdirectories":  {
+                           "Framework":  {
+                                             "description":  "Contains components related to Framework",
+                                             "documentation_path":  "CertApi.Core.Validation.Framework.Use.json"
+                                         },
+                           "Rules":  {
+                                         "description":  "Contains components related to Rules",
+                                         "documentation_path":  "CertApi.Core.Validation.Rules.Use.json"
+                                     },
+                           "Diagnostics":  {
+                                               "description":  "Contains components related to Diagnostics",
+                                               "documentation_path":  "CertApi.Core.Validation.Diagnostics.Use.json"
+                                           },
+                           "Interfaces":  {
+                                              "description":  "Contains components related to Interfaces",
+                                              "documentation_path":  "CertApi.Core.Validation.Interfaces.Use.json"
+                                          },
+                           "Services":  {
+                                            "description":  "Contains components related to Services",
+                                            "documentation_path":  "CertApi.Core.Validation.Services.Use.json"
+                                        }
+                       }
+}

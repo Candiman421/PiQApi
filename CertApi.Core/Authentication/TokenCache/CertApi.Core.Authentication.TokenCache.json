@@ -1,0 +1,37 @@
+﻿{
+    "documentPath":  "docsflat/CertApi.Core.Authentication.TokenCache.json",
+    "version":  "1.0.0",
+    "lastUpdated":  "2025-04-06",
+    "purpose":  "Summarizes the public API of CertApi.Core.Authentication.TokenCache and provides usage guidance",
+    "guide_type":  "api-reference",
+    "development_contexts":  [
+                                 "development"
+                             ],
+    "applies_to":  [
+                       "CertApi.Core.Authentication.TokenCache"
+                   ],
+    "overview":  {
+                     "description":  "The TokenCache namespace contains components for the CertApi.Core.Authentication project.",
+                     "usage_pattern":  "Import and use classes from this namespace to work with TokenCache functionality."
+                 },
+    "components":  {
+                       "CertMemoryTokenCache":  {
+                                                    "purpose":  "Provides CertMemoryTokenCache functionality",
+                                                    "key_methods":  [
+                                                                        "GetTokenAsync(string cacheKey, CancellationToken cancellationToken = default) -\u003e Task\u003cCertTokenInfo?\u003e",
+                                                                        "SetTokenAsync(string cacheKey, CertTokenInfo token, CancellationToken cancellationToken = default) -\u003e Task",
+                                                                        "RemoveTokenAsync(string cacheKey, CancellationToken cancellationToken = default) -\u003e Task",
+                                                                        "ClearAsync(CancellationToken cancellationToken = default) -\u003e Task",
+                                                                        "GetCountAsync(CancellationToken cancellationToken = default) -\u003e Task\u003cint\u003e",
+                                                                        "CleanupExpiredTokens(CancellationToken cancellationToken = default) -\u003e Task",
+                                                                        "DisposeAsync() -\u003e ValueTask"
+                                                                    ]
+                                                }
+                   },
+    "subdirectories":  {
+                           "Interfaces":  {
+                                              "description":  "Contains components related to Interfaces",
+                                              "documentation_path":  "CertApi.Core.Authentication.TokenCache.Interfaces.Use.json"
+                                          }
+                       }
+}

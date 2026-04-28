@@ -1,0 +1,84 @@
+// CertApi.ArchitectureRules/Solution/Diagrams/SolutionStructure.puml
+@startuml CertApi Solution Structure
+
+' Title and metadata
+title CertApi Solution Architecture
+footer Generated from architectural guides - %date("yyyy.MM.dd")
+legend right
+  Solution structure and dependencies
+  showing layer boundaries and core relationships
+end legend
+
+' Visual styling
+skinparam componentStyle uml2
+skinparam component {
+  BackgroundColor<<abstraction>> LightGray
+  BackgroundColor<<core>> LightBlue
+  BackgroundColor<<service>> LightGreen
+  BackgroundColor<<operations>> Yellow
+  BackgroundColor<<client>> LightPink
+}
+
+' Layer definitions
+package "Abstractions Layer" {
+  [CertApi.Abstractions] <<abstraction>> as abstractions
+  note right of abstractions
+    Core contracts and primitives
+    No external dependencies
+  end note
+}
+
+package "Core Layer" {
+  [CertApi.Exchange.Core] <<core>> as core
+  note right of core
+    Shared implementations
+    and infrastructure
+  end note
+}
+
+package "Service Layer" {
+  [CertApi.Exchange.Service] <<service>> as service
+  note right of service
+    Exchange service integration
+    and resource management
+  end note
+}
+
+package "Operations Layer" {
+  [CertApi.Exchange.Operations] <<operations>> as operations
+  note right of operations
+    Business operations
+    and orchestration
+  end note
+}
+
+package "Client Layer" {
+  [CertApi.Exchange.Client] <<client>> as client
+  note right of client
+    Public API surface
+    and configuration
+  end note
+}
+
+' Dependencies
+client --> operations
+operations --> service
+operations --> core
+service --> core
+core --> abstractions
+
+' Cross-cutting concerns
+cloud "Cross-Cutting Concerns" {
+  [Validation]
+  [Error Handling]
+  [Configuration]
+  [Resource Management]
+}
+
+abstractions .[#gray]. Cross-Cutting
+core .[#gray]. Cross-Cutting
+service .[#gray]. Cross-Cutting
+operations .[#gray]. Cross-Cutting
+client .[#gray]. Cross-Cutting
+
+@enduml

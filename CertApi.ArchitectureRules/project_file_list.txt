@@ -1,0 +1,48 @@
+CertApi.ArchitectureRules/CertApi.ArchitectureRules.csproj
+CertApi.ArchitectureRules/Projects/CertApi.Abstractions/Diagrams/CoreContracts.puml
+CertApi.ArchitectureRules/Projects/CertApi.Abstractions/Diagrams/DomainModels.puml
+CertApi.ArchitectureRules/Projects/CertApi.Abstractions/Diagrams/ValidationFramework.puml
+CertApi.ArchitectureRules/Projects/CertApi.Abstractions/Guides/CertApi.Abstractions_Architecture.json
+CertApi.ArchitectureRules/Projects/CertApi.Abstractions/Guides/CertApi.Abstractions_Interfaces.json
+CertApi.ArchitectureRules/Projects/CertApi.Abstractions/Guides/CertApi.Abstractions_Models.json
+CertApi.ArchitectureRules/Projects/CertApi.Abstractions/Guides/CertApi.Abstractions_Results.json
+CertApi.ArchitectureRules/Projects/CertApi.Abstractions/Guides/CertApi.Abstractions_Validation.json
+CertApi.ArchitectureRules/Projects/CertApi.Abstractions/Tests/AbstractionsArchitectureTests.AsyncPatterns.cs
+CertApi.ArchitectureRules/Projects/CertApi.Abstractions/Tests/AbstractionsArchitectureTests.Base.cs
+CertApi.ArchitectureRules/Projects/CertApi.Abstractions/Tests/AbstractionsArchitectureTests.DependencyRules.cs
+CertApi.ArchitectureRules/Projects/CertApi.Abstractions/Tests/AbstractionsArchitectureTests.ImplementationRules.cs
+CertApi.ArchitectureRules/Projects/CertApi.Abstractions/Tests/AbstractionsArchitectureTests.InterfaceRules.cs
+CertApi.ArchitectureRules/Projects/CertApi.Abstractions/Tests/AbstractionsArchitectureTests.NamingConventions.cs
+CertApi.ArchitectureRules/Projects/CertApi.Abstractions/Tests/AbstractionsArchitectureTests.ProjectStructure.cs
+CertApi.ArchitectureRules/Projects/CertApi.Abstractions/Tests/AbstractionsArchitectureTests.ValidationRules.cs
+CertApi.ArchitectureRules/Solution/Common/chat_protocol.json
+CertApi.ArchitectureRules/Solution/Common/progress_tracker.json
+CertApi.ArchitectureRules/Solution/Diagrams/SolutionStructure.puml
+CertApi.ArchitectureRules/Solution/Fixit/IssuesLegend.json
+CertApi.ArchitectureRules/Solution/Fixit/active_guides.20240222.json
+CertApi.ArchitectureRules/Solution/Fixit/active_guides.json
+CertApi.ArchitectureRules/Solution/Fixit/archunit_test_fixes.json
+CertApi.ArchitectureRules/Solution/Fixit/consolidation_plan.json
+CertApi.ArchitectureRules/Solution/Fixit/dependency_map.json
+CertApi.ArchitectureRules/Solution/Fixit/diagram_creation_plan.json
+CertApi.ArchitectureRules/Solution/Fixit/directory_structure.json
+CertApi.ArchitectureRules/Solution/Fixit/guide_status.json
+CertApi.ArchitectureRules/Solution/Fixit/guide_template.json
+CertApi.ArchitectureRules/Solution/Fixit/versioning_strategy.20240222.json
+CertApi.ArchitectureRules/Solution/Fixit/versioning_strategy.json
+CertApi.ArchitectureRules/Solution/Guides/Architecture/CertApi.Solution_Architecture_ExceptionHandling.20240222.json
+CertApi.ArchitectureRules/Solution/Guides/Architecture/CertApi.Solution_Architecture_ExceptionHandling.json
+CertApi.ArchitectureRules/Solution/Guides/CrossCutting/CertApi.Solution_CrossCutting_Validation.json
+CertApi.ArchitectureRules/Solution/Guides/Testing/ArchitecturalTestingGuide.json
+CertApi.ArchitectureRules/Solution/README.md
+CertApi.ArchitectureRules/bin/Debug/net8.0/.msCoverageSourceRootsMapping_CertApi.Architecture
+CertApi.ArchitectureRules/bin/Debug/net8.0/.msCoverageSourceRootsMapping_CertApi.ArchitectureRules
+CertApi.ArchitectureRules/bin/Debug/net8.0/CoverletSourceRootsMapping_CertApi.Architecture
+CertApi.ArchitectureRules/bin/Debug/net8.0/CoverletSourceRootsMapping_CertApi.ArchitectureRules
+CertApi.ArchitectureRules/bin/Release/net8.0/.msCoverageSourceRootsMapping_CertApi.Architecture
+CertApi.ArchitectureRules/bin/Release/net8.0/CoverletSourceRootsMapping_CertApi.Architecture
+
+--- File List Metadata ---
+Total Files: 43
+Generation Date: 2025-02-23 15:55:16
+Project Root: E:/_Jeremy Backup/_ActiveProjects/ZzzzzzzzzGraph_01_AllTestsPass/CertApi.ArchitectureRules

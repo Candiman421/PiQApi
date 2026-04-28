@@ -1,0 +1,41 @@
+﻿{
+    "documentPath":  "docsflat/CertApi.Core.Resilience.Interfaces.json",
+    "version":  "1.0.0",
+    "lastUpdated":  "2025-04-06",
+    "purpose":  "Summarizes the public API of CertApi.Core.Resilience.Interfaces and provides usage guidance",
+    "guide_type":  "api-reference",
+    "development_contexts":  [
+                                 "development"
+                             ],
+    "applies_to":  [
+                       "CertApi.Core.Resilience.Interfaces"
+                   ],
+    "overview":  {
+                     "description":  "The Interfaces namespace contains components for the CertApi.Core.Resilience project.",
+                     "usage_pattern":  "Import and use classes from this namespace to work with Interfaces functionality."
+                 },
+    "components":  {
+                       "ICertPolicyFactory":  {
+                                                  "purpose":  "Provides ICertPolicyFactory functionality",
+                                                  "key_methods":  [
+                                                                      "CreatePolicy\u003cT\u003e(ResiliencePolicyType policyType) -\u003e IAsyncPolicy\u003cT\u003e",
+                                                                      "CreateDefaultPolicy\u003cT\u003e() -\u003e IAsyncPolicy\u003cT\u003e",
+                                                                      "CreateAuthenticationPolicy\u003cT\u003e() -\u003e IAsyncPolicy\u003cT\u003e",
+                                                                      "CreateTimeoutPolicy\u003cT\u003e(TimeSpan timeout) -\u003e IAsyncPolicy\u003cT\u003e",
+                                                                      "CreateBulkheadPolicy\u003cT\u003e() -\u003e IAsyncPolicy\u003cT\u003e",
+                                                                      "CreateCircuitBreakerPolicy\u003cT\u003e() -\u003e IAsyncPolicy\u003cT\u003e",
+                                                                      "IsTransientException(Exception ex) -\u003e bool"
+                                                                  ],
+                                                  "key_properties":  [
+                                                                         "CertApi.Abstractions.Enums -\u003e using",
+                                                                         "Polly -\u003e using",
+                                                                         "CertApi.Core.Resilience.Interfaces -\u003e namespace",
+                                                                         "ICertPolicyFactory -\u003e interface",
+                                                                         "policyType) -\u003e CreatePolicy\u003cT\u003e(ResiliencePolicyType",
+                                                                         "timeout) -\u003e CreateTimeoutPolicy\u003cT\u003e(TimeSpan",
+                                                                         "ex) -\u003e IsTransientException(Exception"
+                                                                     ],
+                                                  "type":  "interface"
+                                              }
+                   }
+}

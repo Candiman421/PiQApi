@@ -1,0 +1,93 @@
+﻿{
+    "documentPath":  "docsflat/CertApi.Core.Resilience.json",
+    "version":  "1.0.0",
+    "lastUpdated":  "2025-04-06",
+    "purpose":  "Summarizes the public API of CertApi.Core.Resilience and provides usage guidance",
+    "guide_type":  "api-reference",
+    "development_contexts":  [
+                                 "development"
+                             ],
+    "applies_to":  [
+                       "CertApi.Core.Resilience"
+                   ],
+    "overview":  {
+                     "description":  "The Resilience namespace contains components for the CertApi.Core project.",
+                     "usage_pattern":  "Import and use classes from this namespace to work with Resilience functionality."
+                 },
+    "components":  {
+                       "CertResiliencePolicy":  {
+                                                    "purpose":  "Provides CertResiliencePolicy functionality",
+                                                    "key_methods":  [
+                                                                        "ExecuteAsync\u003cT\u003e(Func\u003cCancellationToken, Task\u003cT\u003e\u003e operation, CancellationToken cancellationToken) -\u003e Task\u003cT\u003e",
+                                                                        "ExecuteAsync(Func\u003cCancellationToken, Task\u003e operation, CancellationToken cancellationToken) -\u003e Task"
+                                                                    ]
+                                                },
+                       "CertPolicyOptionsValidator":  {
+                                                          "purpose":  "Provides CertPolicyOptionsValidator functionality",
+                                                          "key_methods":  [
+                                                                              "Validate(string? name, CertPolicyOptions options) -\u003e ValidateOptionsResult"
+                                                                          ]
+                                                      },
+                       "CertResiliencePolicyExecutor":  {
+                                                            "purpose":  "Provides CertResiliencePolicyExecutor functionality",
+                                                            "key_methods":  [
+                                                                                "ExecuteAsync\u003cT\u003e(Func\u003cTask\u003cT\u003e\u003e operation,\n        ResiliencePolicyType policyType,\n        string operationName,\n        CancellationToken cancellationToken = default) -\u003e Task\u003cT\u003e",
+                                                                                "ExecuteAsync(Func\u003cTask\u003e operation,\n        ResiliencePolicyType policyType,\n        string operationName,\n        CancellationToken cancellationToken = default) -\u003e Task"
+                                                                            ]
+                                                        },
+                       "CertOperationResiliencePolicyExecutor":  {
+                                                                     "purpose":  "Provides CertOperationResiliencePolicyExecutor functionality",
+                                                                     "key_methods":  [
+                                                                                         "ExecuteBusinessOperationAsync\u003cT\u003e(Func\u003cTask\u003cT\u003e\u003e operation, ResiliencePolicyType policyType, string operationName, CancellationToken cancellationToken = default) -\u003e Task\u003cT\u003e",
+                                                                                         "ExecuteBusinessOperationAsync(Func\u003cTask\u003e operation, ResiliencePolicyType policyType, string operationName, CancellationToken cancellationToken = default) -\u003e Task",
+                                                                                         "ExecuteWithOperationMappingAsync\u003cT\u003e(Func\u003cTask\u003cICertResult\u003cT\u003e\u003e\u003e operation,\n        Func\u003cException, ICertOperationContext, ICertResult\u003cT\u003e\u003e exceptionMapper,\n        ResiliencePolicyType policyType,\n        string operationName,\n        CancellationToken cancellationToken = default) -\u003e Task\u003cICertResult\u003cT\u003e\u003e"
+                                                                                     ]
+                                                                 },
+                       "CertCircuitBreakerStatus":  {
+                                                        "purpose":  "Provides CertCircuitBreakerStatus functionality",
+                                                        "key_methods":  [
+                                                                            "RecordSuccessAsync(CancellationToken cancellationToken = default) -\u003e Task",
+                                                                            "RecordFailureAsync(CancellationToken cancellationToken = default) -\u003e Task",
+                                                                            "ShouldRemainOpenAsync(CancellationToken cancellationToken = default) -\u003e Task\u003cbool\u003e",
+                                                                            "CloseAsync(CancellationToken cancellationToken = default) -\u003e Task",
+                                                                            "ResetAsync(CancellationToken cancellationToken = default) -\u003e Task",
+                                                                            "DisposeAsync() -\u003e ValueTask",
+                                                                            "RecordSuccess() -\u003e void",
+                                                                            "RecordFailure() -\u003e void",
+                                                                            "ShouldRemainOpen() -\u003e bool",
+                                                                            "Close() -\u003e void",
+                                                                            "Reset() -\u003e void"
+                                                                        ],
+                                                        "key_properties":  [
+                                                                               "IsOpen -\u003e bool"
+                                                                           ]
+                                                    },
+                       "CertServiceResiliencePolicyExecutor":  {
+                                                                   "purpose":  "Provides CertServiceResiliencePolicyExecutor functionality",
+                                                                   "key_methods":  [
+                                                                                       "ExecuteServiceAsync\u003cT\u003e(Func\u003cTask\u003cT\u003e\u003e operation, ResiliencePolicyType policyType, string operationName, CancellationToken cancellationToken = default) -\u003e Task\u003cT\u003e",
+                                                                                       "ExecuteServiceAsync(Func\u003cTask\u003e operation, ResiliencePolicyType policyType, string operationName, CancellationToken cancellationToken = default) -\u003e Task",
+                                                                                       "ExecuteWithServiceMappingAsync\u003cT\u003e(Func\u003cTask\u003cICertServiceResult\u003cT\u003e\u003e\u003e operation,\n        Func\u003cException, ICertOperationContext, ICertServiceResult\u003cT\u003e\u003e exceptionMapper,\n        ResiliencePolicyType policyType,\n        string operationName,\n        CancellationToken cancellationToken = default) -\u003e Task\u003cICertServiceResult\u003cT\u003e\u003e"
+                                                                                   ]
+                                                               },
+                       "CertPolicyFactory":  {
+                                                 "purpose":  "Provides CertPolicyFactory functionality",
+                                                 "key_methods":  [
+                                                                     "CreatePolicy\u003cT\u003e(ResiliencePolicyType policyType) -\u003e IAsyncPolicy\u003cT\u003e",
+                                                                     "CreateCompositePolicy\u003cT\u003e(IEnumerable\u003cResiliencePolicyType\u003e policyTypes) -\u003e IAsyncPolicy\u003cT\u003e",
+                                                                     "CreateDefaultPolicy\u003cT\u003e() -\u003e IAsyncPolicy\u003cT\u003e",
+                                                                     "CreateAuthenticationPolicy\u003cT\u003e() -\u003e IAsyncPolicy\u003cT\u003e",
+                                                                     "CreateTimeoutPolicy\u003cT\u003e(TimeSpan timeout) -\u003e IAsyncPolicy\u003cT\u003e",
+                                                                     "CreateBulkheadPolicy\u003cT\u003e() -\u003e IAsyncPolicy\u003cT\u003e",
+                                                                     "CreateCircuitBreakerPolicy\u003cT\u003e() -\u003e IAsyncPolicy\u003cT\u003e",
+                                                                     "IsTransientException(Exception ex) -\u003e bool"
+                                                                 ]
+                                             }
+                   },
+    "subdirectories":  {
+                           "Interfaces":  {
+                                              "description":  "Contains components related to Interfaces",
+                                              "documentation_path":  "CertApi.Core.Resilience.Interfaces.Use.json"
+                                          }
+                       }
+}

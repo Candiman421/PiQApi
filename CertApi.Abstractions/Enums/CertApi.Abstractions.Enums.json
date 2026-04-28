@@ -1,0 +1,34 @@
+﻿{
+    "documentPath":  "docsflat/CertApi.Abstractions.Enums.json",
+    "version":  "1.0.0",
+    "lastUpdated":  "2025-04-06",
+    "purpose":  "Summarizes the public API of CertApi.Abstractions.Enums and provides usage guidance",
+    "guide_type":  "api-reference",
+    "development_contexts":  [
+                                 "development"
+                             ],
+    "applies_to":  [
+                       "CertApi.Abstractions.Enums"
+                   ],
+    "overview":  {
+                     "description":  "The Enums namespace contains components for the CertApi.Abstractions project.",
+                     "usage_pattern":  "Import and use classes from this namespace to work with Enums functionality."
+                 },
+    "components":  {
+                       "ClientCertificateOptionsType":  {
+                                                            "purpose":  "Provides ClientCertificateOptionsType functionality",
+                                                            "key_methods":  [
+                                                                                "Validate() -\u003e bool"
+                                                                            ],
+                                                            "key_properties":  [
+                                                                                   "ClientCertificateOptionsType -\u003e class",
+                                                                                   "StoreLocation -\u003e string?",
+                                                                                   "StoreName -\u003e string?",
+                                                                                   "Thumbprint -\u003e string?",
+                                                                                   "FilePath -\u003e string?",
+                                                                                   "Password -\u003e string?",
+                                                                                   "ValidateCertificate -\u003e bool"
+                                                                               ]
+                                                        }
+                   }
+}

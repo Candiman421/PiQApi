@@ -1,0 +1,86 @@
+﻿{
+    "documentPath":  "docsflat/CertApi.Abstractions.Resilience.json",
+    "version":  "1.0.0",
+    "lastUpdated":  "2025-04-06",
+    "purpose":  "Summarizes the public API of CertApi.Abstractions.Resilience and provides usage guidance",
+    "guide_type":  "api-reference",
+    "development_contexts":  [
+                                 "development"
+                             ],
+    "applies_to":  [
+                       "CertApi.Abstractions.Resilience"
+                   ],
+    "overview":  {
+                     "description":  "The Resilience namespace contains components for the CertApi.Abstractions project.",
+                     "usage_pattern":  "Import and use classes from this namespace to work with Resilience functionality."
+                 },
+    "components":  {
+                       "ICertResiliencePolicy":  {
+                                                     "purpose":  "Provides ICertResiliencePolicy functionality",
+                                                     "key_methods":  [
+                                                                         "ExecuteAsync\u003cT\u003e(Func\u003cCancellationToken, Task\u003cT\u003e\u003e operation, CancellationToken cancellationToken) -\u003e Task\u003cT\u003e",
+                                                                         "ExecuteAsync(Func\u003cCancellationToken, Task\u003e operation, CancellationToken cancellationToken) -\u003e Task"
+                                                                     ],
+                                                     "key_properties":  [
+                                                                            "CertApi.Abstractions.Resilience -\u003e namespace",
+                                                                            "ICertResiliencePolicy -\u003e interface",
+                                                                            "cancellationToken) -\u003e CancellationToken",
+                                                                            "cancellationToken) -\u003e CancellationToken"
+                                                                        ],
+                                                     "type":  "interface"
+                                                 },
+                       "ICertServiceResiliencePolicyExecutor":  {
+                                                                    "purpose":  "Provides ICertServiceResiliencePolicyExecutor functionality",
+                                                                    "key_methods":  [
+                                                                                        "ExecuteServiceAsync\u003cT\u003e(Func\u003cTask\u003cT\u003e\u003e operation,\n        ResiliencePolicyType policyType,\n        string operationName,\n        CancellationToken cancellationToken = default) -\u003e Task\u003cT\u003e",
+                                                                                        "ExecuteServiceAsync(Func\u003cTask\u003e operation,\n        ResiliencePolicyType policyType,\n        string operationName,\n        CancellationToken cancellationToken = default) -\u003e Task",
+                                                                                        "ExecuteWithServiceMappingAsync\u003cT\u003e(Func\u003cTask\u003cICertServiceResult\u003cT\u003e\u003e\u003e operation,\n        Func\u003cException, ICertOperationContext, ICertServiceResult\u003cT\u003e\u003e exceptionMapper,\n        ResiliencePolicyType policyType,\n        string operationName,\n        CancellationToken cancellationToken = default) -\u003e Task\u003cICertServiceResult\u003cT\u003e\u003e"
+                                                                                    ],
+                                                                    "key_properties":  [
+                                                                                           "CertApi.Abstractions.Context -\u003e using",
+                                                                                           "CertApi.Abstractions.Enums -\u003e using",
+                                                                                           "CertApi.Abstractions.Results -\u003e using",
+                                                                                           "CertApi.Abstractions.Resilience -\u003e namespace",
+                                                                                           "ICertResiliencePolicyExecutor -\u003e :",
+                                                                                           "default) -\u003e =",
+                                                                                           "default) -\u003e =",
+                                                                                           "default) -\u003e ="
+                                                                                       ],
+                                                                    "type":  "interface"
+                                                                },
+                       "ICertResiliencePolicyExecutor":  {
+                                                             "purpose":  "Provides ICertResiliencePolicyExecutor functionality",
+                                                             "key_methods":  [
+                                                                                 "ExecuteAsync\u003cT\u003e(Func\u003cTask\u003cT\u003e\u003e operation,\n        ResiliencePolicyType policyType,\n        string operationName,\n        CancellationToken cancellationToken = default) -\u003e Task\u003cT\u003e",
+                                                                                 "ExecuteAsync(Func\u003cTask\u003e operation,\n        ResiliencePolicyType policyType,\n        string operationName,\n        CancellationToken cancellationToken = default) -\u003e Task"
+                                                                             ],
+                                                             "key_properties":  [
+                                                                                    "CertApi.Abstractions.Enums -\u003e using",
+                                                                                    "CertApi.Abstractions.Resilience -\u003e namespace",
+                                                                                    "ICertResiliencePolicyExecutor -\u003e interface",
+                                                                                    "default) -\u003e =",
+                                                                                    "default) -\u003e ="
+                                                                                ],
+                                                             "type":  "interface"
+                                                         },
+                       "ICertOperationResiliencePolicyExecutor":  {
+                                                                      "purpose":  "Provides ICertOperationResiliencePolicyExecutor functionality",
+                                                                      "key_methods":  [
+                                                                                          "ExecuteBusinessOperationAsync\u003cT\u003e(Func\u003cTask\u003cT\u003e\u003e operation,\n        ResiliencePolicyType policyType,\n        string operationName,\n        CancellationToken cancellationToken = default) -\u003e Task\u003cT\u003e",
+                                                                                          "ExecuteBusinessOperationAsync(Func\u003cTask\u003e operation,\n        ResiliencePolicyType policyType,\n        string operationName,\n        CancellationToken cancellationToken = default) -\u003e Task",
+                                                                                          "ExecuteWithOperationMappingAsync\u003cT\u003e(Func\u003cTask\u003cICertResult\u003cT\u003e\u003e\u003e operation,\n        Func\u003cException, ICertOperationContext, ICertResult\u003cT\u003e\u003e exceptionMapper,\n        ResiliencePolicyType policyType,\n        string operationName,\n        CancellationToken cancellationToken = default) -\u003e Task\u003cICertResult\u003cT\u003e\u003e"
+                                                                                      ],
+                                                                      "key_properties":  [
+                                                                                             "CertApi.Abstractions.Context -\u003e using",
+                                                                                             "CertApi.Abstractions.Enums -\u003e using",
+                                                                                             "CertApi.Abstractions.Results -\u003e using",
+                                                                                             "CertApi.Abstractions.Resilience -\u003e namespace",
+                                                                                             "ICertResiliencePolicyExecutor -\u003e :",
+                                                                                             "default) -\u003e =",
+                                                                                             "default) -\u003e =",
+                                                                                             "default) -\u003e ="
+                                                                                         ],
+                                                                      "type":  "interface"
+                                                                  }
+                   }
+}

@@ -1,0 +1,17 @@
+// CertApi.Abstractions/Factories/IResultFactory.cs
+using CertApi.Abstractions.Enums;
+using CertApi.Abstractions.Results;
+
+namespace CertApi.Abstractions.Factories
+{
+    /// <summary>
+    /// Defines factory for creating result objects
+    /// </summary>
+    public interface IResultFactory
+    {
+        ICertResult<T> Success<T>(T value);
+        ICertResult<T> Failure<T>(string code, string message);
+        IExchangeResult<T> ExchangeSuccess<T>(T value, ServiceOperationStatusType status, string requestId);
+        IExchangeResult<T> ExchangeFailure<T>(string code, string message, ServiceOperationStatusType status, string requestId);
+    }
+}

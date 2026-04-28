@@ -1,0 +1,1601 @@
+﻿{
+    "documentPath":  "docsflat/CertApi.Abstractions.CertApi.Abstractions.json",
+    "version":  "1.0.0",
+    "lastUpdated":  "2025-04-06",
+    "purpose":  "Summarizes the public API of CertApi.Abstractions.CertApi.Abstractions and provides usage guidance",
+    "guide_type":  "api-reference",
+    "development_contexts":  [
+                                 "development"
+                             ],
+    "applies_to":  [
+                       "CertApi.Abstractions.CertApi.Abstractions"
+                   ],
+    "overview":  {
+                     "description":  "The Abstractions namespace contains components for the CertApi.Abstractions.CertApi project.",
+                     "usage_pattern":  "Import and use classes from this namespace to work with Abstractions functionality."
+                 },
+    "components":  {
+                       "ClientCertificateOptionsType":  {
+                                                            "purpose":  "Provides ClientCertificateOptionsType functionality",
+                                                            "key_methods":  [
+                                                                                "Validate() -\u003e bool"
+                                                                            ],
+                                                            "key_properties":  [
+                                                                                   "ClientCertificateOptionsType -\u003e class",
+                                                                                   "StoreLocation -\u003e string?",
+                                                                                   "StoreName -\u003e string?",
+                                                                                   "Thumbprint -\u003e string?",
+                                                                                   "FilePath -\u003e string?",
+                                                                                   "Password -\u003e string?",
+                                                                                   "ValidateCertificate -\u003e bool"
+                                                                               ]
+                                                        },
+                       "ICertValidationProcessor":  {
+                                                        "purpose":  "Provides ICertValidationProcessor functionality",
+                                                        "key_methods":  [
+                                                                            "RegisterRules\u003cT\u003e(IEnumerable\u003cICertValidationRule\u003cT\u003e\u003e rules) -\u003e void",
+                                                                            "Validate\u003cT\u003e(T entity, CertValidationContext context) -\u003e ICertValidationResult",
+                                                                            "ValidateAsync\u003cT\u003e(T entity, CertValidationContext context, CancellationToken cancellationToken = default) -\u003e Task\u003cICertValidationResult\u003e",
+                                                                            "ValidateAsync(object entity, CertValidationContext context, CancellationToken cancellationToken = default) -\u003e Task\u003cICertValidationResult\u003e",
+                                                                            "Validate(object entity, CertValidationContext context) -\u003e ICertValidationResult",
+                                                                            "ClearRules() -\u003e void",
+                                                                            "GetRuleCount\u003cT\u003e() -\u003e int"
+                                                                        ],
+                                                        "key_properties":  [
+                                                                               "CertApi.Abstractions.Validation.Models -\u003e using",
+                                                                               "CertApi.Abstractions.Validation -\u003e namespace",
+                                                                               "ICertValidationProcessor -\u003e interface",
+                                                                               "class -\u003e :",
+                                                                               "class -\u003e :",
+                                                                               "class -\u003e :",
+                                                                               "default) -\u003e =",
+                                                                               "context) -\u003e CertValidationContext",
+                                                                               "class -\u003e :"
+                                                                           ],
+                                                        "type":  "interface"
+                                                    },
+                       "ICertValidationRuleFactory":  {
+                                                          "purpose":  "Provides ICertValidationRuleFactory functionality",
+                                                          "key_methods":  [
+                                                                              "CreateRule\u003cT\u003e() -\u003e T",
+                                                                              "GetRulesForEntity\u003cTEntity\u003e() -\u003e IEnumerable\u003cICertValidationRule\u003cTEntity\u003e\u003e"
+                                                                          ],
+                                                          "key_properties":  [
+                                                                                 "CertApi.Abstractions.Validation -\u003e namespace",
+                                                                                 "ICertValidationRuleFactory -\u003e interface",
+                                                                                 "ICertValidationRule -\u003e :",
+                                                                                 "class -\u003e :"
+                                                                             ],
+                                                          "type":  "interface"
+                                                      },
+                       "ICertValidationResult":  {
+                                                     "purpose":  "Provides ICertValidationResult functionality",
+                                                     "key_methods":  [
+                                                                         "HasErrors() -\u003e bool",
+                                                                         "GetErrorsBySeverity(ValidationSeverityType severity) -\u003e IEnumerable\u003cCertValidationError\u003e",
+                                                                         "GetCorrelationId() -\u003e string?",
+                                                                         "GetErrorSummary() -\u003e string"
+                                                                     ],
+                                                     "key_properties":  [
+                                                                            "CertApi.Abstractions.Enums -\u003e using",
+                                                                            "CertApi.Abstractions.Validation.Models -\u003e using",
+                                                                            "CertApi.Abstractions.Validation -\u003e namespace",
+                                                                            "ICertValidationResult -\u003e interface",
+                                                                            "IsValid -\u003e bool",
+                                                                            "Errors -\u003e IReadOnlyList\u003cCertValidationError\u003e",
+                                                                            "Exception -\u003e Exception?",
+                                                                            "Context -\u003e object\u003e",
+                                                                            "errors -\u003e contains",
+                                                                            "severity) -\u003e GetErrorsBySeverity(ValidationSeverityType"
+                                                                        ],
+                                                     "type":  "interface"
+                                                 },
+                       "ICertValidationRule":  {
+                                                   "purpose":  "Provides ICertValidationRule functionality",
+                                                   "key_methods":  [
+                                                                       "Validate(T entity, CertValidationContext context) -\u003e ICertValidationResult",
+                                                                       "ValidateAsync(T entity, CertValidationContext context, CancellationToken cancellationToken = default) -\u003e Task\u003cICertValidationResult\u003e"
+                                                                   ],
+                                                   "key_properties":  [
+                                                                          "CertApi.Abstractions.Validation.Models -\u003e using",
+                                                                          "CertApi.Abstractions.Validation -\u003e namespace",
+                                                                          "ICertValidationRule -\u003e interface",
+                                                                          "RuleId -\u003e string",
+                                                                          "class -\u003e :",
+                                                                          "context) -\u003e CertValidationContext",
+                                                                          "default) -\u003e ="
+                                                                      ],
+                                                   "type":  "interface"
+                                               },
+                       "ICertValidationRuleBase":  {
+                                                       "purpose":  "Provides ICertValidationRuleBase functionality",
+                                                       "key_methods":  [
+
+                                                                       ],
+                                                       "key_properties":  [
+                                                                              "CertApi.Abstractions.Validation -\u003e namespace",
+                                                                              "ICertValidationRuleBase -\u003e interface",
+                                                                              "RuleId -\u003e string"
+                                                                          ],
+                                                       "type":  "interface"
+                                                   },
+                       "ICertValidationService":  {
+                                                      "purpose":  "Provides ICertValidationService functionality",
+                                                      "key_methods":  [
+                                                                          "Validate\u003cT\u003e(T entity, CertValidationContext context) -\u003e ICertValidationResult",
+                                                                          "ValidateAsync\u003cT\u003e(T entity,\n        CertValidationContext context,\n        CancellationToken cancellationToken = default) -\u003e Task\u003cICertValidationResult\u003e",
+                                                                          "ValidateWithRules\u003cT\u003e(T entity,\n        IEnumerable\u003cType\u003e ruleTypes,\n        CertValidationContext context) -\u003e ICertValidationResult",
+                                                                          "ValidateAsync(object obj,\n        object options,\n        CancellationToken cancellationToken = default) -\u003e Task\u003cICertValidationResult\u003e",
+                                                                          "ValidateAsync(object obj,\n        CancellationToken cancellationToken = default) -\u003e Task\u003cICertValidationResult\u003e"
+                                                                      ],
+                                                      "key_properties":  [
+                                                                             "CertApi.Abstractions.Validation.Models -\u003e using",
+                                                                             "CertApi.Abstractions.Validation -\u003e namespace",
+                                                                             "ICertValidationService -\u003e interface",
+                                                                             "class -\u003e :",
+                                                                             "class -\u003e :",
+                                                                             "class -\u003e :",
+                                                                             "default) -\u003e =",
+                                                                             "default) -\u003e ="
+                                                                         ],
+                                                      "type":  "interface"
+                                                  },
+                       "ICertPropertyValidationRule":  {
+                                                           "purpose":  "Provides ICertPropertyValidationRule functionality",
+                                                           "key_methods":  [
+                                                                               "ValidateProperty(T entity, out string? errorMessage) -\u003e bool",
+                                                                               "Task\u003c(bool IsValid, string? ErrorMessage) -\u003e message\u003c/returns\u003e",
+                                                                               "ValidatePropertyAsync(T entity, CancellationToken cancellationToken = default) -\u003e \u003e"
+                                                                           ],
+                                                           "key_properties":  [
+                                                                                  "CertApi.Abstractions.Validation -\u003e namespace",
+                                                                                  "class -\u003e :",
+                                                                                  "PropertyName -\u003e string",
+                                                                                  "succeeds -\u003e validation",
+                                                                                  "errorMessage) -\u003e string?",
+                                                                                  "default) -\u003e ="
+                                                                              ],
+                                                           "type":  "interface"
+                                                       },
+                       "ICertValidationDiagnosticsService":  {
+                                                                 "purpose":  "Provides ICertValidationDiagnosticsService functionality",
+                                                                 "key_methods":  [
+                                                                                     "GetDiagnosticInfo(ICertValidationResult result) -\u003e string",
+                                                                                     "GetErrorReport(ICertValidationResult result) -\u003e string"
+                                                                                 ],
+                                                                 "key_properties":  [
+                                                                                        "CertApi.Abstractions.Validation -\u003e namespace",
+                                                                                        "ICertValidationDiagnosticsService -\u003e interface",
+                                                                                        "result) -\u003e GetDiagnosticInfo(ICertValidationResult",
+                                                                                        "result) -\u003e GetErrorReport(ICertValidationResult"
+                                                                                    ],
+                                                                 "type":  "interface"
+                                                             },
+                       "ICertValidationContextFactory":  {
+                                                             "purpose":  "Provides ICertValidationContextFactory functionality",
+                                                             "key_methods":  [
+                                                                                 "CreateForService(string correlationId,\n        string serviceVersion,\n        CancellationToken cancellationToken = default) -\u003e CertValidationContext",
+                                                                                 "CreateForService(string serviceVersion,\n        CancellationToken cancellationToken = default) -\u003e CertValidationContext",
+                                                                                 "AddServiceVersion(CertValidationContext context,\n        string serviceVersion) -\u003e CertValidationContext"
+                                                                             ],
+                                                             "key_properties":  [
+                                                                                    "CertApi.Abstractions.Validation.Models -\u003e using",
+                                                                                    "CertApi.Abstractions.Validation -\u003e namespace",
+                                                                                    "ICertValidationContextFactory -\u003e interface",
+                                                                                    "default) -\u003e =",
+                                                                                    "default) -\u003e =",
+                                                                                    "serviceVersion) -\u003e string"
+                                                                                ],
+                                                             "type":  "interface"
+                                                         },
+                       "CertValidationLimits":  {
+                                                    "purpose":  "Provides CertValidationLimits functionality",
+                                                    "key_methods":  [
+
+                                                                    ],
+                                                    "key_properties":  [
+                                                                           "CertValidationLimits -\u003e class"
+                                                                       ]
+                                                },
+                       "CertValidationErrorCodes":  {
+                                                        "purpose":  "Provides CertValidationErrorCodes functionality",
+                                                        "key_methods":  [
+
+                                                                        ],
+                                                        "key_properties":  [
+                                                                               "CertValidationErrorCodes -\u003e class"
+                                                                           ]
+                                                    },
+                       "CertValidationMessages":  {
+                                                      "purpose":  "Provides CertValidationMessages functionality",
+                                                      "key_methods":  [
+
+                                                                      ],
+                                                      "key_properties":  [
+                                                                             "CertValidationMessages -\u003e class"
+                                                                         ]
+                                                  },
+                       "CertFileExtensions":  {
+                                                  "purpose":  "Provides CertFileExtensions functionality",
+                                                  "key_methods":  [
+
+                                                                  ],
+                                                  "key_properties":  [
+                                                                         "CertFileExtensions -\u003e class"
+                                                                     ]
+                                              },
+                       "CertValidationResultBuilder":  {
+                                                           "purpose":  "Provides CertValidationResultBuilder functionality",
+                                                           "key_methods":  [
+                                                                               "WithCorrelationId(string correlationId) -\u003e CertValidationResultBuilder",
+                                                                               "Valid() -\u003e CertValidationResultBuilder",
+                                                                               "Invalid() -\u003e CertValidationResultBuilder",
+                                                                               "WithError(string propertyName, string message, string errorCode = \"ValidationError\", ValidationSeverityType severity = ValidationSeverityType.Error) -\u003e CertValidationResultBuilder",
+                                                                               "WithError(CertValidationError error) -\u003e CertValidationResultBuilder",
+                                                                               "WithErrors(IEnumerable\u003cCertValidationError\u003e errors) -\u003e CertValidationResultBuilder",
+                                                                               "WithException(Exception exception) -\u003e CertValidationResultBuilder",
+                                                                               "WithContextValue(string key, object value) -\u003e CertValidationResultBuilder",
+                                                                               "AddError(string propertyName, string message, string errorCode = \"ValidationError\", ValidationSeverityType severity = ValidationSeverityType.Error) -\u003e CertValidationResultBuilder",
+                                                                               "AddError(CertValidationError error) -\u003e CertValidationResultBuilder",
+                                                                               "WithPropertyError(string errorCode, string propertyName, string message, ValidationSeverityType severity = ValidationSeverityType.Error) -\u003e CertValidationResultBuilder",
+                                                                               "Merge(ICertValidationResult other) -\u003e CertValidationResultBuilder",
+                                                                               "Build() -\u003e ICertValidationResult"
+                                                                           ],
+                                                           "key_properties":  [
+                                                                                  "CertValidationResultBuilder -\u003e class"
+                                                                              ]
+                                                       },
+                       "CertValidationError":  {
+                                                   "purpose":  "Provides CertValidationError functionality",
+                                                   "key_methods":  [
+                                                                       "ToString() -\u003e string"
+                                                                   ],
+                                                   "key_properties":  [
+                                                                          "CertValidationError -\u003e class",
+                                                                          "ErrorCode -\u003e string",
+                                                                          "ErrorMessage -\u003e string",
+                                                                          "Severity -\u003e ValidationSeverityType",
+                                                                          "PropertyPath -\u003e string?"
+                                                                      ]
+                                               },
+                       "CertValidationResult":  {
+                                                    "purpose":  "Provides CertValidationResult functionality",
+                                                    "key_methods":  [
+                                                                        "HasErrors() -\u003e bool",
+                                                                        "GetErrorsBySeverity(ValidationSeverityType severity) -\u003e IEnumerable\u003cCertValidationError\u003e",
+                                                                        "GetCorrelationId() -\u003e string?",
+                                                                        "GetErrorSummary() -\u003e string",
+                                                                        "Valid() -\u003e ICertValidationResult"
+                                                                    ]
+                                                },
+                       "CertValidationContext":  {
+                                                     "purpose":  "Provides CertValidationContext functionality",
+                                                     "key_methods":  [
+                                                                         "CreateNestedContext(ValidationModeType? validationMode = null) -\u003e CertValidationContext",
+                                                                         "WithValidationMode(ValidationModeType validationMode) -\u003e CertValidationContext",
+                                                                         "WithErrorHandling(bool aggregateAllErrors) -\u003e CertValidationContext",
+                                                                         "WithForcedErrorAggregation(bool forceAggregate) -\u003e CertValidationContext",
+                                                                         "WithMaxDepth(int maxDepth) -\u003e CertValidationContext",
+                                                                         "WithContextValue(string key, object value) -\u003e CertValidationContext",
+                                                                         "WithMetricsTracker(ICertOperationMetrics metricsTracker) -\u003e CertValidationContext",
+                                                                         "WithTimeProvider(ICertTimeProvider timeProvider) -\u003e CertValidationContext",
+                                                                         "RecordMetric(string name, TimeSpan duration) -\u003e void",
+                                                                         "IncrementCounter(string name, long increment = 1) -\u003e void",
+                                                                         "HasMetric(string name) -\u003e bool",
+                                                                         "StartTimer(string name) -\u003e TimeSpan",
+                                                                         "StopTimer(string name, TimeSpan startTimestamp) -\u003e TimeSpan",
+                                                                         "TryGetProperty\u003cT\u003e(string key, out T value) -\u003e bool"
+                                                                     ],
+                                                     "key_properties":  [
+                                                                            "CertValidationContext -\u003e class",
+                                                                            "ValidationMode -\u003e ValidationModeType",
+                                                                            "Depth -\u003e int",
+                                                                            "MaxDepth -\u003e int",
+                                                                            "AggregateAllErrors -\u003e bool",
+                                                                            "ForceAggregateAllErrors -\u003e bool",
+                                                                            "CorrelationId -\u003e string",
+                                                                            "CancellationToken -\u003e CancellationToken"
+                                                                        ]
+                                                 },
+                       "CertValidationResult_Valid":  {
+                                                          "purpose":  "Provides CertValidationResult_Valid functionality",
+                                                          "key_methods":  [
+
+                                                                          ]
+                                                      },
+                       "ICertOperationMetrics":  {
+                                                     "purpose":  "Provides ICertOperationMetrics functionality",
+                                                     "key_methods":  [
+                                                                         "RecordOperation(string operationName, TimeSpan duration, bool success) -\u003e void",
+                                                                         "RecordCustomMetric(string metricName, double value) -\u003e void",
+                                                                         "IncrementCounter(string name, long increment = 1) -\u003e long",
+                                                                         "StartTimer(string name) -\u003e void",
+                                                                         "StopTimer(string name) -\u003e TimeSpan",
+                                                                         "RecordTime(string name, TimeSpan elapsedTime) -\u003e void",
+                                                                         "GetCounter(string name) -\u003e long",
+                                                                         "GetTimerElapsed(string name) -\u003e TimeSpan",
+                                                                         "CreateSnapshot() -\u003e object\u003e"
+                                                                     ],
+                                                     "key_properties":  [
+                                                                            "CertApi.Abstractions.Monitoring -\u003e using",
+                                                                            "CertApi.Abstractions.Context -\u003e namespace",
+                                                                            "ICertMetricsProvider -\u003e :",
+                                                                            "SuccessfulOperations -\u003e long",
+                                                                            "FailedOperations -\u003e long",
+                                                                            "OperationCount -\u003e long",
+                                                                            "SuccessRate -\u003e double",
+                                                                            "AverageOperationDurationMs -\u003e long",
+                                                                            "Duration -\u003e TimeSpan",
+                                                                            "CustomMetrics -\u003e double\u003e",
+                                                                            "Counters -\u003e long\u003e",
+                                                                            "Timers -\u003e TimeSpan\u003e",
+                                                                            "success) -\u003e bool",
+                                                                            "value) -\u003e double",
+                                                                            "1) -\u003e =",
+                                                                            "name) -\u003e StartTimer(string",
+                                                                            "name) -\u003e StopTimer(string",
+                                                                            "elapsedTime) -\u003e TimeSpan",
+                                                                            "name) -\u003e GetCounter(string",
+                                                                            "name) -\u003e GetTimerElapsed(string"
+                                                                        ],
+                                                     "type":  "interface"
+                                                 },
+                       "ICertOperationValidator":  {
+                                                       "purpose":  "Provides ICertOperationValidator functionality",
+                                                       "key_methods":  [
+                                                                           "ValidateAsync\u003cT\u003e(T entity, ValidationModeType mode, CancellationToken cancellationToken = default) -\u003e Task\u003cICertValidationResult\u003e",
+                                                                           "ValidateRequiredAsync\u003cT\u003e(T entity, CancellationToken cancellationToken = default) -\u003e Task\u003cICertValidationResult\u003e",
+                                                                           "ValidateAndCreateResultAsync\u003cT\u003e(T entity, ValidationModeType mode, CancellationToken cancellationToken = default) -\u003e Task\u003cICertResult\u003cT\u003e\u003e",
+                                                                           "CreateValidationContext(ValidationModeType mode = ValidationModeType.Standard, CancellationToken? cancellationToken = null) -\u003e CertValidationContext"
+                                                                       ],
+                                                       "key_properties":  [
+                                                                              "CertApi.Abstractions.Enums -\u003e using",
+                                                                              "CertApi.Abstractions.Results -\u003e using",
+                                                                              "CertApi.Abstractions.Validation -\u003e using",
+                                                                              "CertApi.Abstractions.Validation.Models -\u003e using",
+                                                                              "CertApi.Abstractions.Context -\u003e namespace",
+                                                                              "ICertOperationValidator -\u003e interface",
+                                                                              "class -\u003e :",
+                                                                              "class -\u003e :",
+                                                                              "class -\u003e :",
+                                                                              "null) -\u003e ="
+                                                                          ],
+                                                       "type":  "interface"
+                                                   },
+                       "ICertOperationProperties":  {
+                                                        "purpose":  "Provides ICertOperationProperties functionality",
+                                                        "key_methods":  [
+                                                                            "AddProperty(string key, object value) -\u003e void",
+                                                                            "AddProperties(IDictionary\u003cstring, object\u003e properties) -\u003e void",
+                                                                            "GetPropertyValue\u003cT\u003e(string key) -\u003e T",
+                                                                            "TryGetPropertyValue\u003cT\u003e(string key, out T? value) -\u003e bool",
+                                                                            "HasProperty(string key) -\u003e bool"
+                                                                        ],
+                                                        "key_properties":  [
+                                                                               "CertApi.Abstractions.Context -\u003e namespace",
+                                                                               "ICertOperationProperties -\u003e interface",
+                                                                               "Properties -\u003e object\u003e",
+                                                                               "value) -\u003e object",
+                                                                               "properties) -\u003e object\u003e",
+                                                                               "key) -\u003e GetPropertyValue\u003cT\u003e(string",
+                                                                               "value) -\u003e T?",
+                                                                               "key) -\u003e HasProperty(string"
+                                                                           ],
+                                                        "type":  "interface"
+                                                    },
+                       "ICertOperationIdentifier":  {
+                                                        "purpose":  "Provides ICertOperationIdentifier functionality",
+                                                        "key_methods":  [
+
+                                                                        ],
+                                                        "key_properties":  [
+                                                                               "CertApi.Abstractions.Enums -\u003e using",
+                                                                               "CertApi.Abstractions.Context -\u003e namespace",
+                                                                               "ICertOperationIdentifier -\u003e interface",
+                                                                               "Id -\u003e string",
+                                                                               "Name -\u003e string",
+                                                                               "OperationType -\u003e OperationType",
+                                                                               "Parent -\u003e ICertOperationIdentifier?",
+                                                                               "StartTime -\u003e DateTimeOffset",
+                                                                               "Timeout -\u003e TimeSpan"
+                                                                           ],
+                                                        "type":  "interface"
+                                                    },
+                       "ICertOperationContextFactory":  {
+                                                            "purpose":  "Provides ICertOperationContextFactory functionality",
+                                                            "key_methods":  [
+                                                                                "Create(string operationName, ICertCorrelationContext correlationContext) -\u003e ICertOperationContext",
+                                                                                "CreateInitializedContextAsync(CancellationToken cancellationToken = default) -\u003e Task\u003cICertOperationContext\u003e"
+                                                                            ],
+                                                            "key_properties":  [
+                                                                                   "CertApi.Abstractions.Core -\u003e using",
+                                                                                   "CertApi.Abstractions.Context -\u003e namespace",
+                                                                                   "ICertOperationContextFactory -\u003e interface",
+                                                                                   "correlationContext) -\u003e ICertCorrelationContext",
+                                                                                   "default) -\u003e ="
+                                                                               ],
+                                                            "type":  "interface"
+                                                        },
+                       "ICertOperationLifecycle":  {
+                                                       "purpose":  "Provides ICertOperationLifecycle functionality",
+                                                       "key_methods":  [
+                                                                           "InitializeAsync(CancellationToken cancellationToken = default) -\u003e Task",
+                                                                           "ValidateAsync(CancellationToken cancellationToken = default) -\u003e Task",
+                                                                           "CreateChildContext(string operationName) -\u003e ICertOperationContext",
+                                                                           "CreateScope() -\u003e IDisposable",
+                                                                           "CreateScope(string scopeName) -\u003e IDisposable"
+                                                                       ],
+                                                       "key_properties":  [
+                                                                              "CertApi.Abstractions.Context -\u003e namespace",
+                                                                              "ICertOperationLifecycle -\u003e interface",
+                                                                              "CancellationToken -\u003e CancellationToken",
+                                                                              "default) -\u003e =",
+                                                                              "default) -\u003e =",
+                                                                              "operationName) -\u003e CreateChildContext(string",
+                                                                              "scopeName) -\u003e CreateScope(string"
+                                                                          ],
+                                                       "type":  "interface"
+                                                   },
+                       "ICertCorrelationScope":  {
+                                                     "purpose":  "Provides ICertCorrelationScope functionality",
+                                                     "key_methods":  [
+
+                                                                     ],
+                                                     "key_properties":  [
+                                                                            "CertApi.Abstractions.Core -\u003e using",
+                                                                            "CertApi.Abstractions.Context -\u003e namespace",
+                                                                            "IDisposable -\u003e :",
+                                                                            "CorrelationId -\u003e string",
+                                                                            "Context -\u003e ICertCorrelationContext",
+                                                                            "IsActive -\u003e bool"
+                                                                        ],
+                                                     "type":  "interface"
+                                                 },
+                       "ICertOperationContext":  {
+                                                     "purpose":  "Provides ICertOperationContext functionality",
+                                                     "key_methods":  [
+
+                                                                     ],
+                                                     "key_properties":  [
+                                                                            "CertApi.Abstractions.Core -\u003e using",
+                                                                            "CertApi.Abstractions.Context -\u003e namespace",
+                                                                            "ICertOperationResources -\u003e ICertOperationValidator,",
+                                                                            "Identifier -\u003e ICertOperationIdentifier",
+                                                                            "State -\u003e ICertOperationState",
+                                                                            "Metrics -\u003e ICertOperationMetrics",
+                                                                            "CorrelationContext -\u003e ICertCorrelationContext"
+                                                                        ],
+                                                     "type":  "interface"
+                                                 },
+                       "ICertOperationResources":  {
+                                                       "purpose":  "Provides ICertOperationResources functionality",
+                                                       "key_methods":  [
+                                                                           "GetResourceAsync\u003cT\u003e(string resourceId, CancellationToken cancellationToken = default) -\u003e Task\u003cT\u003e",
+                                                                           "TrackResourceAsync\u003cT\u003e(T resource, CancellationToken cancellationToken = default) -\u003e Task\u003cT\u003e",
+                                                                           "TryAcquireResourceAsync(string resourceId, TimeSpan timeout, CancellationToken cancellationToken = default) -\u003e Task\u003cbool\u003e",
+                                                                           "ReleaseResourceAsync(string resourceId, CancellationToken cancellationToken = default) -\u003e Task",
+                                                                           "CreateResourceScopeAsync(IEnumerable\u003cstring\u003e resourceIds, CancellationToken cancellationToken = default) -\u003e Task\u003cICertResourceScope\u003e"
+                                                                       ],
+                                                       "key_properties":  [
+                                                                              "CertApi.Abstractions.Core -\u003e using",
+                                                                              "CertApi.Abstractions.Context -\u003e namespace",
+                                                                              "ICertOperationResources -\u003e interface",
+                                                                              "ICertResource -\u003e class,",
+                                                                              "ICertResource -\u003e class,",
+                                                                              "default) -\u003e =",
+                                                                              "default) -\u003e =",
+                                                                              "default) -\u003e ="
+                                                                          ],
+                                                       "type":  "interface"
+                                                   },
+                       "ICertOperationState":  {
+                                                   "purpose":  "Provides ICertOperationState functionality",
+                                                   "key_methods":  [
+                                                                       "UpdateState(OperationStatusType status, ErrorCodeType? errorCode = null, string? errorMessage = null) -\u003e void",
+                                                                       "TransitionToRunning() -\u003e void",
+                                                                       "TransitionToComplete() -\u003e void",
+                                                                       "TransitionToFailed(ErrorCodeType errorCode = ErrorCodeType.InternalServerError) -\u003e void",
+                                                                       "TransitionToFailed(ErrorCodeType errorCode, string errorMessage) -\u003e void",
+                                                                       "ValidateTransition(OperationStatusType newStatus) -\u003e bool"
+                                                                   ],
+                                                   "key_properties":  [
+                                                                          "CertApi.Abstractions.Enums -\u003e using",
+                                                                          "CertApi.Abstractions.Context -\u003e namespace",
+                                                                          "ICertOperationState -\u003e interface",
+                                                                          "Status -\u003e OperationStatusType",
+                                                                          "ErrorCode -\u003e ErrorCodeType?",
+                                                                          "ErrorMessage -\u003e string?",
+                                                                          "IsInProgress -\u003e bool",
+                                                                          "IsCompleted -\u003e bool",
+                                                                          "IsFailed -\u003e bool",
+                                                                          "IsSuccessful -\u003e bool",
+                                                                          "StartTime -\u003e DateTimeOffset",
+                                                                          "EndTime -\u003e DateTimeOffset?",
+                                                                          "StateTimestamp -\u003e DateTimeOffset",
+                                                                          "StateDuration -\u003e TimeSpan",
+                                                                          "null) -\u003e =",
+                                                                          "ErrorCodeType.InternalServerError) -\u003e =",
+                                                                          "errorMessage) -\u003e string",
+                                                                          "newStatus) -\u003e ValidateTransition(OperationStatusType"
+                                                                      ],
+                                                   "type":  "interface"
+                                               },
+                       "ICertOperationScope":  {
+                                                   "purpose":  "Provides ICertOperationScope functionality",
+                                                   "key_methods":  [
+
+                                                                   ],
+                                                   "key_properties":  [
+                                                                          "CertApi.Abstractions.Context -\u003e namespace",
+                                                                          "IDisposable -\u003e :",
+                                                                          "Name -\u003e string",
+                                                                          "Context -\u003e ICertOperationContext",
+                                                                          "IsActive -\u003e bool"
+                                                                      ],
+                                                   "type":  "interface"
+                                               },
+                       "ICertOperationLogger":  {
+                                                    "purpose":  "Provides ICertOperationLogger functionality",
+                                                    "key_methods":  [
+                                                                        "LogOperationStartAsync() -\u003e Task",
+                                                                        "LogOperationEndAsync(bool success) -\u003e Task",
+                                                                        "LogOperationErrorAsync(Exception exception) -\u003e Task",
+                                                                        "CreateLoggingScope(IDictionary\u003cstring, object\u003e? additionalProperties = null) -\u003e IDisposable",
+                                                                        "IsEnabled(LogLevel logLevel) -\u003e bool"
+                                                                    ],
+                                                    "key_properties":  [
+                                                                           "Microsoft.Extensions.Logging -\u003e using",
+                                                                           "CertApi.Abstractions.Context -\u003e namespace",
+                                                                           "ICertOperationLogger -\u003e interface",
+                                                                           "success) -\u003e LogOperationEndAsync(bool",
+                                                                           "exception) -\u003e LogOperationErrorAsync(Exception",
+                                                                           "null) -\u003e =",
+                                                                           "logLevel) -\u003e IsEnabled(LogLevel"
+                                                                       ],
+                                                    "type":  "interface"
+                                                },
+                       "ICertOperation":  {
+                                              "purpose":  "Provides ICertOperation functionality",
+                                              "key_methods":  [
+                                                                  "ExecuteAsync(CancellationToken cancellationToken = default) -\u003e Task\u003cTResult\u003e"
+                                                              ],
+                                              "key_properties":  [
+                                                                     "CertApi.Abstractions.Operations -\u003e namespace",
+                                                                     "ICertOperationBase -\u003e :",
+                                                                     "default) -\u003e ="
+                                                                 ],
+                                              "type":  "interface"
+                                          },
+                       "ICertOperationBase":  {
+                                                  "purpose":  "Provides ICertOperationBase functionality",
+                                                  "key_methods":  [
+                                                                      "InitializeAsync(CancellationToken cancellationToken = default) -\u003e Task",
+                                                                      "CleanupAsync(CancellationToken cancellationToken = default) -\u003e Task"
+                                                                  ],
+                                                  "key_properties":  [
+                                                                         "System.Threading -\u003e using",
+                                                                         "System.Threading.Tasks -\u003e using",
+                                                                         "CertApi.Abstractions.Operations -\u003e namespace",
+                                                                         "ICertOperationBase -\u003e interface",
+                                                                         "default) -\u003e =",
+                                                                         "default) -\u003e ="
+                                                                     ],
+                                                  "type":  "interface"
+                                              },
+                       "ICertCorrelationAware":  {
+                                                     "purpose":  "Provides ICertCorrelationAware functionality",
+                                                     "key_methods":  [
+
+                                                                     ],
+                                                     "key_properties":  [
+                                                                            "CertApi.Abstractions.Core -\u003e namespace",
+                                                                            "ICertCorrelationAware -\u003e interface",
+                                                                            "CorrelationContext -\u003e ICertCorrelationContext"
+                                                                        ],
+                                                     "type":  "interface"
+                                                 },
+                       "ICertCorrelationId":  {
+                                                  "purpose":  "Provides ICertCorrelationId functionality",
+                                                  "key_methods":  [
+                                                                      "value(alias for Id) -\u003e identifier",
+                                                                      "WithProperty(string key, object value) -\u003e ICertCorrelationId",
+                                                                      "WithProperties(IDictionary\u003cstring, object\u003e properties) -\u003e ICertCorrelationId",
+                                                                      "GetProperty\u003cT\u003e(string key) -\u003e T?",
+                                                                      "TryGetProperty\u003cT\u003e(string key, out T? value) -\u003e bool",
+                                                                      "HasProperty(string key) -\u003e bool"
+                                                                  ],
+                                                  "key_properties":  [
+                                                                         "CertApi.Abstractions.Core -\u003e namespace",
+                                                                         "ICertCorrelationId -\u003e interface",
+                                                                         "Id -\u003e string",
+                                                                         "Value -\u003e string",
+                                                                         "Properties -\u003e object\u003e",
+                                                                         "CreatedUtc -\u003e DateTime",
+                                                                         "value) -\u003e object",
+                                                                         "properties) -\u003e object\u003e",
+                                                                         "key) -\u003e GetProperty\u003cT\u003e(string",
+                                                                         "value) -\u003e T?",
+                                                                         "key) -\u003e HasProperty(string"
+                                                                     ],
+                                                  "type":  "interface"
+                                              },
+                       "ICertCorrelationContext":  {
+                                                       "purpose":  "Provides ICertCorrelationContext functionality",
+                                                       "key_methods":  [
+                                                                           "AddProperty(string key, object value) -\u003e void",
+                                                                           "AddProperties(IDictionary\u003cstring, object\u003e properties) -\u003e void",
+                                                                           "GetProperty\u003cT\u003e(string key) -\u003e T",
+                                                                           "TryGetProperty\u003cT\u003e(string key, out T? value) -\u003e bool",
+                                                                           "SetParentCorrelation(string parentId) -\u003e void",
+                                                                           "HasProperty(string key) -\u003e bool"
+                                                                       ],
+                                                       "key_properties":  [
+                                                                              "CertApi.Abstractions.Core -\u003e namespace",
+                                                                              "ICertCorrelationContext -\u003e interface",
+                                                                              "CorrelationId -\u003e string",
+                                                                              "CreatedUtc -\u003e DateTime",
+                                                                              "ParentCorrelationId -\u003e string?",
+                                                                              "Properties -\u003e object\u003e",
+                                                                              "value) -\u003e object",
+                                                                              "properties) -\u003e object\u003e",
+                                                                              "key) -\u003e GetProperty\u003cT\u003e(string",
+                                                                              "T -\u003e to",
+                                                                              "value) -\u003e T?",
+                                                                              "parentId) -\u003e SetParentCorrelation(string",
+                                                                              "exists -\u003e property",
+                                                                              "key) -\u003e HasProperty(string"
+                                                                          ],
+                                                       "type":  "interface"
+                                                   },
+                       "ICertResourceManager":  {
+                                                    "purpose":  "Provides ICertResourceManager functionality",
+                                                    "key_methods":  [
+                                                                        "CreateScopeAsync(string? scopeId = null, CancellationToken cancellationToken = default) -\u003e Task\u003cICertResourceScope\u003e",
+                                                                        "CleanupScopeAsync(string scopeId, CancellationToken cancellationToken = default) -\u003e Task",
+                                                                        "CleanupAllScopesAsync(CancellationToken cancellationToken = default) -\u003e Task",
+                                                                        "TrackResourceAsync\u003cT\u003e(T resource, CancellationToken cancellationToken = default) -\u003e Task\u003cT\u003e",
+                                                                        "RemoveTrackedResourceAsync\u003cT\u003e(T resource, CancellationToken cancellationToken = default) -\u003e Task",
+                                                                        "ResourceExistsAsync\u003cT\u003e(T resource, CancellationToken cancellationToken = default) -\u003e Task\u003cbool\u003e",
+                                                                        "GetTrackedResources\u003cT\u003e() -\u003e IReadOnlyCollection\u003cT\u003e",
+                                                                        "TryAcquireResourceAsync(string resourceId, TimeSpan timeout, CancellationToken cancellationToken = default) -\u003e Task\u003cbool\u003e",
+                                                                        "ReleaseResourceAsync(string resourceId, CancellationToken cancellationToken = default) -\u003e Task",
+                                                                        "CreateResourceScopeAsync(IEnumerable\u003cstring\u003e resourceIds, CancellationToken cancellationToken = default) -\u003e Task\u003cICertResourceScope\u003e"
+                                                                    ],
+                                                    "key_properties":  [
+                                                                           "CertApi.Abstractions.Core -\u003e namespace",
+                                                                           "IAsyncDisposable -\u003e :",
+                                                                           "default) -\u003e =",
+                                                                           "default) -\u003e =",
+                                                                           "default) -\u003e =",
+                                                                           "class -\u003e :",
+                                                                           "class -\u003e :",
+                                                                           "class -\u003e :",
+                                                                           "class -\u003e :",
+                                                                           "default) -\u003e =",
+                                                                           "default) -\u003e =",
+                                                                           "default) -\u003e ="
+                                                                       ],
+                                                    "type":  "interface"
+                                                },
+                       "ICertResourceContext":  {
+                                                    "purpose":  "Provides ICertResourceContext functionality",
+                                                    "key_methods":  [
+                                                                        "GetResource\u003cT\u003e(string resourceId) -\u003e T",
+                                                                        "CreateResourceScopeAsync(IEnumerable\u003cstring\u003e resourceIds, CancellationToken cancellationToken = default) -\u003e Task\u003cICertResourceScope\u003e",
+                                                                        "TrackResourceAsync\u003cT\u003e(T resource, CancellationToken cancellationToken = default) -\u003e Task\u003cT\u003e",
+                                                                        "GetTrackedResources\u003cT\u003e() -\u003e IReadOnlyCollection\u003cT\u003e",
+                                                                        "TryAcquireResourceAsync(string resourceId, TimeSpan timeout, CancellationToken cancellationToken = default) -\u003e Task\u003cbool\u003e",
+                                                                        "ReleaseResourceAsync(string resourceId, CancellationToken cancellationToken = default) -\u003e Task"
+                                                                    ],
+                                                    "key_properties":  [
+                                                                           "CertApi.Abstractions.Core -\u003e namespace",
+                                                                           "ICertCorrelationAware -\u003e :",
+                                                                           "ICertResource -\u003e class,",
+                                                                           "default) -\u003e =",
+                                                                           "Metrics -\u003e ICertResourceMetrics",
+                                                                           "ICertResource -\u003e class,",
+                                                                           "ICertResource -\u003e class,",
+                                                                           "acquired -\u003e was",
+                                                                           "default) -\u003e =",
+                                                                           "default) -\u003e ="
+                                                                       ],
+                                                    "type":  "interface"
+                                                },
+                       "ICertAsyncLockFactory":  {
+                                                     "purpose":  "Provides ICertAsyncLockFactory functionality",
+                                                     "key_methods":  [
+                                                                         "Create() -\u003e ICertAsyncLock"
+                                                                     ],
+                                                     "key_properties":  [
+                                                                            "CertApi.Abstractions.Core -\u003e namespace",
+                                                                            "ICertAsyncLockFactory -\u003e interface"
+                                                                        ],
+                                                     "type":  "interface"
+                                                 },
+                       "ICertAsyncLock":  {
+                                              "purpose":  "Provides ICertAsyncLock functionality",
+                                              "key_methods":  [
+                                                                  "AcquireAsync(CancellationToken cancellationToken = default) -\u003e Task\u003cIDisposable\u003e",
+                                                                  "TryAcquireAsync(TimeSpan timeout, CancellationToken cancellationToken = default) -\u003e Task\u003cIDisposable?\u003e",
+                                                                  "ReleaseAsync(CancellationToken cancellationToken = default) -\u003e Task"
+                                                              ],
+                                              "key_properties":  [
+                                                                     "CertApi.Abstractions.Core -\u003e namespace",
+                                                                     "IAsyncDisposable -\u003e :",
+                                                                     "LockId -\u003e string",
+                                                                     "IsHeld -\u003e bool",
+                                                                     "default) -\u003e =",
+                                                                     "default) -\u003e =",
+                                                                     "default) -\u003e ="
+                                                                 ],
+                                              "type":  "interface"
+                                          },
+                       "ICertTrackable":  {
+                                              "purpose":  "Provides ICertTrackable functionality",
+                                              "key_methods":  [
+
+                                                              ],
+                                              "key_properties":  [
+                                                                     "CertApi.Abstractions.Core -\u003e namespace",
+                                                                     "ICertTrackable -\u003e interface",
+                                                                     "TrackingId -\u003e string",
+                                                                     "ParentTrackingId -\u003e string?",
+                                                                     "TrackingMetadata -\u003e object\u003e",
+                                                                     "TrackedUtc -\u003e DateTime"
+                                                                 ],
+                                              "type":  "interface"
+                                          },
+                       "ICertResourceScope":  {
+                                                  "purpose":  "Provides ICertResourceScope functionality",
+                                                  "key_methods":  [
+                                                                      "AddResourceAsync\u003cT\u003e(T resource, CancellationToken cancellationToken = default) -\u003e Task\u003cT\u003e",
+                                                                      "RemoveResourceAsync\u003cT\u003e(T resource, CancellationToken cancellationToken = default) -\u003e Task",
+                                                                      "CleanupAsync(CancellationToken cancellationToken = default) -\u003e Task"
+                                                                  ],
+                                                  "key_properties":  [
+                                                                         "CertApi.Abstractions.Core -\u003e namespace",
+                                                                         "IAsyncDisposable -\u003e :",
+                                                                         "ScopeId -\u003e string",
+                                                                         "Created -\u003e DateTimeOffset",
+                                                                         "class -\u003e :",
+                                                                         "class -\u003e :",
+                                                                         "default) -\u003e ="
+                                                                     ],
+                                                  "type":  "interface"
+                                              },
+                       "ICertConfigurationManager":  {
+                                                         "purpose":  "Provides ICertConfigurationManager functionality",
+                                                         "key_methods":  [
+                                                                             "InitializeAsync(CancellationToken cancellationToken = default) -\u003e Task",
+                                                                             "ValidateConfigurationAsync(CancellationToken cancellationToken = default) -\u003e Task",
+                                                                             "IsConfiguredAsync(CancellationToken cancellationToken = default) -\u003e Task\u003cbool\u003e",
+                                                                             "ResetConfigurationAsync(CancellationToken cancellationToken = default) -\u003e Task"
+                                                                         ],
+                                                         "key_properties":  [
+                                                                                "CertApi.Abstractions.Core -\u003e namespace",
+                                                                                "ICertConfigurationManager -\u003e interface",
+                                                                                "default) -\u003e =",
+                                                                                "default) -\u003e =",
+                                                                                "configured -\u003e is",
+                                                                                "default) -\u003e =",
+                                                                                "default) -\u003e ="
+                                                                            ],
+                                                         "type":  "interface"
+                                                     },
+                       "ICertResourceMetrics":  {
+                                                    "purpose":  "Provides ICertResourceMetrics functionality",
+                                                    "key_methods":  [
+                                                                        "GetMetricsSnapshotAsync(CancellationToken cancellationToken = default) -\u003e Task\u003cICertMetricsSnapshot\u003e",
+                                                                        "RecordOperation(string operationName, TimeSpan duration, bool success) -\u003e void",
+                                                                        "RecordAcquisition(string resourceType, string resourceId) -\u003e void",
+                                                                        "RecordRelease(string resourceType, string resourceId) -\u003e void",
+                                                                        "RecordOperation(string resourceType, string operationType, TimeSpan duration) -\u003e void",
+                                                                        "RecordError(string resourceType, string errorType) -\u003e void",
+                                                                        "IncrementCounter(string name, long increment = 1) -\u003e void",
+                                                                        "RecordResourceAcquired(string resourceType) -\u003e int",
+                                                                        "RecordResourceReleased(string resourceType) -\u003e int"
+                                                                    ],
+                                                    "key_properties":  [
+                                                                           "CertApi.Abstractions.Monitoring -\u003e using",
+                                                                           "CertApi.Abstractions.Core -\u003e namespace",
+                                                                           "ICertResourceMetrics -\u003e interface",
+                                                                           "TotalResourcesInUse -\u003e int",
+                                                                           "default) -\u003e =",
+                                                                           "success) -\u003e bool",
+                                                                           "resourceId) -\u003e string",
+                                                                           "resourceId) -\u003e string",
+                                                                           "duration) -\u003e TimeSpan",
+                                                                           "errorType) -\u003e string",
+                                                                           "1) -\u003e =",
+                                                                           "resourceType) -\u003e RecordResourceAcquired(string",
+                                                                           "resourceType) -\u003e RecordResourceReleased(string"
+                                                                       ],
+                                                    "type":  "interface"
+                                                },
+                       "ICertResource":  {
+                                             "purpose":  "Provides ICertResource functionality",
+                                             "key_methods":  [
+
+                                                             ],
+                                             "key_properties":  [
+                                                                    "CertApi.Abstractions.Core -\u003e namespace",
+                                                                    "ICertResource -\u003e interface",
+                                                                    "ResourceId -\u003e string",
+                                                                    "Name -\u003e string",
+                                                                    "ResourceType -\u003e string",
+                                                                    "IsModified -\u003e bool",
+                                                                    "IsDeleted -\u003e bool",
+                                                                    "CreatedAt -\u003e DateTimeOffset",
+                                                                    "ModifiedAt -\u003e DateTimeOffset?"
+                                                                ],
+                                             "type":  "interface"
+                                         },
+                       "ICertErrorMappingService":  {
+                                                        "purpose":  "Provides ICertErrorMappingService functionality",
+                                                        "key_methods":  [
+                                                                            "MapServiceErrorToErrorCodeType(ErrorCodeType serviceError) -\u003e ErrorCodeType",
+                                                                            "CreateServiceExceptionFromResponse(Exception responseException) -\u003e Exception",
+                                                                            "MapSystemExceptionToErrorCodeType(Exception exception) -\u003e ErrorCodeType"
+                                                                        ],
+                                                        "key_properties":  [
+                                                                               "CertApi.Abstractions.Enums -\u003e using",
+                                                                               "CertApi.Abstractions.Service -\u003e namespace",
+                                                                               "ICertErrorMappingService -\u003e interface",
+                                                                               "serviceError) -\u003e MapServiceErrorToErrorCodeType(ErrorCodeType",
+                                                                               "responseException) -\u003e CreateServiceExceptionFromResponse(Exception",
+                                                                               "exception) -\u003e MapSystemExceptionToErrorCodeType(Exception"
+                                                                           ],
+                                                        "type":  "interface"
+                                                    },
+                       "ICertPropertyManagementService":  {
+                                                              "purpose":  "Provides ICertPropertyManagementService functionality",
+                                                              "key_methods":  [
+                                                                                  "WithPropertiesAsync(object basePropertySet, IEnumerable\u003cstring\u003e properties, CancellationToken cancellationToken = default) -\u003e Task\u003cobject\u003e",
+                                                                                  "WithExtendedPropertiesAsync(object basePropertySet, IEnumerable\u003cobject\u003e extendedProperties, CancellationToken cancellationToken = default) -\u003e Task\u003cobject\u003e"
+                                                                              ],
+                                                              "key_properties":  [
+                                                                                     "CertApi.Abstractions.Service -\u003e namespace",
+                                                                                     "ICertPropertyManagementService -\u003e interface",
+                                                                                     "default) -\u003e =",
+                                                                                     "default) -\u003e ="
+                                                                                 ],
+                                                              "type":  "interface"
+                                                          },
+                       "ICertServiceResponse":  {
+                                                    "purpose":  "Provides ICertServiceResponse functionality",
+                                                    "key_methods":  [
+                                                                        "successful(alias for IsSuccess) -\u003e was"
+                                                                    ],
+                                                    "key_properties":  [
+                                                                           "CertApi.Abstractions.Enums -\u003e using",
+                                                                           "CertApi.Abstractions.Service -\u003e namespace",
+                                                                           "ICertServiceResponse -\u003e interface",
+                                                                           "Status -\u003e ResultStatusType",
+                                                                           "ErrorCode -\u003e ErrorCodeType",
+                                                                           "ErrorMessage -\u003e string",
+                                                                           "Timestamp -\u003e DateTimeOffset",
+                                                                           "CorrelationId -\u003e string",
+                                                                           "IsSuccess -\u003e bool",
+                                                                           "IsSuccess -\u003e =\u003e",
+                                                                           "Exception -\u003e Exception?",
+                                                                           "Result -\u003e object?",
+                                                                           "Properties -\u003e object\u003e"
+                                                                       ],
+                                                    "type":  "interface"
+                                                },
+                       "ICertExceptionInfo":  {
+                                                  "purpose":  "Provides ICertExceptionInfo functionality",
+                                                  "key_methods":  [
+
+                                                                  ],
+                                                  "key_properties":  [
+                                                                         "CertApi.Abstractions.Exceptions -\u003e namespace",
+                                                                         "ICertExceptionInfo -\u003e interface",
+                                                                         "ErrorCode -\u003e string",
+                                                                         "CorrelationId -\u003e string",
+                                                                         "AdditionalData -\u003e object\u003e",
+                                                                         "Timestamp -\u003e DateTimeOffset"
+                                                                     ],
+                                                  "type":  "interface"
+                                              },
+                       "ICertResultTransformer":  {
+                                                      "purpose":  "Provides ICertResultTransformer functionality",
+                                                      "key_methods":  [
+                                                                          "FromValidation\u003cT\u003e(ICertValidationResult validation, T? value = default) -\u003e ICertResult\u003cT\u003e",
+                                                                          "FromValidationToService\u003cT\u003e(ICertValidationResult validation, T? value = default, string requestId = \"\") -\u003e ICertServiceResult\u003cT\u003e",
+                                                                          "TNew\u003e(ICertResult\u003cT\u003e result, Func\u003cT, TNew\u003e mapper) -\u003e Map\u003cT,",
+                                                                          "TNew\u003e(ICertServiceResult\u003cT\u003e result, Func\u003cT, TNew\u003e mapper) -\u003e MapService\u003cT,"
+                                                                      ],
+                                                      "key_properties":  [
+                                                                             "CertApi.Abstractions.Validation -\u003e using",
+                                                                             "CertApi.Abstractions.Results -\u003e namespace",
+                                                                             "ICertResultTransformer -\u003e interface",
+                                                                             "default) -\u003e =",
+                                                                             "\"\") -\u003e =",
+                                                                             "mapper) -\u003e TNew\u003e",
+                                                                             "mapper) -\u003e TNew\u003e"
+                                                                         ],
+                                                      "type":  "interface"
+                                                  },
+                       "ICertResult":  {
+                                           "purpose":  "Provides ICertResult functionality",
+                                           "key_methods":  [
+                                                               "WithProperty(string key, object value) -\u003e ICertResult\u003cT\u003e",
+                                                               "WithProperties(IDictionary\u003cstring, object\u003e properties) -\u003e ICertResult\u003cT\u003e"
+                                                           ],
+                                           "key_properties":  [
+                                                                  "CertApi.Abstractions/Results/ICertResult -\u003e //",
+                                                                  "CertApi.Abstractions.Results -\u003e namespace",
+                                                                  "ICertResult -\u003e :",
+                                                                  "Value -\u003e T?",
+                                                                  "value) -\u003e object",
+                                                                  "properties) -\u003e object\u003e"
+                                                              ],
+                                           "type":  "interface"
+                                       },
+                       "ICertResultError":  {
+                                                "purpose":  "Provides ICertResultError functionality",
+                                                "key_methods":  [
+                                                                    "WithProperty(string key, object value) -\u003e ICertResultError",
+                                                                    "WithProperties(IDictionary\u003cstring, object\u003e properties) -\u003e ICertResultError"
+                                                                ],
+                                                "key_properties":  [
+                                                                       "CertApi.Abstractions.Results -\u003e namespace",
+                                                                       "ICertResultError -\u003e interface",
+                                                                       "Code -\u003e string",
+                                                                       "Message -\u003e string",
+                                                                       "CorrelationId -\u003e string",
+                                                                       "Timestamp -\u003e DateTimeOffset",
+                                                                       "Properties -\u003e object\u003e",
+                                                                       "value) -\u003e object",
+                                                                       "properties) -\u003e object\u003e"
+                                                                   ],
+                                                "type":  "interface"
+                                            },
+                       "ICertServiceResult":  {
+                                                  "purpose":  "Provides ICertServiceResult functionality",
+                                                  "key_methods":  [
+                                                                      "WithProperty(string key, object value) -\u003e ICertServiceResult\u003cT\u003e",
+                                                                      "WithProperties(IDictionary\u003cstring, object\u003e properties) -\u003e ICertServiceResult\u003cT\u003e",
+                                                                      "WithStatus(OperationStatusType status) -\u003e ICertServiceResult\u003cT\u003e"
+                                                                  ],
+                                                  "key_properties":  [
+                                                                         "CertApi.Abstractions/Results/ICertServiceResult -\u003e //",
+                                                                         "CertApi.Abstractions.Enums -\u003e using",
+                                                                         "CertApi.Abstractions.Results -\u003e namespace",
+                                                                         "ICertResult\u003cT\u003e -\u003e ICertServiceResult,",
+                                                                         "value) -\u003e object",
+                                                                         "properties) -\u003e object\u003e",
+                                                                         "status) -\u003e WithStatus(OperationStatusType"
+                                                                     ],
+                                                  "type":  "interface"
+                                              },
+                       "ICertCorrelationIdFactory":  {
+                                                         "purpose":  "Provides ICertCorrelationIdFactory functionality",
+                                                         "key_methods":  [
+                                                                             "Create() -\u003e ICertCorrelationId",
+                                                                             "CreateFromExisting(string existingId) -\u003e ICertCorrelationId"
+                                                                         ],
+                                                         "key_properties":  [
+                                                                                "CertApi.Abstractions.Core -\u003e using",
+                                                                                "CertApi.Abstractions.Factories -\u003e namespace",
+                                                                                "ICertCorrelationIdFactory -\u003e interface",
+                                                                                "existingId) -\u003e CreateFromExisting(string"
+                                                                            ],
+                                                         "type":  "interface"
+                                                     },
+                       "ICertExceptionFactory":  {
+                                                     "purpose":  "Provides ICertExceptionFactory functionality",
+                                                     "key_methods":  [
+                                                                         "CreateAuthenticationException(string message, string errorCode, Uri? serviceUri, string? tokenId, Exception? inner = null) -\u003e Exception",
+                                                                         "CreateBuilderException(string message, string propertyName, string? errorCode = null, object? attemptedValue = null, Exception? inner = null) -\u003e Exception",
+                                                                         "CreateConfigurationException(string message, string? errorCode = null, IEnumerable\u003cstring\u003e? errors = null, Exception? inner = null) -\u003e Exception",
+                                                                         "CreateConnectionException(string message, Uri? serviceUri = null, string? requestId = null, Exception? inner = null) -\u003e Exception",
+                                                                         "CreateServiceException(string message, string? errorCode = null, string? serviceName = null, string? operation = null, Exception? inner = null) -\u003e Exception",
+                                                                         "CreateValidationException(string message, string? entityType = null, IEnumerable\u003cCertValidationResult\u003e? errors = null, Exception? inner = null) -\u003e Exception",
+                                                                         "CreateResourceNotFoundException(string resourceType, string resourceId, Exception? inner = null) -\u003e Exception",
+                                                                         "CreateResourceLockedException(string resourceId, string? lockOwner = null, Exception? inner = null) -\u003e Exception",
+                                                                         "CreateResourceQuotaExceededException(string resourceType, long currentSize, long maxSize, Exception? inner = null) -\u003e Exception",
+                                                                         "CreateMailDeliveryException(string message, string? recipientEmail = null, Exception? inner = null) -\u003e Exception",
+                                                                         "CreatePropertyValidationException(string propertyName, string message, Exception? inner = null) -\u003e Exception",
+                                                                         "CreateObjectDisposedException(string objectName, string message, Exception? inner = null) -\u003e Exception"
+                                                                     ],
+                                                     "key_properties":  [
+                                                                            "CertApi.Abstractions.Validation.Models -\u003e using",
+                                                                            "CertApi.Abstractions.Factories -\u003e namespace",
+                                                                            "ICertExceptionFactory -\u003e interface",
+                                                                            "null) -\u003e =",
+                                                                            "null) -\u003e =",
+                                                                            "null) -\u003e =",
+                                                                            "null) -\u003e =",
+                                                                            "null) -\u003e =",
+                                                                            "null) -\u003e =",
+                                                                            "null) -\u003e =",
+                                                                            "null) -\u003e =",
+                                                                            "null) -\u003e =",
+                                                                            "null) -\u003e =",
+                                                                            "null) -\u003e =",
+                                                                            "null) -\u003e ="
+                                                                        ],
+                                                     "type":  "interface"
+                                                 },
+                       "ICertValidationResultFactory":  {
+                                                            "purpose":  "Provides ICertValidationResultFactory functionality",
+                                                            "key_methods":  [
+                                                                                "Success() -\u003e ICertValidationResult",
+                                                                                "FromError(string propertyName, string errorMessage, string errorCode = \"ValidationError\", ValidationSeverityType severity = ValidationSeverityType.Error) -\u003e ICertValidationResult",
+                                                                                "FromErrors(IEnumerable\u003cCertValidationError\u003e errors) -\u003e ICertValidationResult",
+                                                                                "FromException(Exception exception) -\u003e ICertValidationResult",
+                                                                                "Combine(params ICertValidationResult[] results) -\u003e ICertValidationResult",
+                                                                                "CreateCancelled(string correlationId) -\u003e ICertValidationResult",
+                                                                                "CreateBuilder(string? correlationId = null) -\u003e CertValidationResultBuilder"
+                                                                            ],
+                                                            "key_properties":  [
+                                                                                   "CertApi.Abstractions.Enums -\u003e using",
+                                                                                   "CertApi.Abstractions.Validation -\u003e using",
+                                                                                   "CertApi.Abstractions.Validation.Models -\u003e using",
+                                                                                   "CertApi.Abstractions.Factories -\u003e namespace",
+                                                                                   "ICertValidationResultFactory -\u003e interface",
+                                                                                   "ValidationSeverityType.Error) -\u003e =",
+                                                                                   "errors) -\u003e FromErrors(IEnumerable\u003cCertValidationError\u003e",
+                                                                                   "exception) -\u003e FromException(Exception",
+                                                                                   "results) -\u003e ICertValidationResult[]",
+                                                                                   "correlationId) -\u003e CreateCancelled(string",
+                                                                                   "null) -\u003e ="
+                                                                               ],
+                                                            "type":  "interface"
+                                                        },
+                       "ICertResultFactory":  {
+                                                  "purpose":  "Provides ICertResultFactory functionality",
+                                                  "key_methods":  [
+                                                                      "Success\u003cT\u003e(T value, string? correlationId = null) -\u003e ICertResult\u003cT\u003e",
+                                                                      "Failure\u003cT\u003e(Exception exception, string? correlationId = null) -\u003e ICertResult\u003cT\u003e",
+                                                                      "Failure\u003cT\u003e(string code, string message, string? correlationId = null) -\u003e ICertResult\u003cT\u003e",
+                                                                      "Failure\u003cT\u003e(string message, ErrorCodeType errorCode, string? correlationId = null) -\u003e ICertResult\u003cT\u003e",
+                                                                      "ServiceSuccess\u003cT\u003e(T value, OperationStatusType status, string requestId, string? correlationId = null) -\u003e ICertServiceResult\u003cT\u003e",
+                                                                      "ServiceFailure\u003cT\u003e(string code, string message, OperationStatusType status, string requestId, string? correlationId = null) -\u003e ICertServiceResult\u003cT\u003e",
+                                                                      "ServiceFailure\u003cT\u003e(Exception exception, OperationStatusType status, string requestId, string? correlationId = null) -\u003e ICertServiceResult\u003cT\u003e"
+                                                                  ],
+                                                  "key_properties":  [
+                                                                         "CertApi.Abstractions.Enums -\u003e using",
+                                                                         "CertApi.Abstractions.Results -\u003e using",
+                                                                         "CertApi.Abstractions.Factories -\u003e namespace",
+                                                                         "ICertResultFactory -\u003e interface",
+                                                                         "null) -\u003e =",
+                                                                         "null) -\u003e =",
+                                                                         "null) -\u003e =",
+                                                                         "null) -\u003e =",
+                                                                         "null) -\u003e =",
+                                                                         "null) -\u003e =",
+                                                                         "null) -\u003e ="
+                                                                     ],
+                                                  "type":  "interface"
+                                              },
+                       "ICertAuthenticationOptions":  {
+                                                          "purpose":  "Provides ICertAuthenticationOptions functionality",
+                                                          "key_methods":  [
+
+                                                                          ],
+                                                          "key_properties":  [
+                                                                                 "CertApi.Abstractions.Enums -\u003e using",
+                                                                                 "CertApi.Abstractions.Authentication -\u003e namespace",
+                                                                                 "ICertAuthenticationOptions -\u003e interface",
+                                                                                 "AuthType -\u003e AuthenticationMethodType",
+                                                                                 "ClientId -\u003e string?",
+                                                                                 "TenantId -\u003e string?",
+                                                                                 "Resource -\u003e string?",
+                                                                                 "Authority -\u003e string?"
+                                                                             ],
+                                                          "type":  "interface"
+                                                      },
+                       "ICertAuthenticationProviderFactory":  {
+                                                                  "purpose":  "Provides ICertAuthenticationProviderFactory functionality",
+                                                                  "key_methods":  [
+                                                                                      "CreateProvider(AuthenticationMethodType authType) -\u003e ICertAuthenticationProvider",
+                                                                                      "CreateProvider(ICertAuthenticationOptions options) -\u003e ICertAuthenticationProvider"
+                                                                                  ],
+                                                                  "key_properties":  [
+                                                                                         "CertApi.Abstractions.Core -\u003e using",
+                                                                                         "CertApi.Abstractions.Enums -\u003e using",
+                                                                                         "CertApi.Abstractions.Authentication -\u003e namespace",
+                                                                                         "ICertCorrelationAware -\u003e :",
+                                                                                         "authType) -\u003e CreateProvider(AuthenticationMethodType",
+                                                                                         "options) -\u003e CreateProvider(ICertAuthenticationOptions"
+                                                                                     ],
+                                                                  "type":  "interface"
+                                                              },
+                       "ICertAuthenticationContext":  {
+                                                          "purpose":  "Provides ICertAuthenticationContext functionality",
+                                                          "key_methods":  [
+                                                                              "AcquireTokenAsync(CancellationToken cancellationToken = default) -\u003e Task\u003cstring\u003e",
+                                                                              "ValidateTokenAsync(CancellationToken cancellationToken = default) -\u003e Task\u003cbool\u003e",
+                                                                              "InvalidateTokenAsync(CancellationToken cancellationToken = default) -\u003e Task"
+                                                                          ],
+                                                          "key_properties":  [
+                                                                                 "CertApi.Abstractions.Authentication -\u003e namespace",
+                                                                                 "ICertAuthenticationContext -\u003e interface",
+                                                                                 "AccessToken -\u003e string",
+                                                                                 "IsAuthenticated -\u003e bool",
+                                                                                 "TokenExpiration -\u003e DateTime",
+                                                                                 "default) -\u003e =",
+                                                                                 "valid -\u003e is",
+                                                                                 "default) -\u003e =",
+                                                                                 "default) -\u003e ="
+                                                                             ],
+                                                          "type":  "interface"
+                                                      },
+                       "ICertTokenProvider":  {
+                                                  "purpose":  "Provides ICertTokenProvider functionality",
+                                                  "key_methods":  [
+                                                                      "GetAccessTokenAsync(CancellationToken cancellationToken = default) -\u003e Task\u003cstring\u003e",
+                                                                      "RefreshTokenAsync(string accessToken, CancellationToken cancellationToken = default) -\u003e Task\u003cstring\u003e",
+                                                                      "GetTokenAsync(ICertAuthenticationOptions options, CancellationToken ct) -\u003e Task\u003cICertTokenInfo\u003e",
+                                                                      "RefreshTokenAsync(ICertTokenInfo token, CancellationToken ct = default) -\u003e Task\u003cICertTokenInfo\u003e"
+                                                                  ],
+                                                  "key_properties":  [
+                                                                         "CertApi.Abstractions.Authentication -\u003e namespace",
+                                                                         "ICertTokenProvider -\u003e interface",
+                                                                         "default) -\u003e =",
+                                                                         "default) -\u003e =",
+                                                                         "ct) -\u003e CancellationToken",
+                                                                         "default) -\u003e ="
+                                                                     ],
+                                                  "type":  "interface"
+                                              },
+                       "ICertCredentialsFactory":  {
+                                                       "purpose":  "Provides ICertCredentialsFactory functionality",
+                                                       "key_methods":  [
+                                                                           "CreateCredential(ICertAuthenticationOptions options) -\u003e object"
+                                                                       ],
+                                                       "key_properties":  [
+                                                                              "CertApi.Abstractions.Authentication -\u003e namespace",
+                                                                              "ICertCredentialsFactory -\u003e interface",
+                                                                              "options) -\u003e CreateCredential(ICertAuthenticationOptions"
+                                                                          ],
+                                                       "type":  "interface"
+                                                   },
+                       "ICertMultiServiceAuthenticationContext":  {
+                                                                      "purpose":  "Provides ICertMultiServiceAuthenticationContext functionality",
+                                                                      "key_methods":  [
+                                                                                          "GetAuthenticationContext(ServiceEndpointType serviceType) -\u003e ICertAuthenticationContext",
+                                                                                          "AcquireTokenAsync(ServiceEndpointType serviceType, CancellationToken cancellationToken = default) -\u003e Task\u003cstring\u003e",
+                                                                                          "RegisterServiceAsync(ServiceEndpointType serviceType, ICertAuthenticationOptions options, CancellationToken cancellationToken = default) -\u003e Task",
+                                                                                          "ValidateTokenAsync(ServiceEndpointType serviceType, CancellationToken cancellationToken = default) -\u003e Task\u003cbool\u003e",
+                                                                                          "InvalidateTokenAsync(ServiceEndpointType serviceType, CancellationToken cancellationToken = default) -\u003e Task"
+                                                                                      ],
+                                                                      "key_properties":  [
+                                                                                             "CertApi.Abstractions.Core -\u003e using",
+                                                                                             "CertApi.Abstractions.Enums -\u003e using",
+                                                                                             "CertApi.Abstractions.Authentication -\u003e namespace",
+                                                                                             "ICertCorrelationAware -\u003e :",
+                                                                                             "RegisteredServices -\u003e ICertAuthenticationContext\u003e",
+                                                                                             "serviceType) -\u003e GetAuthenticationContext(ServiceEndpointType",
+                                                                                             "default) -\u003e =",
+                                                                                             "default) -\u003e =",
+                                                                                             "valid -\u003e is",
+                                                                                             "default) -\u003e =",
+                                                                                             "default) -\u003e ="
+                                                                                         ],
+                                                                      "type":  "interface"
+                                                                  },
+                       "ICertTokenInfo":  {
+                                              "purpose":  "Provides ICertTokenInfo functionality",
+                                              "key_methods":  [
+                                                                  "type(e.g. Bearer) -\u003e token",
+                                                                  "HasScope(string scope) -\u003e bool",
+                                                                  "HasClaim(string key) -\u003e bool",
+                                                                  "GetClaimValue(string key) -\u003e string?"
+                                                              ],
+                                              "key_properties":  [
+                                                                     "CertApi.Abstractions.Enums -\u003e using",
+                                                                     "CertApi.Abstractions.Authentication -\u003e namespace",
+                                                                     "ICertTokenInfo -\u003e interface",
+                                                                     "AccessToken -\u003e string",
+                                                                     "ExpiresOn -\u003e DateTime",
+                                                                     "Scopes -\u003e IEnumerable\u003cstring\u003e",
+                                                                     "TokenType -\u003e string",
+                                                                     "TenantId -\u003e string",
+                                                                     "ClientId -\u003e string",
+                                                                     "AuthType -\u003e AuthenticationMethodType",
+                                                                     "IsExpired -\u003e bool",
+                                                                     "SourceOptions -\u003e ICertAuthenticationOptions?",
+                                                                     "scope) -\u003e HasScope(string",
+                                                                     "key) -\u003e HasClaim(string",
+                                                                     "key) -\u003e GetClaimValue(string"
+                                                                 ],
+                                              "type":  "interface"
+                                          },
+                       "ICertTokenValidator":  {
+                                                   "purpose":  "Provides ICertTokenValidator functionality",
+                                                   "key_methods":  [
+                                                                       "ValidateTokenAsync(ICertTokenInfo token, CancellationToken ct) -\u003e Task\u003cbool\u003e",
+                                                                       "InvalidateTokenAsync(ICertTokenInfo token, CancellationToken ct) -\u003e Task"
+                                                                   ],
+                                                   "key_properties":  [
+                                                                          "CertApi.Abstractions.Authentication -\u003e namespace",
+                                                                          "ICertTokenValidator -\u003e interface",
+                                                                          "valid -\u003e is",
+                                                                          "ct) -\u003e CancellationToken",
+                                                                          "ct) -\u003e CancellationToken"
+                                                                      ],
+                                                   "type":  "interface"
+                                               },
+                       "ICertAuthenticationResult":  {
+                                                         "purpose":  "Provides ICertAuthenticationResult functionality",
+                                                         "key_methods":  [
+                                                                             "type(e.g., \"Bearer\") -\u003e token"
+                                                                         ],
+                                                         "key_properties":  [
+                                                                                "CertApi.Abstractions.Authentication -\u003e namespace",
+                                                                                "ICertAuthenticationResult -\u003e interface",
+                                                                                "AccessToken -\u003e string",
+                                                                                "ExpiresOn -\u003e DateTimeOffset",
+                                                                                "RefreshToken -\u003e string?",
+                                                                                "TokenType -\u003e string",
+                                                                                "Scopes -\u003e IReadOnlyCollection\u003cstring\u003e",
+                                                                                "IsSuccess -\u003e bool",
+                                                                                "ErrorMessage -\u003e string?"
+                                                                            ],
+                                                         "type":  "interface"
+                                                     },
+                       "ICertAuthenticationProvider":  {
+                                                           "purpose":  "Provides ICertAuthenticationProvider functionality",
+                                                           "key_methods":  [
+
+                                                                           ],
+                                                           "key_properties":  [
+                                                                                  "CertApi.Abstractions.Core -\u003e using",
+                                                                                  "CertApi.Abstractions.Enums -\u003e using",
+                                                                                  "CertApi.Abstractions.Authentication -\u003e namespace",
+                                                                                  "ICertCorrelationAware -\u003e ICertImpersonationProvider,",
+                                                                                  "AuthType -\u003e AuthenticationMethodType"
+                                                                              ],
+                                                           "type":  "interface"
+                                                       },
+                       "ICertImpersonationProvider":  {
+                                                          "purpose":  "Provides ICertImpersonationProvider functionality",
+                                                          "key_methods":  [
+                                                                              "SupportsImpersonationAsync(CancellationToken ct = default) -\u003e Task\u003cbool\u003e",
+                                                                              "ConfigureImpersonationAsync(string userId, CancellationToken ct) -\u003e Task"
+                                                                          ],
+                                                          "key_properties":  [
+                                                                                 "CertApi.Abstractions.Authentication -\u003e namespace",
+                                                                                 "ICertImpersonationProvider -\u003e interface",
+                                                                                 "supported -\u003e is",
+                                                                                 "default) -\u003e =",
+                                                                                 "ct) -\u003e CancellationToken"
+                                                                             ],
+                                                          "type":  "interface"
+                                                      },
+                       "CertTokenRequestContext":  {
+                                                       "purpose":  "Provides CertTokenRequestContext functionality",
+                                                       "key_methods":  [
+
+                                                                       ],
+                                                       "key_properties":  [
+                                                                              "CertTokenRequestContext -\u003e class",
+                                                                              "Scopes -\u003e IEnumerable\u003cstring\u003e",
+                                                                              "TenantId -\u003e string?",
+                                                                              "CorrelationId -\u003e string?"
+                                                                          ]
+                                                   },
+                       "CertAccessToken":  {
+                                               "purpose":  "Provides CertAccessToken functionality",
+                                               "key_methods":  [
+
+                                                               ],
+                                               "key_properties":  [
+                                                                      "CertAccessToken -\u003e class",
+                                                                      "Token -\u003e string",
+                                                                      "ExpiresOn -\u003e DateTimeOffset"
+                                                                  ]
+                                           },
+                       "CertTokenCredential":  {
+                                                   "purpose":  "Provides CertTokenCredential functionality",
+                                                   "key_methods":  [
+
+                                                                   ]
+                                               },
+                       "ICertCompositeMetricsTracker":  {
+                                                            "purpose":  "Provides ICertCompositeMetricsTracker functionality",
+                                                            "key_methods":  [
+                                                                                "RecordCustomMetric(string name, double value) -\u003e void",
+                                                                                "AddTracker(ICertOperationMetrics tracker) -\u003e void"
+                                                                            ],
+                                                            "key_properties":  [
+                                                                                   "CertApi.Abstractions.Context -\u003e using",
+                                                                                   "CertApi.Abstractions.Monitoring -\u003e namespace",
+                                                                                   "ICertMetricsProvider -\u003e ICertCacheMetrics,",
+                                                                                   "value) -\u003e double",
+                                                                                   "tracker) -\u003e AddTracker(ICertOperationMetrics"
+                                                                               ],
+                                                            "type":  "interface"
+                                                        },
+                       "ICertMetricsProvider":  {
+                                                    "purpose":  "Provides ICertMetricsProvider functionality",
+                                                    "key_methods":  [
+                                                                        "GetMetricsSnapshotAsync(CancellationToken cancellationToken = default) -\u003e Task\u003cICertMetricsSnapshot\u003e",
+                                                                        "ResetCounters() -\u003e void"
+                                                                    ],
+                                                    "key_properties":  [
+                                                                           "CertApi.Abstractions.Monitoring -\u003e namespace",
+                                                                           "ICertMetricsProvider -\u003e interface",
+                                                                           "default) -\u003e ="
+                                                                       ],
+                                                    "type":  "interface"
+                                                },
+                       "ICertCacheMetrics":  {
+                                                 "purpose":  "Provides ICertCacheMetrics functionality",
+                                                 "key_methods":  [
+                                                                     "RecordCacheActivity(bool isHit) -\u003e void"
+                                                                 ],
+                                                 "key_properties":  [
+                                                                        "CertApi.Abstractions.Monitoring -\u003e namespace",
+                                                                        "ICertMetricsProvider -\u003e :",
+                                                                        "CacheHits -\u003e int",
+                                                                        "CacheMisses -\u003e int",
+                                                                        "CacheHitRate -\u003e double",
+                                                                        "isHit) -\u003e RecordCacheActivity(bool"
+                                                                    ],
+                                                 "type":  "interface"
+                                             },
+                       "ICertMetricsSnapshot":  {
+                                                    "purpose":  "Provides ICertMetricsSnapshot functionality",
+                                                    "key_methods":  [
+                                                                        "WithMetric(string name, object value) -\u003e ICertMetricsSnapshot",
+                                                                        "WithMetrics(IDictionary\u003cstring, object\u003e metrics) -\u003e ICertMetricsSnapshot",
+                                                                        "GetMetric\u003cT\u003e(string name) -\u003e T",
+                                                                        "TryGetMetric\u003cT\u003e(string name, out T? value) -\u003e bool",
+                                                                        "HasMetric(string name) -\u003e bool"
+                                                                    ],
+                                                    "key_properties":  [
+                                                                           "CertApi.Abstractions.Monitoring -\u003e namespace",
+                                                                           "ICertMetricsSnapshot -\u003e interface",
+                                                                           "Timestamp -\u003e DateTimeOffset",
+                                                                           "Metrics -\u003e object\u003e",
+                                                                           "SuccessfulOperations -\u003e long",
+                                                                           "FailedOperations -\u003e long",
+                                                                           "TotalDurationMs -\u003e long",
+                                                                           "OperationCount -\u003e long",
+                                                                           "SuccessRate -\u003e double",
+                                                                           "AverageOperationDurationMs -\u003e long",
+                                                                           "value) -\u003e object",
+                                                                           "metrics) -\u003e object\u003e",
+                                                                           "name) -\u003e GetMetric\u003cT\u003e(string",
+                                                                           "value) -\u003e T?",
+                                                                           "name) -\u003e HasMetric(string"
+                                                                       ],
+                                                    "type":  "interface"
+                                                },
+                       "ICertConnectionMetrics":  {
+                                                      "purpose":  "Provides ICertConnectionMetrics functionality",
+                                                      "key_methods":  [
+                                                                          "RecordConnectionAcquired(TimeSpan acquisitionTime) -\u003e void",
+                                                                          "RecordConnectionReleased(TimeSpan lifetime) -\u003e void",
+                                                                          "RecordConnectionFailure(string errorCode) -\u003e void"
+                                                                      ],
+                                                      "key_properties":  [
+                                                                             "CertApi.Abstractions.Monitoring -\u003e namespace",
+                                                                             "ICertMetricsProvider -\u003e :",
+                                                                             "TotalConnections -\u003e int",
+                                                                             "ActiveConnections -\u003e int",
+                                                                             "FailedConnections -\u003e int",
+                                                                             "LastFailureTime -\u003e DateTime",
+                                                                             "acquisitionTime) -\u003e RecordConnectionAcquired(TimeSpan",
+                                                                             "lifetime) -\u003e RecordConnectionReleased(TimeSpan",
+                                                                             "errorCode) -\u003e RecordConnectionFailure(string"
+                                                                         ],
+                                                      "type":  "interface"
+                                                  },
+                       "ICertEndpointConfiguration":  {
+                                                          "purpose":  "Provides ICertEndpointConfiguration functionality",
+                                                          "key_methods":  [
+                                                                              "ConfigureAsync(CancellationToken cancellationToken = default) -\u003e Task",
+                                                                              "ValidateAsync(CancellationToken cancellationToken = default) -\u003e Task\u003cCertValidationResult\u003e"
+                                                                          ],
+                                                          "key_properties":  [
+                                                                                 "CertApi.Abstractions.Validation.Models -\u003e using",
+                                                                                 "CertApi.Abstractions.Configuration -\u003e namespace",
+                                                                                 "ICertEndpointConfiguration -\u003e interface",
+                                                                                 "EndpointName -\u003e string",
+                                                                                 "EndpointUri -\u003e Uri?",
+                                                                                 "MaxRetries -\u003e int",
+                                                                                 "ClientId -\u003e string?",
+                                                                                 "TenantId -\u003e string?",
+                                                                                 "default) -\u003e =",
+                                                                                 "default) -\u003e ="
+                                                                             ],
+                                                          "type":  "interface"
+                                                      },
+                       "ICertResiliencePolicy":  {
+                                                     "purpose":  "Provides ICertResiliencePolicy functionality",
+                                                     "key_methods":  [
+                                                                         "ExecuteAsync\u003cT\u003e(Func\u003cCancellationToken, Task\u003cT\u003e\u003e operation, CancellationToken cancellationToken) -\u003e Task\u003cT\u003e",
+                                                                         "ExecuteAsync(Func\u003cCancellationToken, Task\u003e operation, CancellationToken cancellationToken) -\u003e Task"
+                                                                     ],
+                                                     "key_properties":  [
+                                                                            "CertApi.Abstractions.Resilience -\u003e namespace",
+                                                                            "ICertResiliencePolicy -\u003e interface",
+                                                                            "cancellationToken) -\u003e CancellationToken",
+                                                                            "cancellationToken) -\u003e CancellationToken"
+                                                                        ],
+                                                     "type":  "interface"
+                                                 },
+                       "ICertServiceResiliencePolicyExecutor":  {
+                                                                    "purpose":  "Provides ICertServiceResiliencePolicyExecutor functionality",
+                                                                    "key_methods":  [
+                                                                                        "ExecuteServiceAsync\u003cT\u003e(Func\u003cTask\u003cT\u003e\u003e operation,\n        ResiliencePolicyType policyType,\n        string operationName,\n        CancellationToken cancellationToken = default) -\u003e Task\u003cT\u003e",
+                                                                                        "ExecuteServiceAsync(Func\u003cTask\u003e operation,\n        ResiliencePolicyType policyType,\n        string operationName,\n        CancellationToken cancellationToken = default) -\u003e Task",
+                                                                                        "ExecuteWithServiceMappingAsync\u003cT\u003e(Func\u003cTask\u003cICertServiceResult\u003cT\u003e\u003e\u003e operation,\n        Func\u003cException, ICertOperationContext, ICertServiceResult\u003cT\u003e\u003e exceptionMapper,\n        ResiliencePolicyType policyType,\n        string operationName,\n        CancellationToken cancellationToken = default) -\u003e Task\u003cICertServiceResult\u003cT\u003e\u003e"
+                                                                                    ],
+                                                                    "key_properties":  [
+                                                                                           "CertApi.Abstractions.Context -\u003e using",
+                                                                                           "CertApi.Abstractions.Enums -\u003e using",
+                                                                                           "CertApi.Abstractions.Results -\u003e using",
+                                                                                           "CertApi.Abstractions.Resilience -\u003e namespace",
+                                                                                           "ICertResiliencePolicyExecutor -\u003e :",
+                                                                                           "default) -\u003e =",
+                                                                                           "default) -\u003e =",
+                                                                                           "default) -\u003e ="
+                                                                                       ],
+                                                                    "type":  "interface"
+                                                                },
+                       "ICertResiliencePolicyExecutor":  {
+                                                             "purpose":  "Provides ICertResiliencePolicyExecutor functionality",
+                                                             "key_methods":  [
+                                                                                 "ExecuteAsync\u003cT\u003e(Func\u003cTask\u003cT\u003e\u003e operation,\n        ResiliencePolicyType policyType,\n        string operationName,\n        CancellationToken cancellationToken = default) -\u003e Task\u003cT\u003e",
+                                                                                 "ExecuteAsync(Func\u003cTask\u003e operation,\n        ResiliencePolicyType policyType,\n        string operationName,\n        CancellationToken cancellationToken = default) -\u003e Task"
+                                                                             ],
+                                                             "key_properties":  [
+                                                                                    "CertApi.Abstractions.Enums -\u003e using",
+                                                                                    "CertApi.Abstractions.Resilience -\u003e namespace",
+                                                                                    "ICertResiliencePolicyExecutor -\u003e interface",
+                                                                                    "default) -\u003e =",
+                                                                                    "default) -\u003e ="
+                                                                                ],
+                                                             "type":  "interface"
+                                                         },
+                       "ICertOperationResiliencePolicyExecutor":  {
+                                                                      "purpose":  "Provides ICertOperationResiliencePolicyExecutor functionality",
+                                                                      "key_methods":  [
+                                                                                          "ExecuteBusinessOperationAsync\u003cT\u003e(Func\u003cTask\u003cT\u003e\u003e operation,\n        ResiliencePolicyType policyType,\n        string operationName,\n        CancellationToken cancellationToken = default) -\u003e Task\u003cT\u003e",
+                                                                                          "ExecuteBusinessOperationAsync(Func\u003cTask\u003e operation,\n        ResiliencePolicyType policyType,\n        string operationName,\n        CancellationToken cancellationToken = default) -\u003e Task",
+                                                                                          "ExecuteWithOperationMappingAsync\u003cT\u003e(Func\u003cTask\u003cICertResult\u003cT\u003e\u003e\u003e operation,\n        Func\u003cException, ICertOperationContext, ICertResult\u003cT\u003e\u003e exceptionMapper,\n        ResiliencePolicyType policyType,\n        string operationName,\n        CancellationToken cancellationToken = default) -\u003e Task\u003cICertResult\u003cT\u003e\u003e"
+                                                                                      ],
+                                                                      "key_properties":  [
+                                                                                             "CertApi.Abstractions.Context -\u003e using",
+                                                                                             "CertApi.Abstractions.Enums -\u003e using",
+                                                                                             "CertApi.Abstractions.Results -\u003e using",
+                                                                                             "CertApi.Abstractions.Resilience -\u003e namespace",
+                                                                                             "ICertResiliencePolicyExecutor -\u003e :",
+                                                                                             "default) -\u003e =",
+                                                                                             "default) -\u003e =",
+                                                                                             "default) -\u003e ="
+                                                                                         ],
+                                                                      "type":  "interface"
+                                                                  },
+                       "ICertTimeProviderFactory":  {
+                                                        "purpose":  "Provides ICertTimeProviderFactory functionality",
+                                                        "key_methods":  [
+                                                                            "Configure(ICertTimeProvider provider) -\u003e void",
+                                                                            "Reset() -\u003e void"
+                                                                        ],
+                                                        "key_properties":  [
+                                                                               "CertApi.Abstractions.Utilities.Time -\u003e namespace",
+                                                                               "ICertTimeProviderFactory -\u003e interface",
+                                                                               "Current -\u003e ICertTimeProvider",
+                                                                               "provider) -\u003e Configure(ICertTimeProvider"
+                                                                           ],
+                                                        "type":  "interface"
+                                                    },
+                       "ICertTimeProviderConfiguration":  {
+                                                              "purpose":  "Provides ICertTimeProviderConfiguration functionality",
+                                                              "key_methods":  [
+                                                                                  "ConfigureTimeProvider(ICertTimeProvider provider) -\u003e void"
+                                                                              ],
+                                                              "key_properties":  [
+                                                                                     "CertApi.Abstractions.Utilities.Time -\u003e namespace",
+                                                                                     "ICertTimeProviderConfiguration -\u003e interface",
+                                                                                     "provider) -\u003e ConfigureTimeProvider(ICertTimeProvider"
+                                                                                 ],
+                                                              "type":  "interface"
+                                                          },
+                       "CertDefaultTimeProvider":  {
+                                                       "purpose":  "Provides CertDefaultTimeProvider functionality",
+                                                       "key_methods":  [
+                                                                           "GetTimestamp() -\u003e TimeSpan",
+                                                                           "GetElapsedTime(TimeSpan timestamp) -\u003e TimeSpan"
+                                                                       ]
+                                                   },
+                       "ICertTimeProvider":  {
+                                                 "purpose":  "Provides ICertTimeProvider functionality",
+                                                 "key_methods":  [
+                                                                     "GetTimestamp() -\u003e TimeSpan",
+                                                                     "GetElapsedTime(TimeSpan timestamp) -\u003e TimeSpan"
+                                                                 ],
+                                                 "key_properties":  [
+                                                                        "CertApi.Abstractions.Utilities.Time -\u003e namespace",
+                                                                        "ICertTimeProvider -\u003e interface",
+                                                                        "UtcNow -\u003e DateTime",
+                                                                        "timestamp) -\u003e GetElapsedTime(TimeSpan"
+                                                                    ],
+                                                 "type":  "interface"
+                                             },
+                       "ICertRandomProvider":  {
+                                                   "purpose":  "Provides ICertRandomProvider functionality",
+                                                   "key_methods":  [
+                                                                       "NextInt() -\u003e int",
+                                                                       "NextIntUnderMax(int maxValue) -\u003e int",
+                                                                       "NextIntInRange(int minValue, int maxValue) -\u003e int",
+                                                                       "NextBytes(byte[] buffer) -\u003e void",
+                                                                       "NextDouble() -\u003e double"
+                                                                   ],
+                                                   "key_properties":  [
+                                                                          "CertApi.Abstractions.Utilities.Randomization -\u003e namespace",
+                                                                          "ICertRandomProvider -\u003e interface",
+                                                                          "maxValue) -\u003e NextIntUnderMax(int",
+                                                                          "maxValue) -\u003e int",
+                                                                          "buffer) -\u003e NextBytes(byte[]"
+                                                                      ],
+                                                   "type":  "interface"
+                                               }
+                   },
+    "subdirectories":  {
+                           "Enums":  {
+                                         "description":  "Contains components related to Enums",
+                                         "documentation_path":  "CertApi.Abstractions.CertApi.Abstractions.Enums.Use.json"
+                                     },
+                           "Validation":  {
+                                              "description":  "Contains components related to Validation",
+                                              "documentation_path":  "CertApi.Abstractions.CertApi.Abstractions.Validation.Use.json"
+                                          },
+                           "Context":  {
+                                           "description":  "Contains components related to Context",
+                                           "documentation_path":  "CertApi.Abstractions.CertApi.Abstractions.Context.Use.json"
+                                       },
+                           "Operations":  {
+                                              "description":  "Contains components related to Operations",
+                                              "documentation_path":  "CertApi.Abstractions.CertApi.Abstractions.Operations.Use.json"
+                                          },
+                           "Core":  {
+                                        "description":  "Contains components related to Core",
+                                        "documentation_path":  "CertApi.Abstractions.CertApi.Abstractions.Core.Use.json"
+                                    },
+                           "Service":  {
+                                           "description":  "Contains components related to Service",
+                                           "documentation_path":  "CertApi.Abstractions.CertApi.Abstractions.Service.Use.json"
+                                       },
+                           "Exceptions":  {
+                                              "description":  "Contains components related to Exceptions",
+                                              "documentation_path":  "CertApi.Abstractions.CertApi.Abstractions.Exceptions.Use.json"
+                                          },
+                           "Results":  {
+                                           "description":  "Contains components related to Results",
+                                           "documentation_path":  "CertApi.Abstractions.CertApi.Abstractions.Results.Use.json"
+                                       },
+                           "Factories":  {
+                                             "description":  "Contains components related to Factories",
+                                             "documentation_path":  "CertApi.Abstractions.CertApi.Abstractions.Factories.Use.json"
+                                         },
+                           "Authentication":  {
+                                                  "description":  "Contains components related to Authentication",
+                                                  "documentation_path":  "CertApi.Abstractions.CertApi.Abstractions.Authentication.Use.json"
+                                              },
+                           "Monitoring":  {
+                                              "description":  "Contains components related to Monitoring",
+                                              "documentation_path":  "CertApi.Abstractions.CertApi.Abstractions.Monitoring.Use.json"
+                                          },
+                           "Configuration":  {
+                                                 "description":  "Contains components related to Configuration",
+                                                 "documentation_path":  "CertApi.Abstractions.CertApi.Abstractions.Configuration.Use.json"
+                                             },
+                           "Resilience":  {
+                                              "description":  "Contains components related to Resilience",
+                                              "documentation_path":  "CertApi.Abstractions.CertApi.Abstractions.Resilience.Use.json"
+                                          },
+                           "Utilities":  {
+                                             "description":  "Contains components related to Utilities",
+                                             "documentation_path":  "CertApi.Abstractions.CertApi.Abstractions.Utilities.Use.json"
+                                         }
+                       }
+}

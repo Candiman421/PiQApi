@@ -1,0 +1,157 @@
+// CertApi.ArchitectureRules/Solution/Guides/Testing/CertApi.Solution_Testing_ArchUnitGuide.json
+{
+  "metadata": {
+    "path": "CertApi.Architecture/Solution/Guides/Testing/CertApi.Solution_Testing_ArchUnitGuide.json",
+    "version": "1.0",
+    "last_updated": "2024-02-23",
+    "purpose": "Define ArchUnit testing patterns and standards",
+    "dependencies": [
+      "CertApi.Solution_Architecture_ExceptionHandling.json",
+      "ValidationFramework.json"
+    ]
+  },
+  "arch_unit_patterns": {
+    "test_organization": {
+      "core_principles": {
+        "architecture_loading": {
+          "pattern": "Load once at class level for performance",
+          "implementation": {
+            "example": [
+              "private static readonly Architecture Architecture = new ArchLoader()",
+              "    .LoadAssemblies(typeof(ICertResult).Assembly)",
+              "    .Build();"
+            ],
+            "key_points": [
+              "Static readonly field",
+              "Load target assemblies explicitly",
+              "Build once at startup"
+            ]
+          }
+        },
+        "layer_definitions": {
+          "pattern": "Define IObjectProvider<T> fields for reuse",
+          "examples": [
+            {
+              "layer": {
+                "code": "private readonly IObjectProvider<IType> AbstractionsLayer = Types()",
+                "pattern": "Namespace-based layer definition",
+                "usage": "Base layer grouping"
+              },
+              "components": {
+                "code": "private readonly IObjectProvider<Interface> ValidationContracts = Interfaces()",
+                "pattern": "Feature-specific grouping",
+                "usage": "Focused rule testing"
+              }
+            }
+          ]
+        }
+      }
+    },
+    "rule_patterns": {
+      "basic_rules": {
+        "dependency_rules": {
+          "example": "Types().That().Are(LayerA).Should().NotDependOnAny(LayerB)",
+          "variations": [
+            "NotDependOnAny - Prevent dependencies",
+            "OnlyDependOn - Restrict dependencies",
+            "ResideInNamespace - Location rules"
+          ]
+        },
+        "naming_rules": {
+          "example": "Classes().That().ImplementInterface(IType).Should().HaveNameStartingWith('prefix')",
+          "variations": [
+            "HaveNameStartingWith",
+            "HaveNameEndingWith",
+            "HaveNameMatching"
+          ]
+        }
+      },
+      "custom_conditions": {
+        "pattern": "Create reusable conditions for complex checks",
+        "implementation": {
+          "example": [
+            "private static ArchCondition<IType> BeImmutable()",
+            "{",
+            "    return new ArchCondition<IType>('be immutable',",
+            "        type => type.GetFields().All(f => f.IsReadOnly) &&",
+            "               type.GetProperties().All(p => !p.HasSetter || p.HasInitOnlySetter));",
+            "}"
+          ],
+          "usage": "Rules().Should().MeetCondition(BeImmutable())"
+        }
+      }
+    },
+    "test_writing": {
+      "from_json_guides": {
+        "approach": "Direct validation of architectural rules",
+        "process": [
+          "Extract core principles from guide",
+          "Convert to concrete ArchUnit rules",
+          "Group related rules in partial class files",
+          "Use guide examples for test cases"
+        ],
+        "example": {
+          "guide_rule": "Domain primitives must be immutable",
+          "arch_test": "DomainPrimitives.Should().BeImmutable()"
+        }
+      },
+      "from_diagrams": {
+        "approach": "Structural validation from UML",
+        "process": [
+          "Extract relationships from diagram",
+          "Convert to dependency rules",
+          "Validate component boundaries",
+          "Enforce design patterns"
+        ],
+        "recommendation": "Use both approaches complementarily",
+        "rationale": [
+          "Diagrams capture structural relationships",
+          "Guides capture detailed rules and patterns",
+          "Combined approach provides complete coverage"
+        ]
+      }
+    },
+    "best_practices": {
+      "test_organization": {
+        "file_structure": {
+          "base_class": "Core setup and helper methods",
+          "partial_files": "Group related rules by feature",
+          "naming": "{Feature}ArchitectureTests.{Category}.cs"
+        },
+        "rule_grouping": [
+          "Group related rules in same file",
+          "Use descriptive test names",
+          "Add clear failure messages",
+          "Document complex conditions"
+        ]
+      },
+      "performance": [
+        "Load architecture once at class level",
+        "Cache layer/component definitions",
+        "Reuse conditions and rules",
+        "Minimize assembly scanning"
+      ],
+      "maintainability": [
+        "Keep rules focused and single-purpose",
+        "Use clear naming for conditions",
+        "Document complex rules",
+        "Update tests when architecture evolves"
+      ]
+    },
+    "validation_approach": {
+      "recommendation": "Combined JSON and UML approach",
+      "workflow": [
+        "Start with JSON guides for detailed rules",
+        "Use UML for structural validation",
+        "Create comprehensive test suite",
+        "Maintain as architecture evolves"
+      ],
+      "benefits": [
+        "Complete coverage of architecture",
+        "Clear traceability to documentation",
+        "Maintainable test suite",
+        "Early detection of violations"
+      ]
+    }
+  }
+}

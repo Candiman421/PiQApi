@@ -1,0 +1,254 @@
+// CertApi.ArchitectureRules/Projects/CertApi.Abstractions/Guides/CertApi.Abstractions_Models.json
+{
+  "metadata": {
+    "path": "CertApi.Architecture/Projects/CertApi.Abstractions/Guides/CertApi.Abstractions_Models.json", 
+    "version": "1.0",
+    "last_updated": "2024-02-22",
+    "purpose": "Define domain model contracts and primitives",
+    "dependencies": [
+      "CertApi.Abstractions_Architecture.json",
+      "CertApi.Solution_Architecture_ExceptionHandling.20240222.json"
+    ]
+  },
+  "domain_primitives": {
+    "core_principles": {
+      "strong_typing": {
+        "purpose": "Type-safe domain values",
+        "requirements": [
+          "Value encapsulation",
+          "Built-in validation",
+          "Immutable design",
+          "Clear type names"
+        ],
+        "examples": {
+          "identifiers": {
+            "pattern": "Record types with validation",
+            "examples": [
+              "public record CertCorrelationId(string Value)",
+              "public record CertResourceId(string Value)",
+              "public record CertOperationId(string Value)"
+            ],
+            "naming": {
+              "rule": "Prefix with Cert to avoid framework collisions",
+              "rationale": "These are core abstractions used across APIs"
+            }
+          },
+          "value_objects": {
+            "pattern": "Records with business meaning",
+            "examples": [
+              "public record CertMailAddress(string Value)",
+              "public record CertStorageId(string Value)",
+              "public record CertMessageId(string Value)"
+            ],
+            "naming": {
+              "rule": "Prefix with Cert to avoid Exchange/Graph type collisions",
+              "rationale": "These may be used with multiple mail/storage APIs"
+            }
+          }
+        }
+      },
+      "validation": {
+        "requirements": [
+          "Constructor validation",
+          "Format verification", 
+          "Business rule checks",
+          "Error messaging"
+        ],
+        "pattern": {
+          "code": [
+            "public record CertMailAddress",
+            "{",
+            "    public string Value { get; }",
+            "    public CertMailAddress(string value)",
+            "    {",
+            "        if (string.IsNullOrEmpty(value))",
+            "            throw new ArgumentException(\"Mail address cannot be empty\");",
+            "        if (!IsValidAddressFormat(value))",
+            "            throw new ArgumentException(\"Invalid mail address format\");",
+            "        Value = value;",
+            "    }",
+            "}"
+          ]
+        }
+      }
+    }
+  },
+  "request_models": {
+    "principles": {
+      "core_rules": [
+        "Immutable properties",
+        "Validation attributes",
+        "Clear property names",
+        "No behavior"
+      ],
+      "naming": {
+        "pattern": "Cert{Operation}Request",
+        "examples": [
+          "CertSendMessageRequest",
+          "CertGetItemRequest",
+          "CertUpdateStorageRequest" 
+        ],
+        "rationale": "Prefix avoids collisions with API-specific request types"
+      }
+    },
+    "structure": {
+      "common_properties": {
+        "correlation": "CertCorrelationId for tracking",
+        "validation": "DataAnnotation attributes",
+        "metadata": "Operation-specific data"
+      },
+      "validation_requirements": [
+        "Required fields marked",
+        "Range constraints defined",
+        "Format requirements specified",
+        "Relationship rules documented"
+      ]
+    }
+  },
+  "response_models": {
+    "principles": {
+      "core_rules": [
+        "Immutable after creation",
+        "Clear success/failure state",
+        "Rich error context",
+        "Operation metadata"
+      ],
+      "naming": {
+        "pattern": "Cert{Operation}Response",
+        "examples": [
+          "CertSendMessageResponse",
+          "CertGetItemResponse",
+          "CertUpdateStorageResponse"
+        ],
+        "rationale": "Prefix maintains consistency with requests and avoids collisions"
+      }
+    },
+    "structure": {
+      "common_properties": {
+        "correlation": "CertCorrelationId from request",
+        "timing": "Operation timestamps",
+        "status": "Detailed operation state"
+      },
+      "success_case": {
+        "required": [
+          "Operation result data",
+          "Success metadata",
+          "Correlation tracking"
+        ]
+      },
+      "failure_case": {
+        "required": [
+          "Error details",
+          "Failure context",
+          "Correlation data"
+        ]
+      }
+    }
+  },
+  "enums": {
+    "principles": {
+      "naming": {
+        "rule": "All enums must end with Type suffix",
+        "examples": [
+          "ValidationModeType",
+          "ServiceOperationStatusType",
+          "ConnectionStateType" 
+        ]
+      },
+      "organization": {
+        "categories": {
+          "status": "Operation and service states",
+          "modes": "Operational modes",
+          "types": "Classification enums"
+        }
+      }
+    },
+    "required_enums": {
+      "validation": {
+        "ValidationModeType": [
+          "Standard - Normal validation",
+          "Strict - Additional checks",
+          "Lenient - Minimal validation"
+        ],
+        "ValidationSeverityType": [
+          "Error - Operation blocking",
+          "Warning - Important notice",
+          "Info - Informational only"
+        ]
+      },
+      "operations": {
+        "ServiceOperationStatusType": [
+          "NotStarted",
+          "InProgress", 
+          "Completed",
+          "Failed"
+        ],
+        "ResourceStatusType": [
+          "Available",
+          "InUse",
+          "Unavailable",
+          "Failed"
+        ]
+      }
+    }
+  },
+  "implementation_rules": {
+    "immutability": {
+      "requirements": [
+        "Record types preferred",
+        "Init-only properties",
+        "Constructor validation",
+        "No setters"
+      ],
+      "collections": {
+        "rule": "Return read-only views",
+        "example": "IReadOnlyCollection<T>"
+      }
+    },
+    "validation": {
+      "constructor": {
+        "requirements": [
+          "Validate all parameters",
+          "Clear error messages",
+          "Format verification",
+          "Business rule checks"
+        ]
+      },
+      "attributes": {
+        "usage": "Data annotations for validation",
+        "supported": [
+          "Required",
+          "StringLength",
+          "Range",
+          "RegularExpression"
+        ]
+      }
+    }
+  },
+  "forbidden_patterns": {
+    "model_design": {
+      "dont": [
+        "Include behavior methods",
+        "Add mutable state",
+        "Mix concerns",
+        "Hide validation"
+      ]
+    },
+    "implementation": {
+      "dont": [
+        "Use public setters",
+        "Skip validation",
+        "Add dependencies",
+        "Include business logic"
+      ]
+    },
+    "naming": {
+      "dont": [
+        "Use API-specific type names",
+        "Skip Cert prefix for domain models",
+        "Use ambiguous names",
+        "Copy framework type names"
+      ]
+    }
+  }
+}

@@ -1,0 +1,6 @@
+# C# files
+[*.cs]
+
+#### Core EditorConfig Options ####
+
+dotnet_diagnostic.CA1031.severity = none  # Disables the CA1031 warning, which flags catch-all exception handling (catch(Exception)). Use cautiously, as suppressing this warning may lead to unhandled exceptions or unintended program behavior if exceptions are not handled properly in specific scenarios.

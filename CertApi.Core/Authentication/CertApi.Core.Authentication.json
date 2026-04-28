@@ -1,0 +1,144 @@
+﻿{
+    "documentPath":  "docsflat/CertApi.Core.Authentication.json",
+    "version":  "1.0.0",
+    "lastUpdated":  "2025-04-06",
+    "purpose":  "Summarizes the public API of CertApi.Core.Authentication and provides usage guidance",
+    "guide_type":  "api-reference",
+    "development_contexts":  [
+                                 "development"
+                             ],
+    "applies_to":  [
+                       "CertApi.Core.Authentication"
+                   ],
+    "overview":  {
+                     "description":  "The Authentication namespace contains components for the CertApi.Core project.",
+                     "usage_pattern":  "Import and use classes from this namespace to work with Authentication functionality."
+                 },
+    "components":  {
+                       "CertTokenInfo":  {
+                                             "purpose":  "Provides CertTokenInfo functionality",
+                                             "key_methods":  [
+                                                                 "WithUpdatedToken(string accessToken, DateTime expiresOn, IEnumerable\u003cstring\u003e scopes) -\u003e CertTokenInfo",
+                                                                 "WithClaim(string key, string value) -\u003e CertTokenInfo",
+                                                                 "HasScope(string scope) -\u003e bool",
+                                                                 "HasClaim(string key) -\u003e bool",
+                                                                 "GetClaimValue(string key) -\u003e string?",
+                                                                 "CreateBuilder() -\u003e CertTokenInfoBuilder"
+                                                             ],
+                                             "key_properties":  [
+                                                                    "AccessToken -\u003e string",
+                                                                    "ExpiresOn -\u003e DateTime",
+                                                                    "Scopes -\u003e IEnumerable\u003cstring\u003e",
+                                                                    "TokenType -\u003e string",
+                                                                    "TenantId -\u003e string",
+                                                                    "ClientId -\u003e string",
+                                                                    "AuthType -\u003e AuthenticationMethodType",
+                                                                    "SourceOptions -\u003e ICertAuthenticationOptions?",
+                                                                    "CreatedOn -\u003e DateTime",
+                                                                    "CorrelationIdentifier -\u003e CertCorrelationId?"
+                                                                ]
+                                         },
+                       "CertAuthenticationContext":  {
+                                                         "purpose":  "Provides CertAuthenticationContext functionality",
+                                                         "key_methods":  [
+                                                                             "AcquireTokenAsync(CancellationToken cancellationToken = default) -\u003e Task\u003cstring\u003e",
+                                                                             "ValidateTokenAsync(CancellationToken cancellationToken = default) -\u003e Task\u003cbool\u003e",
+                                                                             "InvalidateTokenAsync(CancellationToken cancellationToken = default) -\u003e Task"
+                                                                         ],
+                                                         "key_properties":  [
+                                                                                "AccessToken -\u003e string",
+                                                                                "TokenExpiration -\u003e DateTime"
+                                                                            ]
+                                                     },
+                       "BaseCertAuthenticationProvider":  {
+                                                              "purpose":  "Provides BaseCertAuthenticationProvider functionality",
+                                                              "key_methods":  [
+                                                                                  "ValidateTokenAsync(ICertTokenInfo token, CancellationToken ct) -\u003e Task\u003cbool\u003e",
+                                                                                  "InvalidateTokenAsync(ICertTokenInfo token, CancellationToken ct) -\u003e Task"
+                                                                              ]
+                                                          },
+                       "CertAuthenticationProviderFactory":  {
+                                                                 "purpose":  "Provides CertAuthenticationProviderFactory functionality",
+                                                                 "key_methods":  [
+                                                                                     "CreateProvider(AuthenticationMethodType authType) -\u003e ICertAuthenticationProvider",
+                                                                                     "CreateProvider(ICertAuthenticationOptions options) -\u003e ICertAuthenticationProvider",
+                                                                                     "CreateProvider(CertAuthenticationOptions options) -\u003e ICertAuthenticationProvider"
+                                                                                 ],
+                                                                 "key_properties":  [
+                                                                                        "CorrelationContext -\u003e ICertCorrelationContext"
+                                                                                    ]
+                                                             },
+                       "CertMultiServiceAuthenticationContext":  {
+                                                                     "purpose":  "Provides CertMultiServiceAuthenticationContext functionality",
+                                                                     "key_methods":  [
+                                                                                         "GetAuthenticationContext(ServiceEndpointType serviceType) -\u003e ICertAuthenticationContext",
+                                                                                         "AcquireTokenAsync(ServiceEndpointType serviceType, CancellationToken cancellationToken = default) -\u003e Task\u003cstring\u003e",
+                                                                                         "RegisterServiceAsync(ServiceEndpointType serviceType, ICertAuthenticationOptions options, CancellationToken cancellationToken = default) -\u003e Task",
+                                                                                         "ValidateTokenAsync(ServiceEndpointType serviceType, CancellationToken cancellationToken = default) -\u003e Task\u003cbool\u003e",
+                                                                                         "InvalidateTokenAsync(ServiceEndpointType serviceType, CancellationToken cancellationToken = default) -\u003e Task"
+                                                                                     ],
+                                                                     "key_properties":  [
+                                                                                            "CorrelationContext -\u003e ICertCorrelationContext"
+                                                                                        ]
+                                                                 },
+                       "CertAuthenticationOptionsValidator":  {
+                                                                  "purpose":  "Provides CertAuthenticationOptionsValidator functionality",
+                                                                  "key_methods":  [
+                                                                                      "Validate(string? name, CertAuthenticationOptions options) -\u003e ValidateOptionsResult"
+                                                                                  ]
+                                                              },
+                       "CertTokenInfoBuilder":  {
+                                                    "purpose":  "Provides CertTokenInfoBuilder functionality",
+                                                    "key_methods":  [
+                                                                        "WithToken(string token) -\u003e CertTokenInfoBuilder",
+                                                                        "WithTokenType(string tokenType) -\u003e CertTokenInfoBuilder",
+                                                                        "WithExpiresAt(DateTime expiresAt) -\u003e CertTokenInfoBuilder",
+                                                                        "WithExpiresInSeconds(int expiresInSeconds) -\u003e CertTokenInfoBuilder",
+                                                                        "WithRefreshToken(string refreshToken) -\u003e CertTokenInfoBuilder",
+                                                                        "WithAuthenticationMethodType(AuthenticationMethodType authType) -\u003e CertTokenInfoBuilder",
+                                                                        "WithTenantId(string tenantId) -\u003e CertTokenInfoBuilder",
+                                                                        "WithClientId(string clientId) -\u003e CertTokenInfoBuilder",
+                                                                        "WithScopes(IReadOnlyList\u003cstring\u003e scopes) -\u003e CertTokenInfoBuilder",
+                                                                        "WithAuthenticationOptions(ICertAuthenticationOptions options) -\u003e CertTokenInfoBuilder",
+                                                                        "WithClaim(string key, string value) -\u003e CertTokenInfoBuilder",
+                                                                        "WithClaims(Dictionary\u003cstring, string\u003e claims) -\u003e CertTokenInfoBuilder",
+                                                                        "WithCorrelationId(CertCorrelationId correlationId) -\u003e CertTokenInfoBuilder",
+                                                                        "Build() -\u003e CertTokenInfo"
+                                                                    ],
+                                                    "key_properties":  [
+                                                                           "CertTokenInfoBuilder -\u003e class"
+                                                                       ]
+                                                },
+                       "CertAuthenticationResult":  {
+                                                        "purpose":  "Provides CertAuthenticationResult functionality",
+                                                        "key_methods":  [
+                                                                            "Success(string accessToken,\n        DateTimeOffset expiresOn,\n        string? refreshToken = null,\n        string tokenType = \"Bearer\",\n        IEnumerable\u003cstring\u003e? scopes = null) -\u003e CertAuthenticationResult",
+                                                                            "Failure(string errorMessage) -\u003e CertAuthenticationResult"
+                                                                        ],
+                                                        "key_properties":  [
+                                                                               "AccessToken -\u003e string",
+                                                                               "ExpiresOn -\u003e DateTimeOffset",
+                                                                               "RefreshToken -\u003e string?",
+                                                                               "TokenType -\u003e string",
+                                                                               "Scopes -\u003e IReadOnlyCollection\u003cstring\u003e",
+                                                                               "IsSuccess -\u003e bool",
+                                                                               "ErrorMessage -\u003e string?",
+                                                                               "errorMessage) -\u003e CertAuthenticationResult(string"
+                                                                           ]
+                                                    }
+                   },
+    "subdirectories":  {
+                           "Credentials":  {
+                                               "description":  "Contains components related to Credentials",
+                                               "documentation_path":  "CertApi.Core.Authentication.Credentials.Use.json"
+                                           },
+                           "TokenCache":  {
+                                              "description":  "Contains components related to TokenCache",
+                                              "documentation_path":  "CertApi.Core.Authentication.TokenCache.Use.json"
+                                          },
+                           "Validation":  {
+                                              "description":  "Contains components related to Validation",
+                                              "documentation_path":  "CertApi.Core.Authentication.Validation.Use.json"
+                                          }
+                       }
+}

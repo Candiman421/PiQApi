@@ -1,0 +1,18 @@
+<Project>
+  <!-- Common build settings applied after the project file -->
+  <PropertyGroup>
+    <!-- Enable nullable reference types warning as errors in Release builds -->
+    <TreatWarningsAsErrors Condition="'$(Configuration)' == 'Release'">true</TreatWarningsAsErrors>
+    <AnalysisLevel>latest</AnalysisLevel>
+    <AnalysisMode>AllEnabledByDefault</AnalysisMode>
+  </PropertyGroup>
+
+  <!-- Common code analysis rules -->
+  <ItemGroup>
+    <PackageReference Include="Microsoft.CodeAnalysis.NetAnalyzers" PrivateAssets="all" />
+  </ItemGroup>
+
+  <!-- Import test settings for test projects -->
+  <Import Project="$(MSBuildThisFileDirectory)Test.Directory.Build.targets" 
+          Condition="$(MSBuildProjectName.EndsWith('Tests')) AND Exists('$(MSBuildThisFileDirectory)Test.Directory.Build.targets')" />
+</Project>

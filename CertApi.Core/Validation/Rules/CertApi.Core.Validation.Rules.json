@@ -1,0 +1,49 @@
+﻿{
+    "documentPath":  "docsflat/CertApi.Core.Validation.Rules.json",
+    "version":  "1.0.0",
+    "lastUpdated":  "2025-04-06",
+    "purpose":  "Summarizes the public API of CertApi.Core.Validation.Rules and provides usage guidance",
+    "guide_type":  "api-reference",
+    "development_contexts":  [
+                                 "development"
+                             ],
+    "applies_to":  [
+                       "CertApi.Core.Validation.Rules"
+                   ],
+    "overview":  {
+                     "description":  "The Rules namespace contains components for the CertApi.Core.Validation project.",
+                     "usage_pattern":  "Import and use classes from this namespace to work with Rules functionality."
+                 },
+    "components":  {
+                       "CertCompositeValidationRule":  {
+                                                           "purpose":  "Provides CertCompositeValidationRule functionality",
+                                                           "key_methods":  [
+                                                                               "Validate(T entity, CertValidationContext context) -\u003e ICertValidationResult",
+                                                                               "ValidateAsync(T entity,\n        CertValidationContext context,\n        CancellationToken cancellationToken = default) -\u003e Task\u003cICertValidationResult\u003e"
+                                                                           ]
+                                                       },
+                       "CertFileExtensionValidationRule":  {
+                                                               "purpose":  "Provides CertFileExtensionValidationRule functionality",
+                                                               "key_methods":  [
+                                                                                   "Validate(T entity, CertValidationContext context) -\u003e ICertValidationResult"
+                                                                               ]
+                                                           },
+                       "CertPropertyValidationRule":  {
+                                                          "purpose":  "Provides CertPropertyValidationRule functionality",
+                                                          "key_methods":  [
+                                                                              "Task\u003c(bool IsValid, string? ErrorMessage) -\u003e virtual",
+                                                                              "Validate(T entity, CertValidationContext context) -\u003e ICertValidationResult",
+                                                                              "ValidateAsync(T entity,\n        CertValidationContext context,\n        CancellationToken cancellationToken = default) -\u003e Task\u003cICertValidationResult\u003e"
+                                                                          ],
+                                                          "key_properties":  [
+                                                                                 "PropertyName -\u003e string"
+                                                                             ]
+                                                      },
+                       "CertHeaderValidationRule":  {
+                                                        "purpose":  "Provides CertHeaderValidationRule functionality",
+                                                        "key_methods":  [
+                                                                            "Validate(T entity, CertValidationContext context) -\u003e ICertValidationResult"
+                                                                        ]
+                                                    }
+                   }
+}

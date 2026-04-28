@@ -1,0 +1,30 @@
+<!-- CertApi.Ews.Service.csproj -->
+<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFramework>net8.0</TargetFramework>
+        <ImplicitUsings>enable</ImplicitUsings>
+        <Nullable>enable</Nullable>
+        <GenerateResourceUsePreserializedResources>true</GenerateResourceUsePreserializedResources>
+        <NeutralLanguage>en</NeutralLanguage>
+        <IsPackable>true</IsPackable>
+        <GenerateDocumentationFile>true</GenerateDocumentationFile>
+    </PropertyGroup>
+
+    <ItemGroup>
+      <None Remove="Service\Email\IEwsEmailCreateService.cs~RF12271a3.TMP" />
+    </ItemGroup>
+
+    <ItemGroup>
+        <ProjectReference Include="..\CertApi.Abstractions\CertApi.Abstractions.csproj" />
+        <ProjectReference Include="..\CertApi.Core\CertApi.Core.csproj" />
+        <ProjectReference Include="..\CertApi.Ews.Core\CertApi.Ews.Core.csproj" />
+    </ItemGroup>
+
+    <ItemGroup>
+        <PackageReference Include="Microsoft.Exchange.WebServices.NETStandard" />
+        <PackageReference Include="Polly" />
+        <PackageReference Include="Serilog" />
+    </ItemGroup>
+
+</Project>

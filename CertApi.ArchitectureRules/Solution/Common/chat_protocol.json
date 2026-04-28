@@ -1,0 +1,92 @@
+// CertApi.ArchitectureRules/Solution/Common/chat_protocol.json
+{
+  "metadata": {
+    "path": "CertApi.Architecture/Solution/Common/chat_protocol.json",
+    "version": "1.0",
+    "last_updated": "2024-02-22"
+  },
+  "chat_initialization": {
+    "required_files": [
+      {
+        "name": "progress_tracker.json",
+        "purpose": "Current state and next steps",
+        "load_first": true
+      },
+      {
+        "name": "versioning_strategy.json",
+        "purpose": "Guide version handling"
+      },
+      {
+        "name": "active_guides.json",
+        "purpose": "Current guide versions"
+      }
+    ],
+    "state_verification": [
+      "Check current_state in progress_tracker.json",
+      "Identify active task and phase",
+      "Load only required active guides",
+      "Review immediate next steps"
+    ]
+  },
+  "continuity_rules": {
+    "work_tracking": {
+      "start_of_chat": [
+        "Load progress_tracker.json first",
+        "Confirm current task and state",
+        "Load only necessary active guides",
+        "Verify task prerequisites met"
+      ],
+      "during_chat": [
+        "Update progress_tracker.json after changes",
+        "Create override files when needed",
+        "Document decisions and rationale",
+        "Keep files current"
+      ],
+      "end_of_chat": [
+        "Ensure response contains state info",
+        "Update progress_tracker.json",
+        "Document continuation point",
+        "List pending updates"
+      ]
+    },
+    "version_management": {
+      "rules": [
+        "Reference guides through active_guides.json",
+        "Create overrides for changes",
+        "Update active_guides.json with new versions",
+        "Log all version changes"
+      ]
+    }
+  },
+  "progress_tracking": {
+    "status_updates": {
+      "format": {
+        "task": "Current task identifier",
+        "status": "InProgress/Complete/Blocked",
+        "next_step": "Next action needed",
+        "dependencies": "Required inputs or decisions"
+      }
+    },
+    "continuation": {
+      "response_format": {
+        "current_state": "Clear progress description",
+        "next_actions": "Specific next steps",
+        "pending_decisions": "Required decisions",
+        "relevant_files": "Files needed next"
+      }
+    }
+  },
+  "file_handling": {
+    "json_formatting": {
+      "paths": {
+        "comment_path": "Keep // path comment for utility",
+        "metadata_path": "Include in metadata for processing"
+      },
+      "validation": {
+        "ensure_valid_json": true,
+        "maintain_schema": true,
+        "preserve_paths": true
+      }
+    }
+  }
+}

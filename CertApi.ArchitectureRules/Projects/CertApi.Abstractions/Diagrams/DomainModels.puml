@@ -1,0 +1,121 @@
+// CertApi.ArchitectureRules/Projects/CertApi.Abstractions/Diagrams/DomainModels.puml
+@startuml CertApi.Abstractions Domain Models
+
+title CertApi.Abstractions Domain Models
+footer Generated from architectural guides - %date("yyyy.MM.dd")
+legend right
+  Domain primitives and model relationships
+end legend
+
+' Visual styling
+skinparam componentStyle uml2
+skinparam class {
+  BackgroundColor White
+  BorderColor Black
+}
+
+' Domain Primitives
+package "Domain Primitives" {
+  class CertCorrelationId <<value object>> {
+    +string Value
+    +{static} FromString()
+    +ToString()
+  }
+
+  class CertResourceId <<value object>> {
+    +string Value
+    +{static} FromString()
+    +ToString()
+  }
+
+  class CertOperationId <<value object>> {
+    +string Value
+    +{static} FromString()
+    +ToString()
+  }
+
+  class CertMailAddress <<value object>> {
+    +string Value
+    +{static} FromString()
+    +ToString()
+  }
+
+  class CertStorageId <<value object>> {
+    +string Value
+    +{static} FromString()
+    +ToString()
+  }
+}
+
+' Request/Response Models
+package "Request Models" {
+  class CertSendMessageRequest {
+    +CertCorrelationId CorrelationId
+    +CertMailAddress Sender
+    +IReadOnlyCollection<CertMailAddress> Recipients
+    +string Subject
+    +string Content
+  }
+
+  class CertGetItemRequest {
+    +CertCorrelationId CorrelationId
+    +CertStorageId ItemId
+  }
+}
+
+package "Response Models" {
+  class CertSendMessageResponse {
+    +CertCorrelationId CorrelationId
+    +bool Success
+    +CertStorageId? MessageId
+    +IResultError? Error
+  }
+
+  class CertGetItemResponse {
+    +CertCorrelationId CorrelationId
+    +bool Success
+    +object? Item
+    +IResultError? Error
+  }
+}
+
+' Enums
+package "Enums" {
+  enum ValidationModeType {
+    Standard
+    Strict
+    Lenient
+  }
+
+  enum ValidationSeverityType {
+    Error
+    Warning
+    Info
+  }
+
+  enum ServiceOperationStatusType {
+    NotStarted
+    InProgress
+    Completed
+    Failed
+  }
+
+  enum ResourceStatusType {
+    Available
+    InUse
+    Unavailable
+    Failed
+  }
+}
+
+' Relationships
+CertSendMessageRequest *-- CertCorrelationId
+CertSendMessageRequest *-- CertMailAddress
+CertGetItemRequest *-- CertCorrelationId
+CertGetItemRequest *-- CertStorageId
+
+CertSendMessageResponse *-- CertCorrelationId
+CertSendMessageResponse *-- CertStorageId
+CertGetItemResponse *-- CertCorrelationId
+
+@enduml

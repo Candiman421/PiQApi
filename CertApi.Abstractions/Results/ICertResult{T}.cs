@@ -1,0 +1,29 @@
+// CertApi.Abstractions/Results/ICertResult{T}.cs
+namespace CertApi.Abstractions.Results;
+
+/// <summary>
+/// Defines a result type containing a value
+/// </summary>
+/// <typeparam name="T">The type of the result value</typeparam>
+public interface ICertResult<out T> : ICertResult
+{
+    /// <summary>
+    /// Gets the result value
+    /// </summary>
+    T? Value { get; }
+
+    /// <summary>
+    /// Creates a new result with additional property
+    /// </summary>
+    /// <param name="key">Property key</param>
+    /// <param name="value">Property value</param>
+    /// <returns>New result with added property</returns>
+    new ICertResult<T> WithProperty(string key, object value);
+
+    /// <summary>
+    /// Creates a new result with additional properties
+    /// </summary>
+    /// <param name="properties">Properties to add</param>
+    /// <returns>New result with added properties</returns>
+    new ICertResult<T> WithProperties(IDictionary<string, object> properties);
+}

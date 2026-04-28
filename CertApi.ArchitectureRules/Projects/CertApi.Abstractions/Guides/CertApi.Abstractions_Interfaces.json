@@ -1,0 +1,144 @@
+// CertApi.ArchitectureRules/Projects/CertApi.Abstractions/Guides/CertApi.Abstractions_Interfaces.json
+{
+  "metadata": {
+    "path": "CertApi.Architecture/Projects/CertApi.Abstractions/Guides/CertApi.Abstractions_Interfaces.json",
+    "version": "1.0",
+    "last_updated": "2024-02-22",
+    "purpose": "Define interface design patterns and standards",
+    "dependencies": [
+      "CertApi.Abstractions_Architecture.json"
+    ]
+  },
+  "interface_principles": {
+    "organization": {
+      "folder_structure": {
+        "Core": "Base infrastructure interfaces",
+        "Service": "Service layer contracts",
+        "Operations": "Business operation interfaces",
+        "Validation": "Validation framework interfaces"
+      },
+      "file_structure": {
+        "one_interface_per_file": true,
+        "naming": "{InterfaceName}.cs",
+        "location": "Based on functional area"
+      }
+    },
+    "naming_standards": {
+      "rules": [
+        "Interface prefix required - 'I'",
+        "Clear purpose in name",
+        "Avoid implementation details",
+        "Use consistent terms"
+      ],
+      "examples": {
+        "correct": [
+          "ICertOperation - Core operation contract",
+          "IValidationRule<T> - Framework contract",
+          "ICorrelationContext - Context contract"
+        ],
+        "incorrect": [
+          "IExchangeWrapper - Too implementation specific",
+          "IEmailStuff - Unclear purpose",
+          "IProcessing - Too vague"
+        ]
+      }
+    }
+  },
+  "interface_types": {
+    "operation_contracts": {
+      "purpose": "Define business operations",
+      "pattern": "I{Domain}Operations",
+      "examples": [
+        "IMessageOperations",
+        "IStorageOperations",
+        "IResourceOperations"
+      ],
+      "requirements": [
+        "Async methods only",
+        "CancellationToken support",
+        "Result return types",
+        "Clear operation naming"
+      ]
+    },
+    "context_contracts": {
+      "purpose": "Carry operation context",
+      "pattern": "I{Purpose}Context",
+      "examples": [
+        "ICorrelationContext",
+        "IOperationContext",
+        "IValidationContext"
+      ],
+      "requirements": [
+        "Immutable properties",
+        "Clear purpose",
+        "Minimal surface",
+        "No behavior"
+      ]
+    },
+    "factory_contracts": {
+      "purpose": "Abstract object creation",
+      "pattern": "I{Type}Factory",
+      "examples": [
+        "IResultFactory",
+        "IValidationRuleFactory",
+        "IOperationFactory"
+      ],
+      "requirements": [
+        "Creation methods only",
+        "Clear factory purpose",
+        "Consistent patterns",
+        "Interface segregation"
+      ]
+    }
+  },
+  "interface_standards": {
+    "general_rules": [
+      "One interface per file",
+      "XML documentation required",
+      "Generic constraints when needed",
+      "CancellationToken for async"
+    ],
+    "async_patterns": {
+      "rules": [
+        "Task<T> return type",
+        "Async suffix required",
+        "CancellationToken last parameter",
+        "ConfigureAwait(false) guidance"
+      ],
+      "example": {
+        "code": [
+          "Task<ICertResult<T>> ProcessAsync<T>(",
+          "    T request,",
+          "    IOperationContext context,",
+          "    CancellationToken ct);"
+        ]
+      }
+    }
+  },
+  "forbidden_patterns": {
+    "interface_design": {
+      "dont": [
+        "Include implementation details",
+        "Mix unrelated operations",
+        "Expose mutable state",
+        "Add behavioral methods"
+      ]
+    },
+    "naming": {
+      "dont": [
+        "Use implementation names",
+        "Skip I prefix",
+        "Use ambiguous names",
+        "Include technical details"
+      ]
+    },
+    "implementation": {
+      "dont": [
+        "Add default implementations",
+        "Include static members",
+        "Add public fields",
+        "Mix sync and async"
+      ]
+    }
+  }
+}

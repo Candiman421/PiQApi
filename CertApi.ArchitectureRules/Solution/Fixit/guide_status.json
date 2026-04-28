@@ -1,0 +1,209 @@
+// CertApi.ArchitectureRules/Solution/Fixit/guide_status.json
+{
+  "metadata": {
+    "path": "CertApi.Architecture/Solution/Fixit/guide_status.json",
+    "version": "1.0",
+    "last_updated": "2024-02-22",
+    "latest_baselines": {
+      "solution_guides": "2024-02-22",
+      "project_guides": "2024-02-22",
+      "cross_cutting": "2024-02-22"
+    }
+  },
+  "processing_phases": {
+    "1_initial_categorization": {
+      "status": "InProgress",
+      "completion": "15%",
+      "current_focus": "Architecture guides",
+      "processed_count": 15,
+      "remaining_count": 72
+    },
+    "2_consolidation": {
+      "status": "NotStarted",
+      "planned_start": "2024-02-23",
+      "initial_focus": "Validation framework"
+    },
+    "3_validation": "NotStarted",
+    "4_implementation": "NotStarted"
+  },
+  "solution_guides": {
+    "architecture": [
+      {
+        "original_id": "2",
+        "base_file": "ArchitecturalPrinciples.json",
+        "target_name": "CertApi.Solution_Architecture_Principles.json",
+        "status": "InProgress",
+        "issues": ["S002", "C003"],
+        "dependencies": [],
+        "priority": "high",
+        "version_info": {
+          "base_version": "1.0",
+          "active_overrides": [],
+          "next_review": "2024-02-23"
+        },
+        "consolidation_group": "core_principles"
+      },
+      {
+        "original_id": "3",
+        "base_file": "ProjectStructure.json",
+        "target_name": "CertApi.Solution_Architecture_Structure.json",
+        "status": "NotStarted",
+        "issues": ["S002"],
+        "dependencies": ["2"],
+        "priority": "high",
+        "version_info": {
+          "base_version": "1.0",
+          "active_overrides": [],
+          "next_review": "2024-02-23"
+        },
+        "consolidation_group": "core_principles"
+      }
+    ],
+    "builder_patterns": [
+      {
+        "original_ids": ["8", "10", "13", "14"],
+        "consolidation_target": "CertApi.Solution_Architecture_BuilderPatterns.json",
+        "status": "PendingConsolidation",
+        "component_files": [
+          {
+            "id": "8",
+            "file": "BuilderPatterns_01.json",
+            "focus": "Basic patterns"
+          },
+          {
+            "id": "10",
+            "file": "BuilderPatterns_02.json",
+            "focus": "Advanced patterns"
+          },
+          {
+            "id": "13",
+            "file": "BuilderOrganization.json",
+            "focus": "Organization rules"
+          },
+          {
+            "id": "14",
+            "file": "BuilderCollaboration.json",
+            "focus": "Collaboration patterns"
+          }
+        ],
+        "priority": "medium",
+        "version_info": {
+          "planned_base": "1.0",
+          "consolidation_date": "2024-02-24"
+        }
+      }
+    ]
+  },
+  "cross_cutting_guides": {
+    "validation": [
+      {
+        "original_ids": ["17", "31", "54", "59", "66", "69"],
+        "consolidation_target": "CertApi.Solution_CrossCutting_Validation.json",
+        "status": "PendingConsolidation",
+        "component_files": [
+          {
+            "id": "17",
+            "file": "ValidationFramework.json",
+            "focus": "Core framework"
+          },
+          {
+            "id": "31",
+            "file": "ValidationFlowGuide.json",
+            "focus": "Flow patterns"
+          },
+          {
+            "id": "54",
+            "file": "Abstractions_ValidationGuide.json",
+            "focus": "Abstractions layer"
+          },
+          {
+            "id": "59",
+            "file": "Client_ValidationGuide.json",
+            "focus": "Client layer"
+          },
+          {
+            "id": "66",
+            "file": "Operations_ValidationGuide.json",
+            "focus": "Operations layer"
+          },
+          {
+            "id": "69",
+            "file": "Core_ValidationGuide.json",
+            "focus": "Core implementation"
+          }
+        ],
+        "priority": "high",
+        "version_info": {
+          "planned_base": "1.0",
+          "consolidation_date": "2024-02-23"
+        }
+      }
+    ],
+    "authentication": [
+      {
+        "original_ids": ["5", "6", "70", "71"],
+        "consolidation_target": "CertApi.Solution_CrossCutting_Authentication.json",
+        "status": "PendingConsolidation",
+        "component_files": [
+          {
+            "id": "5",
+            "file": "AuthenticationArchitecture.json",
+            "focus": "Base architecture"
+          },
+          {
+            "id": "6",
+            "file": "AuthenticationArchitectureAdditions_01.json",
+            "focus": "Architecture additions"
+          },
+          {
+            "id": "70",
+            "file": "Service_AuthenticationGuide.json",
+            "focus": "Service implementation"
+          },
+          {
+            "id": "71",
+            "file": "Service_AuthenticationOrchestration.json",
+            "focus": "Orchestration patterns"
+          }
+        ],
+        "priority": "high",
+        "version_info": {
+          "planned_base": "1.0",
+          "consolidation_date": "2024-02-23"
+        }
+      }
+    ]
+  },
+  "project_guides": {
+    "CertApi.Abstractions": {
+      "guides": [
+        {
+          "original_id": "51",
+          "base_file": "Abstractions_InterfacesGuide.json",
+          "target_name": "CertApi.Abstractions_Interfaces.json",
+          "status": "NotStarted",
+          "issues": [],
+          "dependencies": ["2", "3", "15"],
+          "priority": "high",
+          "version_info": {
+            "base_version": "1.0",
+            "active_overrides": [],
+            "next_review": "2024-02-24"
+          }
+        }
+      ]
+    }
+  },
+  "next_steps": {
+    "immediate": [
+      "Complete initial categorization of all 87 guides",
+      "Begin validation framework consolidation",
+      "Review authentication guide dependencies"
+    ],
+    "upcoming": [
+      "Create base versions of consolidated guides",
+      "Develop first override files as needed",
+      "Update dependency map with new guide structure"
+    ]
+  }
+}

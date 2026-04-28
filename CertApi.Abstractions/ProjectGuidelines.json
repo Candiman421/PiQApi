@@ -1,0 +1,122 @@
+{
+  "project": {
+    "name": "CertApi.Abstractions",
+    "purpose": "Define interfaces, models, and enums that establish contracts for the Exchange service",
+    "dependencies": {
+      "allowed": ["System.*", "Microsoft.Extensions.*"],
+      "prohibited": ["CertApi.Exchange.Core", "CertApi.Exchange.Service", "CertApi.Exchange.Operations", "CertApi.Exchange.Client"]
+    }
+  },
+  "structure": {
+    "core_principles": [
+      "Interface segregation - small, focused interfaces",
+      "Dependency inversion - all implementation projects depend on abstractions",
+      "Type safety - proper enums and models with clear intent",
+      "Collision avoidance - proper prefixing/suffixing to avoid name collisions"
+    ],
+    "folders": {
+      "Core": {
+        "purpose": "Core abstractions and models used throughout all layers",
+        "subfolders": {
+          "Interfaces": "Core infrastructure interfaces",
+          "Models": "Core domain models"
+        }
+      },
+      "Service": {
+        "purpose": "Service layer abstractions",
+        "subfolders": {
+          "Interfaces": "Exchange service interfaces"
+        }
+      },
+      "Operations": {
+        "purpose": "Operation layer abstractions",
+        "subfolders": {
+          "Interfaces": "Business operation interfaces"
+        }
+      },
+      "Validation": {
+        "purpose": "Validation framework abstractions",
+        "subfolders": {
+          "Interfaces": "Validation framework interfaces"
+        }
+      },
+      "Enums": {
+        "purpose": "Type-safe enumerations",
+        "naming_convention": "[Name]Type suffix"
+      }
+    }
+  },
+  "naming_conventions": {
+    "interfaces": {
+      "pattern": "I[Name]",
+      "examples": ["IServiceWrapper", "IMailOperations"],
+      "rationale": "Standard interface naming convention"
+    },
+    "enums": {
+      "pattern": "[Name]Type",
+      "examples": ["ConnectionStateType", "ValidationModeType"],
+      "rationale": "Prevents collision with standard library enums"
+    },
+    "validation_types": {
+      "pattern": "Cert[Name]",
+      "examples": ["CertValidationContext", "CertCertValidationResult"],
+      "rationale": "Prevents collision with System.ComponentModel.DataAnnotations"
+    }
+  },
+  "validation_architecture": {
+    "colliding_types": [
+      {
+        "standard_type": "System.ComponentModel.DataAnnotations.ValidationContext",
+        "our_type": "CertValidationContext",
+        "usage": "For operation validation context that carries state"
+      },
+      {
+        "standard_type": "System.ComponentModel.DataAnnotations.CertValidationResult",
+        "our_type": "CertCertValidationResult",
+        "usage": "For operation validation results that carry metadata"
+      }
+    ],
+    "validation_interfaces": {
+      "IValidationRule": {
+        "purpose": "Define validation rule contract",
+        "methods": [
+          "Validate - Synchronous validation",
+          "ValidateAsync - Asynchronous validation"
+        ],
+        "generic_constraints": "T should be the entity being validated"
+      }
+    }
+  },
+  "cross_cutting_concerns": {
+    "validation": {
+      "flow": "Client → Operations → Service",
+      "context_passing": "ValidationContext flows through all layers",
+      "result_aggregation": "Results combined across validation chain"
+    },
+    "correlation": {
+      "id_propagation": "CorrelationId passed through all contexts",
+      "tracking": "All operations tracked by correlation ID"
+    }
+  },
+  "implementation_guidelines": {
+    "interfaces": [
+      "Keep interfaces focused and small",
+      "Use proper XML documentation",
+      "Define clear method contracts",
+      "Use CancellationToken for async operations",
+      "Return Task<T> for async methods"
+    ],
+    "models": [
+      "Make models immutable where possible",
+      "Use proper property validation",
+      "Include equality implementations when needed",
+      "Use nullable reference types appropriately"
+    ],
+    "enums": [
+      "Use [Flags] attribute for bitwise enums",
+      "Include XML documentation",
+      "Use proper naming (PascalCase)",
+      "Start values from 0 unless specific reason"
+    ]
+  }
+}

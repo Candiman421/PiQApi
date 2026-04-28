@@ -1,0 +1,98 @@
+﻿{
+    "documentPath":  "docsflat/CertApi.Abstractions.Validation.Models.json",
+    "version":  "1.0.0",
+    "lastUpdated":  "2025-04-06",
+    "purpose":  "Summarizes the public API of CertApi.Abstractions.Validation.Models and provides usage guidance",
+    "guide_type":  "api-reference",
+    "development_contexts":  [
+                                 "development"
+                             ],
+    "applies_to":  [
+                       "CertApi.Abstractions.Validation.Models"
+                   ],
+    "overview":  {
+                     "description":  "The Models namespace contains components for the CertApi.Abstractions.Validation project.",
+                     "usage_pattern":  "Import and use classes from this namespace to work with Models functionality."
+                 },
+    "components":  {
+                       "CertValidationResultBuilder":  {
+                                                           "purpose":  "Provides CertValidationResultBuilder functionality",
+                                                           "key_methods":  [
+                                                                               "WithCorrelationId(string correlationId) -\u003e CertValidationResultBuilder",
+                                                                               "Valid() -\u003e CertValidationResultBuilder",
+                                                                               "Invalid() -\u003e CertValidationResultBuilder",
+                                                                               "WithError(string propertyName, string message, string errorCode = \"ValidationError\", ValidationSeverityType severity = ValidationSeverityType.Error) -\u003e CertValidationResultBuilder",
+                                                                               "WithError(CertValidationError error) -\u003e CertValidationResultBuilder",
+                                                                               "WithErrors(IEnumerable\u003cCertValidationError\u003e errors) -\u003e CertValidationResultBuilder",
+                                                                               "WithException(Exception exception) -\u003e CertValidationResultBuilder",
+                                                                               "WithContextValue(string key, object value) -\u003e CertValidationResultBuilder",
+                                                                               "AddError(string propertyName, string message, string errorCode = \"ValidationError\", ValidationSeverityType severity = ValidationSeverityType.Error) -\u003e CertValidationResultBuilder",
+                                                                               "AddError(CertValidationError error) -\u003e CertValidationResultBuilder",
+                                                                               "WithPropertyError(string errorCode, string propertyName, string message, ValidationSeverityType severity = ValidationSeverityType.Error) -\u003e CertValidationResultBuilder",
+                                                                               "Merge(ICertValidationResult other) -\u003e CertValidationResultBuilder",
+                                                                               "Build() -\u003e ICertValidationResult"
+                                                                           ],
+                                                           "key_properties":  [
+                                                                                  "CertValidationResultBuilder -\u003e class"
+                                                                              ]
+                                                       },
+                       "CertValidationError":  {
+                                                   "purpose":  "Provides CertValidationError functionality",
+                                                   "key_methods":  [
+                                                                       "ToString() -\u003e string"
+                                                                   ],
+                                                   "key_properties":  [
+                                                                          "CertValidationError -\u003e class",
+                                                                          "ErrorCode -\u003e string",
+                                                                          "ErrorMessage -\u003e string",
+                                                                          "Severity -\u003e ValidationSeverityType",
+                                                                          "PropertyPath -\u003e string?"
+                                                                      ]
+                                               },
+                       "CertValidationResult":  {
+                                                    "purpose":  "Provides CertValidationResult functionality",
+                                                    "key_methods":  [
+                                                                        "HasErrors() -\u003e bool",
+                                                                        "GetErrorsBySeverity(ValidationSeverityType severity) -\u003e IEnumerable\u003cCertValidationError\u003e",
+                                                                        "GetCorrelationId() -\u003e string?",
+                                                                        "GetErrorSummary() -\u003e string",
+                                                                        "Valid() -\u003e ICertValidationResult"
+                                                                    ]
+                                                },
+                       "CertValidationContext":  {
+                                                     "purpose":  "Provides CertValidationContext functionality",
+                                                     "key_methods":  [
+                                                                         "CreateNestedContext(ValidationModeType? validationMode = null) -\u003e CertValidationContext",
+                                                                         "WithValidationMode(ValidationModeType validationMode) -\u003e CertValidationContext",
+                                                                         "WithErrorHandling(bool aggregateAllErrors) -\u003e CertValidationContext",
+                                                                         "WithForcedErrorAggregation(bool forceAggregate) -\u003e CertValidationContext",
+                                                                         "WithMaxDepth(int maxDepth) -\u003e CertValidationContext",
+                                                                         "WithContextValue(string key, object value) -\u003e CertValidationContext",
+                                                                         "WithMetricsTracker(ICertOperationMetrics metricsTracker) -\u003e CertValidationContext",
+                                                                         "WithTimeProvider(ICertTimeProvider timeProvider) -\u003e CertValidationContext",
+                                                                         "RecordMetric(string name, TimeSpan duration) -\u003e void",
+                                                                         "IncrementCounter(string name, long increment = 1) -\u003e void",
+                                                                         "HasMetric(string name) -\u003e bool",
+                                                                         "StartTimer(string name) -\u003e TimeSpan",
+                                                                         "StopTimer(string name, TimeSpan startTimestamp) -\u003e TimeSpan",
+                                                                         "TryGetProperty\u003cT\u003e(string key, out T value) -\u003e bool"
+                                                                     ],
+                                                     "key_properties":  [
+                                                                            "CertValidationContext -\u003e class",
+                                                                            "ValidationMode -\u003e ValidationModeType",
+                                                                            "Depth -\u003e int",
+                                                                            "MaxDepth -\u003e int",
+                                                                            "AggregateAllErrors -\u003e bool",
+                                                                            "ForceAggregateAllErrors -\u003e bool",
+                                                                            "CorrelationId -\u003e string",
+                                                                            "CancellationToken -\u003e CancellationToken"
+                                                                        ]
+                                                 },
+                       "CertValidationResult_Valid":  {
+                                                          "purpose":  "Provides CertValidationResult_Valid functionality",
+                                                          "key_methods":  [
+
+                                                                          ]
+                                                      }
+                   }
+}

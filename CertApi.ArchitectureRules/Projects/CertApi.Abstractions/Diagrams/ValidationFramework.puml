@@ -1,0 +1,81 @@
+// CertApi.ArchitectureRules/Projects/CertApi.Abstractions/Diagrams/ValidationFramework.puml
+@startuml CertApi.Abstractions Validation Framework
+
+title CertApi.Abstractions Validation Framework
+footer Generated from architectural guides - %date("yyyy.MM.dd")
+legend right
+  Validation framework architecture
+  and component relationships
+end legend
+
+' Visual styling
+skinparam componentStyle uml2
+skinparam class {
+  BackgroundColor White
+  BorderColor Black
+}
+
+' Core Validation Types
+interface "IValidationRule<T>" as IValidationRule {
+  +Task<CertValidationResult> ValidateAsync(T item, CertValidationContext context, CancellationToken ct)
+}
+
+interface "IValidationRuleSet<T>" as IValidationRuleSet {
+  +IReadOnlyCollection<IValidationRule<T>> GetRules()
+}
+
+class CertValidationContext {
+  +ValidationModeType Mode
+  +CertCorrelationId Id
+  +IReadOnlyDictionary<string,object> Properties
+}
+
+class CertValidationResult {
+  +bool IsValid
+  +IReadOnlyCollection<ValidationError> Errors
+  +string CorrelationId
+  +ValidationSeverityType Severity
+  +{static} Success()
+  +{static} Failure()
+  +CombineWith()
+}
+
+class ValidationError {
+  +string Code
+  +string Message
+  +ValidationSeverityType Severity
+  +IReadOnlyDictionary<string,object> Context
+}
+
+' Validation Processing
+interface IValidationProcessor {
+  +Task<CertValidationResult> ValidateAsync<T>(T item, IValidationRule<T> rule, ...)
+  +Task<CertValidationResult> ValidateAsync<T>(T item, IValidationRuleSet<T> ruleSet, ...)
+}
+
+' Result Integration
+interface IResultFactory {
+  +ICertResult<T> FromValidationResult<T>(CertValidationResult result)
+}
+
+' Relationships
+IValidationRule ..> CertValidationResult : creates
+IValidationRule ..> CertValidationContext : uses
+IValidationProcessor ..> IValidationRule : executes
+IValidationProcessor ..> IValidationRuleSet : executes
+IValidationRuleSet *-- IValidationRule : contains
+CertValidationResult *-- ValidationError : contains
+IResultFactory ..> CertValidationResult : transforms
+
+' Validation Flow
+note right of IValidationProcessor
+  Orchestrates validation execution
+  and result aggregation
+end note
+
+note right of CertValidationContext
+  Carries validation state
+  and configuration
+end note
+
+@enduml

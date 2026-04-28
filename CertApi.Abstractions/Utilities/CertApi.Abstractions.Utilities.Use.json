@@ -1,0 +1,30 @@
+﻿{
+    "documentPath":  "docsflat/CertApi.Abstractions.Utilities.Use.json",
+    "guide_type":  "api-reference",
+    "development_contexts":  [
+                                 "development"
+                             ],
+    "version":  "1.0.0",
+    "lastUpdated":  "2025-04-06",
+    "subdirectories":  {
+                           "Time":  {
+                                        "description":  "Contains components related to Time",
+                                        "documentation_path":  "CertApi.Abstractions.Utilities.Time.Use.json"
+                                    },
+                           "Randomization":  {
+                                                 "description":  "Contains components related to Randomization",
+                                                 "documentation_path":  "CertApi.Abstractions.Utilities.Randomization.Use.json"
+                                             }
+                       },
+    "components":  {
+
+                   },
+    "applies_to":  [
+                       "CertApi.Abstractions.Utilities.Use"
+                   ],
+    "purpose":  "Aggregated documentation for CertApi.Abstractions.Utilities.Use and its subdirectories",
+    "overview":  {
+                     "usage_pattern":  "Import and use classes from this namespace to work with the functionality provided.",
+                     "description":  "This namespace contains components for the CertApi project."
+                 }
+}

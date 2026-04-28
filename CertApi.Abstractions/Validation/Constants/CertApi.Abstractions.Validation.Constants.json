@@ -1,0 +1,55 @@
+﻿{
+    "documentPath":  "docsflat/CertApi.Abstractions.Validation.Constants.json",
+    "version":  "1.0.0",
+    "lastUpdated":  "2025-04-06",
+    "purpose":  "Summarizes the public API of CertApi.Abstractions.Validation.Constants and provides usage guidance",
+    "guide_type":  "api-reference",
+    "development_contexts":  [
+                                 "development"
+                             ],
+    "applies_to":  [
+                       "CertApi.Abstractions.Validation.Constants"
+                   ],
+    "overview":  {
+                     "description":  "The Constants namespace contains components for the CertApi.Abstractions.Validation project.",
+                     "usage_pattern":  "Import and use classes from this namespace to work with Constants functionality."
+                 },
+    "components":  {
+                       "CertValidationLimits":  {
+                                                    "purpose":  "Provides CertValidationLimits functionality",
+                                                    "key_methods":  [
+
+                                                                    ],
+                                                    "key_properties":  [
+                                                                           "CertValidationLimits -\u003e class"
+                                                                       ]
+                                                },
+                       "CertValidationErrorCodes":  {
+                                                        "purpose":  "Provides CertValidationErrorCodes functionality",
+                                                        "key_methods":  [
+
+                                                                        ],
+                                                        "key_properties":  [
+                                                                               "CertValidationErrorCodes -\u003e class"
+                                                                           ]
+                                                    },
+                       "CertValidationMessages":  {
+                                                      "purpose":  "Provides CertValidationMessages functionality",
+                                                      "key_methods":  [
+
+                                                                      ],
+                                                      "key_properties":  [
+                                                                             "CertValidationMessages -\u003e class"
+                                                                         ]
+                                                  },
+                       "CertFileExtensions":  {
+                                                  "purpose":  "Provides CertFileExtensions functionality",
+                                                  "key_methods":  [
+
+                                                                  ],
+                                                  "key_properties":  [
+                                                                         "CertFileExtensions -\u003e class"
+                                                                     ]
+                                              }
+                   }
+}

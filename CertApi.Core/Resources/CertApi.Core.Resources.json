@@ -1,0 +1,25 @@
+﻿{
+    "documentPath":  "docsflat/CertApi.Core.Resources.json",
+    "version":  "1.0.0",
+    "lastUpdated":  "2025-04-06",
+    "purpose":  "Summarizes the public API of CertApi.Core.Resources and provides usage guidance",
+    "guide_type":  "api-reference",
+    "development_contexts":  [
+                                 "development"
+                             ],
+    "applies_to":  [
+                       "CertApi.Core.Resources"
+                   ],
+    "overview":  {
+                     "description":  "The Resources namespace contains components for the CertApi.Core project.",
+                     "usage_pattern":  "Import and use classes from this namespace to work with Resources functionality."
+                 },
+    "components":  {
+                       "CertValidationMessages":  {
+                                                      "purpose":  "Provides CertValidationMessages functionality",
+                                                      "key_methods":  [
+
+                                                                      ]
+                                                  }
+                   }
+}

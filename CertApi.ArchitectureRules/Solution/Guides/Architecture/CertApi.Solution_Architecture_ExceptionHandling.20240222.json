@@ -1,0 +1,174 @@
+// CertApi.ArchitectureRules/Solution/Guides/Architecture/CertApi.Solution_Architecture_ExceptionHandling.20240222.json
+{
+  "metadata": {
+    "path": "CertApi.Architecture/Solution/Guides/Architecture/CertApi.Solution_Architecture_ExceptionHandling.20240222.json",
+    "version": "2.0",
+    "last_updated": "2024-02-22",
+    "supersedes": "CertApi.Solution_Architecture_ExceptionHandling.json",
+    "changes": [
+      "Added validation framework integration",
+      "Enhanced error aggregation patterns",
+      "Updated result transformation rules",
+      "Added cross-layer validation handling"
+    ],
+    "dependencies": [
+      "CertApi.Solution_CrossCutting_Validation.json"
+    ]
+  },
+  "core_principles": {
+    "expected_vs_exceptional": {
+      "expected_failures": {
+        "pattern": "CertResult<T>",
+        "location": "CertApi.Abstractions/Results",
+        "when_to_use": "For all expected business operation failures",
+        "examples": [
+          "Validation failures",
+          "Not found conditions",
+          "Permission issues",
+          "Business rule violations"
+        ],
+        "validation_handling": {
+          "result_transformation": "Map ValidationResult to CertResult",
+          "error_aggregation": "Combine through validation chain",
+          "context_preservation": "Maintain validation context"
+        }
+      },
+      "exceptional_conditions": {
+        "pattern": "Exception hierarchy",
+        "location": "CertApi.Exchange.Core/Exceptions",
+        "when_to_use": "For unexpected system/infrastructure failures",
+        "examples": [
+          "Network failures",
+          "Configuration errors",
+          "Infrastructure issues",
+          "Security violations"
+        ],
+        "validation_interaction": {
+          "validation_exceptions": "Only for validation framework failures",
+          "result_mapping": "Don't map validation results to exceptions",
+          "error_context": "Include validation state if relevant"
+        }
+      }
+    }
+  },
+  "solution_structure": {
+    // Previous structure remains unchanged
+  },
+  "implementation_standards": {
+    "factories": {
+      // Previous factory definitions remain unchanged
+    },
+    "error_handling": {
+      "result_pattern_usage": {
+        "do": [
+          "Use for all public API methods",
+          "Include correlation IDs",
+          "Provide rich error context",
+          "Map domain errors to proper types",
+          "Handle validation results consistently"
+        ],
+        "dont": [
+          "Mix exceptions and results",
+          "Lose error context",
+          "Use for unexpected failures",
+          "Catch general exceptions in transformers",
+          "Convert validation exceptions to results"
+        ],
+        "validation_integration": {
+          "pattern": "Map validation results to CertResult",
+          "example": {
+            "code": [
+              "var validationResult = await _validator.ValidateAsync(request, ct);",
+              "if (!validationResult.IsValid)",
+              "{",
+              "    return ResultFactory.FromValidationResult<MailItem>(validationResult);",
+              "}"
+            ]
+          }
+        }
+      },
+      "exception_usage": {
+        // Previous exception usage remains unchanged
+      }
+    },
+    "validation_integration": {
+      "result_transformation": {
+        "pattern": "Use ResultFactory for consistent mapping",
+        "key_points": [
+          "Preserve validation context",
+          "Maintain error hierarchies",
+          "Keep correlation chains",
+          "Handle severity levels"
+        ],
+        "example": {
+          "code": [
+            "public static class ResultFactory",
+            "{",
+            "    public static ICertResult<T> FromValidationResult<T>(",
+            "        CertValidationResult validationResult)",
+            "    {",
+            "        return new CertResult<T>",
+            "        {",
+            "            IsSuccess = validationResult.IsValid,",
+            "            Error = new ExchangeError(",
+            "                validationResult.Errors,",
+            "                validationResult.CorrelationId,",
+            "                validationResult.Severity)",
+            "        };",
+            "    }",
+            "}"
+          ]
+        }
+      },
+      "aggregation_patterns": {
+        "layer_handling": {
+          "client": {
+            "pattern": "Collect request validation errors",
+            "result": "Early exit on validation failure"
+          },
+          "operations": {
+            "pattern": "Combine business rule validations",
+            "result": "Aggregate related failures"
+          },
+          "service": {
+            "pattern": "Add technical validation errors",
+            "result": "Complete error chain"
+          }
+        },
+        "error_composition": {
+          "validation_context": "Preserve through result chain",
+          "error_details": "Combine related validations",
+          "correlation": "Maintain parent/child relationships"
+        }
+      }
+    }
+  },
+  "validation_specific_patterns": {
+    "validation_results": {
+      "transformation_rules": {
+        "severity_mapping": {
+          "error": "Failed result with errors",
+          "warning": "Success with warnings",
+          "info": "Success with notifications"
+        },
+        "context_preservation": {
+          "validation_metadata": "Include in error context",
+          "rule_information": "Preserve for debugging",
+          "correlation_data": "Maintain through chain"
+        }
+      }
+    },
+    "validation_chain": {
+      "result_flow": {
+        "aggregation": "Combine through layers",
+        "enrichment": "Add context at each step",
+        "transformation": "Map to appropriate result type"
+      },
+      "error_handling": {
+        "validation_failures": "Return as normal results",
+        "framework_errors": "Throw validation exceptions",
+        "result_mapping": "Use factory methods"
+      }
+    }
+  }
+}

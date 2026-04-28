@@ -1,0 +1,66 @@
+// CertApi.ArchitectureRules/Solution/Fixit/active_guides.20240222.json
+{
+  "metadata": {
+    "path": "CertApi.Architecture/Solution/Fixit/active_guides.20240222.json",
+    "version": "2.0",
+    "last_updated": "2024-02-22",
+    "supersedes": "active_guides.json"
+  },
+  "active_guides": {
+    "foundation": {
+      "error_handling": {
+        "base": "CertApi.Solution_Architecture_ExceptionHandling.json",
+        "status": "ReadyForUpdate",
+        "used_sources": [
+          "modern_exception_architecture1",
+          "modern_exception_architecture2",
+          "modern_exception_architecture3"
+        ],
+        "next_version": {
+          "planned_date": "2024-02-23",
+          "changes_needed": [
+            "Integrate validation framework patterns",
+            "Enhance error aggregation rules",
+            "Update result transformation"
+          ]
+        }
+      },
+      "validation": {
+        "base": "CertApi.Solution_CrossCutting_Validation.json",
+        "status": "Consolidated",
+        "completed_date": "2024-02-22",
+        "source_guides": [
+          "ValidationFramework.json",
+          "ValidationFlowGuide.json"
+        ],
+        "next_review": "2024-02-24"
+      }
+    },
+    "implementation_patterns": {
+      "builders": {
+        "base": "CertApi.Solution_Architecture_BuilderPatterns.json",
+        "status": "ReadyForConsolidation",
+        "planned_date": "2024-02-23",
+        "source_guides": [
+          "BuilderPatterns_01.json",
+          "BuilderPatterns_02.json",
+          "BuilderOrganization.json",
+          "BuilderCollaboration.json"
+        ],
+        "dependencies": [
+          "Exception handling",
+          "Validation framework"
+        ]
+      }
+    }
+  },
+  "in_progress": {
+    "task": "Exception handling framework update",
+    "rationale": "Integrate validation framework patterns",
+    "next_steps": [
+      "Create updated exception handling guide with validation integration",
+      "Begin builder patterns consolidation",
+      "Plan next phase of guide updates"
+    ]
+  }
+}

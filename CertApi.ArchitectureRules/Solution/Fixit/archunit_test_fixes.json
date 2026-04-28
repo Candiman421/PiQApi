@@ -1,0 +1,98 @@
+// CertApi.ArchitectureRules/Solution/Fixit/archunit_test_fixes.json
+{
+  "metadata": {
+    "path": "CertApi.ArchitectureRules/Solution/Fixit/archunit_test_fixes.json",
+    "version": "1.0",
+    "last_updated": "2024-02-23",
+    "purpose": "Track and fix ArchUnit test compilation issues"
+  },
+  "analysis": {
+    "project_state": {
+      "namespace": "CertApi.ArchitectureRules.Projects.CertApi.Abstractions.Tests",
+      "folder_structure": "CertApi.ArchitectureRules/Projects/CertApi.Abstractions/Tests",
+      "issues": [
+        "Missing ArchUnit type references",
+        "Missing ArchUnit extension methods",
+        "Missing validation type references"
+      ]
+    },
+    "compilation_errors": {
+      "missing_statics": [
+        {
+          "methods": ["Methods()", "Types()", "Classes()", "Interfaces()"],
+          "source": "ArchUnitNET.Fluent.Syntax.Elements.Types.TypePredicates",
+          "fix": "Add static using"
+        }
+      ],
+      "missing_types": [
+        {
+          "type": "ArchCondition<IType>",
+          "source": "ArchUnitNET.Fluent.Conditions",
+          "fix": "Add namespace reference"
+        },
+        {
+          "type": "IValidationRule<>",
+          "source": "CertApi.Abstractions.Validation.Interfaces",
+          "fix": "Add namespace reference"
+        }
+      ],
+      "method_usage": {
+        "pattern": "Static methods called without proper static imports",
+        "fix": "Add static using statements for ArchUnit predicates and extensions"
+      }
+    }
+  },
+  "fixes": {
+    "required_imports": {
+      "base_file": {
+        "path": "AbstractionsArchitectureTests.Base.cs",
+        "add_usings": [
+          "using ArchUnitNET.Fluent.Conditions;",
+          "using static ArchUnitNET.Fluent.Syntax.Elements.Types.TypePredicates;",
+          "using static ArchUnitNET.Fluent.Syntax.Elements.Members.MemberPredicates;",
+          "using CertApi.Abstractions.Validation;",
+          "using CertApi.Abstractions.Validation.Interfaces;"
+        ]
+      }
+    },
+    "type_declarations": {
+      "condition_types": {
+        "rename_variable": {
+          "from": "Architecture",
+          "to": "ArchSystem",
+          "reason": "Avoid keyword conflict"
+        }
+      }
+    }
+  },
+  "implementation_plan": [
+    {
+      "order": 1,
+      "action": "Add missing imports to Base.cs",
+      "detail": "Add all required static using statements first"
+    },
+    {
+      "order": 2,
+      "action": "Update variable name",
+      "detail": "Change Architecture to ArchSystem to avoid keyword conflict"
+    },
+    {
+      "order": 3, 
+      "action": "Fix inheritance chain",
+      "detail": "Ensure proper ArchUnit base types"
+    },
+    {
+      "order": 4,
+      "action": "Verify compile",
+      "detail": "Confirm all ArchUnit types resolve"
+    }
+  ],
+  "validation": {
+    "success_criteria": [
+      "All ArchUnit types resolve",
+      "All static methods compile",
+      "No keyword conflicts",
+      "Tests properly inherit ArchUnit base"
+    ]
+  }
+}

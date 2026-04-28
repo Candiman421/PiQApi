@@ -1,0 +1,102 @@
+// CertApi.ArchitectureRules/Solution/Fixit/versioning_strategy.20240222.json
+{
+  "metadata": {
+    "path": "CertApi.Architecture/Solution/Fixit/versioning_strategy.20240222.json",
+    "version": "2.0",
+    "last_updated": "2024-02-22",
+    "supersedes": "versioning_strategy.json",
+    "priority": "critical"
+  },
+  "versioning_principles": {
+    "core_concept": {
+      "description": "Progressive versioning where each version is complete and authoritative",
+      "benefits": [
+        "Complete historical record",
+        "Clear authority chain",
+        "Easy version comparison",
+        "Forward-only progress"
+      ]
+    },
+    "file_organization": {
+      "base_guides": {
+        "location": "Guides/{Category}",
+        "naming": "CertApi.{Scope}_{Category}_{Name}.json",
+        "purpose": "Initial complete guide version"
+      },
+      "version_updates": {
+        "location": "Guides/{Category}/Versions",
+        "naming": "CertApi.{Scope}_{Category}_{Name}.{YYYYMMDD}.json",
+        "rules": [
+          "Must be complete file, not just changes",
+          "Must include supersedes metadata",
+          "Must increment version number",
+          "Must maintain same structure"
+        ]
+      }
+    }
+  },
+  "active_version_tracking": {
+    "tracking_file": "active_guides.json",
+    "version_rules": {
+      "active_version": "Most recent date-suffixed version",
+      "fallback": "Base version if no updates exist",
+      "validation": "Check supersedes chain is complete"
+    },
+    "required_metadata": {
+      "fields": [
+        "version - Semantic version number",
+        "last_updated - ISO date",
+        "supersedes - Previous version filename",
+        "path - Full file path",
+        "changes - Array of key changes"
+      ]
+    }
+  },
+  "guide_evolution": {
+    "when_to_version": [
+      "Significant content changes",
+      "Pattern additions or changes",
+      "Structural modifications",
+      "Rule changes or additions"
+    ],
+    "how_to_version": {
+      "steps": [
+        "Create new file with date suffix",
+        "Copy full content from previous version",
+        "Update version and metadata",
+        "Make required changes",
+        "Update active_guides.json"
+      ]
+    }
+  },
+  "fixit_versioning": {
+    "tracking": {
+      "base_file": "{ProjectName}.fixit.json",
+      "updates": "{ProjectName}.fixit.{YYYYMMDD}.json",
+      "consolidation": "Monthly if no critical changes"
+    },
+    "priority_markers": {
+      "critical": "Needs immediate attention",
+      "standard": "Regular maintenance",
+      "planning": "Future consideration"
+    }
+  },
+  "implementation": {
+    "example": {
+      "base": {
+        "file": "CertApi.Solution_Architecture_ExceptionHandling.json",
+        "version": "1.0"
+      },
+      "update": {
+        "file": "CertApi.Solution_Architecture_ExceptionHandling.20240222.json",
+        "version": "2.0",
+        "supersedes": "CertApi.Solution_Architecture_ExceptionHandling.json",
+        "changes": [
+          "Added serialization standards",
+          "Enhanced correlation tracking",
+          "Updated naming conventions"
+        ]
+      }
+    }
+  }
+}

@@ -1,0 +1,48 @@
+# CertApi.Abstractions/.editorconfig
+# This file overrides settings from the solution level .editorconfig for this project
+
+[*.cs]
+# Nullability warnings
+dotnet_diagnostic.CS8600.severity = warning  # Converting null literal or possible null value to non-nullable type
+dotnet_diagnostic.CS8604.severity = warning  # Possible null reference argument
+dotnet_diagnostic.CS8625.severity = warning  # Cannot convert null literal to non-nullable reference type
+dotnet_diagnostic.CS8603.severity = warning  # Possible null reference return
+
+# Resource management
+dotnet_diagnostic.CA2000.severity = warning  # Call Dispose on objects
+dotnet_diagnostic.CA1849.severity = warning  # Use CancelAsync instead of Cancel
+
+# Async/await patterns
+dotnet_diagnostic.CA2007.severity = warning  # Use ConfigureAwait(false)
+dotnet_diagnostic.CS1998.severity = warning  # Async method without await
+
+# String handling
+dotnet_diagnostic.CA1307.severity = warning  # Specify StringComparison for clarity
+dotnet_diagnostic.CA1305.severity = warning  # Specify IFormatProvider for culture-specific methods
+dotnet_diagnostic.CA1847.severity = suggestion  # Use string.Contains(char) when applicable
+
+# Performance
+dotnet_diagnostic.CA1860.severity = suggestion  # Prefer Count > 0 over Any()
+dotnet_diagnostic.CA1848.severity = suggestion  # Use LoggerMessage delegates for logging
+
+# Code quality
+dotnet_diagnostic.CA1062.severity = suggestion  # Validate parameters for null
+dotnet_diagnostic.CA1508.severity = warning  # Remove dead code
+dotnet_diagnostic.CA1724.severity = warning  # Type names should not match namespaces
+dotnet_diagnostic.CA1822.severity = suggestion  # Mark members as static when possible
+dotnet_diagnostic.CA1852.severity = suggestion  # Seal classes with no derived types
+dotnet_diagnostic.CA1812.severity = suggestion  # Avoid uninstantiated internal classes
+dotnet_diagnostic.CA1031.severity = warning  # Catch specific exceptions
+dotnet_diagnostic.CA1510.severity = suggestion  # Use ArgumentNullException.ThrowIfNull
+dotnet_diagnostic.CA1805.severity = suggestion  # Don't explicitly initialize to default value
+
+# Design principles
+dotnet_diagnostic.CA1032.severity = suggestion  # Implement standard exception constructors
+dotnet_diagnostic.CA2227.severity = suggestion  # Collection properties should be read-only
+dotnet_diagnostic.CA1002.severity = suggestion  # Change List<T> to Collection<T>
+
+# Security
+dotnet_diagnostic.CA5394.severity = warning  # Use secure random number generator
+
+# Localization
+dotnet_diagnostic.CA1303.severity = suggestion  # Do not pass literals as localized parameters

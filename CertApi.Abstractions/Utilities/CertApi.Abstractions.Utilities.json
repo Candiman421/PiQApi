@@ -1,0 +1,30 @@
+﻿{
+    "documentPath":  "docsflat/CertApi.Abstractions.Utilities.json",
+    "version":  "1.0.0",
+    "lastUpdated":  "2025-04-06",
+    "purpose":  "Summarizes the public API of CertApi.Abstractions.Utilities and provides usage guidance",
+    "guide_type":  "api-reference",
+    "development_contexts":  [
+                                 "development"
+                             ],
+    "applies_to":  [
+                       "CertApi.Abstractions.Utilities"
+                   ],
+    "overview":  {
+                     "description":  "The Utilities namespace contains components for the CertApi.Abstractions project.",
+                     "usage_pattern":  "Import and use classes from this namespace to work with Utilities functionality."
+                 },
+    "components":  {
+
+                   },
+    "subdirectories":  {
+                           "Time":  {
+                                        "description":  "Contains components related to Time",
+                                        "documentation_path":  "CertApi.Abstractions.Utilities.Time.Use.json"
+                                    },
+                           "Randomization":  {
+                                                 "description":  "Contains components related to Randomization",
+                                                 "documentation_path":  "CertApi.Abstractions.Utilities.Randomization.Use.json"
+                                             }
+                       }
+}

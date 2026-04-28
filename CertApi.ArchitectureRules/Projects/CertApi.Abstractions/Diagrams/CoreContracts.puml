@@ -1,0 +1,92 @@
+// CertApi.ArchitectureRules/Projects/CertApi.Abstractions/Diagrams/CoreContracts.puml
+@startuml CertApi.Abstractions Core Contracts
+
+title CertApi.Abstractions Core Contracts
+footer Generated from architectural guides - %date("yyyy.MM.dd")
+legend right
+  Core interface relationships and
+  framework contracts
+end legend
+
+' Visual styling
+skinparam componentStyle uml2
+skinparam interface {
+  BackgroundColor White
+  BorderColor Black
+}
+
+' Core Result Types
+interface ICertResult {
+  +bool IsSuccess
+  +IResultError? Error
+}
+
+interface "ICertResult<T>" as ICertResultT {
+  +T? Value
+}
+
+interface IResultError {
+  +string Code
+  +string Message
+  +string CorrelationId
+  +ValidationSeverityType Severity
+  +IReadOnlyDictionary<string,object> Context
+}
+
+ICertResultT --|> ICertResult
+
+' Validation Contracts
+interface "IValidationRule<T>" as IValidationRule {
+  +Task<CertValidationResult> ValidateAsync()
+}
+
+interface "IValidationRuleSet<T>" as IValidationRuleSet {
+  +IReadOnlyCollection<IValidationRule<T>> GetRules()
+}
+
+interface IValidationProcessor {
+  +Task<CertValidationResult> ValidateAsync<T>()
+}
+
+class CertValidationContext {
+  +ValidationModeType Mode
+  +CertCorrelationId Id
+  +IReadOnlyDictionary<string,object> Properties
+}
+
+class CertValidationResult {
+  +bool IsValid
+  +IReadOnlyCollection<ValidationError> Errors
+  +string CorrelationId
+  +ValidationSeverityType Severity
+}
+
+IValidationRule ..> CertValidationResult : creates
+IValidationRule ..> CertValidationContext : uses
+IValidationProcessor ..> IValidationRule : executes
+IValidationProcessor ..> IValidationRuleSet : executes
+IValidationRuleSet *-- IValidationRule : contains
+
+' Context Types
+interface ICorrelationContext {
+  +CertCorrelationId Id
+  +DateTimeOffset Timestamp
+}
+
+interface IOperationContext {
+  +CertOperationId Id
+  +CertCorrelationId CorrelationId
+  +IDictionary<string,object> Properties
+}
+
+' Factory Contracts
+interface "IResultFactory" as IResultFactory {
+  +ICertResult<T> Success<T>()
+  +ICertResult<T> Failure<T>()
+  +ICertResult<T> FromValidationResult<T>()
+}
+
+IResultFactory ..> ICertResult : creates
+IResultFactory ..> ICertResultT : creates
+
+@enduml
