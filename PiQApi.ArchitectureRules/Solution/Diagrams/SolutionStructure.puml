@@ -1,8 +1,8 @@
-// CertApi.ArchitectureRules/Solution/Diagrams/SolutionStructure.puml
-@startuml CertApi Solution Structure
+// PiQApi.ArchitectureRules/Solution/Diagrams/SolutionStructure.puml
+@startuml PiQApi Solution Structure
 
 ' Title and metadata
-title CertApi Solution Architecture
+title PiQApi Solution Architecture
 footer Generated from architectural guides - %date("yyyy.MM.dd")
 legend right
   Solution structure and dependencies
@@ -21,7 +21,7 @@ skinparam component {
 
 ' Layer definitions
 package "Abstractions Layer" {
-  [CertApi.Abstractions] <<abstraction>> as abstractions
+  [PiQApi.Abstractions] <<abstraction>> as abstractions
   note right of abstractions
     Core contracts and primitives
     No external dependencies
@@ -29,7 +29,7 @@ package "Abstractions Layer" {
 }
 
 package "Core Layer" {
-  [CertApi.Exchange.Core] <<core>> as core
+  [PiQApi.Exchange.Core] <<core>> as core
   note right of core
     Shared implementations
     and infrastructure
@@ -37,7 +37,7 @@ package "Core Layer" {
 }
 
 package "Service Layer" {
-  [CertApi.Exchange.Service] <<service>> as service
+  [PiQApi.Exchange.Service] <<service>> as service
   note right of service
     Exchange service integration
     and resource management
@@ -45,7 +45,7 @@ package "Service Layer" {
 }
 
 package "Operations Layer" {
-  [CertApi.Exchange.Operations] <<operations>> as operations
+  [PiQApi.Exchange.Operations] <<operations>> as operations
   note right of operations
     Business operations
     and orchestration
@@ -53,7 +53,7 @@ package "Operations Layer" {
 }
 
 package "Client Layer" {
-  [CertApi.Exchange.Client] <<client>> as client
+  [PiQApi.Exchange.Client] <<client>> as client
   note right of client
     Public API surface
     and configuration

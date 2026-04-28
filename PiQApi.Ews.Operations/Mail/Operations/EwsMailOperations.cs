@@ -103,9 +103,9 @@ namespace PiQApi.Ews.Operations.Mail.Operations
             {
                 Logger.LogError(ex, "Error creating email message. CorrelationId: {CorrelationId}", CorrelationId);
 
-                if (ex is PiQException certException)
+                if (ex is PiQException piqException)
                 {
-                    return _resultFactory.Failure<EmailMessage>(certException, Context.CorrelationId);
+                    return _resultFactory.Failure<EmailMessage>(piqException, Context.CorrelationId);
                 }
 
                 var wrappedException = CreateExceptionWithCorrelation(
@@ -166,9 +166,9 @@ namespace PiQApi.Ews.Operations.Mail.Operations
             {
                 Logger.LogError(ex, "Error creating backdated email message. CorrelationId: {CorrelationId}", CorrelationId);
 
-                if (ex is PiQException certException)
+                if (ex is PiQException piqException)
                 {
-                    return _resultFactory.Failure<EmailMessage>(certException, Context.CorrelationId);
+                    return _resultFactory.Failure<EmailMessage>(piqException, Context.CorrelationId);
                 }
 
                 var wrappedException = CreateExceptionWithCorrelation(
@@ -206,9 +206,9 @@ namespace PiQApi.Ews.Operations.Mail.Operations
             {
                 Logger.LogError(ex, "Error saving email message as draft. CorrelationId: {CorrelationId}", CorrelationId);
 
-                if (ex is PiQException certException)
+                if (ex is PiQException piqException)
                 {
-                    return _resultFactory.Failure(certException, Context.CorrelationId);
+                    return _resultFactory.Failure(piqException, Context.CorrelationId);
                 }
 
                 var wrappedException = CreateExceptionWithCorrelation(
@@ -246,9 +246,9 @@ namespace PiQApi.Ews.Operations.Mail.Operations
             {
                 Logger.LogError(ex, "Error sending email message. CorrelationId: {CorrelationId}", CorrelationId);
 
-                if (ex is PiQException certException)
+                if (ex is PiQException piqException)
                 {
-                    return _resultFactory.Failure(certException, Context.CorrelationId);
+                    return _resultFactory.Failure(piqException, Context.CorrelationId);
                 }
 
                 var wrappedException = CreateExceptionWithCorrelation(
@@ -289,9 +289,9 @@ namespace PiQApi.Ews.Operations.Mail.Operations
             {
                 Logger.LogError(ex, "Error getting email message. CorrelationId: {CorrelationId}", CorrelationId);
 
-                if (ex is PiQException certException)
+                if (ex is PiQException piqException)
                 {
-                    return _resultFactory.Failure<EmailMessage>(certException, Context.CorrelationId);
+                    return _resultFactory.Failure<EmailMessage>(piqException, Context.CorrelationId);
                 }
 
                 var wrappedException = CreateExceptionWithCorrelation(

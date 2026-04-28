@@ -15,25 +15,25 @@
                      "usage_pattern":  "Import and use classes from this namespace to work with Services functionality."
                  },
     "components":  {
-                       "CertValidationResultProcessor":  {
-                                                             "purpose":  "Provides CertValidationResultProcessor functionality",
+                       "PiQValidationResultProcessor":  {
+                                                             "purpose":  "Provides PiQValidationResultProcessor functionality",
                                                              "key_methods":  [
-                                                                                 "GetCorrelationId(ICertValidationResult result) -\u003e string?",
-                                                                                 "GetErrorSummary(ICertValidationResult result) -\u003e string"
+                                                                                 "GetCorrelationId(IPiQValidationResult result) -\u003e string?",
+                                                                                 "GetErrorSummary(IPiQValidationResult result) -\u003e string"
                                                                              ],
                                                              "key_properties":  [
-                                                                                    "CertValidationResultProcessor -\u003e class"
+                                                                                    "PiQValidationResultProcessor -\u003e class"
                                                                                 ]
                                                          },
-                       "CertValidationService":  {
-                                                     "purpose":  "Provides CertValidationService functionality",
+                       "PiQValidationService":  {
+                                                     "purpose":  "Provides PiQValidationService functionality",
                                                      "key_methods":  [
-                                                                         "Validate\u003cT\u003e(T entity, CertValidationContext context) -\u003e ICertValidationResult",
-                                                                         "ValidateAsync\u003cT\u003e(T entity,\n        CertValidationContext context,\n        CancellationToken cancellationToken = default) -\u003e Task\u003cICertValidationResult\u003e",
-                                                                         "ValidateWithRules\u003cT\u003e(T entity,\n        IEnumerable\u003cType\u003e ruleTypes,\n        CertValidationContext context) -\u003e ICertValidationResult",
-                                                                         "ValidateAsync(object obj,\n        object options,\n        CancellationToken cancellationToken = default) -\u003e Task\u003cICertValidationResult\u003e",
-                                                                         "ValidateAsync(object obj,\n        CancellationToken cancellationToken = default) -\u003e Task\u003cICertValidationResult\u003e",
-                                                                         "ValidateAsync(CertAuthenticationOptions options,\n        CancellationToken cancellationToken = default) -\u003e Task\u003cICertValidationResult\u003e"
+                                                                         "Validate\u003cT\u003e(T entity, PiQValidationContext context) -\u003e IPiQValidationResult",
+                                                                         "ValidateAsync\u003cT\u003e(T entity,\n        PiQValidationContext context,\n        CancellationToken cancellationToken = default) -\u003e Task\u003cIPiQValidationResult\u003e",
+                                                                         "ValidateWithRules\u003cT\u003e(T entity,\n        IEnumerable\u003cType\u003e ruleTypes,\n        PiQValidationContext context) -\u003e IPiQValidationResult",
+                                                                         "ValidateAsync(object obj,\n        object options,\n        CancellationToken cancellationToken = default) -\u003e Task\u003cIPiQValidationResult\u003e",
+                                                                         "ValidateAsync(object obj,\n        CancellationToken cancellationToken = default) -\u003e Task\u003cIPiQValidationResult\u003e",
+                                                                         "ValidateAsync(PiQAuthenticationOptions options,\n        CancellationToken cancellationToken = default) -\u003e Task\u003cIPiQValidationResult\u003e"
                                                                      ]
                                                  }
                    }

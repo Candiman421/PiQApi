@@ -15,26 +15,26 @@
                      "usage_pattern":  "Import and use classes from this namespace to work with Core functionality."
                  },
     "components":  {
-                       "CertAsyncLock":  {
-                                             "purpose":  "Provides CertAsyncLock functionality",
+                       "PiQAsyncLock":  {
+                                             "purpose":  "Provides PiQAsyncLock functionality",
                                              "key_methods":  [
                                                                  "Dispose() -\u003e void"
                                                              ],
                                              "key_properties":  [
-                                                                    "@lock) -\u003e AsyncLockReleaser(CertAsyncLock"
+                                                                    "@lock) -\u003e AsyncLockReleaser(PiQAsyncLock"
                                                                 ]
                                          },
-                       "CertAsyncLockFactory":  {
-                                                    "purpose":  "Provides CertAsyncLockFactory functionality",
+                       "PiQAsyncLockFactory":  {
+                                                    "purpose":  "Provides PiQAsyncLockFactory functionality",
                                                     "key_methods":  [
-                                                                        "Create() -\u003e ICertAsyncLock"
+                                                                        "Create() -\u003e IPiQAsyncLock"
                                                                     ]
                                                 },
-                       "CertAsyncResourceScope":  {
-                                                      "purpose":  "Provides CertAsyncResourceScope functionality",
+                       "PiQAsyncResourceScope":  {
+                                                      "purpose":  "Provides PiQAsyncResourceScope functionality",
                                                       "key_methods":  [
-                                                                          "CreateAsync(CertAsyncSemaphore semaphore,\n        ILogger\u003cCertAsyncResourceScope\u003e? logger = null,\n        CancellationToken cancellationToken = default) -\u003e Task\u003cCertAsyncResourceScope\u003e",
-                                                                          "Create(IEnumerable\u003cIDisposable\u003e resources,\n        ILogger\u003cCertAsyncResourceScope\u003e? logger = null) -\u003e CertAsyncResourceScope",
+                                                                          "CreateAsync(PiQAsyncSemaphore semaphore,\n        ILogger\u003cPiQAsyncResourceScope\u003e? logger = null,\n        CancellationToken cancellationToken = default) -\u003e Task\u003cPiQAsyncResourceScope\u003e",
+                                                                          "Create(IEnumerable\u003cIDisposable\u003e resources,\n        ILogger\u003cPiQAsyncResourceScope\u003e? logger = null) -\u003e PiQAsyncResourceScope",
                                                                           "AddResourceAsync\u003cT\u003e(T resource, CancellationToken cancellationToken = default) -\u003e Task\u003cT\u003e",
                                                                           "RemoveResourceAsync\u003cT\u003e(T resource, CancellationToken cancellationToken = default) -\u003e Task",
                                                                           "CleanupAsync(CancellationToken cancellationToken = default) -\u003e Task",
@@ -46,8 +46,8 @@
                                                                              "Created -\u003e DateTimeOffset"
                                                                          ]
                                                   },
-                       "CertAsyncSemaphore":  {
-                                                  "purpose":  "Provides CertAsyncSemaphore functionality",
+                       "PiQAsyncSemaphore":  {
+                                                  "purpose":  "Provides PiQAsyncSemaphore functionality",
                                                   "key_methods":  [
                                                                       "WaitAsync(CancellationToken cancellationToken = default) -\u003e Task\u003cIDisposable\u003e",
                                                                       "TryWaitAsync(TimeSpan timeout, CancellationToken cancellationToken = default) -\u003e Task\u003cbool\u003e",
@@ -55,76 +55,76 @@
                                                                       "Dispose() -\u003e void"
                                                                   ],
                                                   "key_properties":  [
-                                                                         "semaphore) -\u003e SemaphoreReleaser(CertAsyncSemaphore"
+                                                                         "semaphore) -\u003e SemaphoreReleaser(PiQAsyncSemaphore"
                                                                      ]
                                               },
-                       "CertValidationResultFactory":  {
-                                                           "purpose":  "Provides CertValidationResultFactory functionality",
+                       "PiQValidationResultFactory":  {
+                                                           "purpose":  "Provides PiQValidationResultFactory functionality",
                                                            "key_methods":  [
-                                                                               "Success() -\u003e ICertValidationResult",
-                                                                               "FromError(string propertyName, string errorMessage, string errorCode = \"ValidationError\", ValidationSeverityType severity = ValidationSeverityType.Error) -\u003e ICertValidationResult",
-                                                                               "FromErrors(IEnumerable\u003cCertValidationError\u003e errors) -\u003e ICertValidationResult",
-                                                                               "FromException(Exception exception) -\u003e ICertValidationResult",
-                                                                               "Combine(params ICertValidationResult[] results) -\u003e ICertValidationResult",
-                                                                               "CreateCancelled(string correlationId) -\u003e ICertValidationResult",
-                                                                               "CreateBuilder(string? correlationId = null) -\u003e CertValidationResultBuilder"
+                                                                               "Success() -\u003e IPiQValidationResult",
+                                                                               "FromError(string propertyName, string errorMessage, string errorCode = \"ValidationError\", ValidationSeverityType severity = ValidationSeverityType.Error) -\u003e IPiQValidationResult",
+                                                                               "FromErrors(IEnumerable\u003cPiQValidationError\u003e errors) -\u003e IPiQValidationResult",
+                                                                               "FromException(Exception exception) -\u003e IPiQValidationResult",
+                                                                               "Combine(params IPiQValidationResult[] results) -\u003e IPiQValidationResult",
+                                                                               "CreateCancelled(string correlationId) -\u003e IPiQValidationResult",
+                                                                               "CreateBuilder(string? correlationId = null) -\u003e PiQValidationResultBuilder"
                                                                            ]
                                                        },
-                       "CertValidationProcessor":  {
-                                                       "purpose":  "Provides CertValidationProcessor functionality",
+                       "PiQValidationProcessor":  {
+                                                       "purpose":  "Provides PiQValidationProcessor functionality",
                                                        "key_methods":  [
 
                                                                        ]
                                                    },
-                       "CertValidationContextFactory":  {
-                                                            "purpose":  "Provides CertValidationContextFactory functionality",
+                       "PiQValidationContextFactory":  {
+                                                            "purpose":  "Provides PiQValidationContextFactory functionality",
                                                             "key_methods":  [
-                                                                                "CreateForService(string correlationId,\n        string serviceVersion,\n        CancellationToken cancellationToken = default) -\u003e CertValidationContext",
-                                                                                "CreateForService(string serviceVersion,\n        CancellationToken cancellationToken = default) -\u003e CertValidationContext",
-                                                                                "AddServiceVersion(CertValidationContext context,\n        string serviceVersion) -\u003e CertValidationContext"
+                                                                                "CreateForService(string correlationId,\n        string serviceVersion,\n        CancellationToken cancellationToken = default) -\u003e PiQValidationContext",
+                                                                                "CreateForService(string serviceVersion,\n        CancellationToken cancellationToken = default) -\u003e PiQValidationContext",
+                                                                                "AddServiceVersion(PiQValidationContext context,\n        string serviceVersion) -\u003e PiQValidationContext"
                                                                             ]
                                                         },
-                       "CertValidationRuleFactory":  {
-                                                         "purpose":  "Provides CertValidationRuleFactory functionality",
+                       "PiQValidationRuleFactory":  {
+                                                         "purpose":  "Provides PiQValidationRuleFactory functionality",
                                                          "key_methods":  [
-                                                                             "GetRulesForEntity\u003cTEntity\u003e() -\u003e IEnumerable\u003cICertValidationRule\u003cTEntity\u003e\u003e",
+                                                                             "GetRulesForEntity\u003cTEntity\u003e() -\u003e IEnumerable\u003cIPiQValidationRule\u003cTEntity\u003e\u003e",
                                                                              "CreateRule\u003cT\u003e() -\u003e T"
                                                                          ]
                                                      },
-                       "CertCoreValidationResult":  {
-                                                        "purpose":  "Provides CertCoreValidationResult functionality",
+                       "PiQCoreValidationResult":  {
+                                                        "purpose":  "Provides PiQCoreValidationResult functionality",
                                                         "key_methods":  [
-                                                                            "AddError(CertValidationError error) -\u003e CertCoreValidationResult",
-                                                                            "AddError(string propertyName,\n        string message,\n        string code = \"ValidationError\",\n        ValidationSeverityType severity = ValidationSeverityType.Error) -\u003e CertCoreValidationResult",
-                                                                            "MergeErrors(CertValidationResult other) -\u003e CertCoreValidationResult"
+                                                                            "AddError(PiQValidationError error) -\u003e PiQCoreValidationResult",
+                                                                            "AddError(string propertyName,\n        string message,\n        string code = \"ValidationError\",\n        ValidationSeverityType severity = ValidationSeverityType.Error) -\u003e PiQCoreValidationResult",
+                                                                            "MergeErrors(PiQValidationResult other) -\u003e PiQCoreValidationResult"
                                                                         ],
                                                         "key_properties":  [
                                                                                "Exception -\u003e Exception?"
                                                                            ]
                                                     },
-                       "CertValidationRuleResourceBuilder":  {
-                                                                 "purpose":  "Provides CertValidationRuleResourceBuilder functionality",
+                       "PiQValidationRuleResourceBuilder":  {
+                                                                 "purpose":  "Provides PiQValidationRuleResourceBuilder functionality",
                                                                  "key_methods":  [
-                                                                                     "WithResourceId(string resourceId) -\u003e CertValidationRuleResourceBuilder",
-                                                                                     "WithResourceType(string resourceType) -\u003e CertValidationRuleResourceBuilder",
-                                                                                     "WithName(string name) -\u003e CertValidationRuleResourceBuilder",
-                                                                                     "WithIsModified(bool isModified = true) -\u003e CertValidationRuleResourceBuilder",
-                                                                                     "WithIsDeleted(bool isDeleted = true) -\u003e CertValidationRuleResourceBuilder",
-                                                                                     "WithCreatedAt(DateTimeOffset createdAt) -\u003e CertValidationRuleResourceBuilder",
-                                                                                     "WithModifiedAt(DateTimeOffset? modifiedAt) -\u003e CertValidationRuleResourceBuilder",
-                                                                                     "WithProperties(Dictionary\u003cstring, object\u003e properties) -\u003e CertValidationRuleResourceBuilder",
-                                                                                     "AddProperty(string key, object value) -\u003e CertValidationRuleResourceBuilder",
-                                                                                     "Build() -\u003e CertValidationRuleResource"
+                                                                                     "WithResourceId(string resourceId) -\u003e PiQValidationRuleResourceBuilder",
+                                                                                     "WithResourceType(string resourceType) -\u003e PiQValidationRuleResourceBuilder",
+                                                                                     "WithName(string name) -\u003e PiQValidationRuleResourceBuilder",
+                                                                                     "WithIsModified(bool isModified = true) -\u003e PiQValidationRuleResourceBuilder",
+                                                                                     "WithIsDeleted(bool isDeleted = true) -\u003e PiQValidationRuleResourceBuilder",
+                                                                                     "WithCreatedAt(DateTimeOffset createdAt) -\u003e PiQValidationRuleResourceBuilder",
+                                                                                     "WithModifiedAt(DateTimeOffset? modifiedAt) -\u003e PiQValidationRuleResourceBuilder",
+                                                                                     "WithProperties(Dictionary\u003cstring, object\u003e properties) -\u003e PiQValidationRuleResourceBuilder",
+                                                                                     "AddProperty(string key, object value) -\u003e PiQValidationRuleResourceBuilder",
+                                                                                     "Build() -\u003e PiQValidationRuleResource"
                                                                                  ],
                                                                  "key_properties":  [
-                                                                                        "CertValidationRuleResourceBuilder -\u003e class"
+                                                                                        "PiQValidationRuleResourceBuilder -\u003e class"
                                                                                     ]
                                                              },
-                       "CertValidationRuleResource":  {
-                                                          "purpose":  "Provides CertValidationRuleResource functionality",
+                       "PiQValidationRuleResource":  {
+                                                          "purpose":  "Provides PiQValidationRuleResource functionality",
                                                           "key_methods":  [
-                                                                              "Success(string resourceId,\n        string resourceType,\n        string name,\n        Dictionary\u003cstring, object\u003e? properties = null) -\u003e CertValidationRuleResource",
-                                                                              "Failure(string resourceId,\n        string resourceType,\n        string name,\n        ErrorCodeType errorCode,\n        Dictionary\u003cstring, object\u003e? properties = null) -\u003e CertValidationRuleResource"
+                                                                              "Success(string resourceId,\n        string resourceType,\n        string name,\n        Dictionary\u003cstring, object\u003e? properties = null) -\u003e PiQValidationRuleResource",
+                                                                              "Failure(string resourceId,\n        string resourceType,\n        string name,\n        ErrorCodeType errorCode,\n        Dictionary\u003cstring, object\u003e? properties = null) -\u003e PiQValidationRuleResource"
                                                                           ],
                                                           "key_properties":  [
                                                                                  "ResourceId -\u003e string",
@@ -137,15 +137,15 @@
                                                                                  "ErrorCode -\u003e ErrorCodeType?"
                                                                              ]
                                                       },
-                       "CertValidationChain":  {
-                                                   "purpose":  "Provides CertValidationChain functionality",
+                       "PiQValidationChain":  {
+                                                   "purpose":  "Provides PiQValidationChain functionality",
                                                    "key_methods":  [
-                                                                       "ValidateAsync\u003cT\u003e(T entity, CertValidationContext context,\n        CancellationToken cancellationToken = default) -\u003e Task\u003cICertValidationResult\u003e",
-                                                                       "ValidateAsync(object entity,\n        CertValidationContext context,\n        CancellationToken cancellationToken = default) -\u003e Task\u003cICertValidationResult\u003e"
+                                                                       "ValidateAsync\u003cT\u003e(T entity, PiQValidationContext context,\n        CancellationToken cancellationToken = default) -\u003e Task\u003cIPiQValidationResult\u003e",
+                                                                       "ValidateAsync(object entity,\n        PiQValidationContext context,\n        CancellationToken cancellationToken = default) -\u003e Task\u003cIPiQValidationResult\u003e"
                                                                    ]
                                                },
-                       "CertValidationRule":  {
-                                                  "purpose":  "Provides CertValidationRule functionality",
+                       "PiQValidationRule":  {
+                                                  "purpose":  "Provides PiQValidationRule functionality",
                                                   "key_methods":  [
 
                                                                   ],
@@ -153,101 +153,101 @@
                                                                          "RuleId -\u003e string"
                                                                      ]
                                               },
-                       "CertAsyncValidationRule":  {
-                                                       "purpose":  "Provides CertAsyncValidationRule functionality",
+                       "PiQAsyncValidationRule":  {
+                                                       "purpose":  "Provides PiQAsyncValidationRule functionality",
                                                        "key_methods":  [
-                                                                           "Validate(T entity, CertValidationContext context) -\u003e ICertValidationResult",
-                                                                           "ValidateAsync(T entity,\n        CertValidationContext context,\n        CancellationToken cancellationToken = default) -\u003e Task\u003cICertValidationResult\u003e"
+                                                                           "Validate(T entity, PiQValidationContext context) -\u003e IPiQValidationResult",
+                                                                           "ValidateAsync(T entity,\n        PiQValidationContext context,\n        CancellationToken cancellationToken = default) -\u003e Task\u003cIPiQValidationResult\u003e"
                                                                        ]
                                                    },
-                       "CertBaseValidationRule":  {
-                                                      "purpose":  "Provides CertBaseValidationRule functionality",
+                       "PiQBaseValidationRule":  {
+                                                      "purpose":  "Provides PiQBaseValidationRule functionality",
                                                       "key_methods":  [
-                                                                          "Validate(T entity, CertValidationContext context) -\u003e ICertValidationResult",
-                                                                          "ValidateAsync(T entity, CertValidationContext context, CancellationToken cancellationToken = default) -\u003e Task\u003cICertValidationResult\u003e"
+                                                                          "Validate(T entity, PiQValidationContext context) -\u003e IPiQValidationResult",
+                                                                          "ValidateAsync(T entity, PiQValidationContext context, CancellationToken cancellationToken = default) -\u003e Task\u003cIPiQValidationResult\u003e"
                                                                       ]
                                                   },
-                       "CertSyncValidationRule":  {
-                                                      "purpose":  "Provides CertSyncValidationRule functionality",
+                       "PiQSyncValidationRule":  {
+                                                      "purpose":  "Provides PiQSyncValidationRule functionality",
                                                       "key_methods":  [
-                                                                          "Validate(T entity, CertValidationContext context) -\u003e ICertValidationResult"
+                                                                          "Validate(T entity, PiQValidationContext context) -\u003e IPiQValidationResult"
                                                                       ]
                                                   },
-                       "CertCompositeValidationRule":  {
-                                                           "purpose":  "Provides CertCompositeValidationRule functionality",
+                       "PiQCompositeValidationRule":  {
+                                                           "purpose":  "Provides PiQCompositeValidationRule functionality",
                                                            "key_methods":  [
-                                                                               "Validate(T entity, CertValidationContext context) -\u003e ICertValidationResult",
-                                                                               "ValidateAsync(T entity,\n        CertValidationContext context,\n        CancellationToken cancellationToken = default) -\u003e Task\u003cICertValidationResult\u003e"
+                                                                               "Validate(T entity, PiQValidationContext context) -\u003e IPiQValidationResult",
+                                                                               "ValidateAsync(T entity,\n        PiQValidationContext context,\n        CancellationToken cancellationToken = default) -\u003e Task\u003cIPiQValidationResult\u003e"
                                                                            ]
                                                        },
-                       "CertFileExtensionValidationRule":  {
-                                                               "purpose":  "Provides CertFileExtensionValidationRule functionality",
+                       "PiQFileExtensionValidationRule":  {
+                                                               "purpose":  "Provides PiQFileExtensionValidationRule functionality",
                                                                "key_methods":  [
-                                                                                   "Validate(T entity, CertValidationContext context) -\u003e ICertValidationResult"
+                                                                                   "Validate(T entity, PiQValidationContext context) -\u003e IPiQValidationResult"
                                                                                ]
                                                            },
-                       "CertPropertyValidationRule":  {
-                                                          "purpose":  "Provides CertPropertyValidationRule functionality",
+                       "PiQPropertyValidationRule":  {
+                                                          "purpose":  "Provides PiQPropertyValidationRule functionality",
                                                           "key_methods":  [
                                                                               "Task\u003c(bool IsValid, string? ErrorMessage) -\u003e virtual",
-                                                                              "Validate(T entity, CertValidationContext context) -\u003e ICertValidationResult",
-                                                                              "ValidateAsync(T entity,\n        CertValidationContext context,\n        CancellationToken cancellationToken = default) -\u003e Task\u003cICertValidationResult\u003e"
+                                                                              "Validate(T entity, PiQValidationContext context) -\u003e IPiQValidationResult",
+                                                                              "ValidateAsync(T entity,\n        PiQValidationContext context,\n        CancellationToken cancellationToken = default) -\u003e Task\u003cIPiQValidationResult\u003e"
                                                                           ],
                                                           "key_properties":  [
                                                                                  "PropertyName -\u003e string"
                                                                              ]
                                                       },
-                       "CertHeaderValidationRule":  {
-                                                        "purpose":  "Provides CertHeaderValidationRule functionality",
+                       "PiQHeaderValidationRule":  {
+                                                        "purpose":  "Provides PiQHeaderValidationRule functionality",
                                                         "key_methods":  [
-                                                                            "Validate(T entity, CertValidationContext context) -\u003e ICertValidationResult"
+                                                                            "Validate(T entity, PiQValidationContext context) -\u003e IPiQValidationResult"
                                                                         ]
                                                     },
-                       "CertValidationDiagnosticsService":  {
-                                                                "purpose":  "Provides CertValidationDiagnosticsService functionality",
+                       "PiQValidationDiagnosticsService":  {
+                                                                "purpose":  "Provides PiQValidationDiagnosticsService functionality",
                                                                 "key_methods":  [
-                                                                                    "GetDiagnosticInfo(ICertValidationResult result) -\u003e string",
-                                                                                    "GetErrorReport(ICertValidationResult result) -\u003e string"
+                                                                                    "GetDiagnosticInfo(IPiQValidationResult result) -\u003e string",
+                                                                                    "GetErrorReport(IPiQValidationResult result) -\u003e string"
                                                                                 ]
                                                             },
-                       "CertValidationResultProcessor":  {
-                                                             "purpose":  "Provides CertValidationResultProcessor functionality",
+                       "PiQValidationResultProcessor":  {
+                                                             "purpose":  "Provides PiQValidationResultProcessor functionality",
                                                              "key_methods":  [
-                                                                                 "GetCorrelationId(ICertValidationResult result) -\u003e string?",
-                                                                                 "GetErrorSummary(ICertValidationResult result) -\u003e string"
+                                                                                 "GetCorrelationId(IPiQValidationResult result) -\u003e string?",
+                                                                                 "GetErrorSummary(IPiQValidationResult result) -\u003e string"
                                                                              ],
                                                              "key_properties":  [
-                                                                                    "CertValidationResultProcessor -\u003e class"
+                                                                                    "PiQValidationResultProcessor -\u003e class"
                                                                                 ]
                                                          },
-                       "CertValidationService":  {
-                                                     "purpose":  "Provides CertValidationService functionality",
+                       "PiQValidationService":  {
+                                                     "purpose":  "Provides PiQValidationService functionality",
                                                      "key_methods":  [
-                                                                         "Validate\u003cT\u003e(T entity, CertValidationContext context) -\u003e ICertValidationResult",
-                                                                         "ValidateAsync\u003cT\u003e(T entity,\n        CertValidationContext context,\n        CancellationToken cancellationToken = default) -\u003e Task\u003cICertValidationResult\u003e",
-                                                                         "ValidateWithRules\u003cT\u003e(T entity,\n        IEnumerable\u003cType\u003e ruleTypes,\n        CertValidationContext context) -\u003e ICertValidationResult",
-                                                                         "ValidateAsync(object obj,\n        object options,\n        CancellationToken cancellationToken = default) -\u003e Task\u003cICertValidationResult\u003e",
-                                                                         "ValidateAsync(object obj,\n        CancellationToken cancellationToken = default) -\u003e Task\u003cICertValidationResult\u003e",
-                                                                         "ValidateAsync(CertAuthenticationOptions options,\n        CancellationToken cancellationToken = default) -\u003e Task\u003cICertValidationResult\u003e"
+                                                                         "Validate\u003cT\u003e(T entity, PiQValidationContext context) -\u003e IPiQValidationResult",
+                                                                         "ValidateAsync\u003cT\u003e(T entity,\n        PiQValidationContext context,\n        CancellationToken cancellationToken = default) -\u003e Task\u003cIPiQValidationResult\u003e",
+                                                                         "ValidateWithRules\u003cT\u003e(T entity,\n        IEnumerable\u003cType\u003e ruleTypes,\n        PiQValidationContext context) -\u003e IPiQValidationResult",
+                                                                         "ValidateAsync(object obj,\n        object options,\n        CancellationToken cancellationToken = default) -\u003e Task\u003cIPiQValidationResult\u003e",
+                                                                         "ValidateAsync(object obj,\n        CancellationToken cancellationToken = default) -\u003e Task\u003cIPiQValidationResult\u003e",
+                                                                         "ValidateAsync(PiQAuthenticationOptions options,\n        CancellationToken cancellationToken = default) -\u003e Task\u003cIPiQValidationResult\u003e"
                                                                      ]
                                                  },
-                       "CertServiceResult":  {
-                                                 "purpose":  "Provides CertServiceResult functionality",
+                       "PiQServiceResult":  {
+                                                 "purpose":  "Provides PiQServiceResult functionality",
                                                  "key_methods":  [
-                                                                     "WithStatus(OperationStatusType status) -\u003e ICertServiceResult"
+                                                                     "WithStatus(OperationStatusType status) -\u003e IPiQServiceResult"
                                                                  ],
                                                  "key_properties":  [
                                                                         "Status -\u003e OperationStatusType",
                                                                         "RequestId -\u003e string"
                                                                     ]
                                              },
-                       "CertResultError":  {
-                                               "purpose":  "Provides CertResultError functionality",
+                       "PiQResultError":  {
+                                               "purpose":  "Provides PiQResultError functionality",
                                                "key_methods":  [
                                                                    "AddProperty(string key, object value) -\u003e void",
                                                                    "AddProperties(IDictionary\u003cstring, object\u003e properties) -\u003e void",
-                                                                   "WithProperty(string key, object value) -\u003e ICertResultError",
-                                                                   "WithProperties(IDictionary\u003cstring, object\u003e properties) -\u003e ICertResultError"
+                                                                   "WithProperty(string key, object value) -\u003e IPiQResultError",
+                                                                   "WithProperties(IDictionary\u003cstring, object\u003e properties) -\u003e IPiQResultError"
                                                                ],
                                                "key_properties":  [
                                                                       "Code -\u003e string",
@@ -256,11 +256,11 @@
                                                                       "Timestamp -\u003e DateTimeOffset"
                                                                   ]
                                            },
-                       "CertError":  {
-                                         "purpose":  "Provides CertError functionality",
+                       "PiQError":  {
+                                         "purpose":  "Provides PiQError functionality",
                                          "key_methods":  [
-                                                             "WithProperty(string key, object value) -\u003e ICertResultError",
-                                                             "WithProperties(IDictionary\u003cstring, object\u003e properties) -\u003e ICertResultError",
+                                                             "WithProperty(string key, object value) -\u003e IPiQResultError",
+                                                             "WithProperties(IDictionary\u003cstring, object\u003e properties) -\u003e IPiQResultError",
                                                              "ToString() -\u003e string"
                                                          ],
                                          "key_properties":  [
@@ -270,42 +270,42 @@
                                                                 "Timestamp -\u003e DateTimeOffset"
                                                             ]
                                      },
-                       "CertResult":  {
-                                          "purpose":  "Provides CertResult functionality",
+                       "PiQResult":  {
+                                          "purpose":  "Provides PiQResult functionality",
                                           "key_methods":  [
-                                                              "CreateSuccessMarker(string correlationId) -\u003e ICertResultError",
-                                                              "WithProperty(string key, object value) -\u003e ICertResult",
-                                                              "WithProperties(IDictionary\u003cstring, object\u003e properties) -\u003e ICertResult"
+                                                              "CreateSuccessMarker(string correlationId) -\u003e IPiQResultError",
+                                                              "WithProperty(string key, object value) -\u003e IPiQResult",
+                                                              "WithProperties(IDictionary\u003cstring, object\u003e properties) -\u003e IPiQResult"
                                                           ],
                                           "key_properties":  [
                                                                  "IsSuccess -\u003e bool",
-                                                                 "ErrorInfo -\u003e ICertResultError?",
+                                                                 "ErrorInfo -\u003e IPiQResultError?",
                                                                  "CorrelationId -\u003e string",
                                                                  "Timestamp -\u003e DateTimeOffset"
                                                              ]
                                       },
-                       "CertResultTransformer":  {
-                                                     "purpose":  "Provides CertResultTransformer functionality",
+                       "PiQResultTransformer":  {
+                                                     "purpose":  "Provides PiQResultTransformer functionality",
                                                      "key_methods":  [
-                                                                         "FromValidation\u003cT\u003e(ICertValidationResult validation, T? value = default) -\u003e ICertResult\u003cT\u003e",
-                                                                         "FromValidationToService\u003cT\u003e(ICertValidationResult validation,\n        T? value = default,\n        string requestId = \"\") -\u003e ICertServiceResult\u003cT\u003e"
+                                                                         "FromValidation\u003cT\u003e(IPiQValidationResult validation, T? value = default) -\u003e IPiQResult\u003cT\u003e",
+                                                                         "FromValidationToService\u003cT\u003e(IPiQValidationResult validation,\n        T? value = default,\n        string requestId = \"\") -\u003e IPiQServiceResult\u003cT\u003e"
                                                                      ]
                                                  },
-                       "CertSuccessMarker":  {
-                                                 "purpose":  "Provides CertSuccessMarker functionality",
+                       "PiQSuccessMarker":  {
+                                                 "purpose":  "Provides PiQSuccessMarker functionality",
                                                  "key_methods":  [
-                                                                     "WithProperty(string key, object value) -\u003e ICertResultError",
-                                                                     "WithProperties(IDictionary\u003cstring, object\u003e properties) -\u003e ICertResultError",
+                                                                     "WithProperty(string key, object value) -\u003e IPiQResultError",
+                                                                     "WithProperties(IDictionary\u003cstring, object\u003e properties) -\u003e IPiQResultError",
                                                                      "ToString() -\u003e string"
                                                                  ],
                                                  "key_properties":  [
                                                                         "CorrelationId -\u003e string",
                                                                         "Timestamp -\u003e DateTimeOffset",
-                                                                        "correlationId) -\u003e CertSuccessMarker(string"
+                                                                        "correlationId) -\u003e PiQSuccessMarker(string"
                                                                     ]
                                              },
-                       "CertOperationMetricsTracker":  {
-                                                           "purpose":  "Provides CertOperationMetricsTracker functionality",
+                       "PiQOperationMetricsTracker":  {
+                                                           "purpose":  "Provides PiQOperationMetricsTracker functionality",
                                                            "key_methods":  [
                                                                                "RecordOperation(string operationName, TimeSpan duration, bool success) -\u003e void",
                                                                                "RecordCustomMetric(string metricName, double value) -\u003e void",
@@ -315,42 +315,42 @@
                                                                                "RecordTime(string name, TimeSpan elapsedTime) -\u003e void",
                                                                                "GetCounter(string name) -\u003e long",
                                                                                "GetTimerElapsed(string name) -\u003e TimeSpan",
-                                                                               "GetMetricsSnapshotAsync(CancellationToken cancellationToken = default) -\u003e Task\u003cICertMetricsSnapshot\u003e",
+                                                                               "GetMetricsSnapshotAsync(CancellationToken cancellationToken = default) -\u003e Task\u003cIPiQMetricsSnapshot\u003e",
                                                                                "ResetCounters() -\u003e void"
                                                                            ]
                                                        },
-                       "CertOperationMetricsFactory":  {
-                                                           "purpose":  "Provides CertOperationMetricsFactory functionality",
+                       "PiQOperationMetricsFactory":  {
+                                                           "purpose":  "Provides PiQOperationMetricsFactory functionality",
                                                            "key_methods":  [
-                                                                               "CreateTracker(ICertCorrelationContext? correlationContext = null) -\u003e ICertOperationMetrics",
-                                                                               "CreateCacheTracker() -\u003e ICertCacheMetrics",
-                                                                               "CreateConnectionTracker() -\u003e ICertConnectionMetrics",
-                                                                               "CreateCompositeTracker() -\u003e ICertCompositeMetricsTracker"
+                                                                               "CreateTracker(IPiQCorrelationContext? correlationContext = null) -\u003e IPiQOperationMetrics",
+                                                                               "CreateCacheTracker() -\u003e IPiQCacheMetrics",
+                                                                               "CreateConnectionTracker() -\u003e IPiQConnectionMetrics",
+                                                                               "CreateCompositeTracker() -\u003e IPiQCompositeMetricsTracker"
                                                                            ],
                                                            "key_properties":  [
-                                                                                  "CertOperationMetricsFactory -\u003e class"
+                                                                                  "PiQOperationMetricsFactory -\u003e class"
                                                                               ]
                                                        },
-                       "CertCacheMetricsTracker":  {
-                                                       "purpose":  "Provides CertCacheMetricsTracker functionality",
+                       "PiQCacheMetricsTracker":  {
+                                                       "purpose":  "Provides PiQCacheMetricsTracker functionality",
                                                        "key_methods":  [
                                                                            "RecordCacheActivity(bool isHit) -\u003e void",
                                                                            "ResetCounters() -\u003e void",
-                                                                           "GetMetricsSnapshotAsync(CancellationToken cancellationToken = default) -\u003e Task\u003cICertMetricsSnapshot\u003e"
+                                                                           "GetMetricsSnapshotAsync(CancellationToken cancellationToken = default) -\u003e Task\u003cIPiQMetricsSnapshot\u003e"
                                                                        ],
                                                        "key_properties":  [
                                                                               "CacheHitRate -\u003e double"
                                                                           ]
                                                    },
-                       "CertMetricsSnapshot":  {
-                                                   "purpose":  "Provides CertMetricsSnapshot functionality",
+                       "PiQMetricsSnapshot":  {
+                                                   "purpose":  "Provides PiQMetricsSnapshot functionality",
                                                    "key_methods":  [
-                                                                       "WithMetric(string name, object value) -\u003e ICertMetricsSnapshot",
-                                                                       "WithMetrics(IDictionary\u003cstring, object\u003e metrics) -\u003e ICertMetricsSnapshot",
+                                                                       "WithMetric(string name, object value) -\u003e IPiQMetricsSnapshot",
+                                                                       "WithMetrics(IDictionary\u003cstring, object\u003e metrics) -\u003e IPiQMetricsSnapshot",
                                                                        "GetMetric\u003cT\u003e(string name) -\u003e T",
                                                                        "TryGetMetric\u003cT\u003e(string name, out T? value) -\u003e bool",
                                                                        "HasMetric(string name) -\u003e bool",
-                                                                       "Equals(CertMetricsSnapshot? other) -\u003e bool",
+                                                                       "Equals(PiQMetricsSnapshot? other) -\u003e bool",
                                                                        "Equals(object? obj) -\u003e bool",
                                                                        "GetHashCode() -\u003e int"
                                                                    ],
@@ -364,8 +364,8 @@
                                                                           "AverageOperationDurationMs -\u003e long"
                                                                       ]
                                                },
-                       "CertCompositeMetricsTracker":  {
-                                                           "purpose":  "Provides CertCompositeMetricsTracker functionality",
+                       "PiQCompositeMetricsTracker":  {
+                                                           "purpose":  "Provides PiQCompositeMetricsTracker functionality",
                                                            "key_methods":  [
                                                                                "RecordConnectionAcquired(TimeSpan acquisitionTime) -\u003e void",
                                                                                "RecordConnectionReleased(TimeSpan lifetime) -\u003e void",
@@ -378,10 +378,10 @@
                                                                                "RecordOperation(string operationName, TimeSpan duration, bool success) -\u003e void",
                                                                                "GetCounter(string name) -\u003e long",
                                                                                "GetTimerElapsed(string name) -\u003e TimeSpan",
-                                                                               "GetMetricsSnapshotAsync(CancellationToken cancellationToken = default) -\u003e Task\u003cICertMetricsSnapshot\u003e",
+                                                                               "GetMetricsSnapshotAsync(CancellationToken cancellationToken = default) -\u003e Task\u003cIPiQMetricsSnapshot\u003e",
                                                                                "ResetCounters() -\u003e void",
                                                                                "RecordCustomMetric(string name, double value) -\u003e void",
-                                                                               "AddTracker(ICertOperationMetrics tracker) -\u003e void"
+                                                                               "AddTracker(IPiQOperationMetrics tracker) -\u003e void"
                                                                            ],
                                                            "key_properties":  [
                                                                                   "CacheHitRate -\u003e double"
@@ -399,47 +399,47 @@
                                                                         "ResetCounters() -\u003e void",
                                                                         "GetCounter(string name) -\u003e long",
                                                                         "GetTimerElapsed(string name) -\u003e TimeSpan",
-                                                                        "GetMetricsSnapshotAsync(CancellationToken cancellationToken = default) -\u003e Task\u003cICertMetricsSnapshot\u003e"
+                                                                        "GetMetricsSnapshotAsync(CancellationToken cancellationToken = default) -\u003e Task\u003cIPiQMetricsSnapshot\u003e"
                                                                     ]
                                                 },
-                       "CertConnectionMetricsTracker":  {
-                                                            "purpose":  "Provides CertConnectionMetricsTracker functionality",
+                       "PiQConnectionMetricsTracker":  {
+                                                            "purpose":  "Provides PiQConnectionMetricsTracker functionality",
                                                             "key_methods":  [
                                                                                 "RecordConnectionAcquired(TimeSpan acquisitionTime) -\u003e void",
                                                                                 "RecordConnectionReleased(TimeSpan lifetime) -\u003e void",
                                                                                 "RecordConnectionFailure(string errorCode) -\u003e void",
                                                                                 "ResetCounters() -\u003e void",
-                                                                                "GetMetricsSnapshotAsync(CancellationToken cancellationToken = default) -\u003e Task\u003cICertMetricsSnapshot\u003e"
+                                                                                "GetMetricsSnapshotAsync(CancellationToken cancellationToken = default) -\u003e Task\u003cIPiQMetricsSnapshot\u003e"
                                                                             ]
                                                         },
-                       "CertResultFactory":  {
-                                                 "purpose":  "Provides CertResultFactory functionality",
+                       "PiQResultFactory":  {
+                                                 "purpose":  "Provides PiQResultFactory functionality",
                                                  "key_methods":  [
-                                                                     "Success\u003cT\u003e(T value, string? correlationId = null) -\u003e ICertResult\u003cT\u003e",
-                                                                     "Failure\u003cT\u003e(Exception exception, string? correlationId = null) -\u003e ICertResult\u003cT\u003e",
-                                                                     "Failure\u003cT\u003e(string code, string message, string? correlationId = null) -\u003e ICertResult\u003cT\u003e",
-                                                                     "Failure\u003cT\u003e(string message, ErrorCodeType errorCode, string? correlationId = null) -\u003e ICertResult\u003cT\u003e",
-                                                                     "ServiceSuccess\u003cT\u003e(T value, OperationStatusType status, string requestId, string? correlationId = null) -\u003e ICertServiceResult\u003cT\u003e",
-                                                                     "ServiceFailure\u003cT\u003e(string code, string message, OperationStatusType status, string requestId, string? correlationId = null) -\u003e ICertServiceResult\u003cT\u003e",
-                                                                     "ServiceFailure\u003cT\u003e(Exception exception, OperationStatusType status, string requestId, string? correlationId = null) -\u003e ICertServiceResult\u003cT\u003e"
+                                                                     "Success\u003cT\u003e(T value, string? correlationId = null) -\u003e IPiQResult\u003cT\u003e",
+                                                                     "Failure\u003cT\u003e(Exception exception, string? correlationId = null) -\u003e IPiQResult\u003cT\u003e",
+                                                                     "Failure\u003cT\u003e(string code, string message, string? correlationId = null) -\u003e IPiQResult\u003cT\u003e",
+                                                                     "Failure\u003cT\u003e(string message, ErrorCodeType errorCode, string? correlationId = null) -\u003e IPiQResult\u003cT\u003e",
+                                                                     "ServiceSuccess\u003cT\u003e(T value, OperationStatusType status, string requestId, string? correlationId = null) -\u003e IPiQServiceResult\u003cT\u003e",
+                                                                     "ServiceFailure\u003cT\u003e(string code, string message, OperationStatusType status, string requestId, string? correlationId = null) -\u003e IPiQServiceResult\u003cT\u003e",
+                                                                     "ServiceFailure\u003cT\u003e(Exception exception, OperationStatusType status, string requestId, string? correlationId = null) -\u003e IPiQServiceResult\u003cT\u003e"
                                                                  ]
                                              },
-                       "CertCorrelationIdFactory":  {
-                                                        "purpose":  "Provides CertCorrelationIdFactory functionality",
+                       "PiQCorrelationIdFactory":  {
+                                                        "purpose":  "Provides PiQCorrelationIdFactory functionality",
                                                         "key_methods":  [
-                                                                            "Create() -\u003e ICertCorrelationId",
-                                                                            "CreateFromExisting(string existingId) -\u003e ICertCorrelationId"
+                                                                            "Create() -\u003e IPiQCorrelationId",
+                                                                            "CreateFromExisting(string existingId) -\u003e IPiQCorrelationId"
                                                                         ]
                                                     },
-                       "CertExceptionFactory":  {
-                                                    "purpose":  "Provides CertExceptionFactory functionality",
+                       "PiQExceptionFactory":  {
+                                                    "purpose":  "Provides PiQExceptionFactory functionality",
                                                     "key_methods":  [
                                                                         "CreateAuthenticationException(string message, string? errorCode = null, Uri? serviceUri = null, string? tokenId = null, Exception? inner = null) -\u003e Exception",
                                                                         "CreateBuilderException(string message, string propertyName, string? errorCode = null, object? attemptedValue = null, Exception? inner = null) -\u003e Exception",
                                                                         "CreateConfigurationException(string message, string? errorCode = null, IEnumerable\u003cstring\u003e? errors = null, Exception? inner = null) -\u003e Exception",
                                                                         "CreateConnectionException(string message, Uri? serviceUri = null, string? requestId = null, Exception? inner = null) -\u003e Exception",
                                                                         "CreateServiceException(string message, string? errorCode = null, string? serviceName = null, string? operation = null, Exception? inner = null) -\u003e Exception",
-                                                                        "CreateValidationException(string message, string? entityType = null, IEnumerable\u003cCertValidationResult\u003e? errors = null, Exception? inner = null) -\u003e Exception",
+                                                                        "CreateValidationException(string message, string? entityType = null, IEnumerable\u003cPiQValidationResult\u003e? errors = null, Exception? inner = null) -\u003e Exception",
                                                                         "CreateResourceNotFoundException(string resourceType, string resourceId, Exception? inner = null) -\u003e Exception",
                                                                         "CreateResourceLockedException(string resourceId, string? lockOwner = null, Exception? inner = null) -\u003e Exception",
                                                                         "CreateResourceQuotaExceededException(string resourceType, long currentSize, long maxSize, Exception? inner = null) -\u003e Exception",
@@ -448,8 +448,8 @@
                                                                         "CreateObjectDisposedException(string objectName, string message, Exception? inner = null) -\u003e Exception"
                                                                     ]
                                                 },
-                       "CertOperationBase":  {
-                                                 "purpose":  "Provides CertOperationBase functionality",
+                       "PiQOperationBase":  {
+                                                 "purpose":  "Provides PiQOperationBase functionality",
                                                  "key_methods":  [
 
                                                                  ]
@@ -457,7 +457,7 @@
                        "ValidationServiceCollectionExtensions":  {
                                                                      "purpose":  "Provides ValidationServiceCollectionExtensions functionality",
                                                                      "key_methods":  [
-                                                                                         "AddCertValidation(this IServiceCollection services) -\u003e IServiceCollection",
+                                                                                         "AddPiQValidation(this IServiceCollection services) -\u003e IServiceCollection",
                                                                                          "AddValidationRules\u003cTEntity\u003e(this IServiceCollection services,\n        params Type[] rules) -\u003e IServiceCollection"
                                                                                      ],
                                                                      "key_properties":  [
@@ -469,7 +469,7 @@
                                                                   "key_methods":  [
                                                                                       "AddContextServices(this IServiceCollection services) -\u003e IServiceCollection",
                                                                                       "AddOperationContextServices(this IServiceCollection services) -\u003e IServiceCollection",
-                                                                                      "ConfigureCorrelationContext(this IServiceCollection services,\n        Action\u003cConfiguration.CertCorrelationContextOptions\u003e configureOptions) -\u003e IServiceCollection"
+                                                                                      "ConfigureCorrelationContext(this IServiceCollection services,\n        Action\u003cConfiguration.PiQCorrelationContextOptions\u003e configureOptions) -\u003e IServiceCollection"
                                                                                   ],
                                                                   "key_properties":  [
                                                                                          "ContextServiceCollectionExtensions -\u003e class"
@@ -488,7 +488,7 @@
                                                                   "purpose":  "Provides OptionsServiceCollectionExtensions functionality",
                                                                   "key_methods":  [
                                                                                       "AddCoreOptions(this IServiceCollection services, IConfiguration? configuration = null) -\u003e IServiceCollection",
-                                                                                      "AddCertOptions\u003cTOptions\u003e(this IServiceCollection services,\n        IConfiguration? configuration = null,\n        string? sectionName = null) -\u003e IServiceCollection"
+                                                                                      "AddPiQOptions\u003cTOptions\u003e(this IServiceCollection services,\n        IConfiguration? configuration = null,\n        string? sectionName = null) -\u003e IServiceCollection"
                                                                                   ],
                                                                   "key_properties":  [
                                                                                          "OptionsServiceCollectionExtensions -\u003e class"
@@ -515,14 +515,14 @@
                                                                                       "CoreServiceCollectionExtensions -\u003e class"
                                                                                   ]
                                                            },
-                       "CertServiceException":  {
-                                                    "purpose":  "Provides CertServiceException functionality",
+                       "PiQServiceException":  {
+                                                    "purpose":  "Provides PiQServiceException functionality",
                                                     "key_methods":  [
 
                                                                     ]
                                                 },
-                       "CertException":  {
-                                             "purpose":  "Provides CertException functionality",
+                       "PiQException":  {
+                                             "purpose":  "Provides PiQException functionality",
                                              "key_methods":  [
                                                                  "SetCorrelationId(string correlationId) -\u003e void"
                                                              ],
@@ -532,8 +532,8 @@
                                                                     "Timestamp -\u003e DateTimeOffset"
                                                                 ]
                                          },
-                       "CertCircuitBreakerOpenException":  {
-                                                               "purpose":  "Provides CertCircuitBreakerOpenException functionality",
+                       "PiQCircuitBreakerOpenException":  {
+                                                               "purpose":  "Provides PiQCircuitBreakerOpenException functionality",
                                                                "key_methods":  [
 
                                                                                ],
@@ -541,8 +541,8 @@
                                                                                       "CircuitName -\u003e string"
                                                                                   ]
                                                            },
-                       "CertServiceExceptionBase":  {
-                                                        "purpose":  "Provides CertServiceExceptionBase functionality",
+                       "PiQServiceExceptionBase":  {
+                                                        "purpose":  "Provides PiQServiceExceptionBase functionality",
                                                         "key_methods":  [
 
                                                                         ],
@@ -551,8 +551,8 @@
                                                                                "Operation -\u003e string"
                                                                            ]
                                                     },
-                       "CertResourceLockedException":  {
-                                                           "purpose":  "Provides CertResourceLockedException functionality",
+                       "PiQResourceLockedException":  {
+                                                           "purpose":  "Provides PiQResourceLockedException functionality",
                                                            "key_methods":  [
 
                                                                            ],
@@ -561,8 +561,8 @@
                                                                                   "LockOwner -\u003e string"
                                                                               ]
                                                        },
-                       "CertResourceDisposedException":  {
-                                                             "purpose":  "Provides CertResourceDisposedException functionality",
+                       "PiQResourceDisposedException":  {
+                                                             "purpose":  "Provides PiQResourceDisposedException functionality",
                                                              "key_methods":  [
 
                                                                              ],
@@ -570,8 +570,8 @@
                                                                                     "ObjectName -\u003e string"
                                                                                 ]
                                                          },
-                       "CertGenericServiceException":  {
-                                                           "purpose":  "Provides CertGenericServiceException functionality",
+                       "PiQGenericServiceException":  {
+                                                           "purpose":  "Provides PiQGenericServiceException functionality",
                                                            "key_methods":  [
 
                                                                            ],
@@ -580,8 +580,8 @@
                                                                                   "Operation -\u003e string"
                                                                               ]
                                                        },
-                       "CertAuthenticationException":  {
-                                                           "purpose":  "Provides CertAuthenticationException functionality",
+                       "PiQAuthenticationException":  {
+                                                           "purpose":  "Provides PiQAuthenticationException functionality",
                                                            "key_methods":  [
 
                                                                            ],
@@ -590,8 +590,8 @@
                                                                                   "TokenId -\u003e string"
                                                                               ]
                                                        },
-                       "CertMailDeliveryException":  {
-                                                         "purpose":  "Provides CertMailDeliveryException functionality",
+                       "PiQMailDeliveryException":  {
+                                                         "purpose":  "Provides PiQMailDeliveryException functionality",
                                                          "key_methods":  [
 
                                                                          ],
@@ -599,14 +599,14 @@
                                                                                 "RecipientEmail -\u003e string?"
                                                                             ]
                                                      },
-                       "CertConfigurationException":  {
-                                                          "purpose":  "Provides CertConfigurationException functionality",
+                       "PiQConfigurationException":  {
+                                                          "purpose":  "Provides PiQConfigurationException functionality",
                                                           "key_methods":  [
 
                                                                           ]
                                                       },
-                       "CertResourceQuotaExceededException":  {
-                                                                  "purpose":  "Provides CertResourceQuotaExceededException functionality",
+                       "PiQResourceQuotaExceededException":  {
+                                                                  "purpose":  "Provides PiQResourceQuotaExceededException functionality",
                                                                   "key_methods":  [
 
                                                                                   ],
@@ -616,18 +616,18 @@
                                                                                          "MaxSize -\u003e long"
                                                                                      ]
                                                               },
-                       "CertValidationException":  {
-                                                       "purpose":  "Provides CertValidationException functionality",
+                       "PiQValidationException":  {
+                                                       "purpose":  "Provides PiQValidationException functionality",
                                                        "key_methods":  [
 
                                                                        ],
                                                        "key_properties":  [
                                                                               "EntityType -\u003e string",
-                                                                              "Errors -\u003e IReadOnlyCollection\u003cCertValidationResult\u003e"
+                                                                              "Errors -\u003e IReadOnlyCollection\u003cPiQValidationResult\u003e"
                                                                           ]
                                                    },
-                       "CertPropertyValidationException":  {
-                                                               "purpose":  "Provides CertPropertyValidationException functionality",
+                       "PiQPropertyValidationException":  {
+                                                               "purpose":  "Provides PiQPropertyValidationException functionality",
                                                                "key_methods":  [
 
                                                                                ],
@@ -635,19 +635,19 @@
                                                                                       "PropertyName -\u003e string"
                                                                                   ]
                                                            },
-                       "CertResourceNotFoundException":  {
-                                                             "purpose":  "Provides CertResourceNotFoundException functionality",
+                       "PiQResourceNotFoundException":  {
+                                                             "purpose":  "Provides PiQResourceNotFoundException functionality",
                                                              "key_methods":  [
-                                                                                 "ForFolder(string folderId, string folderPath = \"\", Exception? inner = null) -\u003e CertResourceNotFoundException",
-                                                                                 "ForItem(string itemId, string? itemType = null, Exception? inner = null) -\u003e CertResourceNotFoundException"
+                                                                                 "ForFolder(string folderId, string folderPath = \"\", Exception? inner = null) -\u003e PiQResourceNotFoundException",
+                                                                                 "ForItem(string itemId, string? itemType = null, Exception? inner = null) -\u003e PiQResourceNotFoundException"
                                                                              ],
                                                              "key_properties":  [
                                                                                     "ResourceType -\u003e string",
                                                                                     "ResourceId -\u003e string"
                                                                                 ]
                                                          },
-                       "CertConnectionException":  {
-                                                       "purpose":  "Provides CertConnectionException functionality",
+                       "PiQConnectionException":  {
+                                                       "purpose":  "Provides PiQConnectionException functionality",
                                                        "key_methods":  [
 
                                                                        ],
@@ -656,10 +656,10 @@
                                                                               "RequestId -\u003e string?"
                                                                           ]
                                                    },
-                       "CertBuilderException":  {
-                                                    "purpose":  "Provides CertBuilderException functionality",
+                       "PiQBuilderException":  {
+                                                    "purpose":  "Provides PiQBuilderException functionality",
                                                     "key_methods":  [
-                                                                        "ForInvalidState(string currentState, string requiredState, Exception? inner = null) -\u003e CertBuilderException",
+                                                                        "ForInvalidState(string currentState, string requiredState, Exception? inner = null) -\u003e PiQBuilderException",
                                                                         "ToString() -\u003e string"
                                                                     ],
                                                     "key_properties":  [
@@ -669,15 +669,15 @@
                                                                            "RequiredState -\u003e string?"
                                                                        ]
                                                 },
-                       "CertTokenInfo":  {
-                                             "purpose":  "Provides CertTokenInfo functionality",
+                       "PiQTokenInfo":  {
+                                             "purpose":  "Provides PiQTokenInfo functionality",
                                              "key_methods":  [
-                                                                 "WithUpdatedToken(string accessToken, DateTime expiresOn, IEnumerable\u003cstring\u003e scopes) -\u003e CertTokenInfo",
-                                                                 "WithClaim(string key, string value) -\u003e CertTokenInfo",
+                                                                 "WithUpdatedToken(string accessToken, DateTime expiresOn, IEnumerable\u003cstring\u003e scopes) -\u003e PiQTokenInfo",
+                                                                 "WithClaim(string key, string value) -\u003e PiQTokenInfo",
                                                                  "HasScope(string scope) -\u003e bool",
                                                                  "HasClaim(string key) -\u003e bool",
                                                                  "GetClaimValue(string key) -\u003e string?",
-                                                                 "CreateBuilder() -\u003e CertTokenInfoBuilder"
+                                                                 "CreateBuilder() -\u003e PiQTokenInfoBuilder"
                                                              ],
                                              "key_properties":  [
                                                                     "AccessToken -\u003e string",
@@ -687,13 +687,13 @@
                                                                     "TenantId -\u003e string",
                                                                     "ClientId -\u003e string",
                                                                     "AuthType -\u003e AuthenticationMethodType",
-                                                                    "SourceOptions -\u003e ICertAuthenticationOptions?",
+                                                                    "SourceOptions -\u003e IPiQAuthenticationOptions?",
                                                                     "CreatedOn -\u003e DateTime",
-                                                                    "CorrelationIdentifier -\u003e CertCorrelationId?"
+                                                                    "CorrelationIdentifier -\u003e PiQCorrelationId?"
                                                                 ]
                                          },
-                       "CertAuthenticationContext":  {
-                                                         "purpose":  "Provides CertAuthenticationContext functionality",
+                       "PiQAuthenticationContext":  {
+                                                         "purpose":  "Provides PiQAuthenticationContext functionality",
                                                          "key_methods":  [
                                                                              "AcquireTokenAsync(CancellationToken cancellationToken = default) -\u003e Task\u003cstring\u003e",
                                                                              "ValidateTokenAsync(CancellationToken cancellationToken = default) -\u003e Task\u003cbool\u003e",
@@ -704,70 +704,70 @@
                                                                                 "TokenExpiration -\u003e DateTime"
                                                                             ]
                                                      },
-                       "BaseCertAuthenticationProvider":  {
-                                                              "purpose":  "Provides BaseCertAuthenticationProvider functionality",
+                       "BasePiQAuthenticationProvider":  {
+                                                              "purpose":  "Provides BasePiQAuthenticationProvider functionality",
                                                               "key_methods":  [
-                                                                                  "ValidateTokenAsync(ICertTokenInfo token, CancellationToken ct) -\u003e Task\u003cbool\u003e",
-                                                                                  "InvalidateTokenAsync(ICertTokenInfo token, CancellationToken ct) -\u003e Task"
+                                                                                  "ValidateTokenAsync(IPiQTokenInfo token, CancellationToken ct) -\u003e Task\u003cbool\u003e",
+                                                                                  "InvalidateTokenAsync(IPiQTokenInfo token, CancellationToken ct) -\u003e Task"
                                                                               ]
                                                           },
-                       "CertAuthenticationProviderFactory":  {
-                                                                 "purpose":  "Provides CertAuthenticationProviderFactory functionality",
+                       "PiQAuthenticationProviderFactory":  {
+                                                                 "purpose":  "Provides PiQAuthenticationProviderFactory functionality",
                                                                  "key_methods":  [
-                                                                                     "CreateProvider(AuthenticationMethodType authType) -\u003e ICertAuthenticationProvider",
-                                                                                     "CreateProvider(ICertAuthenticationOptions options) -\u003e ICertAuthenticationProvider",
-                                                                                     "CreateProvider(CertAuthenticationOptions options) -\u003e ICertAuthenticationProvider"
+                                                                                     "CreateProvider(AuthenticationMethodType authType) -\u003e IPiQAuthenticationProvider",
+                                                                                     "CreateProvider(IPiQAuthenticationOptions options) -\u003e IPiQAuthenticationProvider",
+                                                                                     "CreateProvider(PiQAuthenticationOptions options) -\u003e IPiQAuthenticationProvider"
                                                                                  ],
                                                                  "key_properties":  [
-                                                                                        "CorrelationContext -\u003e ICertCorrelationContext"
+                                                                                        "CorrelationContext -\u003e IPiQCorrelationContext"
                                                                                     ]
                                                              },
-                       "CertMultiServiceAuthenticationContext":  {
-                                                                     "purpose":  "Provides CertMultiServiceAuthenticationContext functionality",
+                       "PiQMultiServiceAuthenticationContext":  {
+                                                                     "purpose":  "Provides PiQMultiServiceAuthenticationContext functionality",
                                                                      "key_methods":  [
-                                                                                         "GetAuthenticationContext(ServiceEndpointType serviceType) -\u003e ICertAuthenticationContext",
+                                                                                         "GetAuthenticationContext(ServiceEndpointType serviceType) -\u003e IPiQAuthenticationContext",
                                                                                          "AcquireTokenAsync(ServiceEndpointType serviceType, CancellationToken cancellationToken = default) -\u003e Task\u003cstring\u003e",
-                                                                                         "RegisterServiceAsync(ServiceEndpointType serviceType, ICertAuthenticationOptions options, CancellationToken cancellationToken = default) -\u003e Task",
+                                                                                         "RegisterServiceAsync(ServiceEndpointType serviceType, IPiQAuthenticationOptions options, CancellationToken cancellationToken = default) -\u003e Task",
                                                                                          "ValidateTokenAsync(ServiceEndpointType serviceType, CancellationToken cancellationToken = default) -\u003e Task\u003cbool\u003e",
                                                                                          "InvalidateTokenAsync(ServiceEndpointType serviceType, CancellationToken cancellationToken = default) -\u003e Task"
                                                                                      ],
                                                                      "key_properties":  [
-                                                                                            "CorrelationContext -\u003e ICertCorrelationContext"
+                                                                                            "CorrelationContext -\u003e IPiQCorrelationContext"
                                                                                         ]
                                                                  },
-                       "CertAuthenticationOptionsValidator":  {
-                                                                  "purpose":  "Provides CertAuthenticationOptionsValidator functionality",
+                       "PiQAuthenticationOptionsValidator":  {
+                                                                  "purpose":  "Provides PiQAuthenticationOptionsValidator functionality",
                                                                   "key_methods":  [
-                                                                                      "Validate(string? name, CertAuthenticationOptions options) -\u003e ValidateOptionsResult"
+                                                                                      "Validate(string? name, PiQAuthenticationOptions options) -\u003e ValidateOptionsResult"
                                                                                   ]
                                                               },
-                       "CertTokenInfoBuilder":  {
-                                                    "purpose":  "Provides CertTokenInfoBuilder functionality",
+                       "PiQTokenInfoBuilder":  {
+                                                    "purpose":  "Provides PiQTokenInfoBuilder functionality",
                                                     "key_methods":  [
-                                                                        "WithToken(string token) -\u003e CertTokenInfoBuilder",
-                                                                        "WithTokenType(string tokenType) -\u003e CertTokenInfoBuilder",
-                                                                        "WithExpiresAt(DateTime expiresAt) -\u003e CertTokenInfoBuilder",
-                                                                        "WithExpiresInSeconds(int expiresInSeconds) -\u003e CertTokenInfoBuilder",
-                                                                        "WithRefreshToken(string refreshToken) -\u003e CertTokenInfoBuilder",
-                                                                        "WithAuthenticationMethodType(AuthenticationMethodType authType) -\u003e CertTokenInfoBuilder",
-                                                                        "WithTenantId(string tenantId) -\u003e CertTokenInfoBuilder",
-                                                                        "WithClientId(string clientId) -\u003e CertTokenInfoBuilder",
-                                                                        "WithScopes(IReadOnlyList\u003cstring\u003e scopes) -\u003e CertTokenInfoBuilder",
-                                                                        "WithAuthenticationOptions(ICertAuthenticationOptions options) -\u003e CertTokenInfoBuilder",
-                                                                        "WithClaim(string key, string value) -\u003e CertTokenInfoBuilder",
-                                                                        "WithClaims(Dictionary\u003cstring, string\u003e claims) -\u003e CertTokenInfoBuilder",
-                                                                        "WithCorrelationId(CertCorrelationId correlationId) -\u003e CertTokenInfoBuilder",
-                                                                        "Build() -\u003e CertTokenInfo"
+                                                                        "WithToken(string token) -\u003e PiQTokenInfoBuilder",
+                                                                        "WithTokenType(string tokenType) -\u003e PiQTokenInfoBuilder",
+                                                                        "WithExpiresAt(DateTime expiresAt) -\u003e PiQTokenInfoBuilder",
+                                                                        "WithExpiresInSeconds(int expiresInSeconds) -\u003e PiQTokenInfoBuilder",
+                                                                        "WithRefreshToken(string refreshToken) -\u003e PiQTokenInfoBuilder",
+                                                                        "WithAuthenticationMethodType(AuthenticationMethodType authType) -\u003e PiQTokenInfoBuilder",
+                                                                        "WithTenantId(string tenantId) -\u003e PiQTokenInfoBuilder",
+                                                                        "WithClientId(string clientId) -\u003e PiQTokenInfoBuilder",
+                                                                        "WithScopes(IReadOnlyList\u003cstring\u003e scopes) -\u003e PiQTokenInfoBuilder",
+                                                                        "WithAuthenticationOptions(IPiQAuthenticationOptions options) -\u003e PiQTokenInfoBuilder",
+                                                                        "WithClaim(string key, string value) -\u003e PiQTokenInfoBuilder",
+                                                                        "WithClaims(Dictionary\u003cstring, string\u003e claims) -\u003e PiQTokenInfoBuilder",
+                                                                        "WithCorrelationId(PiQCorrelationId correlationId) -\u003e PiQTokenInfoBuilder",
+                                                                        "Build() -\u003e PiQTokenInfo"
                                                                     ],
                                                     "key_properties":  [
-                                                                           "CertTokenInfoBuilder -\u003e class"
+                                                                           "PiQTokenInfoBuilder -\u003e class"
                                                                        ]
                                                 },
-                       "CertAuthenticationResult":  {
-                                                        "purpose":  "Provides CertAuthenticationResult functionality",
+                       "PiQAuthenticationResult":  {
+                                                        "purpose":  "Provides PiQAuthenticationResult functionality",
                                                         "key_methods":  [
-                                                                            "Success(string accessToken,\n        DateTimeOffset expiresOn,\n        string? refreshToken = null,\n        string tokenType = \"Bearer\",\n        IEnumerable\u003cstring\u003e? scopes = null) -\u003e CertAuthenticationResult",
-                                                                            "Failure(string errorMessage) -\u003e CertAuthenticationResult"
+                                                                            "Success(string accessToken,\n        DateTimeOffset expiresOn,\n        string? refreshToken = null,\n        string tokenType = \"Bearer\",\n        IEnumerable\u003cstring\u003e? scopes = null) -\u003e PiQAuthenticationResult",
+                                                                            "Failure(string errorMessage) -\u003e PiQAuthenticationResult"
                                                                         ],
                                                         "key_properties":  [
                                                                                "AccessToken -\u003e string",
@@ -777,31 +777,31 @@
                                                                                "Scopes -\u003e IReadOnlyCollection\u003cstring\u003e",
                                                                                "IsSuccess -\u003e bool",
                                                                                "ErrorMessage -\u003e string?",
-                                                                               "errorMessage) -\u003e CertAuthenticationResult(string"
+                                                                               "errorMessage) -\u003e PiQAuthenticationResult(string"
                                                                            ]
                                                     },
-                       "CertTokenCredential":  {
-                                                   "purpose":  "Provides CertTokenCredential functionality",
+                       "PiQTokenCredential":  {
+                                                   "purpose":  "Provides PiQTokenCredential functionality",
                                                    "key_methods":  [
 
                                                                    ]
                                                },
-                       "CertTokenRequestContext":  {
-                                                       "purpose":  "Provides CertTokenRequestContext functionality",
+                       "PiQTokenRequestContext":  {
+                                                       "purpose":  "Provides PiQTokenRequestContext functionality",
                                                        "key_methods":  [
 
                                                                        ],
                                                        "key_properties":  [
-                                                                              "CertTokenRequestContext -\u003e class",
-                                                                              "scopes) -\u003e CertTokenRequestContext(string[]",
-                                                                              "scopes) -\u003e CertTokenRequestContext(IEnumerable\u003cstring\u003e"
+                                                                              "PiQTokenRequestContext -\u003e class",
+                                                                              "scopes) -\u003e PiQTokenRequestContext(string[]",
+                                                                              "scopes) -\u003e PiQTokenRequestContext(IEnumerable\u003cstring\u003e"
                                                                           ]
                                                    },
-                       "CertMemoryTokenCache":  {
-                                                    "purpose":  "Provides CertMemoryTokenCache functionality",
+                       "PiQMemoryTokenCache":  {
+                                                    "purpose":  "Provides PiQMemoryTokenCache functionality",
                                                     "key_methods":  [
-                                                                        "GetTokenAsync(string cacheKey, CancellationToken cancellationToken = default) -\u003e Task\u003cCertTokenInfo?\u003e",
-                                                                        "SetTokenAsync(string cacheKey, CertTokenInfo token, CancellationToken cancellationToken = default) -\u003e Task",
+                                                                        "GetTokenAsync(string cacheKey, CancellationToken cancellationToken = default) -\u003e Task\u003cPiQTokenInfo?\u003e",
+                                                                        "SetTokenAsync(string cacheKey, PiQTokenInfo token, CancellationToken cancellationToken = default) -\u003e Task",
                                                                         "RemoveTokenAsync(string cacheKey, CancellationToken cancellationToken = default) -\u003e Task",
                                                                         "ClearAsync(CancellationToken cancellationToken = default) -\u003e Task",
                                                                         "GetCountAsync(CancellationToken cancellationToken = default) -\u003e Task\u003cint\u003e",
@@ -809,18 +809,18 @@
                                                                         "DisposeAsync() -\u003e ValueTask"
                                                                     ]
                                                 },
-                       "ICertTokenCache":  {
-                                               "purpose":  "Provides ICertTokenCache functionality",
+                       "IPiQTokenCache":  {
+                                               "purpose":  "Provides IPiQTokenCache functionality",
                                                "key_methods":  [
-                                                                   "GetTokenAsync(string cacheKey, CancellationToken cancellationToken = default) -\u003e Task\u003cCertTokenInfo?\u003e",
-                                                                   "SetTokenAsync(string cacheKey, CertTokenInfo token, CancellationToken cancellationToken = default) -\u003e Task",
+                                                                   "GetTokenAsync(string cacheKey, CancellationToken cancellationToken = default) -\u003e Task\u003cPiQTokenInfo?\u003e",
+                                                                   "SetTokenAsync(string cacheKey, PiQTokenInfo token, CancellationToken cancellationToken = default) -\u003e Task",
                                                                    "RemoveTokenAsync(string cacheKey, CancellationToken cancellationToken = default) -\u003e Task",
                                                                    "ClearAsync(CancellationToken cancellationToken = default) -\u003e Task",
                                                                    "GetCountAsync(CancellationToken cancellationToken = default) -\u003e Task\u003cint\u003e"
                                                                ],
                                                "key_properties":  [
                                                                       "PiQApi.Core.Authentication.TokenCache.Interfaces -\u003e namespace",
-                                                                      "ICertTokenCache -\u003e interface",
+                                                                      "IPiQTokenCache -\u003e interface",
                                                                       "expired -\u003e not",
                                                                       "default) -\u003e =",
                                                                       "default) -\u003e =",
@@ -830,56 +830,56 @@
                                                                   ],
                                                "type":  "interface"
                                            },
-                       "CertTokenValidator":  {
-                                                  "purpose":  "Provides CertTokenValidator functionality",
+                       "PiQTokenValidator":  {
+                                                  "purpose":  "Provides PiQTokenValidator functionality",
                                                   "key_methods":  [
-                                                                      "ValidateTokenAsync(ICertTokenInfo token, CancellationToken ct) -\u003e Task\u003cbool\u003e",
-                                                                      "InvalidateTokenAsync(ICertTokenInfo token, CancellationToken ct) -\u003e Task",
-                                                                      "ValidateTokenAsync(CertTokenInfo token,\n        CancellationToken cancellationToken = default) -\u003e Task\u003cICertValidationResult\u003e",
-                                                                      "IsValidAsync(CertTokenInfo token, CancellationToken cancellationToken = default) -\u003e Task\u003cbool\u003e",
-                                                                      "ValidateToken(CertTokenInfo token) -\u003e ICertValidationResult",
-                                                                      "IsValid(CertTokenInfo token) -\u003e bool"
+                                                                      "ValidateTokenAsync(IPiQTokenInfo token, CancellationToken ct) -\u003e Task\u003cbool\u003e",
+                                                                      "InvalidateTokenAsync(IPiQTokenInfo token, CancellationToken ct) -\u003e Task",
+                                                                      "ValidateTokenAsync(PiQTokenInfo token,\n        CancellationToken cancellationToken = default) -\u003e Task\u003cIPiQValidationResult\u003e",
+                                                                      "IsValidAsync(PiQTokenInfo token, CancellationToken cancellationToken = default) -\u003e Task\u003cbool\u003e",
+                                                                      "ValidateToken(PiQTokenInfo token) -\u003e IPiQValidationResult",
+                                                                      "IsValid(PiQTokenInfo token) -\u003e bool"
                                                                   ]
                                               },
-                       "CertConnectionOptionsValidator":  {
-                                                              "purpose":  "Provides CertConnectionOptionsValidator functionality",
+                       "PiQConnectionOptionsValidator":  {
+                                                              "purpose":  "Provides PiQConnectionOptionsValidator functionality",
                                                               "key_methods":  [
-                                                                                  "Validate(string? name, CertConnectionOptions options) -\u003e ValidateOptionsResult"
+                                                                                  "Validate(string? name, PiQConnectionOptions options) -\u003e ValidateOptionsResult"
                                                                               ],
                                                               "key_properties":  [
-                                                                                     "logger) -\u003e CertConnectionOptionsValidator(ILogger\u003cCertConnectionOptionsValidator\u003e"
+                                                                                     "logger) -\u003e PiQConnectionOptionsValidator(ILogger\u003cPiQConnectionOptionsValidator\u003e"
                                                                                  ]
                                                           },
-                       "CertResiliencePolicy":  {
-                                                    "purpose":  "Provides CertResiliencePolicy functionality",
+                       "PiQResiliencePolicy":  {
+                                                    "purpose":  "Provides PiQResiliencePolicy functionality",
                                                     "key_methods":  [
                                                                         "ExecuteAsync\u003cT\u003e(Func\u003cCancellationToken, Task\u003cT\u003e\u003e operation, CancellationToken cancellationToken) -\u003e Task\u003cT\u003e",
                                                                         "ExecuteAsync(Func\u003cCancellationToken, Task\u003e operation, CancellationToken cancellationToken) -\u003e Task"
                                                                     ]
                                                 },
-                       "CertPolicyOptionsValidator":  {
-                                                          "purpose":  "Provides CertPolicyOptionsValidator functionality",
+                       "PiQPolicyOptionsValidator":  {
+                                                          "purpose":  "Provides PiQPolicyOptionsValidator functionality",
                                                           "key_methods":  [
-                                                                              "Validate(string? name, CertPolicyOptions options) -\u003e ValidateOptionsResult"
+                                                                              "Validate(string? name, PiQPolicyOptions options) -\u003e ValidateOptionsResult"
                                                                           ]
                                                       },
-                       "CertResiliencePolicyExecutor":  {
-                                                            "purpose":  "Provides CertResiliencePolicyExecutor functionality",
+                       "PiQResiliencePolicyExecutor":  {
+                                                            "purpose":  "Provides PiQResiliencePolicyExecutor functionality",
                                                             "key_methods":  [
                                                                                 "ExecuteAsync\u003cT\u003e(Func\u003cTask\u003cT\u003e\u003e operation,\n        ResiliencePolicyType policyType,\n        string operationName,\n        CancellationToken cancellationToken = default) -\u003e Task\u003cT\u003e",
                                                                                 "ExecuteAsync(Func\u003cTask\u003e operation,\n        ResiliencePolicyType policyType,\n        string operationName,\n        CancellationToken cancellationToken = default) -\u003e Task"
                                                                             ]
                                                         },
-                       "CertOperationResiliencePolicyExecutor":  {
-                                                                     "purpose":  "Provides CertOperationResiliencePolicyExecutor functionality",
+                       "PiQOperationResiliencePolicyExecutor":  {
+                                                                     "purpose":  "Provides PiQOperationResiliencePolicyExecutor functionality",
                                                                      "key_methods":  [
                                                                                          "ExecuteBusinessOperationAsync\u003cT\u003e(Func\u003cTask\u003cT\u003e\u003e operation, ResiliencePolicyType policyType, string operationName, CancellationToken cancellationToken = default) -\u003e Task\u003cT\u003e",
                                                                                          "ExecuteBusinessOperationAsync(Func\u003cTask\u003e operation, ResiliencePolicyType policyType, string operationName, CancellationToken cancellationToken = default) -\u003e Task",
-                                                                                         "ExecuteWithOperationMappingAsync\u003cT\u003e(Func\u003cTask\u003cICertResult\u003cT\u003e\u003e\u003e operation,\n        Func\u003cException, ICertOperationContext, ICertResult\u003cT\u003e\u003e exceptionMapper,\n        ResiliencePolicyType policyType,\n        string operationName,\n        CancellationToken cancellationToken = default) -\u003e Task\u003cICertResult\u003cT\u003e\u003e"
+                                                                                         "ExecuteWithOperationMappingAsync\u003cT\u003e(Func\u003cTask\u003cIPiQResult\u003cT\u003e\u003e\u003e operation,\n        Func\u003cException, IPiQOperationContext, IPiQResult\u003cT\u003e\u003e exceptionMapper,\n        ResiliencePolicyType policyType,\n        string operationName,\n        CancellationToken cancellationToken = default) -\u003e Task\u003cIPiQResult\u003cT\u003e\u003e"
                                                                                      ]
                                                                  },
-                       "CertCircuitBreakerStatus":  {
-                                                        "purpose":  "Provides CertCircuitBreakerStatus functionality",
+                       "PiQCircuitBreakerStatus":  {
+                                                        "purpose":  "Provides PiQCircuitBreakerStatus functionality",
                                                         "key_methods":  [
                                                                             "RecordSuccessAsync(CancellationToken cancellationToken = default) -\u003e Task",
                                                                             "RecordFailureAsync(CancellationToken cancellationToken = default) -\u003e Task",
@@ -897,16 +897,16 @@
                                                                                "IsOpen -\u003e bool"
                                                                            ]
                                                     },
-                       "CertServiceResiliencePolicyExecutor":  {
-                                                                   "purpose":  "Provides CertServiceResiliencePolicyExecutor functionality",
+                       "PiQServiceResiliencePolicyExecutor":  {
+                                                                   "purpose":  "Provides PiQServiceResiliencePolicyExecutor functionality",
                                                                    "key_methods":  [
                                                                                        "ExecuteServiceAsync\u003cT\u003e(Func\u003cTask\u003cT\u003e\u003e operation, ResiliencePolicyType policyType, string operationName, CancellationToken cancellationToken = default) -\u003e Task\u003cT\u003e",
                                                                                        "ExecuteServiceAsync(Func\u003cTask\u003e operation, ResiliencePolicyType policyType, string operationName, CancellationToken cancellationToken = default) -\u003e Task",
-                                                                                       "ExecuteWithServiceMappingAsync\u003cT\u003e(Func\u003cTask\u003cICertServiceResult\u003cT\u003e\u003e\u003e operation,\n        Func\u003cException, ICertOperationContext, ICertServiceResult\u003cT\u003e\u003e exceptionMapper,\n        ResiliencePolicyType policyType,\n        string operationName,\n        CancellationToken cancellationToken = default) -\u003e Task\u003cICertServiceResult\u003cT\u003e\u003e"
+                                                                                       "ExecuteWithServiceMappingAsync\u003cT\u003e(Func\u003cTask\u003cIPiQServiceResult\u003cT\u003e\u003e\u003e operation,\n        Func\u003cException, IPiQOperationContext, IPiQServiceResult\u003cT\u003e\u003e exceptionMapper,\n        ResiliencePolicyType policyType,\n        string operationName,\n        CancellationToken cancellationToken = default) -\u003e Task\u003cIPiQServiceResult\u003cT\u003e\u003e"
                                                                                    ]
                                                                },
-                       "CertPolicyFactory":  {
-                                                 "purpose":  "Provides CertPolicyFactory functionality",
+                       "PiQPolicyFactory":  {
+                                                 "purpose":  "Provides PiQPolicyFactory functionality",
                                                  "key_methods":  [
                                                                      "CreatePolicy\u003cT\u003e(ResiliencePolicyType policyType) -\u003e IAsyncPolicy\u003cT\u003e",
                                                                      "CreateCompositePolicy\u003cT\u003e(IEnumerable\u003cResiliencePolicyType\u003e policyTypes) -\u003e IAsyncPolicy\u003cT\u003e",
@@ -918,8 +918,8 @@
                                                                      "IsTransientException(Exception ex) -\u003e bool"
                                                                  ]
                                              },
-                       "ICertPolicyFactory":  {
-                                                  "purpose":  "Provides ICertPolicyFactory functionality",
+                       "IPiQPolicyFactory":  {
+                                                  "purpose":  "Provides IPiQPolicyFactory functionality",
                                                   "key_methods":  [
                                                                       "CreatePolicy\u003cT\u003e(ResiliencePolicyType policyType) -\u003e IAsyncPolicy\u003cT\u003e",
                                                                       "CreateDefaultPolicy\u003cT\u003e() -\u003e IAsyncPolicy\u003cT\u003e",
@@ -933,26 +933,26 @@
                                                                          "PiQApi.Abstractions.Enums -\u003e using",
                                                                          "Polly -\u003e using",
                                                                          "PiQApi.Core.Resilience.Interfaces -\u003e namespace",
-                                                                         "ICertPolicyFactory -\u003e interface",
+                                                                         "IPiQPolicyFactory -\u003e interface",
                                                                          "policyType) -\u003e CreatePolicy\u003cT\u003e(ResiliencePolicyType",
                                                                          "timeout) -\u003e CreateTimeoutPolicy\u003cT\u003e(TimeSpan",
                                                                          "ex) -\u003e IsTransientException(Exception"
                                                                      ],
                                                   "type":  "interface"
                                               },
-                       "CertValidationMessages":  {
-                                                      "purpose":  "Provides CertValidationMessages functionality",
+                       "PiQValidationMessages":  {
+                                                      "purpose":  "Provides PiQValidationMessages functionality",
                                                       "key_methods":  [
 
                                                                       ]
                                                   },
-                       "CertServiceResponse":  {
-                                                   "purpose":  "Provides CertServiceResponse functionality",
+                       "PiQServiceResponse":  {
+                                                   "purpose":  "Provides PiQServiceResponse functionality",
                                                    "key_methods":  [
-                                                                       "Success(string? correlationId = null) -\u003e CertServiceResponse",
-                                                                       "FromException(Exception? ex,\n        string? correlationId = null) -\u003e CertServiceResponse",
-                                                                       "WithProperty(string key, object value) -\u003e CertServiceResponse",
-                                                                       "WithProperties(IDictionary\u003cstring, object\u003e properties) -\u003e CertServiceResponse"
+                                                                       "Success(string? correlationId = null) -\u003e PiQServiceResponse",
+                                                                       "FromException(Exception? ex,\n        string? correlationId = null) -\u003e PiQServiceResponse",
+                                                                       "WithProperty(string key, object value) -\u003e PiQServiceResponse",
+                                                                       "WithProperties(IDictionary\u003cstring, object\u003e properties) -\u003e PiQServiceResponse"
                                                                    ],
                                                    "key_properties":  [
                                                                           "Status -\u003e ResultStatusType",
@@ -964,8 +964,8 @@
                                                                           "Result -\u003e object?"
                                                                       ]
                                                },
-                       "CertServiceResponseCollection":  {
-                                                             "purpose":  "Provides CertServiceResponseCollection functionality",
+                       "PiQServiceResponseCollection":  {
+                                                             "purpose":  "Provides PiQServiceResponseCollection functionality",
                                                              "key_methods":  [
                                                                                  "GetAllErrors() -\u003e IEnumerable\u003cstring\u003e",
                                                                                  "HasErrorOfType\u003cTError\u003e() -\u003e bool",
@@ -974,22 +974,22 @@
                                                                                  "GetAggregateStatus() -\u003e ResultStatusType"
                                                                              ]
                                                          },
-                       "CertErrorMappingService":  {
-                                                       "purpose":  "Provides CertErrorMappingService functionality",
+                       "PiQErrorMappingService":  {
+                                                       "purpose":  "Provides PiQErrorMappingService functionality",
                                                        "key_methods":  [
                                                                            "MapServiceErrorToErrorCodeType(ErrorCodeType serviceError) -\u003e ErrorCodeType",
                                                                            "CreateServiceExceptionFromResponse(Exception responseException) -\u003e Exception",
                                                                            "MapSystemExceptionToErrorCodeType(Exception exception) -\u003e ErrorCodeType"
                                                                        ]
                                                    },
-                       "CertCorrelationScopeDisposer":  {
-                                                            "purpose":  "Provides CertCorrelationScopeDisposer functionality",
+                       "PiQCorrelationScopeDisposer":  {
+                                                            "purpose":  "Provides PiQCorrelationScopeDisposer functionality",
                                                             "key_methods":  [
                                                                                 "Dispose() -\u003e void"
                                                                             ]
                                                         },
-                       "CertCorrelationContext":  {
-                                                      "purpose":  "Provides CertCorrelationContext functionality",
+                       "PiQCorrelationContext":  {
+                                                      "purpose":  "Provides PiQCorrelationContext functionality",
                                                       "key_methods":  [
                                                                           "AddProperty(string key, object value) -\u003e void",
                                                                           "AddProperties(IDictionary\u003cstring, object\u003e properties) -\u003e void",
@@ -1000,10 +1000,10 @@
                                                                           "SetCorrelationId(string id) -\u003e void"
                                                                       ]
                                                   },
-                       "CertResourceManager":  {
-                                                   "purpose":  "Provides CertResourceManager functionality",
+                       "PiQResourceManager":  {
+                                                   "purpose":  "Provides PiQResourceManager functionality",
                                                    "key_methods":  [
-                                                                       "CreateScopeAsync(string? scopeId = null, CancellationToken cancellationToken = default) -\u003e Task\u003cICertResourceScope\u003e",
+                                                                       "CreateScopeAsync(string? scopeId = null, CancellationToken cancellationToken = default) -\u003e Task\u003cIPiQResourceScope\u003e",
                                                                        "CleanupScopeAsync(string scopeId, CancellationToken cancellationToken = default) -\u003e Task",
                                                                        "CleanupAllScopesAsync(CancellationToken cancellationToken = default) -\u003e Task",
                                                                        "TrackResourceAsync\u003cT\u003e(T resource, CancellationToken cancellationToken = default) -\u003e Task\u003cT\u003e",
@@ -1012,38 +1012,38 @@
                                                                        "GetTrackedResources\u003cT\u003e() -\u003e IReadOnlyCollection\u003cT\u003e",
                                                                        "TryAcquireResourceAsync(string resourceId, TimeSpan timeout, CancellationToken cancellationToken = default) -\u003e Task\u003cbool\u003e",
                                                                        "ReleaseResourceAsync(string resourceId, CancellationToken cancellationToken = default) -\u003e Task",
-                                                                       "CreateResourceScopeAsync(IEnumerable\u003cstring\u003e resourceIds, CancellationToken cancellationToken = default) -\u003e Task\u003cICertResourceScope\u003e",
+                                                                       "CreateResourceScopeAsync(IEnumerable\u003cstring\u003e resourceIds, CancellationToken cancellationToken = default) -\u003e Task\u003cIPiQResourceScope\u003e",
                                                                        "DisposeAsync() -\u003e ValueTask"
                                                                    ]
                                                },
-                       "CertResourceContext":  {
-                                                   "purpose":  "Provides CertResourceContext functionality",
+                       "PiQResourceContext":  {
+                                                   "purpose":  "Provides PiQResourceContext functionality",
                                                    "key_methods":  [
                                                                        "GetResource\u003cT\u003e(string resourceId) -\u003e T",
                                                                        "TrackResourceAsync\u003cT\u003e(T resource, CancellationToken cancellationToken = default) -\u003e Task\u003cT\u003e",
                                                                        "GetTrackedResources\u003cT\u003e() -\u003e IReadOnlyCollection\u003cT\u003e",
                                                                        "TryAcquireResourceAsync(string resourceId, TimeSpan timeout, CancellationToken cancellationToken = default) -\u003e Task\u003cbool\u003e",
                                                                        "ReleaseResourceAsync(string resourceId, CancellationToken cancellationToken = default) -\u003e Task",
-                                                                       "CreateResourceScopeAsync(IEnumerable\u003cstring\u003e resourceIds, CancellationToken cancellationToken = default) -\u003e Task\u003cICertResourceScope\u003e",
+                                                                       "CreateResourceScopeAsync(IEnumerable\u003cstring\u003e resourceIds, CancellationToken cancellationToken = default) -\u003e Task\u003cIPiQResourceScope\u003e",
                                                                        "Dispose() -\u003e void"
                                                                    ],
                                                    "key_properties":  [
-                                                                          "CorrelationContext -\u003e ICertCorrelationContext",
-                                                                          "Metrics -\u003e ICertResourceMetrics"
+                                                                          "CorrelationContext -\u003e IPiQCorrelationContext",
+                                                                          "Metrics -\u003e IPiQResourceMetrics"
                                                                       ]
                                                },
-                       "CertCorrelationScopeState":  {
-                                                         "purpose":  "Provides CertCorrelationScopeState functionality",
+                       "PiQCorrelationScopeState":  {
+                                                         "purpose":  "Provides PiQCorrelationScopeState functionality",
                                                          "key_methods":  [
 
                                                                          ],
                                                          "key_properties":  [
                                                                                 "ParentId -\u003e string?",
-                                                                                "parentId) -\u003e CertCorrelationScopeState(string?"
+                                                                                "parentId) -\u003e PiQCorrelationScopeState(string?"
                                                                             ]
                                                      },
-                       "CertResourceScope":  {
-                                                 "purpose":  "Provides CertResourceScope functionality",
+                       "PiQResourceScope":  {
+                                                 "purpose":  "Provides PiQResourceScope functionality",
                                                  "key_methods":  [
                                                                      "AddResourceAsync\u003cT\u003e(T resource, CancellationToken cancellationToken = default) -\u003e Task\u003cT\u003e",
                                                                      "RemoveResourceAsync\u003cT\u003e(T resource, CancellationToken cancellationToken = default) -\u003e Task",
@@ -1055,8 +1055,8 @@
                                                                         "Created -\u003e DateTimeOffset"
                                                                     ]
                                              },
-                       "CertResourceMetrics":  {
-                                                   "purpose":  "Provides CertResourceMetrics functionality",
+                       "PiQResourceMetrics":  {
+                                                   "purpose":  "Provides PiQResourceMetrics functionality",
                                                    "key_methods":  [
                                                                        "IncrementCounter(string name, long increment = 1) -\u003e void",
                                                                        "RecordResourceAcquired(string resourceType) -\u003e int",
@@ -1068,20 +1068,20 @@
                                                                        "RecordOperation(string resourceType, string operationType, TimeSpan duration) -\u003e void",
                                                                        "RecordError(string resourceType, string errorType) -\u003e void",
                                                                        "ResetCounters() -\u003e void",
-                                                                       "GetMetricsSnapshotAsync(CancellationToken cancellationToken = default) -\u003e Task\u003cICertMetricsSnapshot\u003e"
+                                                                       "GetMetricsSnapshotAsync(CancellationToken cancellationToken = default) -\u003e Task\u003cIPiQMetricsSnapshot\u003e"
                                                                    ]
                                                },
-                       "CertOperationId":  {
-                                               "purpose":  "Provides CertOperationId functionality",
+                       "PiQOperationId":  {
+                                               "purpose":  "Provides PiQOperationId functionality",
                                                "key_methods":  [
-                                                                   "WithProperty(string key, object value) -\u003e CertOperationId",
-                                                                   "WithProperties(IDictionary\u003cstring, object\u003e properties) -\u003e CertOperationId",
-                                                                   "WithName(string name) -\u003e CertOperationId",
+                                                                   "WithProperty(string key, object value) -\u003e PiQOperationId",
+                                                                   "WithProperties(IDictionary\u003cstring, object\u003e properties) -\u003e PiQOperationId",
+                                                                   "WithName(string name) -\u003e PiQOperationId",
                                                                    "GetPropertyValue\u003cT\u003e(string key) -\u003e T?",
                                                                    "TryGetPropertyValue\u003cT\u003e(string key, out T? value) -\u003e bool",
                                                                    "HasProperty(string key) -\u003e bool",
                                                                    "ToString() -\u003e string",
-                                                                   "Equals(CertOperationId? other) -\u003e bool",
+                                                                   "Equals(PiQOperationId? other) -\u003e bool",
                                                                    "Equals(object? obj) -\u003e bool",
                                                                    "GetHashCode() -\u003e int"
                                                                ],
@@ -1091,14 +1091,14 @@
                                                                       "CreatedUtc -\u003e DateTime"
                                                                   ]
                                            },
-                       "CertResourceId":  {
-                                              "purpose":  "Provides CertResourceId functionality",
+                       "PiQResourceId":  {
+                                              "purpose":  "Provides PiQResourceId functionality",
                                               "key_methods":  [
-                                                                  "WithType(string type) -\u003e CertResourceId",
-                                                                  "WithValue(string value) -\u003e CertResourceId",
-                                                                  "TryParse(string? input, out CertResourceId? resourceId, ICertTimeProvider? timeProvider = null) -\u003e bool",
+                                                                  "WithType(string type) -\u003e PiQResourceId",
+                                                                  "WithValue(string value) -\u003e PiQResourceId",
+                                                                  "TryParse(string? input, out PiQResourceId? resourceId, IPiQTimeProvider? timeProvider = null) -\u003e bool",
                                                                   "ToString() -\u003e string",
-                                                                  "Equals(CertResourceId? other) -\u003e bool",
+                                                                  "Equals(PiQResourceId? other) -\u003e bool",
                                                                   "Equals(object? obj) -\u003e bool",
                                                                   "GetHashCode() -\u003e int"
                                                               ],
@@ -1108,17 +1108,17 @@
                                                                      "CreatedUtc -\u003e DateTime"
                                                                  ]
                                           },
-                       "CertCorrelationId":  {
-                                                 "purpose":  "Provides CertCorrelationId functionality",
+                       "PiQCorrelationId":  {
+                                                 "purpose":  "Provides PiQCorrelationId functionality",
                                                  "key_methods":  [
-                                                                     "WithProperty(string key, object value) -\u003e ICertCorrelationId",
-                                                                     "WithProperties(IDictionary\u003cstring, object\u003e properties) -\u003e ICertCorrelationId",
+                                                                     "WithProperty(string key, object value) -\u003e IPiQCorrelationId",
+                                                                     "WithProperties(IDictionary\u003cstring, object\u003e properties) -\u003e IPiQCorrelationId",
                                                                      "GetProperty\u003cT\u003e(string key) -\u003e T?",
                                                                      "TryGetProperty\u003cT\u003e(string key, out T? value) -\u003e bool",
                                                                      "HasProperty(string key) -\u003e bool",
                                                                      "ToString() -\u003e string",
-                                                                     "FromInterface(ICertCorrelationId correlationId) -\u003e CertCorrelationId",
-                                                                     "Equals(CertCorrelationId? other) -\u003e bool",
+                                                                     "FromInterface(IPiQCorrelationId correlationId) -\u003e PiQCorrelationId",
+                                                                     "Equals(PiQCorrelationId? other) -\u003e bool",
                                                                      "Equals(object? obj) -\u003e bool",
                                                                      "GetHashCode() -\u003e int"
                                                                  ],
@@ -1127,8 +1127,8 @@
                                                                         "CreatedUtc -\u003e DateTime"
                                                                     ]
                                              },
-                       "CertOperationMetrics":  {
-                                                    "purpose":  "Provides CertOperationMetrics functionality",
+                       "PiQOperationMetrics":  {
+                                                    "purpose":  "Provides PiQOperationMetrics functionality",
                                                     "key_methods":  [
                                                                         "RecordOperation(string operationName, TimeSpan duration, bool success) -\u003e void",
                                                                         "RecordCustomMetric(string metricName, double value) -\u003e void",
@@ -1138,52 +1138,52 @@
                                                                         "RecordTime(string name, TimeSpan elapsedTime) -\u003e void",
                                                                         "GetCounter(string name) -\u003e long",
                                                                         "GetTimerElapsed(string name) -\u003e TimeSpan",
-                                                                        "GetMetricsSnapshotAsync(CancellationToken cancellationToken = default) -\u003e Task\u003cICertMetricsSnapshot\u003e",
+                                                                        "GetMetricsSnapshotAsync(CancellationToken cancellationToken = default) -\u003e Task\u003cIPiQMetricsSnapshot\u003e",
                                                                         "ResetCounters() -\u003e void"
                                                                     ]
                                                 },
-                       "CertOperationContext":  {
-                                                    "purpose":  "Provides CertOperationContext functionality",
+                       "PiQOperationContext":  {
+                                                    "purpose":  "Provides PiQOperationContext functionality",
                                                     "key_methods":  [
-                                                                        "ValidateAsync\u003cT\u003e(T entity, ValidationModeType mode, CancellationToken cancellationToken = default) -\u003e Task\u003cICertValidationResult\u003e",
-                                                                        "ValidateRequiredAsync\u003cT\u003e(T entity, CancellationToken cancellationToken = default) -\u003e Task\u003cICertValidationResult\u003e",
-                                                                        "ValidateAndCreateResultAsync\u003cT\u003e(T entity, ValidationModeType mode, CancellationToken cancellationToken = default) -\u003e Task\u003cICertResult\u003cT\u003e\u003e",
-                                                                        "CreateValidationContext(ValidationModeType mode = ValidationModeType.Standard, CancellationToken? cancellationToken = null) -\u003e CertValidationContext"
+                                                                        "ValidateAsync\u003cT\u003e(T entity, ValidationModeType mode, CancellationToken cancellationToken = default) -\u003e Task\u003cIPiQValidationResult\u003e",
+                                                                        "ValidateRequiredAsync\u003cT\u003e(T entity, CancellationToken cancellationToken = default) -\u003e Task\u003cIPiQValidationResult\u003e",
+                                                                        "ValidateAndCreateResultAsync\u003cT\u003e(T entity, ValidationModeType mode, CancellationToken cancellationToken = default) -\u003e Task\u003cIPiQResult\u003cT\u003e\u003e",
+                                                                        "CreateValidationContext(ValidationModeType mode = ValidationModeType.Standard, CancellationToken? cancellationToken = null) -\u003e PiQValidationContext"
                                                                     ]
                                                 },
-                       "CertOperationValidator":  {
-                                                      "purpose":  "Provides CertOperationValidator functionality",
+                       "PiQOperationValidator":  {
+                                                      "purpose":  "Provides PiQOperationValidator functionality",
                                                       "key_methods":  [
-                                                                          "SetOperationContext(ICertOperationContext operationContext) -\u003e void",
-                                                                          "ValidateAsync\u003cT\u003e(T entity, ValidationModeType mode, CancellationToken cancellationToken = default) -\u003e Task\u003cICertValidationResult\u003e",
-                                                                          "ValidateRequiredAsync\u003cT\u003e(T entity, CancellationToken cancellationToken = default) -\u003e Task\u003cICertValidationResult\u003e",
-                                                                          "ValidateAndCreateResultAsync\u003cT\u003e(T entity, ValidationModeType mode, CancellationToken cancellationToken = default) -\u003e Task\u003cICertResult\u003cT\u003e\u003e",
-                                                                          "CreateValidationContext(ValidationModeType mode = ValidationModeType.Standard, CancellationToken? cancellationToken = null) -\u003e CertValidationContext"
+                                                                          "SetOperationContext(IPiQOperationContext operationContext) -\u003e void",
+                                                                          "ValidateAsync\u003cT\u003e(T entity, ValidationModeType mode, CancellationToken cancellationToken = default) -\u003e Task\u003cIPiQValidationResult\u003e",
+                                                                          "ValidateRequiredAsync\u003cT\u003e(T entity, CancellationToken cancellationToken = default) -\u003e Task\u003cIPiQValidationResult\u003e",
+                                                                          "ValidateAndCreateResultAsync\u003cT\u003e(T entity, ValidationModeType mode, CancellationToken cancellationToken = default) -\u003e Task\u003cIPiQResult\u003cT\u003e\u003e",
+                                                                          "CreateValidationContext(ValidationModeType mode = ValidationModeType.Standard, CancellationToken? cancellationToken = null) -\u003e PiQValidationContext"
                                                                       ]
                                                   },
-                       "CertOperationContextFactory":  {
-                                                           "purpose":  "Provides CertOperationContextFactory functionality",
+                       "PiQOperationContextFactory":  {
+                                                           "purpose":  "Provides PiQOperationContextFactory functionality",
                                                            "key_methods":  [
-                                                                               "Create(string operationName, ICertCorrelationContext correlationContext) -\u003e ICertOperationContext",
-                                                                               "CreateWithProperties(string operationName,\n        ICertCorrelationContext correlationContext,\n        IDictionary\u003cstring, object\u003e properties) -\u003e ICertOperationContext",
-                                                                               "CreateConfigured(string operationName,\n        ICertCorrelationContext correlationContext,\n        OperationType operationType,\n        TimeSpan? timeout = null,\n        ICertOperationContext? parent = null,\n        CancellationToken cancellationToken = default) -\u003e ICertOperationContext",
-                                                                               "CreateChild(ICertOperationContext parent,\n        string childOperationName,\n        OperationType? operationType = null) -\u003e ICertOperationContext",
-                                                                               "CreateStandalone(string operationName,\n        OperationType operationType = OperationType.Generic,\n        TimeSpan? timeout = null,\n        CancellationToken cancellationToken = default) -\u003e ICertOperationContext",
-                                                                               "CreateInitializedContextAsync(CancellationToken cancellationToken = default) -\u003e Task\u003cICertOperationContext\u003e"
+                                                                               "Create(string operationName, IPiQCorrelationContext correlationContext) -\u003e IPiQOperationContext",
+                                                                               "CreateWithProperties(string operationName,\n        IPiQCorrelationContext correlationContext,\n        IDictionary\u003cstring, object\u003e properties) -\u003e IPiQOperationContext",
+                                                                               "CreateConfigured(string operationName,\n        IPiQCorrelationContext correlationContext,\n        OperationType operationType,\n        TimeSpan? timeout = null,\n        IPiQOperationContext? parent = null,\n        CancellationToken cancellationToken = default) -\u003e IPiQOperationContext",
+                                                                               "CreateChild(IPiQOperationContext parent,\n        string childOperationName,\n        OperationType? operationType = null) -\u003e IPiQOperationContext",
+                                                                               "CreateStandalone(string operationName,\n        OperationType operationType = OperationType.Generic,\n        TimeSpan? timeout = null,\n        CancellationToken cancellationToken = default) -\u003e IPiQOperationContext",
+                                                                               "CreateInitializedContextAsync(CancellationToken cancellationToken = default) -\u003e Task\u003cIPiQOperationContext\u003e"
                                                                            ]
                                                        },
-                       "CertOperationScope":  {
-                                                  "purpose":  "Provides CertOperationScope functionality",
+                       "PiQOperationScope":  {
+                                                  "purpose":  "Provides PiQOperationScope functionality",
                                                   "key_methods":  [
                                                                       "Dispose() -\u003e void"
                                                                   ],
                                                   "key_properties":  [
                                                                          "Name -\u003e string",
-                                                                         "Context -\u003e ICertOperationContext"
+                                                                         "Context -\u003e IPiQOperationContext"
                                                                      ]
                                               },
-                       "CertOperationIdentifier":  {
-                                                       "purpose":  "Provides CertOperationIdentifier functionality",
+                       "PiQOperationIdentifier":  {
+                                                       "purpose":  "Provides PiQOperationIdentifier functionality",
                                                        "key_methods":  [
 
                                                                        ],
@@ -1191,13 +1191,13 @@
                                                                               "Id -\u003e string",
                                                                               "Name -\u003e string",
                                                                               "OperationType -\u003e OperationType",
-                                                                              "Parent -\u003e ICertOperationIdentifier?",
+                                                                              "Parent -\u003e IPiQOperationIdentifier?",
                                                                               "StartTime -\u003e DateTimeOffset",
                                                                               "Timeout -\u003e TimeSpan"
                                                                           ]
                                                    },
-                       "CertOperationState":  {
-                                                  "purpose":  "Provides CertOperationState functionality",
+                       "PiQOperationState":  {
+                                                  "purpose":  "Provides PiQOperationState functionality",
                                                   "key_methods":  [
                                                                       "UpdateState(OperationStatusType status, ErrorCodeType? errorCode = null, string? errorMessage = null) -\u003e void",
                                                                       "TransitionToRunning() -\u003e void",
@@ -1215,69 +1215,69 @@
                                                                          "StateTimestamp -\u003e DateTimeOffset"
                                                                      ]
                                               },
-                       "CertCorrelationScope":  {
-                                                    "purpose":  "Provides CertCorrelationScope functionality",
+                       "PiQCorrelationScope":  {
+                                                    "purpose":  "Provides PiQCorrelationScope functionality",
                                                     "key_methods":  [
                                                                         "Dispose() -\u003e void"
                                                                     ],
                                                     "key_properties":  [
-                                                                           "Context -\u003e ICertCorrelationContext"
+                                                                           "Context -\u003e IPiQCorrelationContext"
                                                                        ]
                                                 },
-                       "CertOperationResources":  {
-                                                      "purpose":  "Provides CertOperationResources functionality",
+                       "PiQOperationResources":  {
+                                                      "purpose":  "Provides PiQOperationResources functionality",
                                                       "key_methods":  [
                                                                           "GetResourceAsync\u003cT\u003e(string resourceId, CancellationToken cancellationToken = default) -\u003e Task\u003cT\u003e",
                                                                           "TrackResourceAsync\u003cT\u003e(T resource, CancellationToken cancellationToken = default) -\u003e Task\u003cT\u003e",
                                                                           "TryAcquireResourceAsync(string resourceId, TimeSpan timeout, CancellationToken cancellationToken = default) -\u003e Task\u003cbool\u003e",
                                                                           "ReleaseResourceAsync(string resourceId, CancellationToken cancellationToken = default) -\u003e Task",
-                                                                          "CreateResourceScopeAsync(IEnumerable\u003cstring\u003e resourceIds, CancellationToken cancellationToken = default) -\u003e Task\u003cICertResourceScope\u003e"
+                                                                          "CreateResourceScopeAsync(IEnumerable\u003cstring\u003e resourceIds, CancellationToken cancellationToken = default) -\u003e Task\u003cIPiQResourceScope\u003e"
                                                                       ]
                                                   },
-                       "CertTimeProviderFactory":  {
-                                                       "purpose":  "Provides CertTimeProviderFactory functionality",
+                       "PiQTimeProviderFactory":  {
+                                                       "purpose":  "Provides PiQTimeProviderFactory functionality",
                                                        "key_methods":  [
-                                                                           "ConfigureStatic(ICertTimeProvider provider) -\u003e void",
-                                                                           "Configure(ICertTimeProvider provider) -\u003e void",
+                                                                           "ConfigureStatic(IPiQTimeProvider provider) -\u003e void",
+                                                                           "Configure(IPiQTimeProvider provider) -\u003e void",
                                                                            "ResetStatic() -\u003e void",
                                                                            "Reset() -\u003e void"
                                                                        ]
                                                    },
-                       "CertSystemTimeProvider":  {
-                                                      "purpose":  "Provides CertSystemTimeProvider functionality",
+                       "PiQSystemTimeProvider":  {
+                                                      "purpose":  "Provides PiQSystemTimeProvider functionality",
                                                       "key_methods":  [
                                                                           "GetTimestamp() -\u003e TimeSpan",
                                                                           "GetElapsedTime(TimeSpan timestamp) -\u003e TimeSpan"
                                                                       ]
                                                   },
-                       "CertRandomProviderFactory":  {
-                                                         "purpose":  "Provides CertRandomProviderFactory functionality",
+                       "PiQRandomProviderFactory":  {
+                                                         "purpose":  "Provides PiQRandomProviderFactory functionality",
                                                          "key_methods":  [
-                                                                             "CreateFastProvider() -\u003e ICertRandomProvider",
-                                                                             "CreateSecureProvider() -\u003e ICertRandomProvider",
-                                                                             "CreateProvider(bool useCryptographic) -\u003e ICertRandomProvider",
-                                                                             "Configure(ICertRandomProvider fastProvider, ICertRandomProvider secureProvider) -\u003e void",
+                                                                             "CreateFastProvider() -\u003e IPiQRandomProvider",
+                                                                             "CreateSecureProvider() -\u003e IPiQRandomProvider",
+                                                                             "CreateProvider(bool useCryptographic) -\u003e IPiQRandomProvider",
+                                                                             "Configure(IPiQRandomProvider fastProvider, IPiQRandomProvider secureProvider) -\u003e void",
                                                                              "Reset() -\u003e void"
                                                                          ],
                                                          "key_properties":  [
-                                                                                "CertRandomProviderFactory -\u003e class"
+                                                                                "PiQRandomProviderFactory -\u003e class"
                                                                             ]
                                                      },
-                       "CertSystemRandomProvider":  {
-                                                        "purpose":  "Provides CertSystemRandomProvider functionality",
+                       "PiQSystemRandomProvider":  {
+                                                        "purpose":  "Provides PiQSystemRandomProvider functionality",
                                                         "key_methods":  [
                                                                             "NextInt() -\u003e int",
                                                                             "NextIntUnderMax(int maxValue) -\u003e int",
                                                                             "NextIntInRange(int minValue, int maxValue) -\u003e int",
                                                                             "NextBytes(byte[] buffer) -\u003e void",
                                                                             "NextDouble() -\u003e double",
-                                                                            "Create(bool useCryptographic,\n        ILogger\u003cCertSystemRandomProvider\u003e? logger = null,\n        ICertCorrelationContext? correlationContext = null) -\u003e ICertRandomProvider",
-                                                                            "CreateSecure(ILogger\u003cCertSystemRandomProvider\u003e? logger = null,\n        ICertCorrelationContext? correlationContext = null) -\u003e ICertRandomProvider",
-                                                                            "CreateFast(ILogger\u003cCertSystemRandomProvider\u003e? logger = null,\n        ICertCorrelationContext? correlationContext = null) -\u003e ICertRandomProvider"
+                                                                            "Create(bool useCryptographic,\n        ILogger\u003cPiQSystemRandomProvider\u003e? logger = null,\n        IPiQCorrelationContext? correlationContext = null) -\u003e IPiQRandomProvider",
+                                                                            "CreateSecure(ILogger\u003cPiQSystemRandomProvider\u003e? logger = null,\n        IPiQCorrelationContext? correlationContext = null) -\u003e IPiQRandomProvider",
+                                                                            "CreateFast(ILogger\u003cPiQSystemRandomProvider\u003e? logger = null,\n        IPiQCorrelationContext? correlationContext = null) -\u003e IPiQRandomProvider"
                                                                         ]
                                                     },
-                       "CertEmptyDisposable":  {
-                                                   "purpose":  "Provides CertEmptyDisposable functionality",
+                       "PiQEmptyDisposable":  {
+                                                   "purpose":  "Provides PiQEmptyDisposable functionality",
                                                    "key_methods":  [
                                                                        "Dispose() -\u003e void"
                                                                    ],
@@ -1285,19 +1285,19 @@
                                                                           "Instance -\u003e IDisposable"
                                                                       ]
                                                },
-                       "CertDisposableAction":  {
-                                                    "purpose":  "Provides CertDisposableAction functionality",
+                       "PiQDisposableAction":  {
+                                                    "purpose":  "Provides PiQDisposableAction functionality",
                                                     "key_methods":  [
                                                                         "Dispose() -\u003e void"
                                                                     ],
                                                     "key_properties":  [
-                                                                           "action) -\u003e CertDisposableAction(Action"
+                                                                           "action) -\u003e PiQDisposableAction(Action"
                                                                        ]
                                                 },
                        "ServiceCollectionExtensions":  {
                                                            "purpose":  "Provides ServiceCollectionExtensions functionality",
                                                            "key_methods":  [
-                                                                               "AddCertValidation(this IServiceCollection services) -\u003e IServiceCollection"
+                                                                               "AddPiQValidation(this IServiceCollection services) -\u003e IServiceCollection"
                                                                            ],
                                                            "key_properties":  [
                                                                                   "ServiceCollectionExtensions -\u003e class"

@@ -17,7 +17,7 @@ public class NamingConventionTests : BaseArchitectureTest
     {
         var rule = Classes()
             .That().ResideInNamespace("PiQApi.Exchange.Core.Results")
-            .And().ImplementInterface("ICertResult")
+            .And().ImplementInterface("IPiQResult")
             .Should().HaveNameEndingWith("Result")
             .Because("Result implementation classes should follow naming convention");
 

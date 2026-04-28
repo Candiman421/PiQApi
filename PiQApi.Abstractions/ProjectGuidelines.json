@@ -58,8 +58,8 @@
       "rationale": "Prevents collision with standard library enums"
     },
     "validation_types": {
-      "pattern": "Cert[Name]",
-      "examples": ["CertValidationContext", "CertCertValidationResult"],
+      "pattern": "PiQ[Name]",
+      "examples": ["PiQValidationContext", "PiQValidationResult"],
       "rationale": "Prevents collision with System.ComponentModel.DataAnnotations"
     }
   },
@@ -67,12 +67,12 @@
     "colliding_types": [
       {
         "standard_type": "System.ComponentModel.DataAnnotations.ValidationContext",
-        "our_type": "CertValidationContext",
+        "our_type": "PiQValidationContext",
         "usage": "For operation validation context that carries state"
       },
       {
-        "standard_type": "System.ComponentModel.DataAnnotations.CertValidationResult",
-        "our_type": "CertCertValidationResult",
+        "standard_type": "System.ComponentModel.DataAnnotations.PiQValidationResult",
+        "our_type": "PiQValidationResult",
         "usage": "For operation validation results that carry metadata"
       }
     ],

@@ -75,13 +75,13 @@ public abstract class PiQException : Exception, IPiQExceptionInfo
         : base(message ?? "An error occurred", inner)
     {
         ErrorCode = "PiQError";
-        CorrelationId = inner is IPiQExceptionInfo certEx ? certEx.CorrelationId : Guid.NewGuid().ToString();
+        CorrelationId = inner is IPiQExceptionInfo piqEx ? piqEx.CorrelationId : Guid.NewGuid().ToString();
         Timestamp = DateTimeOffset.UtcNow;
 
         // Copy additional data from inner exception if it's a PiQException
-        if (inner is IPiQExceptionInfo innerCertEx)
+        if (inner is IPiQExceptionInfo innerPiQEx)
         {
-            foreach (var kvp in innerCertEx.AdditionalData)
+            foreach (var kvp in innerPiQEx.AdditionalData)
             {
                 _additionalData[kvp.Key] = kvp.Value;
             }
@@ -98,13 +98,13 @@ public abstract class PiQException : Exception, IPiQExceptionInfo
         : base(message ?? "An error occurred", inner)
     {
         ErrorCode = errorCode ?? "PiQError";
-        CorrelationId = inner is IPiQExceptionInfo certEx ? certEx.CorrelationId : Guid.NewGuid().ToString();
+        CorrelationId = inner is IPiQExceptionInfo piqEx ? piqEx.CorrelationId : Guid.NewGuid().ToString();
         Timestamp = DateTimeOffset.UtcNow;
 
         // Copy additional data from inner exception if it's a PiQException
-        if (inner is IPiQExceptionInfo innerCertEx)
+        if (inner is IPiQExceptionInfo innerPiQEx)
         {
-            foreach (var kvp in innerCertEx.AdditionalData)
+            foreach (var kvp in innerPiQEx.AdditionalData)
             {
                 _additionalData[kvp.Key] = kvp.Value;
             }

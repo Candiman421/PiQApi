@@ -75,7 +75,7 @@ namespace PiQApi.Ews.Operations.Folders.Operations
         {
             ThrowIfDisposed();
             await ValidateStateAsync(cancellationToken).ConfigureAwait(false);
-            
+
             ArgumentNullException.ThrowIfNull(emails);
             ArgumentNullException.ThrowIfNull(destinationFolderId);
 
@@ -105,9 +105,9 @@ namespace PiQApi.Ews.Operations.Folders.Operations
             {
                 Logger.LogError(ex, "Error during batch import. CorrelationId: {CorrelationId}", CorrelationId);
 
-                if (ex is PiQException certException)
+                if (ex is PiQException piqException)
                 {
-                    return _resultFactory.Failure<BatchImportResult>(certException, Context.CorrelationId);
+                    return _resultFactory.Failure<BatchImportResult>(piqException, Context.CorrelationId);
                 }
 
                 var wrappedException = CreateExceptionWithCorrelation(
@@ -131,7 +131,7 @@ namespace PiQApi.Ews.Operations.Folders.Operations
         {
             ThrowIfDisposed();
             await ValidateStateAsync(cancellationToken).ConfigureAwait(false);
-            
+
             ArgumentNullException.ThrowIfNull(emails);
             ArgumentNullException.ThrowIfNull(destinationFolderId);
 
@@ -150,7 +150,7 @@ namespace PiQApi.Ews.Operations.Folders.Operations
 
                 // Create property set with extended properties for dates
                 var propertySet = await _propertySetService.WithEmailPropertiesAsync(
-                    new PropertySet(BasePropertySet.FirstClassProperties), 
+                    new PropertySet(BasePropertySet.FirstClassProperties),
                     cancellationToken).ConfigureAwait(false);
 
                 var result = new BatchImportResult();
@@ -185,9 +185,9 @@ namespace PiQApi.Ews.Operations.Folders.Operations
             {
                 Logger.LogError(ex, "Error during batch metadata import. CorrelationId: {CorrelationId}", CorrelationId);
 
-                if (ex is PiQException certException)
+                if (ex is PiQException piqException)
                 {
-                    return _resultFactory.Failure<BatchImportResult>(certException, Context.CorrelationId);
+                    return _resultFactory.Failure<BatchImportResult>(piqException, Context.CorrelationId);
                 }
 
                 var wrappedException = CreateExceptionWithCorrelation(
@@ -221,10 +221,10 @@ namespace PiQApi.Ews.Operations.Folders.Operations
 
                 // Wait for all tasks in this batch to complete
                 var results = await Task.WhenAll(tasks).ConfigureAwait(false);
-                
+
                 // Collect errors
                 errors.AddRange(results.Where(r => !r.Success && r.Error != null).Select(r => r.Error!));
-                
+
                 // Clear tasks for next batch
                 tasks.Clear();
 
@@ -252,7 +252,7 @@ namespace PiQApi.Ews.Operations.Folders.Operations
                 cancellationToken.ThrowIfCancellationRequested();
 
                 var (success, error) = await ImportSingleEmailAsync(email, destinationFolderId, cancellationToken).ConfigureAwait(false);
-                
+
                 if (success)
                 {
                     successCount++;
@@ -282,7 +282,7 @@ namespace PiQApi.Ews.Operations.Folders.Operations
                 // Set message properties
                 message.Subject = email.Subject;
                 message.Body = new MessageBody(email.BodyType == BodyType.HTML ? BodyType.HTML : BodyType.Text, email.Body);
-                
+
                 // Set recipients
                 if (email.ToRecipients != null)
                 {
@@ -291,7 +291,7 @@ namespace PiQApi.Ews.Operations.Folders.Operations
                         message.ToRecipients.Add(recipient);
                     }
                 }
-                
+
                 if (email.CcRecipients != null)
                 {
                     foreach (var recipient in email.CcRecipients)
@@ -299,7 +299,7 @@ namespace PiQApi.Ews.Operations.Folders.Operations
                         message.CcRecipients.Add(recipient);
                     }
                 }
-                
+
                 if (email.BccRecipients != null)
                 {
                     foreach (var recipient in email.BccRecipients)
@@ -318,9 +318,9 @@ namespace PiQApi.Ews.Operations.Folders.Operations
             }
             catch (Exception ex)
             {
-                Logger.LogError(ex, "Error importing email {Subject}. CorrelationId: {CorrelationId}", 
+                Logger.LogError(ex, "Error importing email {Subject}. CorrelationId: {CorrelationId}",
                     email.Subject, CorrelationId);
-                
+
                 return (false, new EmailImportError(email.Subject, ex.Message));
             }
         }
@@ -336,26 +336,26 @@ namespace PiQApi.Ews.Operations.Folders.Operations
             CancellationToken cancellationToken)
         {
             var tasks = new List<Task<(bool Success, EmailImportError? Error)>>();
-            
+
             foreach (var email in batch)
             {
                 tasks.Add(ImportSingleEmailWithMetadataAsync(
-                    email, 
-                    destinationFolderId, 
-                    propertySet, 
-                    preserveOriginalDates, 
+                    email,
+                    destinationFolderId,
+                    propertySet,
+                    preserveOriginalDates,
                     cancellationToken));
             }
 
             var results = await Task.WhenAll(tasks).ConfigureAwait(false);
-            
+
             var errors = results
                 .Where(r => !r.Success && r.Error != null)
                 .Select(r => r.Error!)
                 .ToList();
-                
+
             int successCount = batch.Count - errors.Count;
-            
+
             return new BatchImportResult(successCount, errors.Count, errors);
         }
 
@@ -377,12 +377,12 @@ namespace PiQApi.Ews.Operations.Folders.Operations
                 cancellationToken.ThrowIfCancellationRequested();
 
                 var (success, error) = await ImportSingleEmailWithMetadataAsync(
-                    email, 
-                    destinationFolderId, 
-                    propertySet, 
-                    preserveOriginalDates, 
+                    email,
+                    destinationFolderId,
+                    propertySet,
+                    preserveOriginalDates,
                     cancellationToken).ConfigureAwait(false);
-                
+
                 if (success)
                 {
                     successCount++;
@@ -410,14 +410,14 @@ namespace PiQApi.Ews.Operations.Folders.Operations
             {
                 // Create a new message with property set
                 var message = await _emailCreateService.CreateMessageWithPropertySetAsync(
-                    Context, 
-                    propertySet, 
+                    Context,
+                    propertySet,
                     cancellationToken).ConfigureAwait(false);
 
                 // Set basic properties
                 message.Subject = email.Subject;
                 message.Body = new MessageBody(email.BodyType == BodyType.HTML ? BodyType.HTML : BodyType.Text, email.Body);
-                
+
                 // Set recipients
                 if (email.ToRecipients != null)
                 {
@@ -426,7 +426,7 @@ namespace PiQApi.Ews.Operations.Folders.Operations
                         message.ToRecipients.Add(recipient);
                     }
                 }
-                
+
                 if (email.CcRecipients != null)
                 {
                     foreach (var recipient in email.CcRecipients)
@@ -434,7 +434,7 @@ namespace PiQApi.Ews.Operations.Folders.Operations
                         message.CcRecipients.Add(recipient);
                     }
                 }
-                
+
                 if (email.BccRecipients != null)
                 {
                     foreach (var recipient in email.BccRecipients)
@@ -442,7 +442,7 @@ namespace PiQApi.Ews.Operations.Folders.Operations
                         message.BccRecipients.Add(recipient);
                     }
                 }
-                
+
                 // Set sender if available
                 if (!string.IsNullOrEmpty(email.FromAddress))
                 {
@@ -473,7 +473,7 @@ namespace PiQApi.Ews.Operations.Folders.Operations
 
                     // Set date properties
                     message.SetExtendedProperty(clientSubmitTimeProperty, email.OriginalSentDate.Value);
-                    
+
                     // Set received date if available, otherwise use sent date
                     DateTime receivedDate = email.OriginalReceivedDate ?? email.OriginalSentDate.Value;
                     message.SetExtendedProperty(receivedTimeProperty, receivedDate);
@@ -504,12 +504,12 @@ namespace PiQApi.Ews.Operations.Folders.Operations
                             var fileAttachment = message.Attachments.AddFileAttachment(
                                 attachment.Name,
                                 attachment.Content);
-                                
+
                             if (!string.IsNullOrEmpty(attachment.ContentId))
                             {
                                 fileAttachment.ContentId = attachment.ContentId;
                             }
-                            
+
                             if (!string.IsNullOrEmpty(attachment.ContentType))
                             {
                                 fileAttachment.ContentType = attachment.ContentType;
@@ -525,9 +525,9 @@ namespace PiQApi.Ews.Operations.Folders.Operations
             }
             catch (Exception ex)
             {
-                Logger.LogError(ex, "Error importing email with metadata {Subject}. CorrelationId: {CorrelationId}", 
+                Logger.LogError(ex, "Error importing email with metadata {Subject}. CorrelationId: {CorrelationId}",
                     email.Subject, CorrelationId);
-                
+
                 return (false, new EmailImportError(email.Subject, ex.Message));
             }
         }

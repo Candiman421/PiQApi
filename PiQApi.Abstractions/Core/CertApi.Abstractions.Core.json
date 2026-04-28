@@ -15,31 +15,31 @@
                      "usage_pattern":  "Import and use classes from this namespace to work with Core functionality."
                  },
     "components":  {
-                       "ICertCorrelationAware":  {
-                                                     "purpose":  "Provides ICertCorrelationAware functionality",
+                       "IPiQCorrelationAware":  {
+                                                     "purpose":  "Provides IPiQCorrelationAware functionality",
                                                      "key_methods":  [
 
                                                                      ],
                                                      "key_properties":  [
                                                                             "PiQApi.Abstractions.Core -\u003e namespace",
-                                                                            "ICertCorrelationAware -\u003e interface",
-                                                                            "CorrelationContext -\u003e ICertCorrelationContext"
+                                                                            "IPiQCorrelationAware -\u003e interface",
+                                                                            "CorrelationContext -\u003e IPiQCorrelationContext"
                                                                         ],
                                                      "type":  "interface"
                                                  },
-                       "ICertCorrelationId":  {
-                                                  "purpose":  "Provides ICertCorrelationId functionality",
+                       "IPiQCorrelationId":  {
+                                                  "purpose":  "Provides IPiQCorrelationId functionality",
                                                   "key_methods":  [
                                                                       "value(alias for Id) -\u003e identifier",
-                                                                      "WithProperty(string key, object value) -\u003e ICertCorrelationId",
-                                                                      "WithProperties(IDictionary\u003cstring, object\u003e properties) -\u003e ICertCorrelationId",
+                                                                      "WithProperty(string key, object value) -\u003e IPiQCorrelationId",
+                                                                      "WithProperties(IDictionary\u003cstring, object\u003e properties) -\u003e IPiQCorrelationId",
                                                                       "GetProperty\u003cT\u003e(string key) -\u003e T?",
                                                                       "TryGetProperty\u003cT\u003e(string key, out T? value) -\u003e bool",
                                                                       "HasProperty(string key) -\u003e bool"
                                                                   ],
                                                   "key_properties":  [
                                                                          "PiQApi.Abstractions.Core -\u003e namespace",
-                                                                         "ICertCorrelationId -\u003e interface",
+                                                                         "IPiQCorrelationId -\u003e interface",
                                                                          "Id -\u003e string",
                                                                          "Value -\u003e string",
                                                                          "Properties -\u003e object\u003e",
@@ -52,8 +52,8 @@
                                                                      ],
                                                   "type":  "interface"
                                               },
-                       "ICertCorrelationContext":  {
-                                                       "purpose":  "Provides ICertCorrelationContext functionality",
+                       "IPiQCorrelationContext":  {
+                                                       "purpose":  "Provides IPiQCorrelationContext functionality",
                                                        "key_methods":  [
                                                                            "AddProperty(string key, object value) -\u003e void",
                                                                            "AddProperties(IDictionary\u003cstring, object\u003e properties) -\u003e void",
@@ -64,7 +64,7 @@
                                                                        ],
                                                        "key_properties":  [
                                                                               "PiQApi.Abstractions.Core -\u003e namespace",
-                                                                              "ICertCorrelationContext -\u003e interface",
+                                                                              "IPiQCorrelationContext -\u003e interface",
                                                                               "CorrelationId -\u003e string",
                                                                               "CreatedUtc -\u003e DateTime",
                                                                               "ParentCorrelationId -\u003e string?",
@@ -80,10 +80,10 @@
                                                                           ],
                                                        "type":  "interface"
                                                    },
-                       "ICertResourceManager":  {
-                                                    "purpose":  "Provides ICertResourceManager functionality",
+                       "IPiQResourceManager":  {
+                                                    "purpose":  "Provides IPiQResourceManager functionality",
                                                     "key_methods":  [
-                                                                        "CreateScopeAsync(string? scopeId = null, CancellationToken cancellationToken = default) -\u003e Task\u003cICertResourceScope\u003e",
+                                                                        "CreateScopeAsync(string? scopeId = null, CancellationToken cancellationToken = default) -\u003e Task\u003cIPiQResourceScope\u003e",
                                                                         "CleanupScopeAsync(string scopeId, CancellationToken cancellationToken = default) -\u003e Task",
                                                                         "CleanupAllScopesAsync(CancellationToken cancellationToken = default) -\u003e Task",
                                                                         "TrackResourceAsync\u003cT\u003e(T resource, CancellationToken cancellationToken = default) -\u003e Task\u003cT\u003e",
@@ -92,7 +92,7 @@
                                                                         "GetTrackedResources\u003cT\u003e() -\u003e IReadOnlyCollection\u003cT\u003e",
                                                                         "TryAcquireResourceAsync(string resourceId, TimeSpan timeout, CancellationToken cancellationToken = default) -\u003e Task\u003cbool\u003e",
                                                                         "ReleaseResourceAsync(string resourceId, CancellationToken cancellationToken = default) -\u003e Task",
-                                                                        "CreateResourceScopeAsync(IEnumerable\u003cstring\u003e resourceIds, CancellationToken cancellationToken = default) -\u003e Task\u003cICertResourceScope\u003e"
+                                                                        "CreateResourceScopeAsync(IEnumerable\u003cstring\u003e resourceIds, CancellationToken cancellationToken = default) -\u003e Task\u003cIPiQResourceScope\u003e"
                                                                     ],
                                                     "key_properties":  [
                                                                            "PiQApi.Abstractions.Core -\u003e namespace",
@@ -110,11 +110,11 @@
                                                                        ],
                                                     "type":  "interface"
                                                 },
-                       "ICertResourceContext":  {
-                                                    "purpose":  "Provides ICertResourceContext functionality",
+                       "IPiQResourceContext":  {
+                                                    "purpose":  "Provides IPiQResourceContext functionality",
                                                     "key_methods":  [
                                                                         "GetResource\u003cT\u003e(string resourceId) -\u003e T",
-                                                                        "CreateResourceScopeAsync(IEnumerable\u003cstring\u003e resourceIds, CancellationToken cancellationToken = default) -\u003e Task\u003cICertResourceScope\u003e",
+                                                                        "CreateResourceScopeAsync(IEnumerable\u003cstring\u003e resourceIds, CancellationToken cancellationToken = default) -\u003e Task\u003cIPiQResourceScope\u003e",
                                                                         "TrackResourceAsync\u003cT\u003e(T resource, CancellationToken cancellationToken = default) -\u003e Task\u003cT\u003e",
                                                                         "GetTrackedResources\u003cT\u003e() -\u003e IReadOnlyCollection\u003cT\u003e",
                                                                         "TryAcquireResourceAsync(string resourceId, TimeSpan timeout, CancellationToken cancellationToken = default) -\u003e Task\u003cbool\u003e",
@@ -122,31 +122,31 @@
                                                                     ],
                                                     "key_properties":  [
                                                                            "PiQApi.Abstractions.Core -\u003e namespace",
-                                                                           "ICertCorrelationAware -\u003e :",
-                                                                           "ICertResource -\u003e class,",
+                                                                           "IPiQCorrelationAware -\u003e :",
+                                                                           "IPiQResource -\u003e class,",
                                                                            "default) -\u003e =",
-                                                                           "Metrics -\u003e ICertResourceMetrics",
-                                                                           "ICertResource -\u003e class,",
-                                                                           "ICertResource -\u003e class,",
+                                                                           "Metrics -\u003e IPiQResourceMetrics",
+                                                                           "IPiQResource -\u003e class,",
+                                                                           "IPiQResource -\u003e class,",
                                                                            "acquired -\u003e was",
                                                                            "default) -\u003e =",
                                                                            "default) -\u003e ="
                                                                        ],
                                                     "type":  "interface"
                                                 },
-                       "ICertAsyncLockFactory":  {
-                                                     "purpose":  "Provides ICertAsyncLockFactory functionality",
+                       "IPiQAsyncLockFactory":  {
+                                                     "purpose":  "Provides IPiQAsyncLockFactory functionality",
                                                      "key_methods":  [
-                                                                         "Create() -\u003e ICertAsyncLock"
+                                                                         "Create() -\u003e IPiQAsyncLock"
                                                                      ],
                                                      "key_properties":  [
                                                                             "PiQApi.Abstractions.Core -\u003e namespace",
-                                                                            "ICertAsyncLockFactory -\u003e interface"
+                                                                            "IPiQAsyncLockFactory -\u003e interface"
                                                                         ],
                                                      "type":  "interface"
                                                  },
-                       "ICertAsyncLock":  {
-                                              "purpose":  "Provides ICertAsyncLock functionality",
+                       "IPiQAsyncLock":  {
+                                              "purpose":  "Provides IPiQAsyncLock functionality",
                                               "key_methods":  [
                                                                   "AcquireAsync(CancellationToken cancellationToken = default) -\u003e Task\u003cIDisposable\u003e",
                                                                   "TryAcquireAsync(TimeSpan timeout, CancellationToken cancellationToken = default) -\u003e Task\u003cIDisposable?\u003e",
@@ -163,14 +163,14 @@
                                                                  ],
                                               "type":  "interface"
                                           },
-                       "ICertTrackable":  {
-                                              "purpose":  "Provides ICertTrackable functionality",
+                       "IPiQTrackable":  {
+                                              "purpose":  "Provides IPiQTrackable functionality",
                                               "key_methods":  [
 
                                                               ],
                                               "key_properties":  [
                                                                      "PiQApi.Abstractions.Core -\u003e namespace",
-                                                                     "ICertTrackable -\u003e interface",
+                                                                     "IPiQTrackable -\u003e interface",
                                                                      "TrackingId -\u003e string",
                                                                      "ParentTrackingId -\u003e string?",
                                                                      "TrackingMetadata -\u003e object\u003e",
@@ -178,8 +178,8 @@
                                                                  ],
                                               "type":  "interface"
                                           },
-                       "ICertResourceScope":  {
-                                                  "purpose":  "Provides ICertResourceScope functionality",
+                       "IPiQResourceScope":  {
+                                                  "purpose":  "Provides IPiQResourceScope functionality",
                                                   "key_methods":  [
                                                                       "AddResourceAsync\u003cT\u003e(T resource, CancellationToken cancellationToken = default) -\u003e Task\u003cT\u003e",
                                                                       "RemoveResourceAsync\u003cT\u003e(T resource, CancellationToken cancellationToken = default) -\u003e Task",
@@ -196,8 +196,8 @@
                                                                      ],
                                                   "type":  "interface"
                                               },
-                       "ICertConfigurationManager":  {
-                                                         "purpose":  "Provides ICertConfigurationManager functionality",
+                       "IPiQConfigurationManager":  {
+                                                         "purpose":  "Provides IPiQConfigurationManager functionality",
                                                          "key_methods":  [
                                                                              "InitializeAsync(CancellationToken cancellationToken = default) -\u003e Task",
                                                                              "ValidateConfigurationAsync(CancellationToken cancellationToken = default) -\u003e Task",
@@ -206,7 +206,7 @@
                                                                          ],
                                                          "key_properties":  [
                                                                                 "PiQApi.Abstractions.Core -\u003e namespace",
-                                                                                "ICertConfigurationManager -\u003e interface",
+                                                                                "IPiQConfigurationManager -\u003e interface",
                                                                                 "default) -\u003e =",
                                                                                 "default) -\u003e =",
                                                                                 "configured -\u003e is",
@@ -215,10 +215,10 @@
                                                                             ],
                                                          "type":  "interface"
                                                      },
-                       "ICertResourceMetrics":  {
-                                                    "purpose":  "Provides ICertResourceMetrics functionality",
+                       "IPiQResourceMetrics":  {
+                                                    "purpose":  "Provides IPiQResourceMetrics functionality",
                                                     "key_methods":  [
-                                                                        "GetMetricsSnapshotAsync(CancellationToken cancellationToken = default) -\u003e Task\u003cICertMetricsSnapshot\u003e",
+                                                                        "GetMetricsSnapshotAsync(CancellationToken cancellationToken = default) -\u003e Task\u003cIPiQMetricsSnapshot\u003e",
                                                                         "RecordOperation(string operationName, TimeSpan duration, bool success) -\u003e void",
                                                                         "RecordAcquisition(string resourceType, string resourceId) -\u003e void",
                                                                         "RecordRelease(string resourceType, string resourceId) -\u003e void",
@@ -231,7 +231,7 @@
                                                     "key_properties":  [
                                                                            "PiQApi.Abstractions.Monitoring -\u003e using",
                                                                            "PiQApi.Abstractions.Core -\u003e namespace",
-                                                                           "ICertResourceMetrics -\u003e interface",
+                                                                           "IPiQResourceMetrics -\u003e interface",
                                                                            "TotalResourcesInUse -\u003e int",
                                                                            "default) -\u003e =",
                                                                            "success) -\u003e bool",
@@ -245,14 +245,14 @@
                                                                        ],
                                                     "type":  "interface"
                                                 },
-                       "ICertResource":  {
-                                             "purpose":  "Provides ICertResource functionality",
+                       "IPiQResource":  {
+                                             "purpose":  "Provides IPiQResource functionality",
                                              "key_methods":  [
 
                                                              ],
                                              "key_properties":  [
                                                                     "PiQApi.Abstractions.Core -\u003e namespace",
-                                                                    "ICertResource -\u003e interface",
+                                                                    "IPiQResource -\u003e interface",
                                                                     "ResourceId -\u003e string",
                                                                     "Name -\u003e string",
                                                                     "ResourceType -\u003e string",

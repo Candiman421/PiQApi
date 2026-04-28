@@ -18,7 +18,7 @@
   "core_principles": {
     "expected_vs_exceptional": {
       "expected_failures": {
-        "pattern": "CertResult<T>",
+        "pattern": "PiQResult<T>",
         "location": "PiQApi.Abstractions/Results",
         "when_to_use": "For all expected business operation failures",
         "examples": [
@@ -28,7 +28,7 @@
           "Business rule violations"
         ],
         "validation_handling": {
-          "result_transformation": "Map ValidationResult to CertResult",
+          "result_transformation": "Map ValidationResult to PiQResult",
           "error_aggregation": "Combine through validation chain",
           "context_preservation": "Maintain validation context"
         }
@@ -75,7 +75,7 @@
           "Convert validation exceptions to results"
         ],
         "validation_integration": {
-          "pattern": "Map validation results to CertResult",
+          "pattern": "Map validation results to PiQResult",
           "example": {
             "code": [
               "var validationResult = await _validator.ValidateAsync(request, ct);",
@@ -104,10 +104,10 @@
           "code": [
             "public static class ResultFactory",
             "{",
-            "    public static ICertResult<T> FromValidationResult<T>(",
-            "        CertValidationResult validationResult)",
+            "    public static IPiQResult<T> FromValidationResult<T>(",
+            "        PiQValidationResult validationResult)",
             "    {",
-            "        return new CertResult<T>",
+            "        return new PiQResult<T>",
             "        {",
             "            IsSuccess = validationResult.IsValid,",
             "            Error = new ExchangeError(",

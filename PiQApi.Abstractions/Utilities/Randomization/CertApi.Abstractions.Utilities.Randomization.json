@@ -15,8 +15,8 @@
                      "usage_pattern":  "Import and use classes from this namespace to work with Randomization functionality."
                  },
     "components":  {
-                       "ICertRandomProvider":  {
-                                                   "purpose":  "Provides ICertRandomProvider functionality",
+                       "IPiQRandomProvider":  {
+                                                   "purpose":  "Provides IPiQRandomProvider functionality",
                                                    "key_methods":  [
                                                                        "NextInt() -\u003e int",
                                                                        "NextIntUnderMax(int maxValue) -\u003e int",
@@ -26,7 +26,7 @@
                                                                    ],
                                                    "key_properties":  [
                                                                           "PiQApi.Abstractions.Utilities.Randomization -\u003e namespace",
-                                                                          "ICertRandomProvider -\u003e interface",
+                                                                          "IPiQRandomProvider -\u003e interface",
                                                                           "maxValue) -\u003e NextIntUnderMax(int",
                                                                           "maxValue) -\u003e int",
                                                                           "buffer) -\u003e NextBytes(byte[]"

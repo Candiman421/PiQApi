@@ -9,47 +9,47 @@ This document provides an overview of the validation framework architecture, exp
 Validation rules are the fundamental building blocks of the validation system. They define how to validate specific types or properties.
 
 **Class Hierarchy:**
-- `CertValidationRule<T>` - Base abstract class for all validation rules
-  - `CertBaseValidationRule<T>` - Adds common validation patterns
-    - `CertSyncValidationRule<T>` - Optimized for synchronous validation
-    - `CertAsyncValidationRule<T>` - Optimized for asynchronous validation
-  - `CertPropertyValidationRule<T>` - For validating specific properties
-  - `CertHeaderValidationRule<T>` - For validating headers
-  - `CertFileExtensionValidationRule<T>` - For validating file extensions
-  - `CertCompositeValidationRule<T>` - For composing multiple validation rules
+- `PiQValidationRule<T>` - Base abstract class for all validation rules
+  - `PiQBaseValidationRule<T>` - Adds common validation patterns
+    - `PiQSyncValidationRule<T>` - Optimized for synchronous validation
+    - `PiQAsyncValidationRule<T>` - Optimized for asynchronous validation
+  - `PiQPropertyValidationRule<T>` - For validating specific properties
+  - `PiQHeaderValidationRule<T>` - For validating headers
+  - `PiQFileExtensionValidationRule<T>` - For validating file extensions
+  - `PiQCompositeValidationRule<T>` - For composing multiple validation rules
 
 ### 2. Validation Context
 
 Validation context provides information about the current validation operation.
 
-- `CertValidationContext` - Holds validation state, mode, options, and correlation information
-- `CertValidationContextFactory` - Creates and configures validation contexts
+- `PiQValidationContext` - Holds validation state, mode, options, and correlation information
+- `PiQValidationContextFactory` - Creates and configures validation contexts
 
 ### 3. Validation Results
 
 Validation results represent the outcome of validation operations.
 
-- `CertValidationResult` - Abstract base class for validation results
-  - `CertCoreValidationResult` - Concrete implementation
-- `CertValidationResultFactory` - Creates different types of validation results
-- `CertValidationResultBuilder` - Builds validation results with a fluent API
+- `PiQValidationResult` - Abstract base class for validation results
+  - `PiQCoreValidationResult` - Concrete implementation
+- `PiQValidationResultFactory` - Creates different types of validation results
+- `PiQValidationResultBuilder` - Builds validation results with a fluent API
 
 ### 4. Validation Processor
 
 The validation processor orchestrates the validation process.
 
-- `CertValidationProcessor` - Main processor that coordinates rule execution
-  - `CertValidationProcessor.Registration` - Handles rule registration
-  - `CertValidationProcessor.Sync` - Synchronous validation methods
-  - `CertValidationProcessor.Async` - Asynchronous validation methods
-  - `CertValidationProcessor.Helpers` - Helper methods for validation
+- `PiQValidationProcessor` - Main processor that coordinates rule execution
+  - `PiQValidationProcessor.Registration` - Handles rule registration
+  - `PiQValidationProcessor.Sync` - Synchronous validation methods
+  - `PiQValidationProcessor.Async` - Asynchronous validation methods
+  - `PiQValidationProcessor.Helpers` - Helper methods for validation
 
 ### 5. Resources
 
 Resources are used during validation operations.
 
-- `CertValidationRuleResource` - Represents a validation rule resource
-- `CertValidationRuleResourceBuilder` - Builds validation rule resources
+- `PiQValidationRuleResource` - Represents a validation rule resource
+- `PiQValidationRuleResourceBuilder` - Builds validation rule resources
 
 ## Architectural Principles
 
@@ -103,7 +103,7 @@ if (!result.IsValid)
 
 ```csharp
 // Create composite rule
-var compositeRule = new CertCompositeValidationRule<Entity>(
+var compositeRule = new PiQCompositeValidationRule<Entity>(
     new[] {
         new RequiredPropertyRule(),
         new FormatValidationRule(),
@@ -118,25 +118,25 @@ _validationProcessor.RegisterRules(new[] { compositeRule });
 ### Custom Rule Creation
 
 ```csharp
-public class MyCustomRule : CertSyncValidationRule<MyEntity>
+public class MyCustomRule : PiQSyncValidationRule<MyEntity>
 {
     public MyCustomRule(ILogger<MyCustomRule> logger) : base(logger)
     {
         RuleId = "MyCustomRule";
     }
 
-    protected override ICertValidationResult ValidateInternal(
-        MyEntity entity, 
-        CertValidationContext context)
+    protected override IPiQValidationResult ValidateInternal(
+        MyEntity entity,
+        PiQValidationContext context)
     {
         var builder = CreateBuilder(context.CorrelationId);
-        
+
         // Validation logic here
         if (!IsValid(entity))
         {
             builder.WithError("PropertyName", "Error message");
         }
-        
+
         return builder.Build();
     }
 }

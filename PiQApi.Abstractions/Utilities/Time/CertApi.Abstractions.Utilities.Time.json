@@ -15,48 +15,48 @@
                      "usage_pattern":  "Import and use classes from this namespace to work with Time functionality."
                  },
     "components":  {
-                       "ICertTimeProviderFactory":  {
-                                                        "purpose":  "Provides ICertTimeProviderFactory functionality",
+                       "IPiQTimeProviderFactory":  {
+                                                        "purpose":  "Provides IPiQTimeProviderFactory functionality",
                                                         "key_methods":  [
-                                                                            "Configure(ICertTimeProvider provider) -\u003e void",
+                                                                            "Configure(IPiQTimeProvider provider) -\u003e void",
                                                                             "Reset() -\u003e void"
                                                                         ],
                                                         "key_properties":  [
                                                                                "PiQApi.Abstractions.Utilities.Time -\u003e namespace",
-                                                                               "ICertTimeProviderFactory -\u003e interface",
-                                                                               "Current -\u003e ICertTimeProvider",
-                                                                               "provider) -\u003e Configure(ICertTimeProvider"
+                                                                               "IPiQTimeProviderFactory -\u003e interface",
+                                                                               "Current -\u003e IPiQTimeProvider",
+                                                                               "provider) -\u003e Configure(IPiQTimeProvider"
                                                                            ],
                                                         "type":  "interface"
                                                     },
-                       "ICertTimeProviderConfiguration":  {
-                                                              "purpose":  "Provides ICertTimeProviderConfiguration functionality",
+                       "IPiQTimeProviderConfiguration":  {
+                                                              "purpose":  "Provides IPiQTimeProviderConfiguration functionality",
                                                               "key_methods":  [
-                                                                                  "ConfigureTimeProvider(ICertTimeProvider provider) -\u003e void"
+                                                                                  "ConfigureTimeProvider(IPiQTimeProvider provider) -\u003e void"
                                                                               ],
                                                               "key_properties":  [
                                                                                      "PiQApi.Abstractions.Utilities.Time -\u003e namespace",
-                                                                                     "ICertTimeProviderConfiguration -\u003e interface",
-                                                                                     "provider) -\u003e ConfigureTimeProvider(ICertTimeProvider"
+                                                                                     "IPiQTimeProviderConfiguration -\u003e interface",
+                                                                                     "provider) -\u003e ConfigureTimeProvider(IPiQTimeProvider"
                                                                                  ],
                                                               "type":  "interface"
                                                           },
-                       "CertDefaultTimeProvider":  {
-                                                       "purpose":  "Provides CertDefaultTimeProvider functionality",
+                       "PiQDefaultTimeProvider":  {
+                                                       "purpose":  "Provides PiQDefaultTimeProvider functionality",
                                                        "key_methods":  [
                                                                            "GetTimestamp() -\u003e TimeSpan",
                                                                            "GetElapsedTime(TimeSpan timestamp) -\u003e TimeSpan"
                                                                        ]
                                                    },
-                       "ICertTimeProvider":  {
-                                                 "purpose":  "Provides ICertTimeProvider functionality",
+                       "IPiQTimeProvider":  {
+                                                 "purpose":  "Provides IPiQTimeProvider functionality",
                                                  "key_methods":  [
                                                                      "GetTimestamp() -\u003e TimeSpan",
                                                                      "GetElapsedTime(TimeSpan timestamp) -\u003e TimeSpan"
                                                                  ],
                                                  "key_properties":  [
                                                                         "PiQApi.Abstractions.Utilities.Time -\u003e namespace",
-                                                                        "ICertTimeProvider -\u003e interface",
+                                                                        "IPiQTimeProvider -\u003e interface",
                                                                         "UtcNow -\u003e DateTime",
                                                                         "timestamp) -\u003e GetElapsedTime(TimeSpan"
                                                                     ],

@@ -403,10 +403,10 @@ public class PiQExceptionFactory : IPiQExceptionFactory
     {
         // Only set from inner if not already set and inner has it
         if (string.IsNullOrEmpty(exception.CorrelationId) &&
-            inner is IPiQExceptionInfo certEx &&
-            !string.IsNullOrEmpty(certEx.CorrelationId))
+            inner is IPiQExceptionInfo piqEx &&
+            !string.IsNullOrEmpty(piqEx.CorrelationId))
         {
-            exception.SetCorrelationId(certEx.CorrelationId);
+            exception.SetCorrelationId(piqEx.CorrelationId);
         }
     }
 }

@@ -16,7 +16,7 @@ namespace PiQApi.Ews.Core.Results
     /// </summary>
     public class EwsResultFactory : IEwsResultFactory
     {
-        private readonly IPiQResultFactory _certResultFactory;
+        private readonly IPiQResultFactory _piqResultFactory;
         private readonly ILogger<EwsResultFactory> _logger;
 
         // LoggerMessage delegates for better performance
@@ -83,11 +83,11 @@ namespace PiQApi.Ews.Core.Results
         /// <summary>
         /// Initializes a new instance of the <see cref="EwsResultFactory"/> class
         /// </summary>
-        /// <param name="certResultFactory">Core result factory</param>
+        /// <param name="piqResultFactory">Core result factory</param>
         /// <param name="logger">Logger</param>
-        public EwsResultFactory(IPiQResultFactory certResultFactory, ILogger<EwsResultFactory> logger)
+        public EwsResultFactory(IPiQResultFactory piqResultFactory, ILogger<EwsResultFactory> logger)
         {
-            _certResultFactory = certResultFactory ?? throw new ArgumentNullException(nameof(certResultFactory));
+            _piqResultFactory = piqResultFactory ?? throw new ArgumentNullException(nameof(piqResultFactory));
             _logger = logger ?? throw new ArgumentNullException(nameof(logger));
         }
 
@@ -141,7 +141,7 @@ namespace PiQApi.Ews.Core.Results
         public IEwsResult Failure(string errorMessage, ErrorCodeType errorCode, string correlationId, OperationStatusType status = OperationStatusType.Failed)
         {
             LogFailureResultEnum(_logger, errorCode, errorMessage, correlationId, null);
-            var coreResult = _certResultFactory.Failure<object>(errorMessage, errorCode, correlationId);
+            var coreResult = _piqResultFactory.Failure<object>(errorMessage, errorCode, correlationId);
             return new EwsResult(coreResult.ErrorInfo!, correlationId, status);
         }
 
@@ -155,9 +155,9 @@ namespace PiQApi.Ews.Core.Results
         public IEwsResult Failure(Exception exception, string correlationId, OperationStatusType status = OperationStatusType.Failed)
         {
             ArgumentNullException.ThrowIfNull(exception);
-            
+
             LogFailureResultException(_logger, exception.GetType().Name, exception.Message, correlationId, null);
-            var coreResult = _certResultFactory.Failure<object>(exception, correlationId);
+            var coreResult = _piqResultFactory.Failure<object>(exception, correlationId);
             return new EwsResult(coreResult.ErrorInfo!, correlationId, status);
         }
 
@@ -173,7 +173,7 @@ namespace PiQApi.Ews.Core.Results
         public IEwsResult<T> Failure<T>(string errorCode, string errorMessage, string correlationId, OperationStatusType status = OperationStatusType.Failed)
         {
             LogTypedFailureResult(_logger, errorCode, errorMessage, correlationId, null);
-            var coreResult = _certResultFactory.Failure<T>(errorCode, errorMessage, correlationId);
+            var coreResult = _piqResultFactory.Failure<T>(errorCode, errorMessage, correlationId);
             return new EwsResult<T>(coreResult.ErrorInfo!, correlationId, status);
         }
 
@@ -189,7 +189,7 @@ namespace PiQApi.Ews.Core.Results
         public IEwsResult<T> Failure<T>(string errorMessage, ErrorCodeType errorCode, string correlationId, OperationStatusType status = OperationStatusType.Failed)
         {
             LogTypedFailureResultEnum(_logger, errorCode, errorMessage, correlationId, null);
-            var coreResult = _certResultFactory.Failure<T>(errorMessage, errorCode, correlationId);
+            var coreResult = _piqResultFactory.Failure<T>(errorMessage, errorCode, correlationId);
             return new EwsResult<T>(coreResult.ErrorInfo!, correlationId, status);
         }
 
@@ -204,9 +204,9 @@ namespace PiQApi.Ews.Core.Results
         public IEwsResult<T> Failure<T>(Exception exception, string correlationId, OperationStatusType status = OperationStatusType.Failed)
         {
             ArgumentNullException.ThrowIfNull(exception);
-            
+
             LogTypedFailureResultException(_logger, exception.GetType().Name, exception.Message, correlationId, null);
-            var coreResult = _certResultFactory.Failure<T>(exception, correlationId);
+            var coreResult = _piqResultFactory.Failure<T>(exception, correlationId);
             return new EwsResult<T>(coreResult.ErrorInfo!, correlationId, status);
         }
 
@@ -230,12 +230,12 @@ namespace PiQApi.Ews.Core.Results
         public IEwsResult<T> Cancelled<T>(string correlationId)
         {
             LogTypedCanceledResult(_logger, correlationId, null);
-            
+
             var cancelError = new PiQResultError(
-                "OperationCanceled", 
+                "OperationCanceled",
                 "Operation was canceled",
                 correlationId);
-                
+
             return new EwsResult<T>(cancelError, correlationId, OperationStatusType.Canceled);
         }
     }

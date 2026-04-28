@@ -127,9 +127,9 @@ namespace PiQApi.Ews.Service.Core
                 exception);
 
             // Add correlation ID
-            if (!string.IsNullOrEmpty(correlationId) && mappedException is PiQException certException)
+            if (!string.IsNullOrEmpty(correlationId) && mappedException is PiQException piqException)
             {
-                certException.SetCorrelationId(correlationId);
+                piqException.SetCorrelationId(correlationId);
             }
 
             // Log the exception mapping
@@ -181,9 +181,9 @@ namespace PiQApi.Ews.Service.Core
                 innerException);
 
             // Add correlation ID
-            if (!string.IsNullOrEmpty(correlationId) && exception is PiQException certException)
+            if (!string.IsNullOrEmpty(correlationId) && exception is PiQException piqException)
             {
-                certException.SetCorrelationId(correlationId);
+                piqException.SetCorrelationId(correlationId);
             }
 
             // Log the exception creation

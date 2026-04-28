@@ -15,41 +15,41 @@
                      "usage_pattern":  "Import and use classes from this namespace to work with Resilience functionality."
                  },
     "components":  {
-                       "ICertResiliencePolicy":  {
-                                                     "purpose":  "Provides ICertResiliencePolicy functionality",
+                       "IPiQResiliencePolicy":  {
+                                                     "purpose":  "Provides IPiQResiliencePolicy functionality",
                                                      "key_methods":  [
                                                                          "ExecuteAsync\u003cT\u003e(Func\u003cCancellationToken, Task\u003cT\u003e\u003e operation, CancellationToken cancellationToken) -\u003e Task\u003cT\u003e",
                                                                          "ExecuteAsync(Func\u003cCancellationToken, Task\u003e operation, CancellationToken cancellationToken) -\u003e Task"
                                                                      ],
                                                      "key_properties":  [
                                                                             "PiQApi.Abstractions.Resilience -\u003e namespace",
-                                                                            "ICertResiliencePolicy -\u003e interface",
+                                                                            "IPiQResiliencePolicy -\u003e interface",
                                                                             "cancellationToken) -\u003e CancellationToken",
                                                                             "cancellationToken) -\u003e CancellationToken"
                                                                         ],
                                                      "type":  "interface"
                                                  },
-                       "ICertServiceResiliencePolicyExecutor":  {
-                                                                    "purpose":  "Provides ICertServiceResiliencePolicyExecutor functionality",
+                       "IPiQServiceResiliencePolicyExecutor":  {
+                                                                    "purpose":  "Provides IPiQServiceResiliencePolicyExecutor functionality",
                                                                     "key_methods":  [
                                                                                         "ExecuteServiceAsync\u003cT\u003e(Func\u003cTask\u003cT\u003e\u003e operation,\n        ResiliencePolicyType policyType,\n        string operationName,\n        CancellationToken cancellationToken = default) -\u003e Task\u003cT\u003e",
                                                                                         "ExecuteServiceAsync(Func\u003cTask\u003e operation,\n        ResiliencePolicyType policyType,\n        string operationName,\n        CancellationToken cancellationToken = default) -\u003e Task",
-                                                                                        "ExecuteWithServiceMappingAsync\u003cT\u003e(Func\u003cTask\u003cICertServiceResult\u003cT\u003e\u003e\u003e operation,\n        Func\u003cException, ICertOperationContext, ICertServiceResult\u003cT\u003e\u003e exceptionMapper,\n        ResiliencePolicyType policyType,\n        string operationName,\n        CancellationToken cancellationToken = default) -\u003e Task\u003cICertServiceResult\u003cT\u003e\u003e"
+                                                                                        "ExecuteWithServiceMappingAsync\u003cT\u003e(Func\u003cTask\u003cIPiQServiceResult\u003cT\u003e\u003e\u003e operation,\n        Func\u003cException, IPiQOperationContext, IPiQServiceResult\u003cT\u003e\u003e exceptionMapper,\n        ResiliencePolicyType policyType,\n        string operationName,\n        CancellationToken cancellationToken = default) -\u003e Task\u003cIPiQServiceResult\u003cT\u003e\u003e"
                                                                                     ],
                                                                     "key_properties":  [
                                                                                            "PiQApi.Abstractions.Context -\u003e using",
                                                                                            "PiQApi.Abstractions.Enums -\u003e using",
                                                                                            "PiQApi.Abstractions.Results -\u003e using",
                                                                                            "PiQApi.Abstractions.Resilience -\u003e namespace",
-                                                                                           "ICertResiliencePolicyExecutor -\u003e :",
+                                                                                           "IPiQResiliencePolicyExecutor -\u003e :",
                                                                                            "default) -\u003e =",
                                                                                            "default) -\u003e =",
                                                                                            "default) -\u003e ="
                                                                                        ],
                                                                     "type":  "interface"
                                                                 },
-                       "ICertResiliencePolicyExecutor":  {
-                                                             "purpose":  "Provides ICertResiliencePolicyExecutor functionality",
+                       "IPiQResiliencePolicyExecutor":  {
+                                                             "purpose":  "Provides IPiQResiliencePolicyExecutor functionality",
                                                              "key_methods":  [
                                                                                  "ExecuteAsync\u003cT\u003e(Func\u003cTask\u003cT\u003e\u003e operation,\n        ResiliencePolicyType policyType,\n        string operationName,\n        CancellationToken cancellationToken = default) -\u003e Task\u003cT\u003e",
                                                                                  "ExecuteAsync(Func\u003cTask\u003e operation,\n        ResiliencePolicyType policyType,\n        string operationName,\n        CancellationToken cancellationToken = default) -\u003e Task"
@@ -57,25 +57,25 @@
                                                              "key_properties":  [
                                                                                     "PiQApi.Abstractions.Enums -\u003e using",
                                                                                     "PiQApi.Abstractions.Resilience -\u003e namespace",
-                                                                                    "ICertResiliencePolicyExecutor -\u003e interface",
+                                                                                    "IPiQResiliencePolicyExecutor -\u003e interface",
                                                                                     "default) -\u003e =",
                                                                                     "default) -\u003e ="
                                                                                 ],
                                                              "type":  "interface"
                                                          },
-                       "ICertOperationResiliencePolicyExecutor":  {
-                                                                      "purpose":  "Provides ICertOperationResiliencePolicyExecutor functionality",
+                       "IPiQOperationResiliencePolicyExecutor":  {
+                                                                      "purpose":  "Provides IPiQOperationResiliencePolicyExecutor functionality",
                                                                       "key_methods":  [
                                                                                           "ExecuteBusinessOperationAsync\u003cT\u003e(Func\u003cTask\u003cT\u003e\u003e operation,\n        ResiliencePolicyType policyType,\n        string operationName,\n        CancellationToken cancellationToken = default) -\u003e Task\u003cT\u003e",
                                                                                           "ExecuteBusinessOperationAsync(Func\u003cTask\u003e operation,\n        ResiliencePolicyType policyType,\n        string operationName,\n        CancellationToken cancellationToken = default) -\u003e Task",
-                                                                                          "ExecuteWithOperationMappingAsync\u003cT\u003e(Func\u003cTask\u003cICertResult\u003cT\u003e\u003e\u003e operation,\n        Func\u003cException, ICertOperationContext, ICertResult\u003cT\u003e\u003e exceptionMapper,\n        ResiliencePolicyType policyType,\n        string operationName,\n        CancellationToken cancellationToken = default) -\u003e Task\u003cICertResult\u003cT\u003e\u003e"
+                                                                                          "ExecuteWithOperationMappingAsync\u003cT\u003e(Func\u003cTask\u003cIPiQResult\u003cT\u003e\u003e\u003e operation,\n        Func\u003cException, IPiQOperationContext, IPiQResult\u003cT\u003e\u003e exceptionMapper,\n        ResiliencePolicyType policyType,\n        string operationName,\n        CancellationToken cancellationToken = default) -\u003e Task\u003cIPiQResult\u003cT\u003e\u003e"
                                                                                       ],
                                                                       "key_properties":  [
                                                                                              "PiQApi.Abstractions.Context -\u003e using",
                                                                                              "PiQApi.Abstractions.Enums -\u003e using",
                                                                                              "PiQApi.Abstractions.Results -\u003e using",
                                                                                              "PiQApi.Abstractions.Resilience -\u003e namespace",
-                                                                                             "ICertResiliencePolicyExecutor -\u003e :",
+                                                                                             "IPiQResiliencePolicyExecutor -\u003e :",
                                                                                              "default) -\u003e =",
                                                                                              "default) -\u003e =",
                                                                                              "default) -\u003e ="

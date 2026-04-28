@@ -24,9 +24,9 @@ namespace PiQApi.Core.Core
         {
             ArgumentNullException.ThrowIfNull(context);
 
-            if (context is PiQCorrelationContext certContext)
+            if (context is PiQCorrelationContext piqContext)
             {
-                PiQCorrelationContext.SetCurrent(certContext);
+                PiQCorrelationContext.SetCurrent(piqContext);
             }
             else
             {

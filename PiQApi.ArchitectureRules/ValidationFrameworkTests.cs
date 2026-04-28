@@ -12,11 +12,11 @@ public class ValidationFrameworkTests : BaseArchitectureTest
     public void ValidationContext_Should_Have_Required_Properties()
     {
         var rule = Classes()
-            .That().HaveFullName("PiQApi.Abstractions.Validation.CertValidationContext")
+            .That().HaveFullName("PiQApi.Abstractions.Validation.PiQValidationContext")
             .Should().HavePropertyMemberWithName("ValidationModeType")
             .AndShould().HavePropertyMemberWithName("CorrelationId")
             .AndShould().HavePropertyMemberWithName("Properties")
-            .Because("CertValidationContext must have all required properties");
+            .Because("PiQValidationContext must have all required properties");
 
         AssertArchRule(rule);
     }
@@ -59,10 +59,10 @@ public class ValidationFrameworkTests : BaseArchitectureTest
         AssertArchRule(rule);
 
         var rule2 = Types()
-            .That().HaveAnyNameOf("CertValidationResult", "CertValidationContext")
+            .That().HaveAnyNameOf("PiQValidationResult", "PiQValidationContext")
             .And().ResideInNamespace("PiQApi.Abstractions.Validation")
             .Should().Exist()
-            .Because("Cert-prefixed validation types should be used to avoid naming collisions");
+            .Because("PiQ-prefixed validation types should be used to avoid naming collisions");
 
         AssertArchRule(rule2);
     }

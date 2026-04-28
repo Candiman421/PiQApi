@@ -17,8 +17,8 @@ public sealed class PiQAuthenticationContext : IPiQAuthenticationContext
     private readonly ILogger<PiQAuthenticationContext> _logger;
     private readonly IPiQExceptionFactory _exceptionFactory;
     private readonly IPiQTokenProvider _tokenProvider;
-    private readonly PiQCacheOptions _certCacheOptions;
-    private readonly PiQClientOptions _certClientOptions;
+    private readonly PiQCacheOptions _piqCacheOptions;
+    private readonly PiQClientOptions _piqClientOptions;
     private readonly IPiQTimeProvider _timeProvider;
 
     // LoggerMessage delegates for better performance
@@ -52,23 +52,23 @@ public sealed class PiQAuthenticationContext : IPiQAuthenticationContext
     /// <param name="logger">The logger</param>
     /// <param name="exceptionFactory">The exception factory</param>
     /// <param name="tokenProvider">The token provider</param>
-    /// <param name="certCacheOptions">The cache options</param>
-    /// <param name="certClientOptions">The client options</param>
+    /// <param name="piqCacheOptions">The cache options</param>
+    /// <param name="piqClientOptions">The client options</param>
     /// <param name="timeProvider">Time provider for improved testability</param>
     /// <exception cref="ArgumentNullException">Thrown when any parameter is null</exception>
     public PiQAuthenticationContext(
         ILogger<PiQAuthenticationContext> logger,
         IPiQExceptionFactory exceptionFactory,
         IPiQTokenProvider tokenProvider,
-        IOptions<PiQCacheOptions> certCacheOptions,
-        IOptions<PiQClientOptions> certClientOptions,
+        IOptions<PiQCacheOptions> piqCacheOptions,
+        IOptions<PiQClientOptions> piqClientOptions,
         IPiQTimeProvider? timeProvider = null)
     {
         _logger = logger ?? throw new ArgumentNullException(nameof(logger));
         _exceptionFactory = exceptionFactory ?? throw new ArgumentNullException(nameof(exceptionFactory));
         _tokenProvider = tokenProvider ?? throw new ArgumentNullException(nameof(tokenProvider));
-        _certCacheOptions = certCacheOptions?.Value ?? throw new ArgumentNullException(nameof(certCacheOptions));
-        _certClientOptions = certClientOptions?.Value ?? throw new ArgumentNullException(nameof(certClientOptions));
+        _piqCacheOptions = piqCacheOptions?.Value ?? throw new ArgumentNullException(nameof(piqCacheOptions));
+        _piqClientOptions = piqClientOptions?.Value ?? throw new ArgumentNullException(nameof(piqClientOptions));
         _timeProvider = timeProvider ?? new PiQSystemTimeProvider();
     }
 
@@ -103,7 +103,7 @@ public sealed class PiQAuthenticationContext : IPiQAuthenticationContext
             }
 
             AccessToken = await _tokenProvider.GetAccessTokenAsync(cancellationToken).ConfigureAwait(false);
-            TokenExpiration = _timeProvider.UtcNow.AddMinutes(_certCacheOptions.TokenExpirationMinutes);
+            TokenExpiration = _timeProvider.UtcNow.AddMinutes(_piqCacheOptions.TokenExpirationMinutes);
 
             LogTokenAcquired(_logger, TokenExpiration, null);
 
@@ -111,12 +111,12 @@ public sealed class PiQAuthenticationContext : IPiQAuthenticationContext
         }
         catch (Exception ex)
         {
-            if (_certClientOptions.ServiceUri != null)
+            if (_piqClientOptions.ServiceUri != null)
             {
                 throw _exceptionFactory.CreateAuthenticationException(
                     "Failed to acquire access token",
                     "TokenAcquisitionFailed",
-                    _certClientOptions.ServiceUri,
+                    _piqClientOptions.ServiceUri,
                     AccessToken,
                     ex);
             }
@@ -154,7 +154,7 @@ public sealed class PiQAuthenticationContext : IPiQAuthenticationContext
             }
 
             AccessToken = refreshedToken;
-            TokenExpiration = _timeProvider.UtcNow.AddMinutes(_certCacheOptions.TokenExpirationMinutes);
+            TokenExpiration = _timeProvider.UtcNow.AddMinutes(_piqCacheOptions.TokenExpirationMinutes);
             return true;
         }
         catch (InvalidOperationException ex)

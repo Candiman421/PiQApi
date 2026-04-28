@@ -10,15 +10,15 @@
         <GenerateDocumentationFile>true</GenerateDocumentationFile>
     </PropertyGroup>
     <ItemGroup>
-      <Compile Remove="Validation\Framework\CertValidationChain.Async.cs" />
-      <Compile Remove="Validation\Framework\CertValidationChain.cs" />
-      <Compile Remove="Validation\Framework\CertValidationChain.Logging.cs" />
-      <Compile Remove="Validation\Framework\CertValidationChain.Sync.cs" />
-      <Compile Remove="Validation\Framework\CertValidationChain{T}.cs" />
-      <Compile Remove="Validation\Rules\CertCompositeValidationRule.cs" />
-      <Compile Remove="Validation\Rules\CertFileExtensionValidationRule.cs" />
-      <Compile Remove="Validation\Rules\CertHeaderValidationRule.cs" />
-      <Compile Remove="Validation\Rules\CertPropertyValidationRule.cs" />
+      <Compile Remove="Validation\Framework\PiQValidationChain.Async.cs" />
+      <Compile Remove="Validation\Framework\PiQValidationChain.cs" />
+      <Compile Remove="Validation\Framework\PiQValidationChain.Logging.cs" />
+      <Compile Remove="Validation\Framework\PiQValidationChain.Sync.cs" />
+      <Compile Remove="Validation\Framework\PiQValidationChain{T}.cs" />
+      <Compile Remove="Validation\Rules\PiQCompositeValidationRule.cs" />
+      <Compile Remove="Validation\Rules\PiQFileExtensionValidationRule.cs" />
+      <Compile Remove="Validation\Rules\PiQHeaderValidationRule.cs" />
+      <Compile Remove="Validation\Rules\PiQPropertyValidationRule.cs" />
     </ItemGroup>
 
     <ItemGroup>
@@ -36,16 +36,16 @@
         <PackageReference Include="Polly.Core" />
     </ItemGroup>
     <ItemGroup>
-        <Compile Update="Resources\CertValidationMessages.Designer.cs">
+        <Compile Update="Resources\PiQValidationMessages.Designer.cs">
             <DesignTime>True</DesignTime>
             <AutoGen>True</AutoGen>
-            <DependentUpon>CertValidationMessages.resx</DependentUpon>
+            <DependentUpon>PiQValidationMessages.resx</DependentUpon>
         </Compile>
     </ItemGroup>
     <ItemGroup>
-        <EmbeddedResource Update="Resources\CertValidationMessages.resx">
+        <EmbeddedResource Update="Resources\PiQValidationMessages.resx">
             <Generator>ResXFileCodeGenerator</Generator>
-            <LastGenOutput>CertValidationMessages.Designer.cs</LastGenOutput>
+            <LastGenOutput>PiQValidationMessages.Designer.cs</LastGenOutput>
         </EmbeddedResource>
     </ItemGroup>
     <ItemGroup>
@@ -53,14 +53,14 @@
     </ItemGroup>
     <ItemGroup>
       <None Include="E:\_Jeremy Backup\_ActiveProjects\ZzzzzzzzzGraph_01_AllTestsPass\PiQApi.Core\.editorconfig" />
-      <None Include="Validation\Framework\CertValidationChain.Async.cs" />
-      <None Include="Validation\Framework\CertValidationChain.cs" />
-      <None Include="Validation\Framework\CertValidationChain.Logging.cs" />
-      <None Include="Validation\Framework\CertValidationChain.Sync.cs" />
-      <None Include="Validation\Framework\CertValidationChain{T}.cs" />
-      <None Include="Validation\Rules\CertCompositeValidationRule.cs" />
-      <None Include="Validation\Rules\CertFileExtensionValidationRule.cs" />
-      <None Include="Validation\Rules\CertHeaderValidationRule.cs" />
-      <None Include="Validation\Rules\CertPropertyValidationRule.cs" />
+      <None Include="Validation\Framework\PiQValidationChain.Async.cs" />
+      <None Include="Validation\Framework\PiQValidationChain.cs" />
+      <None Include="Validation\Framework\PiQValidationChain.Logging.cs" />
+      <None Include="Validation\Framework\PiQValidationChain.Sync.cs" />
+      <None Include="Validation\Framework\PiQValidationChain{T}.cs" />
+      <None Include="Validation\Rules\PiQCompositeValidationRule.cs" />
+      <None Include="Validation\Rules\PiQFileExtensionValidationRule.cs" />
+      <None Include="Validation\Rules\PiQHeaderValidationRule.cs" />
+      <None Include="Validation\Rules\PiQPropertyValidationRule.cs" />
     </ItemGroup>
 </Project>

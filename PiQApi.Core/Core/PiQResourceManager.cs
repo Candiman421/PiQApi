@@ -227,8 +227,8 @@ public class PiQResourceManager : IPiQResourceManager
         var resources = _typedResources.GetOrAdd(resourceType, _ => new ConcurrentDictionary<string, object>());
 
         // Add the resource using a suitable key
-        string resourceKey = resource is IPiQResource certResource
-            ? certResource.ResourceId
+        string resourceKey = resource is IPiQResource piqResource
+            ? piqResource.ResourceId
             : resource.GetHashCode().ToString(System.Globalization.CultureInfo.InvariantCulture);
 
         resources[resourceKey] = resource;
@@ -263,8 +263,8 @@ public class PiQResourceManager : IPiQResourceManager
         if (_typedResources.TryGetValue(resourceType, out var resources))
         {
             // Get the resource key
-            string resourceKey = resource is IPiQResource certResource
-                ? certResource.ResourceId
+            string resourceKey = resource is IPiQResource piqResource
+                ? piqResource.ResourceId
                 : resource.GetHashCode().ToString(System.Globalization.CultureInfo.InvariantCulture);
 
             // Remove the resource
@@ -298,8 +298,8 @@ public class PiQResourceManager : IPiQResourceManager
             if (_typedResources.TryGetValue(resourceType, out var resources))
             {
                 // Get the resource key
-                string resourceKey = resource is IPiQResource certResource
-                    ? certResource.ResourceId
+                string resourceKey = resource is IPiQResource piqResource
+                    ? piqResource.ResourceId
                     : resource.GetHashCode().ToString(System.Globalization.CultureInfo.InvariantCulture);
 
                 // Check if the resource exists

@@ -15,36 +15,36 @@
                      "usage_pattern":  "Import and use classes from this namespace to work with Resilience functionality."
                  },
     "components":  {
-                       "CertResiliencePolicy":  {
-                                                    "purpose":  "Provides CertResiliencePolicy functionality",
+                       "PiQResiliencePolicy":  {
+                                                    "purpose":  "Provides PiQResiliencePolicy functionality",
                                                     "key_methods":  [
                                                                         "ExecuteAsync\u003cT\u003e(Func\u003cCancellationToken, Task\u003cT\u003e\u003e operation, CancellationToken cancellationToken) -\u003e Task\u003cT\u003e",
                                                                         "ExecuteAsync(Func\u003cCancellationToken, Task\u003e operation, CancellationToken cancellationToken) -\u003e Task"
                                                                     ]
                                                 },
-                       "CertPolicyOptionsValidator":  {
-                                                          "purpose":  "Provides CertPolicyOptionsValidator functionality",
+                       "PiQPolicyOptionsValidator":  {
+                                                          "purpose":  "Provides PiQPolicyOptionsValidator functionality",
                                                           "key_methods":  [
-                                                                              "Validate(string? name, CertPolicyOptions options) -\u003e ValidateOptionsResult"
+                                                                              "Validate(string? name, PiQPolicyOptions options) -\u003e ValidateOptionsResult"
                                                                           ]
                                                       },
-                       "CertResiliencePolicyExecutor":  {
-                                                            "purpose":  "Provides CertResiliencePolicyExecutor functionality",
+                       "PiQResiliencePolicyExecutor":  {
+                                                            "purpose":  "Provides PiQResiliencePolicyExecutor functionality",
                                                             "key_methods":  [
                                                                                 "ExecuteAsync\u003cT\u003e(Func\u003cTask\u003cT\u003e\u003e operation,\n        ResiliencePolicyType policyType,\n        string operationName,\n        CancellationToken cancellationToken = default) -\u003e Task\u003cT\u003e",
                                                                                 "ExecuteAsync(Func\u003cTask\u003e operation,\n        ResiliencePolicyType policyType,\n        string operationName,\n        CancellationToken cancellationToken = default) -\u003e Task"
                                                                             ]
                                                         },
-                       "CertOperationResiliencePolicyExecutor":  {
-                                                                     "purpose":  "Provides CertOperationResiliencePolicyExecutor functionality",
+                       "PiQOperationResiliencePolicyExecutor":  {
+                                                                     "purpose":  "Provides PiQOperationResiliencePolicyExecutor functionality",
                                                                      "key_methods":  [
                                                                                          "ExecuteBusinessOperationAsync\u003cT\u003e(Func\u003cTask\u003cT\u003e\u003e operation, ResiliencePolicyType policyType, string operationName, CancellationToken cancellationToken = default) -\u003e Task\u003cT\u003e",
                                                                                          "ExecuteBusinessOperationAsync(Func\u003cTask\u003e operation, ResiliencePolicyType policyType, string operationName, CancellationToken cancellationToken = default) -\u003e Task",
-                                                                                         "ExecuteWithOperationMappingAsync\u003cT\u003e(Func\u003cTask\u003cICertResult\u003cT\u003e\u003e\u003e operation,\n        Func\u003cException, ICertOperationContext, ICertResult\u003cT\u003e\u003e exceptionMapper,\n        ResiliencePolicyType policyType,\n        string operationName,\n        CancellationToken cancellationToken = default) -\u003e Task\u003cICertResult\u003cT\u003e\u003e"
+                                                                                         "ExecuteWithOperationMappingAsync\u003cT\u003e(Func\u003cTask\u003cIPiQResult\u003cT\u003e\u003e\u003e operation,\n        Func\u003cException, IPiQOperationContext, IPiQResult\u003cT\u003e\u003e exceptionMapper,\n        ResiliencePolicyType policyType,\n        string operationName,\n        CancellationToken cancellationToken = default) -\u003e Task\u003cIPiQResult\u003cT\u003e\u003e"
                                                                                      ]
                                                                  },
-                       "CertCircuitBreakerStatus":  {
-                                                        "purpose":  "Provides CertCircuitBreakerStatus functionality",
+                       "PiQCircuitBreakerStatus":  {
+                                                        "purpose":  "Provides PiQCircuitBreakerStatus functionality",
                                                         "key_methods":  [
                                                                             "RecordSuccessAsync(CancellationToken cancellationToken = default) -\u003e Task",
                                                                             "RecordFailureAsync(CancellationToken cancellationToken = default) -\u003e Task",
@@ -62,16 +62,16 @@
                                                                                "IsOpen -\u003e bool"
                                                                            ]
                                                     },
-                       "CertServiceResiliencePolicyExecutor":  {
-                                                                   "purpose":  "Provides CertServiceResiliencePolicyExecutor functionality",
+                       "PiQServiceResiliencePolicyExecutor":  {
+                                                                   "purpose":  "Provides PiQServiceResiliencePolicyExecutor functionality",
                                                                    "key_methods":  [
                                                                                        "ExecuteServiceAsync\u003cT\u003e(Func\u003cTask\u003cT\u003e\u003e operation, ResiliencePolicyType policyType, string operationName, CancellationToken cancellationToken = default) -\u003e Task\u003cT\u003e",
                                                                                        "ExecuteServiceAsync(Func\u003cTask\u003e operation, ResiliencePolicyType policyType, string operationName, CancellationToken cancellationToken = default) -\u003e Task",
-                                                                                       "ExecuteWithServiceMappingAsync\u003cT\u003e(Func\u003cTask\u003cICertServiceResult\u003cT\u003e\u003e\u003e operation,\n        Func\u003cException, ICertOperationContext, ICertServiceResult\u003cT\u003e\u003e exceptionMapper,\n        ResiliencePolicyType policyType,\n        string operationName,\n        CancellationToken cancellationToken = default) -\u003e Task\u003cICertServiceResult\u003cT\u003e\u003e"
+                                                                                       "ExecuteWithServiceMappingAsync\u003cT\u003e(Func\u003cTask\u003cIPiQServiceResult\u003cT\u003e\u003e\u003e operation,\n        Func\u003cException, IPiQOperationContext, IPiQServiceResult\u003cT\u003e\u003e exceptionMapper,\n        ResiliencePolicyType policyType,\n        string operationName,\n        CancellationToken cancellationToken = default) -\u003e Task\u003cIPiQServiceResult\u003cT\u003e\u003e"
                                                                                    ]
                                                                },
-                       "CertPolicyFactory":  {
-                                                 "purpose":  "Provides CertPolicyFactory functionality",
+                       "PiQPolicyFactory":  {
+                                                 "purpose":  "Provides PiQPolicyFactory functionality",
                                                  "key_methods":  [
                                                                      "CreatePolicy\u003cT\u003e(ResiliencePolicyType policyType) -\u003e IAsyncPolicy\u003cT\u003e",
                                                                      "CreateCompositePolicy\u003cT\u003e(IEnumerable\u003cResiliencePolicyType\u003e policyTypes) -\u003e IAsyncPolicy\u003cT\u003e",

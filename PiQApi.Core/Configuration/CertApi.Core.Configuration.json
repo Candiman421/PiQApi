@@ -15,13 +15,13 @@
                      "usage_pattern":  "Import and use classes from this namespace to work with Configuration functionality."
                  },
     "components":  {
-                       "CertConnectionOptionsValidator":  {
-                                                              "purpose":  "Provides CertConnectionOptionsValidator functionality",
+                       "PiQConnectionOptionsValidator":  {
+                                                              "purpose":  "Provides PiQConnectionOptionsValidator functionality",
                                                               "key_methods":  [
-                                                                                  "Validate(string? name, CertConnectionOptions options) -\u003e ValidateOptionsResult"
+                                                                                  "Validate(string? name, PiQConnectionOptions options) -\u003e ValidateOptionsResult"
                                                                               ],
                                                               "key_properties":  [
-                                                                                     "logger) -\u003e CertConnectionOptionsValidator(ILogger\u003cCertConnectionOptionsValidator\u003e"
+                                                                                     "logger) -\u003e PiQConnectionOptionsValidator(ILogger\u003cPiQConnectionOptionsValidator\u003e"
                                                                                  ]
                                                           }
                    }

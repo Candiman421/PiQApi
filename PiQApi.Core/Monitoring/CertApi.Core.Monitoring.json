@@ -15,8 +15,8 @@
                      "usage_pattern":  "Import and use classes from this namespace to work with Monitoring functionality."
                  },
     "components":  {
-                       "CertOperationMetricsTracker":  {
-                                                           "purpose":  "Provides CertOperationMetricsTracker functionality",
+                       "PiQOperationMetricsTracker":  {
+                                                           "purpose":  "Provides PiQOperationMetricsTracker functionality",
                                                            "key_methods":  [
                                                                                "RecordOperation(string operationName, TimeSpan duration, bool success) -\u003e void",
                                                                                "RecordCustomMetric(string metricName, double value) -\u003e void",
@@ -26,42 +26,42 @@
                                                                                "RecordTime(string name, TimeSpan elapsedTime) -\u003e void",
                                                                                "GetCounter(string name) -\u003e long",
                                                                                "GetTimerElapsed(string name) -\u003e TimeSpan",
-                                                                               "GetMetricsSnapshotAsync(CancellationToken cancellationToken = default) -\u003e Task\u003cICertMetricsSnapshot\u003e",
+                                                                               "GetMetricsSnapshotAsync(CancellationToken cancellationToken = default) -\u003e Task\u003cIPiQMetricsSnapshot\u003e",
                                                                                "ResetCounters() -\u003e void"
                                                                            ]
                                                        },
-                       "CertOperationMetricsFactory":  {
-                                                           "purpose":  "Provides CertOperationMetricsFactory functionality",
+                       "PiQOperationMetricsFactory":  {
+                                                           "purpose":  "Provides PiQOperationMetricsFactory functionality",
                                                            "key_methods":  [
-                                                                               "CreateTracker(ICertCorrelationContext? correlationContext = null) -\u003e ICertOperationMetrics",
-                                                                               "CreateCacheTracker() -\u003e ICertCacheMetrics",
-                                                                               "CreateConnectionTracker() -\u003e ICertConnectionMetrics",
-                                                                               "CreateCompositeTracker() -\u003e ICertCompositeMetricsTracker"
+                                                                               "CreateTracker(IPiQCorrelationContext? correlationContext = null) -\u003e IPiQOperationMetrics",
+                                                                               "CreateCacheTracker() -\u003e IPiQCacheMetrics",
+                                                                               "CreateConnectionTracker() -\u003e IPiQConnectionMetrics",
+                                                                               "CreateCompositeTracker() -\u003e IPiQCompositeMetricsTracker"
                                                                            ],
                                                            "key_properties":  [
-                                                                                  "CertOperationMetricsFactory -\u003e class"
+                                                                                  "PiQOperationMetricsFactory -\u003e class"
                                                                               ]
                                                        },
-                       "CertCacheMetricsTracker":  {
-                                                       "purpose":  "Provides CertCacheMetricsTracker functionality",
+                       "PiQCacheMetricsTracker":  {
+                                                       "purpose":  "Provides PiQCacheMetricsTracker functionality",
                                                        "key_methods":  [
                                                                            "RecordCacheActivity(bool isHit) -\u003e void",
                                                                            "ResetCounters() -\u003e void",
-                                                                           "GetMetricsSnapshotAsync(CancellationToken cancellationToken = default) -\u003e Task\u003cICertMetricsSnapshot\u003e"
+                                                                           "GetMetricsSnapshotAsync(CancellationToken cancellationToken = default) -\u003e Task\u003cIPiQMetricsSnapshot\u003e"
                                                                        ],
                                                        "key_properties":  [
                                                                               "CacheHitRate -\u003e double"
                                                                           ]
                                                    },
-                       "CertMetricsSnapshot":  {
-                                                   "purpose":  "Provides CertMetricsSnapshot functionality",
+                       "PiQMetricsSnapshot":  {
+                                                   "purpose":  "Provides PiQMetricsSnapshot functionality",
                                                    "key_methods":  [
-                                                                       "WithMetric(string name, object value) -\u003e ICertMetricsSnapshot",
-                                                                       "WithMetrics(IDictionary\u003cstring, object\u003e metrics) -\u003e ICertMetricsSnapshot",
+                                                                       "WithMetric(string name, object value) -\u003e IPiQMetricsSnapshot",
+                                                                       "WithMetrics(IDictionary\u003cstring, object\u003e metrics) -\u003e IPiQMetricsSnapshot",
                                                                        "GetMetric\u003cT\u003e(string name) -\u003e T",
                                                                        "TryGetMetric\u003cT\u003e(string name, out T? value) -\u003e bool",
                                                                        "HasMetric(string name) -\u003e bool",
-                                                                       "Equals(CertMetricsSnapshot? other) -\u003e bool",
+                                                                       "Equals(PiQMetricsSnapshot? other) -\u003e bool",
                                                                        "Equals(object? obj) -\u003e bool",
                                                                        "GetHashCode() -\u003e int"
                                                                    ],
@@ -75,8 +75,8 @@
                                                                           "AverageOperationDurationMs -\u003e long"
                                                                       ]
                                                },
-                       "CertCompositeMetricsTracker":  {
-                                                           "purpose":  "Provides CertCompositeMetricsTracker functionality",
+                       "PiQCompositeMetricsTracker":  {
+                                                           "purpose":  "Provides PiQCompositeMetricsTracker functionality",
                                                            "key_methods":  [
                                                                                "RecordConnectionAcquired(TimeSpan acquisitionTime) -\u003e void",
                                                                                "RecordConnectionReleased(TimeSpan lifetime) -\u003e void",
@@ -89,10 +89,10 @@
                                                                                "RecordOperation(string operationName, TimeSpan duration, bool success) -\u003e void",
                                                                                "GetCounter(string name) -\u003e long",
                                                                                "GetTimerElapsed(string name) -\u003e TimeSpan",
-                                                                               "GetMetricsSnapshotAsync(CancellationToken cancellationToken = default) -\u003e Task\u003cICertMetricsSnapshot\u003e",
+                                                                               "GetMetricsSnapshotAsync(CancellationToken cancellationToken = default) -\u003e Task\u003cIPiQMetricsSnapshot\u003e",
                                                                                "ResetCounters() -\u003e void",
                                                                                "RecordCustomMetric(string name, double value) -\u003e void",
-                                                                               "AddTracker(ICertOperationMetrics tracker) -\u003e void"
+                                                                               "AddTracker(IPiQOperationMetrics tracker) -\u003e void"
                                                                            ],
                                                            "key_properties":  [
                                                                                   "CacheHitRate -\u003e double"
@@ -110,17 +110,17 @@
                                                                         "ResetCounters() -\u003e void",
                                                                         "GetCounter(string name) -\u003e long",
                                                                         "GetTimerElapsed(string name) -\u003e TimeSpan",
-                                                                        "GetMetricsSnapshotAsync(CancellationToken cancellationToken = default) -\u003e Task\u003cICertMetricsSnapshot\u003e"
+                                                                        "GetMetricsSnapshotAsync(CancellationToken cancellationToken = default) -\u003e Task\u003cIPiQMetricsSnapshot\u003e"
                                                                     ]
                                                 },
-                       "CertConnectionMetricsTracker":  {
-                                                            "purpose":  "Provides CertConnectionMetricsTracker functionality",
+                       "PiQConnectionMetricsTracker":  {
+                                                            "purpose":  "Provides PiQConnectionMetricsTracker functionality",
                                                             "key_methods":  [
                                                                                 "RecordConnectionAcquired(TimeSpan acquisitionTime) -\u003e void",
                                                                                 "RecordConnectionReleased(TimeSpan lifetime) -\u003e void",
                                                                                 "RecordConnectionFailure(string errorCode) -\u003e void",
                                                                                 "ResetCounters() -\u003e void",
-                                                                                "GetMetricsSnapshotAsync(CancellationToken cancellationToken = default) -\u003e Task\u003cICertMetricsSnapshot\u003e"
+                                                                                "GetMetricsSnapshotAsync(CancellationToken cancellationToken = default) -\u003e Task\u003cIPiQMetricsSnapshot\u003e"
                                                                             ]
                                                         }
                    }

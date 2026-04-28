@@ -32,7 +32,7 @@
       ],
       "examples": {
         "correct": [
-          "ICertOperation - Core operation contract",
+          "IPiQOperation - Core operation contract",
           "IValidationRule<T> - Framework contract",
           "ICorrelationContext - Context contract"
         ],
@@ -107,7 +107,7 @@
       ],
       "example": {
         "code": [
-          "Task<ICertResult<T>> ProcessAsync<T>(",
+          "Task<IPiQResult<T>> ProcessAsync<T>(",
           "    T request,",
           "    IOperationContext context,",
           "    CancellationToken ct);"

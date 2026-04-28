@@ -18,7 +18,7 @@
           "implementation": {
             "example": [
               "private static readonly Architecture Architecture = new ArchLoader()",
-              "    .LoadAssemblies(typeof(ICertResult).Assembly)",
+              "    .LoadAssemblies(typeof(IPiQResult).Assembly)",
               "    .Build();"
             ],
             "key_points": [

@@ -64,9 +64,9 @@ public class PiQGenericServiceException : PiQServiceException
         Operation = string.Empty;
 
         // Preserve correlation ID from inner exception if it's a PiQException
-        if (inner is PiQException certException)
+        if (inner is PiQException piqException)
         {
-            SetCorrelationId(certException.CorrelationId);
+            SetCorrelationId(piqException.CorrelationId);
         }
     }
 
@@ -84,9 +84,9 @@ public class PiQGenericServiceException : PiQServiceException
         Operation = string.Empty;
 
         // Preserve correlation ID from inner exception if it's a PiQException
-        if (inner is PiQException certException)
+        if (inner is PiQException piqException)
         {
-            SetCorrelationId(certException.CorrelationId);
+            SetCorrelationId(piqException.CorrelationId);
         }
     }
 
@@ -116,9 +116,9 @@ public class PiQGenericServiceException : PiQServiceException
         }
 
         // Preserve correlation ID from inner exception if it's a PiQException
-        if (inner is PiQException certException)
+        if (inner is PiQException piqException)
         {
-            SetCorrelationId(certException.CorrelationId);
+            SetCorrelationId(piqException.CorrelationId);
         }
     }
 }

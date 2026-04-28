@@ -1,7 +1,7 @@
-// CertApi.ArchitectureRules/Projects/CertApi.Abstractions/Diagrams/ValidationFramework.puml
-@startuml CertApi.Abstractions Validation Framework
+// PiQApi.ArchitectureRules/Projects/PiQApi.Abstractions/Diagrams/ValidationFramework.puml
+@startuml PiQApi.Abstractions Validation Framework
 
-title CertApi.Abstractions Validation Framework
+title PiQApi.Abstractions Validation Framework
 footer Generated from architectural guides - %date("yyyy.MM.dd")
 legend right
   Validation framework architecture
@@ -17,20 +17,20 @@ skinparam class {
 
 ' Core Validation Types
 interface "IValidationRule<T>" as IValidationRule {
-  +Task<CertValidationResult> ValidateAsync(T item, CertValidationContext context, CancellationToken ct)
+  +Task<PiQValidationResult> ValidateAsync(T item, PiQValidationContext context, CancellationToken ct)
 }
 
 interface "IValidationRuleSet<T>" as IValidationRuleSet {
   +IReadOnlyCollection<IValidationRule<T>> GetRules()
 }
 
-class CertValidationContext {
+class PiQValidationContext {
   +ValidationModeType Mode
-  +CertCorrelationId Id
+  +PiQCorrelationId Id
   +IReadOnlyDictionary<string,object> Properties
 }
 
-class CertValidationResult {
+class PiQValidationResult {
   +bool IsValid
   +IReadOnlyCollection<ValidationError> Errors
   +string CorrelationId
@@ -49,23 +49,23 @@ class ValidationError {
 
 ' Validation Processing
 interface IValidationProcessor {
-  +Task<CertValidationResult> ValidateAsync<T>(T item, IValidationRule<T> rule, ...)
-  +Task<CertValidationResult> ValidateAsync<T>(T item, IValidationRuleSet<T> ruleSet, ...)
+  +Task<PiQValidationResult> ValidateAsync<T>(T item, IValidationRule<T> rule, ...)
+  +Task<PiQValidationResult> ValidateAsync<T>(T item, IValidationRuleSet<T> ruleSet, ...)
 }
 
 ' Result Integration
 interface IResultFactory {
-  +ICertResult<T> FromValidationResult<T>(CertValidationResult result)
+  +IPiQResult<T> FromValidationResult<T>(PiQValidationResult result)
 }
 
 ' Relationships
-IValidationRule ..> CertValidationResult : creates
-IValidationRule ..> CertValidationContext : uses
+IValidationRule ..> PiQValidationResult : creates
+IValidationRule ..> PiQValidationContext : uses
 IValidationProcessor ..> IValidationRule : executes
 IValidationProcessor ..> IValidationRuleSet : executes
 IValidationRuleSet *-- IValidationRule : contains
-CertValidationResult *-- ValidationError : contains
-IResultFactory ..> CertValidationResult : transforms
+PiQValidationResult *-- ValidationError : contains
+IResultFactory ..> PiQValidationResult : transforms
 
 ' Validation Flow
 note right of IValidationProcessor
@@ -73,7 +73,7 @@ note right of IValidationProcessor
   and result aggregation
 end note
 
-note right of CertValidationContext
+note right of PiQValidationContext
   Carries validation state
   and configuration
 end note

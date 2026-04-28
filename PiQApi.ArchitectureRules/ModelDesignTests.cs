@@ -32,9 +32,9 @@ public class ModelDesignTests : BaseArchitectureTest
             .Or().HaveNameEndingWith("Response");
 
         var rule = responseModels
-            .Should().FollowCustomCondition(c => 
+            .Should().FollowCustomCondition(c =>
                 c.GetPropertyMembers().Any(p => p.Name == "IsSuccess") ||
-                c.ImplementsInterface(i => i.Name.Contains("ICertResult")),
+                c.ImplementsInterface(i => i.Name.Contains("IPiQResult")),
                 "indicate success or failure",
                 "does not indicate success or failure")
             .Because("Response models should clearly indicate success or failure");
@@ -50,9 +50,9 @@ public class ModelDesignTests : BaseArchitectureTest
             .Or().HaveNameEndingWith("Response");
 
         var rule = responseModels
-            .Should().FollowCustomCondition(c => 
+            .Should().FollowCustomCondition(c =>
                 c.GetPropertyMembers().Any(p => p.Name == "Error") ||
-                c.ImplementsInterface(i => i.Name.Contains("ICertResult")),
+                c.ImplementsInterface(i => i.Name.Contains("IPiQResult")),
                 "provide error details",
                 "does not provide error details")
             .Because("Response models should provide error details when failed");

@@ -1,4 +1,4 @@
-// PiQApi.Core/Authentication/BaseCertAuthenticationProvider.cs
+// PiQApi.Core/Authentication/BasePiQAuthenticationProvider.cs
 using PiQApi.Abstractions.Authentication;
 using PiQApi.Abstractions.Core;
 using PiQApi.Abstractions.Enums;
@@ -12,7 +12,7 @@ namespace PiQApi.Core.Authentication;
 /// <summary>
 /// Base implementation for authentication providers
 /// </summary>
-public abstract partial class BaseCertAuthenticationProvider : IPiQAuthenticationProvider
+public abstract partial class BasePiQAuthenticationProvider : IPiQAuthenticationProvider
 {
     // Logger message delegates for better performance
     private static readonly Action<ILogger, string, string, Exception?> LogValidatingToken =
@@ -83,14 +83,14 @@ public abstract partial class BaseCertAuthenticationProvider : IPiQAuthenticatio
     public abstract AuthenticationMethodType AuthType { get; }
 
     /// <summary>
-    /// Initializes a new instance of the <see cref="BaseCertAuthenticationProvider"/> class
+    /// Initializes a new instance of the <see cref="BasePiQAuthenticationProvider"/> class
     /// </summary>
     /// <param name="logger">The logger</param>
     /// <param name="correlationContext">The correlation context</param>
     /// <param name="resultFactory">The result factory</param>
     /// <param name="timeProvider">Time provider for improved testability</param>
     /// <exception cref="ArgumentNullException">Thrown when any parameter is null</exception>
-    protected BaseCertAuthenticationProvider(
+    protected BasePiQAuthenticationProvider(
         ILogger logger,
         IPiQCorrelationContext correlationContext,
         IPiQResultFactory resultFactory,

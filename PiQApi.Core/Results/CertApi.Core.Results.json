@@ -15,23 +15,23 @@
                      "usage_pattern":  "Import and use classes from this namespace to work with Results functionality."
                  },
     "components":  {
-                       "CertServiceResult":  {
-                                                 "purpose":  "Provides CertServiceResult functionality",
+                       "PiQServiceResult":  {
+                                                 "purpose":  "Provides PiQServiceResult functionality",
                                                  "key_methods":  [
-                                                                     "WithStatus(OperationStatusType status) -\u003e ICertServiceResult"
+                                                                     "WithStatus(OperationStatusType status) -\u003e IPiQServiceResult"
                                                                  ],
                                                  "key_properties":  [
                                                                         "Status -\u003e OperationStatusType",
                                                                         "RequestId -\u003e string"
                                                                     ]
                                              },
-                       "CertResultError":  {
-                                               "purpose":  "Provides CertResultError functionality",
+                       "PiQResultError":  {
+                                               "purpose":  "Provides PiQResultError functionality",
                                                "key_methods":  [
                                                                    "AddProperty(string key, object value) -\u003e void",
                                                                    "AddProperties(IDictionary\u003cstring, object\u003e properties) -\u003e void",
-                                                                   "WithProperty(string key, object value) -\u003e ICertResultError",
-                                                                   "WithProperties(IDictionary\u003cstring, object\u003e properties) -\u003e ICertResultError"
+                                                                   "WithProperty(string key, object value) -\u003e IPiQResultError",
+                                                                   "WithProperties(IDictionary\u003cstring, object\u003e properties) -\u003e IPiQResultError"
                                                                ],
                                                "key_properties":  [
                                                                       "Code -\u003e string",
@@ -40,11 +40,11 @@
                                                                       "Timestamp -\u003e DateTimeOffset"
                                                                   ]
                                            },
-                       "CertError":  {
-                                         "purpose":  "Provides CertError functionality",
+                       "PiQError":  {
+                                         "purpose":  "Provides PiQError functionality",
                                          "key_methods":  [
-                                                             "WithProperty(string key, object value) -\u003e ICertResultError",
-                                                             "WithProperties(IDictionary\u003cstring, object\u003e properties) -\u003e ICertResultError",
+                                                             "WithProperty(string key, object value) -\u003e IPiQResultError",
+                                                             "WithProperties(IDictionary\u003cstring, object\u003e properties) -\u003e IPiQResultError",
                                                              "ToString() -\u003e string"
                                                          ],
                                          "key_properties":  [
@@ -54,38 +54,38 @@
                                                                 "Timestamp -\u003e DateTimeOffset"
                                                             ]
                                      },
-                       "CertResult":  {
-                                          "purpose":  "Provides CertResult functionality",
+                       "PiQResult":  {
+                                          "purpose":  "Provides PiQResult functionality",
                                           "key_methods":  [
-                                                              "CreateSuccessMarker(string correlationId) -\u003e ICertResultError",
-                                                              "WithProperty(string key, object value) -\u003e ICertResult",
-                                                              "WithProperties(IDictionary\u003cstring, object\u003e properties) -\u003e ICertResult"
+                                                              "CreateSuccessMarker(string correlationId) -\u003e IPiQResultError",
+                                                              "WithProperty(string key, object value) -\u003e IPiQResult",
+                                                              "WithProperties(IDictionary\u003cstring, object\u003e properties) -\u003e IPiQResult"
                                                           ],
                                           "key_properties":  [
                                                                  "IsSuccess -\u003e bool",
-                                                                 "ErrorInfo -\u003e ICertResultError?",
+                                                                 "ErrorInfo -\u003e IPiQResultError?",
                                                                  "CorrelationId -\u003e string",
                                                                  "Timestamp -\u003e DateTimeOffset"
                                                              ]
                                       },
-                       "CertResultTransformer":  {
-                                                     "purpose":  "Provides CertResultTransformer functionality",
+                       "PiQResultTransformer":  {
+                                                     "purpose":  "Provides PiQResultTransformer functionality",
                                                      "key_methods":  [
-                                                                         "FromValidation\u003cT\u003e(ICertValidationResult validation, T? value = default) -\u003e ICertResult\u003cT\u003e",
-                                                                         "FromValidationToService\u003cT\u003e(ICertValidationResult validation,\n        T? value = default,\n        string requestId = \"\") -\u003e ICertServiceResult\u003cT\u003e"
+                                                                         "FromValidation\u003cT\u003e(IPiQValidationResult validation, T? value = default) -\u003e IPiQResult\u003cT\u003e",
+                                                                         "FromValidationToService\u003cT\u003e(IPiQValidationResult validation,\n        T? value = default,\n        string requestId = \"\") -\u003e IPiQServiceResult\u003cT\u003e"
                                                                      ]
                                                  },
-                       "CertSuccessMarker":  {
-                                                 "purpose":  "Provides CertSuccessMarker functionality",
+                       "PiQSuccessMarker":  {
+                                                 "purpose":  "Provides PiQSuccessMarker functionality",
                                                  "key_methods":  [
-                                                                     "WithProperty(string key, object value) -\u003e ICertResultError",
-                                                                     "WithProperties(IDictionary\u003cstring, object\u003e properties) -\u003e ICertResultError",
+                                                                     "WithProperty(string key, object value) -\u003e IPiQResultError",
+                                                                     "WithProperties(IDictionary\u003cstring, object\u003e properties) -\u003e IPiQResultError",
                                                                      "ToString() -\u003e string"
                                                                  ],
                                                  "key_properties":  [
                                                                         "CorrelationId -\u003e string",
                                                                         "Timestamp -\u003e DateTimeOffset",
-                                                                        "correlationId) -\u003e CertSuccessMarker(string"
+                                                                        "correlationId) -\u003e PiQSuccessMarker(string"
                                                                     ]
                                              }
                    }

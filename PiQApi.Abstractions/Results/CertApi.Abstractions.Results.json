@@ -15,18 +15,18 @@
                      "usage_pattern":  "Import and use classes from this namespace to work with Results functionality."
                  },
     "components":  {
-                       "ICertResultTransformer":  {
-                                                      "purpose":  "Provides ICertResultTransformer functionality",
+                       "IPiQResultTransformer":  {
+                                                      "purpose":  "Provides IPiQResultTransformer functionality",
                                                       "key_methods":  [
-                                                                          "FromValidation\u003cT\u003e(ICertValidationResult validation, T? value = default) -\u003e ICertResult\u003cT\u003e",
-                                                                          "FromValidationToService\u003cT\u003e(ICertValidationResult validation, T? value = default, string requestId = \"\") -\u003e ICertServiceResult\u003cT\u003e",
-                                                                          "TNew\u003e(ICertResult\u003cT\u003e result, Func\u003cT, TNew\u003e mapper) -\u003e Map\u003cT,",
-                                                                          "TNew\u003e(ICertServiceResult\u003cT\u003e result, Func\u003cT, TNew\u003e mapper) -\u003e MapService\u003cT,"
+                                                                          "FromValidation\u003cT\u003e(IPiQValidationResult validation, T? value = default) -\u003e IPiQResult\u003cT\u003e",
+                                                                          "FromValidationToService\u003cT\u003e(IPiQValidationResult validation, T? value = default, string requestId = \"\") -\u003e IPiQServiceResult\u003cT\u003e",
+                                                                          "TNew\u003e(IPiQResult\u003cT\u003e result, Func\u003cT, TNew\u003e mapper) -\u003e Map\u003cT,",
+                                                                          "TNew\u003e(IPiQServiceResult\u003cT\u003e result, Func\u003cT, TNew\u003e mapper) -\u003e MapService\u003cT,"
                                                                       ],
                                                       "key_properties":  [
                                                                              "PiQApi.Abstractions.Validation -\u003e using",
                                                                              "PiQApi.Abstractions.Results -\u003e namespace",
-                                                                             "ICertResultTransformer -\u003e interface",
+                                                                             "IPiQResultTransformer -\u003e interface",
                                                                              "default) -\u003e =",
                                                                              "\"\") -\u003e =",
                                                                              "mapper) -\u003e TNew\u003e",
@@ -34,31 +34,31 @@
                                                                          ],
                                                       "type":  "interface"
                                                   },
-                       "ICertResult":  {
-                                           "purpose":  "Provides ICertResult functionality",
+                       "IPiQResult":  {
+                                           "purpose":  "Provides IPiQResult functionality",
                                            "key_methods":  [
-                                                               "WithProperty(string key, object value) -\u003e ICertResult\u003cT\u003e",
-                                                               "WithProperties(IDictionary\u003cstring, object\u003e properties) -\u003e ICertResult\u003cT\u003e"
+                                                               "WithProperty(string key, object value) -\u003e IPiQResult\u003cT\u003e",
+                                                               "WithProperties(IDictionary\u003cstring, object\u003e properties) -\u003e IPiQResult\u003cT\u003e"
                                                            ],
                                            "key_properties":  [
-                                                                  "PiQApi.Abstractions/Results/ICertResult -\u003e //",
+                                                                  "PiQApi.Abstractions/Results/IPiQResult -\u003e //",
                                                                   "PiQApi.Abstractions.Results -\u003e namespace",
-                                                                  "ICertResult -\u003e :",
+                                                                  "IPiQResult -\u003e :",
                                                                   "Value -\u003e T?",
                                                                   "value) -\u003e object",
                                                                   "properties) -\u003e object\u003e"
                                                               ],
                                            "type":  "interface"
                                        },
-                       "ICertResultError":  {
-                                                "purpose":  "Provides ICertResultError functionality",
+                       "IPiQResultError":  {
+                                                "purpose":  "Provides IPiQResultError functionality",
                                                 "key_methods":  [
-                                                                    "WithProperty(string key, object value) -\u003e ICertResultError",
-                                                                    "WithProperties(IDictionary\u003cstring, object\u003e properties) -\u003e ICertResultError"
+                                                                    "WithProperty(string key, object value) -\u003e IPiQResultError",
+                                                                    "WithProperties(IDictionary\u003cstring, object\u003e properties) -\u003e IPiQResultError"
                                                                 ],
                                                 "key_properties":  [
                                                                        "PiQApi.Abstractions.Results -\u003e namespace",
-                                                                       "ICertResultError -\u003e interface",
+                                                                       "IPiQResultError -\u003e interface",
                                                                        "Code -\u003e string",
                                                                        "Message -\u003e string",
                                                                        "CorrelationId -\u003e string",
@@ -69,18 +69,18 @@
                                                                    ],
                                                 "type":  "interface"
                                             },
-                       "ICertServiceResult":  {
-                                                  "purpose":  "Provides ICertServiceResult functionality",
+                       "IPiQServiceResult":  {
+                                                  "purpose":  "Provides IPiQServiceResult functionality",
                                                   "key_methods":  [
-                                                                      "WithProperty(string key, object value) -\u003e ICertServiceResult\u003cT\u003e",
-                                                                      "WithProperties(IDictionary\u003cstring, object\u003e properties) -\u003e ICertServiceResult\u003cT\u003e",
-                                                                      "WithStatus(OperationStatusType status) -\u003e ICertServiceResult\u003cT\u003e"
+                                                                      "WithProperty(string key, object value) -\u003e IPiQServiceResult\u003cT\u003e",
+                                                                      "WithProperties(IDictionary\u003cstring, object\u003e properties) -\u003e IPiQServiceResult\u003cT\u003e",
+                                                                      "WithStatus(OperationStatusType status) -\u003e IPiQServiceResult\u003cT\u003e"
                                                                   ],
                                                   "key_properties":  [
-                                                                         "PiQApi.Abstractions/Results/ICertServiceResult -\u003e //",
+                                                                         "PiQApi.Abstractions/Results/IPiQServiceResult -\u003e //",
                                                                          "PiQApi.Abstractions.Enums -\u003e using",
                                                                          "PiQApi.Abstractions.Results -\u003e namespace",
-                                                                         "ICertResult\u003cT\u003e -\u003e ICertServiceResult,",
+                                                                         "IPiQResult\u003cT\u003e -\u003e IPiQServiceResult,",
                                                                          "value) -\u003e object",
                                                                          "properties) -\u003e object\u003e",
                                                                          "status) -\u003e WithStatus(OperationStatusType"

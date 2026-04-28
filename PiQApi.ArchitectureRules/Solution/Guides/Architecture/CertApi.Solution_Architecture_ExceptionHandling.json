@@ -9,7 +9,7 @@
   "core_principles": {
     "expected_vs_exceptional": {
       "expected_failures": {
-        "pattern": "CertResult<T>",
+        "pattern": "PiQResult<T>",
         "location": "PiQApi.Abstractions/Results",
         "when_to_use": "For all expected business operation failures",
         "examples": [
@@ -35,17 +35,17 @@
   "solution_structure": {
     "PiQApi.Abstractions": {
       "interfaces": {
-        "ICertResult": {
+        "IPiQResult": {
           "summary": "Base result interface - named to avoid collision with System.Threading.Tasks.Result",
-          "location": "Results/ICertResult.cs",
+          "location": "Results/IPiQResult.cs",
           "members": [
             "bool IsSuccess",
             "ExchangeError? Error"
           ]
         },
-        "ICertResult<T>": {
-          "extends": "ICertResult",
-          "location": "Results/ICertResult{T}.cs",
+        "IPiQResult<T>": {
+          "extends": "IPiQResult",
+          "location": "Results/IPiQResult{T}.cs",
           "additional_members": [
             "T? Value"
           ]
@@ -61,8 +61,8 @@
             "IReadOnlyDictionary<string,object> Context"
           ]
         },
-        "ICertException": {
-          "location": "Exceptions/ICertException.cs",
+        "IPiQException": {
+          "location": "Exceptions/IPiQException.cs",
           "members": [
             "string ErrorCode",
             "string CorrelationId",
@@ -72,18 +72,18 @@
         }
       },
       "base_classes": {
-        "CertServiceException": {
-          "location": "Exceptions/CertServiceException.cs",
-          "implements": "ICertException",
+        "PiQServiceException": {
+          "location": "Exceptions/PiQServiceException.cs",
+          "implements": "IPiQException",
           "features": [
             "Modern serialization",
             "Rich context",
             "Correlation tracking"
           ]
         },
-        "CertResult": {
-          "location": "Results/CertResult.cs",
-          "implements": "ICertResult",
+        "PiQResult": {
+          "location": "Results/PiQResult.cs",
+          "implements": "IPiQResult",
           "notes": "Named to avoid collision with System.Threading.Tasks.Result"
         }
       }
@@ -92,7 +92,7 @@
       "results": {
         "ExchangeResult": {
           "location": "Results/ExchangeResult.cs",
-          "extends": "CertResult",
+          "extends": "PiQResult",
           "notes": "Exchange prefix due to Exchange-specific implementation"
         },
         "ExchangeResult<T>": {
@@ -109,7 +109,7 @@
         "base": {
           "CoreServiceException": {
             "location": "Exceptions/Base/CoreServiceException.cs",
-            "extends": "CertServiceException"
+            "extends": "PiQServiceException"
           }
         },
         "validation": {
@@ -127,8 +127,8 @@
         "location": "PiQApi.Abstractions/Factories",
         "purpose": "Create result objects in a standard way",
         "members": [
-          "ICertResult<T> Success<T>(T value)",
-          "ICertResult<T> Failure<T>(string code, string message)",
+          "IPiQResult<T> Success<T>(T value)",
+          "IPiQResult<T> Failure<T>(string code, string message)",
           "IExchangeResult<T> ExchangeSuccess<T>(T value, ServiceOperationStatusType status, string requestId)",
           "IExchangeResult<T> ExchangeFailure<T>(string code, string message, ServiceOperationStatusType status, string requestId)"
         ],
@@ -165,7 +165,7 @@
           "Catch general exceptions in transformers"
         ],
         "example": {
-          "code": "public async Task<ICertResult<MailItem>> SendMailAsync(MailRequest request) { ... }"
+          "code": "public async Task<IPiQResult<MailItem>> SendMailAsync(MailRequest request) { ... }"
         }
       },
       "exception_usage": {
@@ -209,7 +209,7 @@
   "validation": {
     "result_aggregation": {
       "pattern": "Collect all validation errors before returning",
-      "implementation": "Use CertValidationResult",
+      "implementation": "Use PiQValidationResult",
       "transformation": "Map to ExchangeError properly",
       "context": "Maintain validation metadata"
     },
@@ -227,16 +227,16 @@
     }
   },
   "naming_standards": {
-    "cert_prefix_rules": {
+    "piq_prefix_rules": {
       "required_for": [
         "Types colliding with .NET framework",
         "Core abstraction types",
         "Shared validation types"
       ],
       "examples": {
-        "CertResult": "Collides with multiple Result types",
-        "CertValidationResult": "Collides with DataAnnotations",
-        "CertValidationContext": "Collides with DataAnnotations"
+        "PiQResult": "Collides with multiple Result types",
+        "PiQValidationResult": "Collides with DataAnnotations",
+        "PiQValidationContext": "Collides with DataAnnotations"
       }
     },
     "exchange_prefix_rules": {

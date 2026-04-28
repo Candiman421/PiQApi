@@ -55,8 +55,8 @@
       "Results": {
         "purpose": "Result pattern contracts",
         "required_files": [
-          "ICertResult.cs",
-          "ICertResult{T}.cs",
+          "IPiQResult.cs",
+          "IPiQResult{T}.cs",
           "IResultError.cs",
           "IResultFactory.cs"
         ],
@@ -70,8 +70,8 @@
       "Validation": {
         "contracts": [
           "IValidationRule<T>",
-          "CertValidationContext",
-          "CertValidationResult"
+          "PiQValidationContext",
+          "PiQValidationResult"
         ],
         "rules": [
           "Pure validation only",
@@ -95,12 +95,12 @@
     "naming_rules": {
       "prefixes": {
         "interface": "'I' prefix required",
-        "cert_prefix": "Use for framework collisions",
+        "piq_prefix": "Use for framework collisions",
         "exchange_prefix": "Use for Exchange-specific types"
       },
       "examples": {
         "correct": [
-          "ICertResult - Framework collision",
+          "IPiQResult - Framework collision",
           "IMailOperations - Business domain",
           "IValidationRule<T> - Framework contract"
         ],
@@ -163,7 +163,7 @@
       "IValidationRule<T>": {
         "purpose": "Single validation rule definition",
         "methods": [
-          "Task<CertValidationResult> ValidateAsync(T item, CertValidationContext context, CancellationToken ct)"
+          "Task<PiQValidationResult> ValidateAsync(T item, PiQValidationContext context, CancellationToken ct)"
         ],
         "implementation_rules": [
           "Pure validation logic only",
@@ -172,7 +172,7 @@
           "Proper cancellation"
         ]
       },
-      "CertValidationContext": {
+      "PiQValidationContext": {
         "purpose": "Validation state and settings",
         "properties": [
           "ValidationModeType Mode",

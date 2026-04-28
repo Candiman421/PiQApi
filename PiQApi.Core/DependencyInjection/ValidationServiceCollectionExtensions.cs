@@ -17,7 +17,7 @@ public static class ValidationServiceCollectionExtensions
     /// </summary>
     /// <param name="services">The service collection</param>
     /// <returns>The service collection for chaining</returns>
-    public static IServiceCollection AddCertValidation(this IServiceCollection services)
+    public static IServiceCollection AddPiQValidation(this IServiceCollection services)
     {
         ArgumentNullException.ThrowIfNull(services);
 

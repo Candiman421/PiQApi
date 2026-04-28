@@ -39,10 +39,10 @@ public class PiQResultFactory : IPiQResultFactory
         string? extractedCorrelationId = null;
         string errorCode = "PiQError";
 
-        if (exception is IPiQExceptionInfo certException)
+        if (exception is IPiQExceptionInfo piqException)
         {
-            extractedCorrelationId = certException.CorrelationId;
-            errorCode = certException.ErrorCode;
+            extractedCorrelationId = piqException.CorrelationId;
+            errorCode = piqException.ErrorCode;
         }
 
         return PiQResult<T>.CreateFailure(errorCode, exception.Message, correlationId ?? extractedCorrelationId);
@@ -141,10 +141,10 @@ public class PiQResultFactory : IPiQResultFactory
         string? extractedCorrelationId = null;
         string errorCode = "PiQError";
 
-        if (exception is IPiQExceptionInfo certException)
+        if (exception is IPiQExceptionInfo piqException)
         {
-            extractedCorrelationId = certException.CorrelationId;
-            errorCode = certException.ErrorCode;
+            extractedCorrelationId = piqException.CorrelationId;
+            errorCode = piqException.ErrorCode;
         }
 
         return PiQServiceResult<T>.CreateFailure(

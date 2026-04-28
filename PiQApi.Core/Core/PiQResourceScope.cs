@@ -86,8 +86,8 @@ public class PiQResourceScope : IPiQResourceScope
         var trackedResource = await _resourceManager.TrackResourceAsync(resource, cancellationToken).ConfigureAwait(false);
 
         // Add to local collection
-        string resourceKey = resource is IPiQResource certResource
-            ? certResource.ResourceId
+        string resourceKey = resource is IPiQResource piqResource
+            ? piqResource.ResourceId
             : resource.GetHashCode().ToString(System.Globalization.CultureInfo.InvariantCulture);
 
         _resources[resourceKey] = trackedResource;
@@ -113,8 +113,8 @@ public class PiQResourceScope : IPiQResourceScope
         await _resourceManager.RemoveTrackedResourceAsync(resource, cancellationToken).ConfigureAwait(false);
 
         // Remove from local collection
-        string resourceKey = resource is IPiQResource certResource
-            ? certResource.ResourceId
+        string resourceKey = resource is IPiQResource piqResource
+            ? piqResource.ResourceId
             : resource.GetHashCode().ToString(System.Globalization.CultureInfo.InvariantCulture);
 
         _resources.TryRemove(resourceKey, out _);

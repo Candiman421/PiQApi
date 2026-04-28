@@ -15,8 +15,8 @@
                      "usage_pattern":  "Import and use classes from this namespace to work with Resources functionality."
                  },
     "components":  {
-                       "CertValidationMessages":  {
-                                                      "purpose":  "Provides CertValidationMessages functionality",
+                       "PiQValidationMessages":  {
+                                                      "purpose":  "Provides PiQValidationMessages functionality",
                                                       "key_methods":  [
 
                                                                       ]

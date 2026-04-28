@@ -15,15 +15,15 @@
                      "usage_pattern":  "Import and use classes from this namespace to work with Framework functionality."
                  },
     "components":  {
-                       "CertValidationChain":  {
-                                                   "purpose":  "Provides CertValidationChain functionality",
+                       "PiQValidationChain":  {
+                                                   "purpose":  "Provides PiQValidationChain functionality",
                                                    "key_methods":  [
-                                                                       "ValidateAsync\u003cT\u003e(T entity, CertValidationContext context,\n        CancellationToken cancellationToken = default) -\u003e Task\u003cICertValidationResult\u003e",
-                                                                       "ValidateAsync(object entity,\n        CertValidationContext context,\n        CancellationToken cancellationToken = default) -\u003e Task\u003cICertValidationResult\u003e"
+                                                                       "ValidateAsync\u003cT\u003e(T entity, PiQValidationContext context,\n        CancellationToken cancellationToken = default) -\u003e Task\u003cIPiQValidationResult\u003e",
+                                                                       "ValidateAsync(object entity,\n        PiQValidationContext context,\n        CancellationToken cancellationToken = default) -\u003e Task\u003cIPiQValidationResult\u003e"
                                                                    ]
                                                },
-                       "CertValidationRule":  {
-                                                  "purpose":  "Provides CertValidationRule functionality",
+                       "PiQValidationRule":  {
+                                                  "purpose":  "Provides PiQValidationRule functionality",
                                                   "key_methods":  [
 
                                                                   ],
@@ -31,24 +31,24 @@
                                                                          "RuleId -\u003e string"
                                                                      ]
                                               },
-                       "CertAsyncValidationRule":  {
-                                                       "purpose":  "Provides CertAsyncValidationRule functionality",
+                       "PiQAsyncValidationRule":  {
+                                                       "purpose":  "Provides PiQAsyncValidationRule functionality",
                                                        "key_methods":  [
-                                                                           "Validate(T entity, CertValidationContext context) -\u003e ICertValidationResult",
-                                                                           "ValidateAsync(T entity,\n        CertValidationContext context,\n        CancellationToken cancellationToken = default) -\u003e Task\u003cICertValidationResult\u003e"
+                                                                           "Validate(T entity, PiQValidationContext context) -\u003e IPiQValidationResult",
+                                                                           "ValidateAsync(T entity,\n        PiQValidationContext context,\n        CancellationToken cancellationToken = default) -\u003e Task\u003cIPiQValidationResult\u003e"
                                                                        ]
                                                    },
-                       "CertBaseValidationRule":  {
-                                                      "purpose":  "Provides CertBaseValidationRule functionality",
+                       "PiQBaseValidationRule":  {
+                                                      "purpose":  "Provides PiQBaseValidationRule functionality",
                                                       "key_methods":  [
-                                                                          "Validate(T entity, CertValidationContext context) -\u003e ICertValidationResult",
-                                                                          "ValidateAsync(T entity, CertValidationContext context, CancellationToken cancellationToken = default) -\u003e Task\u003cICertValidationResult\u003e"
+                                                                          "Validate(T entity, PiQValidationContext context) -\u003e IPiQValidationResult",
+                                                                          "ValidateAsync(T entity, PiQValidationContext context, CancellationToken cancellationToken = default) -\u003e Task\u003cIPiQValidationResult\u003e"
                                                                       ]
                                                   },
-                       "CertSyncValidationRule":  {
-                                                      "purpose":  "Provides CertSyncValidationRule functionality",
+                       "PiQSyncValidationRule":  {
+                                                      "purpose":  "Provides PiQSyncValidationRule functionality",
                                                       "key_methods":  [
-                                                                          "Validate(T entity, CertValidationContext context) -\u003e ICertValidationResult"
+                                                                          "Validate(T entity, PiQValidationContext context) -\u003e IPiQValidationResult"
                                                                       ]
                                                   }
                    }

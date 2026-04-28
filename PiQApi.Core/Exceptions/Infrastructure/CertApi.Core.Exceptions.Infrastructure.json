@@ -15,8 +15,8 @@
                      "usage_pattern":  "Import and use classes from this namespace to work with Infrastructure functionality."
                  },
     "components":  {
-                       "CertResourceLockedException":  {
-                                                           "purpose":  "Provides CertResourceLockedException functionality",
+                       "PiQResourceLockedException":  {
+                                                           "purpose":  "Provides PiQResourceLockedException functionality",
                                                            "key_methods":  [
 
                                                                            ],
@@ -25,8 +25,8 @@
                                                                                   "LockOwner -\u003e string"
                                                                               ]
                                                        },
-                       "CertResourceDisposedException":  {
-                                                             "purpose":  "Provides CertResourceDisposedException functionality",
+                       "PiQResourceDisposedException":  {
+                                                             "purpose":  "Provides PiQResourceDisposedException functionality",
                                                              "key_methods":  [
 
                                                                              ],
@@ -34,8 +34,8 @@
                                                                                     "ObjectName -\u003e string"
                                                                                 ]
                                                          },
-                       "CertGenericServiceException":  {
-                                                           "purpose":  "Provides CertGenericServiceException functionality",
+                       "PiQGenericServiceException":  {
+                                                           "purpose":  "Provides PiQGenericServiceException functionality",
                                                            "key_methods":  [
 
                                                                            ],
@@ -44,8 +44,8 @@
                                                                                   "Operation -\u003e string"
                                                                               ]
                                                        },
-                       "CertAuthenticationException":  {
-                                                           "purpose":  "Provides CertAuthenticationException functionality",
+                       "PiQAuthenticationException":  {
+                                                           "purpose":  "Provides PiQAuthenticationException functionality",
                                                            "key_methods":  [
 
                                                                            ],
@@ -54,8 +54,8 @@
                                                                                   "TokenId -\u003e string"
                                                                               ]
                                                        },
-                       "CertMailDeliveryException":  {
-                                                         "purpose":  "Provides CertMailDeliveryException functionality",
+                       "PiQMailDeliveryException":  {
+                                                         "purpose":  "Provides PiQMailDeliveryException functionality",
                                                          "key_methods":  [
 
                                                                          ],
@@ -63,14 +63,14 @@
                                                                                 "RecipientEmail -\u003e string?"
                                                                             ]
                                                      },
-                       "CertConfigurationException":  {
-                                                          "purpose":  "Provides CertConfigurationException functionality",
+                       "PiQConfigurationException":  {
+                                                          "purpose":  "Provides PiQConfigurationException functionality",
                                                           "key_methods":  [
 
                                                                           ]
                                                       },
-                       "CertResourceQuotaExceededException":  {
-                                                                  "purpose":  "Provides CertResourceQuotaExceededException functionality",
+                       "PiQResourceQuotaExceededException":  {
+                                                                  "purpose":  "Provides PiQResourceQuotaExceededException functionality",
                                                                   "key_methods":  [
 
                                                                                   ],
@@ -80,18 +80,18 @@
                                                                                          "MaxSize -\u003e long"
                                                                                      ]
                                                               },
-                       "CertValidationException":  {
-                                                       "purpose":  "Provides CertValidationException functionality",
+                       "PiQValidationException":  {
+                                                       "purpose":  "Provides PiQValidationException functionality",
                                                        "key_methods":  [
 
                                                                        ],
                                                        "key_properties":  [
                                                                               "EntityType -\u003e string",
-                                                                              "Errors -\u003e IReadOnlyCollection\u003cCertValidationResult\u003e"
+                                                                              "Errors -\u003e IReadOnlyCollection\u003cPiQValidationResult\u003e"
                                                                           ]
                                                    },
-                       "CertPropertyValidationException":  {
-                                                               "purpose":  "Provides CertPropertyValidationException functionality",
+                       "PiQPropertyValidationException":  {
+                                                               "purpose":  "Provides PiQPropertyValidationException functionality",
                                                                "key_methods":  [
 
                                                                                ],
@@ -99,19 +99,19 @@
                                                                                       "PropertyName -\u003e string"
                                                                                   ]
                                                            },
-                       "CertResourceNotFoundException":  {
-                                                             "purpose":  "Provides CertResourceNotFoundException functionality",
+                       "PiQResourceNotFoundException":  {
+                                                             "purpose":  "Provides PiQResourceNotFoundException functionality",
                                                              "key_methods":  [
-                                                                                 "ForFolder(string folderId, string folderPath = \"\", Exception? inner = null) -\u003e CertResourceNotFoundException",
-                                                                                 "ForItem(string itemId, string? itemType = null, Exception? inner = null) -\u003e CertResourceNotFoundException"
+                                                                                 "ForFolder(string folderId, string folderPath = \"\", Exception? inner = null) -\u003e PiQResourceNotFoundException",
+                                                                                 "ForItem(string itemId, string? itemType = null, Exception? inner = null) -\u003e PiQResourceNotFoundException"
                                                                              ],
                                                              "key_properties":  [
                                                                                     "ResourceType -\u003e string",
                                                                                     "ResourceId -\u003e string"
                                                                                 ]
                                                          },
-                       "CertConnectionException":  {
-                                                       "purpose":  "Provides CertConnectionException functionality",
+                       "PiQConnectionException":  {
+                                                       "purpose":  "Provides PiQConnectionException functionality",
                                                        "key_methods":  [
 
                                                                        ],
@@ -120,10 +120,10 @@
                                                                               "RequestId -\u003e string?"
                                                                           ]
                                                    },
-                       "CertBuilderException":  {
-                                                    "purpose":  "Provides CertBuilderException functionality",
+                       "PiQBuilderException":  {
+                                                    "purpose":  "Provides PiQBuilderException functionality",
                                                     "key_methods":  [
-                                                                        "ForInvalidState(string currentState, string requiredState, Exception? inner = null) -\u003e CertBuilderException",
+                                                                        "ForInvalidState(string currentState, string requiredState, Exception? inner = null) -\u003e PiQBuilderException",
                                                                         "ToString() -\u003e string"
                                                                     ],
                                                     "key_properties":  [

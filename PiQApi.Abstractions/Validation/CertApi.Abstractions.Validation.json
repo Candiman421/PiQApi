@@ -15,49 +15,49 @@
                      "usage_pattern":  "Import and use classes from this namespace to work with Validation functionality."
                  },
     "components":  {
-                       "ICertValidationProcessor":  {
-                                                        "purpose":  "Provides ICertValidationProcessor functionality",
+                       "IPiQValidationProcessor":  {
+                                                        "purpose":  "Provides IPiQValidationProcessor functionality",
                                                         "key_methods":  [
-                                                                            "RegisterRules\u003cT\u003e(IEnumerable\u003cICertValidationRule\u003cT\u003e\u003e rules) -\u003e void",
-                                                                            "Validate\u003cT\u003e(T entity, CertValidationContext context) -\u003e ICertValidationResult",
-                                                                            "ValidateAsync\u003cT\u003e(T entity, CertValidationContext context, CancellationToken cancellationToken = default) -\u003e Task\u003cICertValidationResult\u003e",
-                                                                            "ValidateAsync(object entity, CertValidationContext context, CancellationToken cancellationToken = default) -\u003e Task\u003cICertValidationResult\u003e",
-                                                                            "Validate(object entity, CertValidationContext context) -\u003e ICertValidationResult",
+                                                                            "RegisterRules\u003cT\u003e(IEnumerable\u003cIPiQValidationRule\u003cT\u003e\u003e rules) -\u003e void",
+                                                                            "Validate\u003cT\u003e(T entity, PiQValidationContext context) -\u003e IPiQValidationResult",
+                                                                            "ValidateAsync\u003cT\u003e(T entity, PiQValidationContext context, CancellationToken cancellationToken = default) -\u003e Task\u003cIPiQValidationResult\u003e",
+                                                                            "ValidateAsync(object entity, PiQValidationContext context, CancellationToken cancellationToken = default) -\u003e Task\u003cIPiQValidationResult\u003e",
+                                                                            "Validate(object entity, PiQValidationContext context) -\u003e IPiQValidationResult",
                                                                             "ClearRules() -\u003e void",
                                                                             "GetRuleCount\u003cT\u003e() -\u003e int"
                                                                         ],
                                                         "key_properties":  [
                                                                                "PiQApi.Abstractions.Validation.Models -\u003e using",
                                                                                "PiQApi.Abstractions.Validation -\u003e namespace",
-                                                                               "ICertValidationProcessor -\u003e interface",
+                                                                               "IPiQValidationProcessor -\u003e interface",
                                                                                "class -\u003e :",
                                                                                "class -\u003e :",
                                                                                "class -\u003e :",
                                                                                "default) -\u003e =",
-                                                                               "context) -\u003e CertValidationContext",
+                                                                               "context) -\u003e PiQValidationContext",
                                                                                "class -\u003e :"
                                                                            ],
                                                         "type":  "interface"
                                                     },
-                       "ICertValidationRuleFactory":  {
-                                                          "purpose":  "Provides ICertValidationRuleFactory functionality",
+                       "IPiQValidationRuleFactory":  {
+                                                          "purpose":  "Provides IPiQValidationRuleFactory functionality",
                                                           "key_methods":  [
                                                                               "CreateRule\u003cT\u003e() -\u003e T",
-                                                                              "GetRulesForEntity\u003cTEntity\u003e() -\u003e IEnumerable\u003cICertValidationRule\u003cTEntity\u003e\u003e"
+                                                                              "GetRulesForEntity\u003cTEntity\u003e() -\u003e IEnumerable\u003cIPiQValidationRule\u003cTEntity\u003e\u003e"
                                                                           ],
                                                           "key_properties":  [
                                                                                  "PiQApi.Abstractions.Validation -\u003e namespace",
-                                                                                 "ICertValidationRuleFactory -\u003e interface",
-                                                                                 "ICertValidationRule -\u003e :",
+                                                                                 "IPiQValidationRuleFactory -\u003e interface",
+                                                                                 "IPiQValidationRule -\u003e :",
                                                                                  "class -\u003e :"
                                                                              ],
                                                           "type":  "interface"
                                                       },
-                       "ICertValidationResult":  {
-                                                     "purpose":  "Provides ICertValidationResult functionality",
+                       "IPiQValidationResult":  {
+                                                     "purpose":  "Provides IPiQValidationResult functionality",
                                                      "key_methods":  [
                                                                          "HasErrors() -\u003e bool",
-                                                                         "GetErrorsBySeverity(ValidationSeverityType severity) -\u003e IEnumerable\u003cCertValidationError\u003e",
+                                                                         "GetErrorsBySeverity(ValidationSeverityType severity) -\u003e IEnumerable\u003cPiQValidationError\u003e",
                                                                          "GetCorrelationId() -\u003e string?",
                                                                          "GetErrorSummary() -\u003e string"
                                                                      ],
@@ -65,9 +65,9 @@
                                                                             "PiQApi.Abstractions.Enums -\u003e using",
                                                                             "PiQApi.Abstractions.Validation.Models -\u003e using",
                                                                             "PiQApi.Abstractions.Validation -\u003e namespace",
-                                                                            "ICertValidationResult -\u003e interface",
+                                                                            "IPiQValidationResult -\u003e interface",
                                                                             "IsValid -\u003e bool",
-                                                                            "Errors -\u003e IReadOnlyList\u003cCertValidationError\u003e",
+                                                                            "Errors -\u003e IReadOnlyList\u003cPiQValidationError\u003e",
                                                                             "Exception -\u003e Exception?",
                                                                             "Context -\u003e object\u003e",
                                                                             "errors -\u003e contains",
@@ -75,48 +75,48 @@
                                                                         ],
                                                      "type":  "interface"
                                                  },
-                       "ICertValidationRule":  {
-                                                   "purpose":  "Provides ICertValidationRule functionality",
+                       "IPiQValidationRule":  {
+                                                   "purpose":  "Provides IPiQValidationRule functionality",
                                                    "key_methods":  [
-                                                                       "Validate(T entity, CertValidationContext context) -\u003e ICertValidationResult",
-                                                                       "ValidateAsync(T entity, CertValidationContext context, CancellationToken cancellationToken = default) -\u003e Task\u003cICertValidationResult\u003e"
+                                                                       "Validate(T entity, PiQValidationContext context) -\u003e IPiQValidationResult",
+                                                                       "ValidateAsync(T entity, PiQValidationContext context, CancellationToken cancellationToken = default) -\u003e Task\u003cIPiQValidationResult\u003e"
                                                                    ],
                                                    "key_properties":  [
                                                                           "PiQApi.Abstractions.Validation.Models -\u003e using",
                                                                           "PiQApi.Abstractions.Validation -\u003e namespace",
-                                                                          "ICertValidationRule -\u003e interface",
+                                                                          "IPiQValidationRule -\u003e interface",
                                                                           "RuleId -\u003e string",
                                                                           "class -\u003e :",
-                                                                          "context) -\u003e CertValidationContext",
+                                                                          "context) -\u003e PiQValidationContext",
                                                                           "default) -\u003e ="
                                                                       ],
                                                    "type":  "interface"
                                                },
-                       "ICertValidationRuleBase":  {
-                                                       "purpose":  "Provides ICertValidationRuleBase functionality",
+                       "IPiQValidationRuleBase":  {
+                                                       "purpose":  "Provides IPiQValidationRuleBase functionality",
                                                        "key_methods":  [
 
                                                                        ],
                                                        "key_properties":  [
                                                                               "PiQApi.Abstractions.Validation -\u003e namespace",
-                                                                              "ICertValidationRuleBase -\u003e interface",
+                                                                              "IPiQValidationRuleBase -\u003e interface",
                                                                               "RuleId -\u003e string"
                                                                           ],
                                                        "type":  "interface"
                                                    },
-                       "ICertValidationService":  {
-                                                      "purpose":  "Provides ICertValidationService functionality",
+                       "IPiQValidationService":  {
+                                                      "purpose":  "Provides IPiQValidationService functionality",
                                                       "key_methods":  [
-                                                                          "Validate\u003cT\u003e(T entity, CertValidationContext context) -\u003e ICertValidationResult",
-                                                                          "ValidateAsync\u003cT\u003e(T entity,\n        CertValidationContext context,\n        CancellationToken cancellationToken = default) -\u003e Task\u003cICertValidationResult\u003e",
-                                                                          "ValidateWithRules\u003cT\u003e(T entity,\n        IEnumerable\u003cType\u003e ruleTypes,\n        CertValidationContext context) -\u003e ICertValidationResult",
-                                                                          "ValidateAsync(object obj,\n        object options,\n        CancellationToken cancellationToken = default) -\u003e Task\u003cICertValidationResult\u003e",
-                                                                          "ValidateAsync(object obj,\n        CancellationToken cancellationToken = default) -\u003e Task\u003cICertValidationResult\u003e"
+                                                                          "Validate\u003cT\u003e(T entity, PiQValidationContext context) -\u003e IPiQValidationResult",
+                                                                          "ValidateAsync\u003cT\u003e(T entity,\n        PiQValidationContext context,\n        CancellationToken cancellationToken = default) -\u003e Task\u003cIPiQValidationResult\u003e",
+                                                                          "ValidateWithRules\u003cT\u003e(T entity,\n        IEnumerable\u003cType\u003e ruleTypes,\n        PiQValidationContext context) -\u003e IPiQValidationResult",
+                                                                          "ValidateAsync(object obj,\n        object options,\n        CancellationToken cancellationToken = default) -\u003e Task\u003cIPiQValidationResult\u003e",
+                                                                          "ValidateAsync(object obj,\n        CancellationToken cancellationToken = default) -\u003e Task\u003cIPiQValidationResult\u003e"
                                                                       ],
                                                       "key_properties":  [
                                                                              "PiQApi.Abstractions.Validation.Models -\u003e using",
                                                                              "PiQApi.Abstractions.Validation -\u003e namespace",
-                                                                             "ICertValidationService -\u003e interface",
+                                                                             "IPiQValidationService -\u003e interface",
                                                                              "class -\u003e :",
                                                                              "class -\u003e :",
                                                                              "class -\u003e :",
@@ -125,8 +125,8 @@
                                                                          ],
                                                       "type":  "interface"
                                                   },
-                       "ICertPropertyValidationRule":  {
-                                                           "purpose":  "Provides ICertPropertyValidationRule functionality",
+                       "IPiQPropertyValidationRule":  {
+                                                           "purpose":  "Provides IPiQPropertyValidationRule functionality",
                                                            "key_methods":  [
                                                                                "ValidateProperty(T entity, out string? errorMessage) -\u003e bool",
                                                                                "Task\u003c(bool IsValid, string? ErrorMessage) -\u003e message\u003c/returns\u003e",
@@ -142,31 +142,31 @@
                                                                               ],
                                                            "type":  "interface"
                                                        },
-                       "ICertValidationDiagnosticsService":  {
-                                                                 "purpose":  "Provides ICertValidationDiagnosticsService functionality",
+                       "IPiQValidationDiagnosticsService":  {
+                                                                 "purpose":  "Provides IPiQValidationDiagnosticsService functionality",
                                                                  "key_methods":  [
-                                                                                     "GetDiagnosticInfo(ICertValidationResult result) -\u003e string",
-                                                                                     "GetErrorReport(ICertValidationResult result) -\u003e string"
+                                                                                     "GetDiagnosticInfo(IPiQValidationResult result) -\u003e string",
+                                                                                     "GetErrorReport(IPiQValidationResult result) -\u003e string"
                                                                                  ],
                                                                  "key_properties":  [
                                                                                         "PiQApi.Abstractions.Validation -\u003e namespace",
-                                                                                        "ICertValidationDiagnosticsService -\u003e interface",
-                                                                                        "result) -\u003e GetDiagnosticInfo(ICertValidationResult",
-                                                                                        "result) -\u003e GetErrorReport(ICertValidationResult"
+                                                                                        "IPiQValidationDiagnosticsService -\u003e interface",
+                                                                                        "result) -\u003e GetDiagnosticInfo(IPiQValidationResult",
+                                                                                        "result) -\u003e GetErrorReport(IPiQValidationResult"
                                                                                     ],
                                                                  "type":  "interface"
                                                              },
-                       "ICertValidationContextFactory":  {
-                                                             "purpose":  "Provides ICertValidationContextFactory functionality",
+                       "IPiQValidationContextFactory":  {
+                                                             "purpose":  "Provides IPiQValidationContextFactory functionality",
                                                              "key_methods":  [
-                                                                                 "CreateForService(string correlationId,\n        string serviceVersion,\n        CancellationToken cancellationToken = default) -\u003e CertValidationContext",
-                                                                                 "CreateForService(string serviceVersion,\n        CancellationToken cancellationToken = default) -\u003e CertValidationContext",
-                                                                                 "AddServiceVersion(CertValidationContext context,\n        string serviceVersion) -\u003e CertValidationContext"
+                                                                                 "CreateForService(string correlationId,\n        string serviceVersion,\n        CancellationToken cancellationToken = default) -\u003e PiQValidationContext",
+                                                                                 "CreateForService(string serviceVersion,\n        CancellationToken cancellationToken = default) -\u003e PiQValidationContext",
+                                                                                 "AddServiceVersion(PiQValidationContext context,\n        string serviceVersion) -\u003e PiQValidationContext"
                                                                              ],
                                                              "key_properties":  [
                                                                                     "PiQApi.Abstractions.Validation.Models -\u003e using",
                                                                                     "PiQApi.Abstractions.Validation -\u003e namespace",
-                                                                                    "ICertValidationContextFactory -\u003e interface",
+                                                                                    "IPiQValidationContextFactory -\u003e interface",
                                                                                     "default) -\u003e =",
                                                                                     "default) -\u003e =",
                                                                                     "serviceVersion) -\u003e string"

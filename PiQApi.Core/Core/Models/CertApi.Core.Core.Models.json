@@ -15,17 +15,17 @@
                      "usage_pattern":  "Import and use classes from this namespace to work with Models functionality."
                  },
     "components":  {
-                       "CertOperationId":  {
-                                               "purpose":  "Provides CertOperationId functionality",
+                       "PiQOperationId":  {
+                                               "purpose":  "Provides PiQOperationId functionality",
                                                "key_methods":  [
-                                                                   "WithProperty(string key, object value) -\u003e CertOperationId",
-                                                                   "WithProperties(IDictionary\u003cstring, object\u003e properties) -\u003e CertOperationId",
-                                                                   "WithName(string name) -\u003e CertOperationId",
+                                                                   "WithProperty(string key, object value) -\u003e PiQOperationId",
+                                                                   "WithProperties(IDictionary\u003cstring, object\u003e properties) -\u003e PiQOperationId",
+                                                                   "WithName(string name) -\u003e PiQOperationId",
                                                                    "GetPropertyValue\u003cT\u003e(string key) -\u003e T?",
                                                                    "TryGetPropertyValue\u003cT\u003e(string key, out T? value) -\u003e bool",
                                                                    "HasProperty(string key) -\u003e bool",
                                                                    "ToString() -\u003e string",
-                                                                   "Equals(CertOperationId? other) -\u003e bool",
+                                                                   "Equals(PiQOperationId? other) -\u003e bool",
                                                                    "Equals(object? obj) -\u003e bool",
                                                                    "GetHashCode() -\u003e int"
                                                                ],
@@ -35,14 +35,14 @@
                                                                       "CreatedUtc -\u003e DateTime"
                                                                   ]
                                            },
-                       "CertResourceId":  {
-                                              "purpose":  "Provides CertResourceId functionality",
+                       "PiQResourceId":  {
+                                              "purpose":  "Provides PiQResourceId functionality",
                                               "key_methods":  [
-                                                                  "WithType(string type) -\u003e CertResourceId",
-                                                                  "WithValue(string value) -\u003e CertResourceId",
-                                                                  "TryParse(string? input, out CertResourceId? resourceId, ICertTimeProvider? timeProvider = null) -\u003e bool",
+                                                                  "WithType(string type) -\u003e PiQResourceId",
+                                                                  "WithValue(string value) -\u003e PiQResourceId",
+                                                                  "TryParse(string? input, out PiQResourceId? resourceId, IPiQTimeProvider? timeProvider = null) -\u003e bool",
                                                                   "ToString() -\u003e string",
-                                                                  "Equals(CertResourceId? other) -\u003e bool",
+                                                                  "Equals(PiQResourceId? other) -\u003e bool",
                                                                   "Equals(object? obj) -\u003e bool",
                                                                   "GetHashCode() -\u003e int"
                                                               ],
@@ -52,17 +52,17 @@
                                                                      "CreatedUtc -\u003e DateTime"
                                                                  ]
                                           },
-                       "CertCorrelationId":  {
-                                                 "purpose":  "Provides CertCorrelationId functionality",
+                       "PiQCorrelationId":  {
+                                                 "purpose":  "Provides PiQCorrelationId functionality",
                                                  "key_methods":  [
-                                                                     "WithProperty(string key, object value) -\u003e ICertCorrelationId",
-                                                                     "WithProperties(IDictionary\u003cstring, object\u003e properties) -\u003e ICertCorrelationId",
+                                                                     "WithProperty(string key, object value) -\u003e IPiQCorrelationId",
+                                                                     "WithProperties(IDictionary\u003cstring, object\u003e properties) -\u003e IPiQCorrelationId",
                                                                      "GetProperty\u003cT\u003e(string key) -\u003e T?",
                                                                      "TryGetProperty\u003cT\u003e(string key, out T? value) -\u003e bool",
                                                                      "HasProperty(string key) -\u003e bool",
                                                                      "ToString() -\u003e string",
-                                                                     "FromInterface(ICertCorrelationId correlationId) -\u003e CertCorrelationId",
-                                                                     "Equals(CertCorrelationId? other) -\u003e bool",
+                                                                     "FromInterface(IPiQCorrelationId correlationId) -\u003e PiQCorrelationId",
+                                                                     "Equals(PiQCorrelationId? other) -\u003e bool",
                                                                      "Equals(object? obj) -\u003e bool",
                                                                      "GetHashCode() -\u003e int"
                                                                  ],

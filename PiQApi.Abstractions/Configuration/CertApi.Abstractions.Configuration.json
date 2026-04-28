@@ -15,16 +15,16 @@
                      "usage_pattern":  "Import and use classes from this namespace to work with Configuration functionality."
                  },
     "components":  {
-                       "ICertEndpointConfiguration":  {
-                                                          "purpose":  "Provides ICertEndpointConfiguration functionality",
+                       "IPiQEndpointConfiguration":  {
+                                                          "purpose":  "Provides IPiQEndpointConfiguration functionality",
                                                           "key_methods":  [
                                                                               "ConfigureAsync(CancellationToken cancellationToken = default) -\u003e Task",
-                                                                              "ValidateAsync(CancellationToken cancellationToken = default) -\u003e Task\u003cCertValidationResult\u003e"
+                                                                              "ValidateAsync(CancellationToken cancellationToken = default) -\u003e Task\u003cPiQValidationResult\u003e"
                                                                           ],
                                                           "key_properties":  [
                                                                                  "PiQApi.Abstractions.Validation.Models -\u003e using",
                                                                                  "PiQApi.Abstractions.Configuration -\u003e namespace",
-                                                                                 "ICertEndpointConfiguration -\u003e interface",
+                                                                                 "IPiQEndpointConfiguration -\u003e interface",
                                                                                  "EndpointName -\u003e string",
                                                                                  "EndpointUri -\u003e Uri?",
                                                                                  "MaxRetries -\u003e int",

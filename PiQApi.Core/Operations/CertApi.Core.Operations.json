@@ -15,8 +15,8 @@
                      "usage_pattern":  "Import and use classes from this namespace to work with Operations functionality."
                  },
     "components":  {
-                       "CertOperationBase":  {
-                                                 "purpose":  "Provides CertOperationBase functionality",
+                       "PiQOperationBase":  {
+                                                 "purpose":  "Provides PiQOperationBase functionality",
                                                  "key_methods":  [
 
                                                                  ]

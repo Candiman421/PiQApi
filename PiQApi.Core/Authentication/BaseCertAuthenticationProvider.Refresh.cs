@@ -1,4 +1,4 @@
-// PiQApi.Core/Authentication/BaseCertAuthenticationProvider.Refresh.cs
+// PiQApi.Core/Authentication/BasePiQAuthenticationProvider.Refresh.cs
 using PiQApi.Abstractions.Authentication;
 using PiQApi.Abstractions.Core;
 using PiQApi.Abstractions.Enums;
@@ -6,7 +6,7 @@ using PiQApi.Core.Core.Models;
 
 namespace PiQApi.Core.Authentication;
 
-public abstract partial class BaseCertAuthenticationProvider
+public abstract partial class BasePiQAuthenticationProvider
 {
     /// <summary>
     /// Refreshes a token
@@ -29,20 +29,20 @@ public abstract partial class BaseCertAuthenticationProvider
                 var refreshedToken = await GetTokenAsync(token.SourceOptions, ct).ConfigureAwait(false);
 
                 // Ensure correlation ID is passed to the new token
-                if (refreshedToken is PiQTokenInfo certToken &&
-                    certToken.CorrelationIdentifier == null &&
-                    token is PiQTokenInfo originalCertToken &&
-                    originalCertToken.CorrelationIdentifier != null)
+                if (refreshedToken is PiQTokenInfo piqToken &&
+                    piqToken.CorrelationIdentifier == null &&
+                    token is PiQTokenInfo originalPiQToken &&
+                    originalPiQToken.CorrelationIdentifier != null)
                 {
                     // Copy correlation ID if possible
                     var builder = PiQTokenInfo.CreateBuilder()
-                        .WithToken(certToken.AccessToken)
-                        .WithExpiresAt(certToken.ExpiresOn)
-                        .WithScopes(certToken.Scopes as IReadOnlyList<string> ?? certToken.Scopes.ToList())
-                        .WithTenantId(certToken.TenantId)
-                        .WithClientId(certToken.ClientId)
-                        .WithAuthenticationMethodType(certToken.AuthType)
-                        .WithCorrelationId(originalCertToken.CorrelationIdentifier);
+                        .WithToken(piqToken.AccessToken)
+                        .WithExpiresAt(piqToken.ExpiresOn)
+                        .WithScopes(piqToken.Scopes as IReadOnlyList<string> ?? piqToken.Scopes.ToList())
+                        .WithTenantId(piqToken.TenantId)
+                        .WithClientId(piqToken.ClientId)
+                        .WithAuthenticationMethodType(piqToken.AuthType)
+                        .WithCorrelationId(originalPiQToken.CorrelationIdentifier);
 
                     return builder.Build();
                 }

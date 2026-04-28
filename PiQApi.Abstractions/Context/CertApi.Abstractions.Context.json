@@ -15,8 +15,8 @@
                      "usage_pattern":  "Import and use classes from this namespace to work with Context functionality."
                  },
     "components":  {
-                       "ICertOperationMetrics":  {
-                                                     "purpose":  "Provides ICertOperationMetrics functionality",
+                       "IPiQOperationMetrics":  {
+                                                     "purpose":  "Provides IPiQOperationMetrics functionality",
                                                      "key_methods":  [
                                                                          "RecordOperation(string operationName, TimeSpan duration, bool success) -\u003e void",
                                                                          "RecordCustomMetric(string metricName, double value) -\u003e void",
@@ -31,7 +31,7 @@
                                                      "key_properties":  [
                                                                             "PiQApi.Abstractions.Monitoring -\u003e using",
                                                                             "PiQApi.Abstractions.Context -\u003e namespace",
-                                                                            "ICertMetricsProvider -\u003e :",
+                                                                            "IPiQMetricsProvider -\u003e :",
                                                                             "SuccessfulOperations -\u003e long",
                                                                             "FailedOperations -\u003e long",
                                                                             "OperationCount -\u003e long",
@@ -52,13 +52,13 @@
                                                                         ],
                                                      "type":  "interface"
                                                  },
-                       "ICertOperationValidator":  {
-                                                       "purpose":  "Provides ICertOperationValidator functionality",
+                       "IPiQOperationValidator":  {
+                                                       "purpose":  "Provides IPiQOperationValidator functionality",
                                                        "key_methods":  [
-                                                                           "ValidateAsync\u003cT\u003e(T entity, ValidationModeType mode, CancellationToken cancellationToken = default) -\u003e Task\u003cICertValidationResult\u003e",
-                                                                           "ValidateRequiredAsync\u003cT\u003e(T entity, CancellationToken cancellationToken = default) -\u003e Task\u003cICertValidationResult\u003e",
-                                                                           "ValidateAndCreateResultAsync\u003cT\u003e(T entity, ValidationModeType mode, CancellationToken cancellationToken = default) -\u003e Task\u003cICertResult\u003cT\u003e\u003e",
-                                                                           "CreateValidationContext(ValidationModeType mode = ValidationModeType.Standard, CancellationToken? cancellationToken = null) -\u003e CertValidationContext"
+                                                                           "ValidateAsync\u003cT\u003e(T entity, ValidationModeType mode, CancellationToken cancellationToken = default) -\u003e Task\u003cIPiQValidationResult\u003e",
+                                                                           "ValidateRequiredAsync\u003cT\u003e(T entity, CancellationToken cancellationToken = default) -\u003e Task\u003cIPiQValidationResult\u003e",
+                                                                           "ValidateAndCreateResultAsync\u003cT\u003e(T entity, ValidationModeType mode, CancellationToken cancellationToken = default) -\u003e Task\u003cIPiQResult\u003cT\u003e\u003e",
+                                                                           "CreateValidationContext(ValidationModeType mode = ValidationModeType.Standard, CancellationToken? cancellationToken = null) -\u003e PiQValidationContext"
                                                                        ],
                                                        "key_properties":  [
                                                                               "PiQApi.Abstractions.Enums -\u003e using",
@@ -66,7 +66,7 @@
                                                                               "PiQApi.Abstractions.Validation -\u003e using",
                                                                               "PiQApi.Abstractions.Validation.Models -\u003e using",
                                                                               "PiQApi.Abstractions.Context -\u003e namespace",
-                                                                              "ICertOperationValidator -\u003e interface",
+                                                                              "IPiQOperationValidator -\u003e interface",
                                                                               "class -\u003e :",
                                                                               "class -\u003e :",
                                                                               "class -\u003e :",
@@ -74,8 +74,8 @@
                                                                           ],
                                                        "type":  "interface"
                                                    },
-                       "ICertOperationProperties":  {
-                                                        "purpose":  "Provides ICertOperationProperties functionality",
+                       "IPiQOperationProperties":  {
+                                                        "purpose":  "Provides IPiQOperationProperties functionality",
                                                         "key_methods":  [
                                                                             "AddProperty(string key, object value) -\u003e void",
                                                                             "AddProperties(IDictionary\u003cstring, object\u003e properties) -\u003e void",
@@ -85,7 +85,7 @@
                                                                         ],
                                                         "key_properties":  [
                                                                                "PiQApi.Abstractions.Context -\u003e namespace",
-                                                                               "ICertOperationProperties -\u003e interface",
+                                                                               "IPiQOperationProperties -\u003e interface",
                                                                                "Properties -\u003e object\u003e",
                                                                                "value) -\u003e object",
                                                                                "properties) -\u003e object\u003e",
@@ -95,51 +95,51 @@
                                                                            ],
                                                         "type":  "interface"
                                                     },
-                       "ICertOperationIdentifier":  {
-                                                        "purpose":  "Provides ICertOperationIdentifier functionality",
+                       "IPiQOperationIdentifier":  {
+                                                        "purpose":  "Provides IPiQOperationIdentifier functionality",
                                                         "key_methods":  [
 
                                                                         ],
                                                         "key_properties":  [
                                                                                "PiQApi.Abstractions.Enums -\u003e using",
                                                                                "PiQApi.Abstractions.Context -\u003e namespace",
-                                                                               "ICertOperationIdentifier -\u003e interface",
+                                                                               "IPiQOperationIdentifier -\u003e interface",
                                                                                "Id -\u003e string",
                                                                                "Name -\u003e string",
                                                                                "OperationType -\u003e OperationType",
-                                                                               "Parent -\u003e ICertOperationIdentifier?",
+                                                                               "Parent -\u003e IPiQOperationIdentifier?",
                                                                                "StartTime -\u003e DateTimeOffset",
                                                                                "Timeout -\u003e TimeSpan"
                                                                            ],
                                                         "type":  "interface"
                                                     },
-                       "ICertOperationContextFactory":  {
-                                                            "purpose":  "Provides ICertOperationContextFactory functionality",
+                       "IPiQOperationContextFactory":  {
+                                                            "purpose":  "Provides IPiQOperationContextFactory functionality",
                                                             "key_methods":  [
-                                                                                "Create(string operationName, ICertCorrelationContext correlationContext) -\u003e ICertOperationContext",
-                                                                                "CreateInitializedContextAsync(CancellationToken cancellationToken = default) -\u003e Task\u003cICertOperationContext\u003e"
+                                                                                "Create(string operationName, IPiQCorrelationContext correlationContext) -\u003e IPiQOperationContext",
+                                                                                "CreateInitializedContextAsync(CancellationToken cancellationToken = default) -\u003e Task\u003cIPiQOperationContext\u003e"
                                                                             ],
                                                             "key_properties":  [
                                                                                    "PiQApi.Abstractions.Core -\u003e using",
                                                                                    "PiQApi.Abstractions.Context -\u003e namespace",
-                                                                                   "ICertOperationContextFactory -\u003e interface",
-                                                                                   "correlationContext) -\u003e ICertCorrelationContext",
+                                                                                   "IPiQOperationContextFactory -\u003e interface",
+                                                                                   "correlationContext) -\u003e IPiQCorrelationContext",
                                                                                    "default) -\u003e ="
                                                                                ],
                                                             "type":  "interface"
                                                         },
-                       "ICertOperationLifecycle":  {
-                                                       "purpose":  "Provides ICertOperationLifecycle functionality",
+                       "IPiQOperationLifecycle":  {
+                                                       "purpose":  "Provides IPiQOperationLifecycle functionality",
                                                        "key_methods":  [
                                                                            "InitializeAsync(CancellationToken cancellationToken = default) -\u003e Task",
                                                                            "ValidateAsync(CancellationToken cancellationToken = default) -\u003e Task",
-                                                                           "CreateChildContext(string operationName) -\u003e ICertOperationContext",
+                                                                           "CreateChildContext(string operationName) -\u003e IPiQOperationContext",
                                                                            "CreateScope() -\u003e IDisposable",
                                                                            "CreateScope(string scopeName) -\u003e IDisposable"
                                                                        ],
                                                        "key_properties":  [
                                                                               "PiQApi.Abstractions.Context -\u003e namespace",
-                                                                              "ICertOperationLifecycle -\u003e interface",
+                                                                              "IPiQOperationLifecycle -\u003e interface",
                                                                               "CancellationToken -\u003e CancellationToken",
                                                                               "default) -\u003e =",
                                                                               "default) -\u003e =",
@@ -148,8 +148,8 @@
                                                                           ],
                                                        "type":  "interface"
                                                    },
-                       "ICertCorrelationScope":  {
-                                                     "purpose":  "Provides ICertCorrelationScope functionality",
+                       "IPiQCorrelationScope":  {
+                                                     "purpose":  "Provides IPiQCorrelationScope functionality",
                                                      "key_methods":  [
 
                                                                      ],
@@ -158,50 +158,50 @@
                                                                             "PiQApi.Abstractions.Context -\u003e namespace",
                                                                             "IDisposable -\u003e :",
                                                                             "CorrelationId -\u003e string",
-                                                                            "Context -\u003e ICertCorrelationContext",
+                                                                            "Context -\u003e IPiQCorrelationContext",
                                                                             "IsActive -\u003e bool"
                                                                         ],
                                                      "type":  "interface"
                                                  },
-                       "ICertOperationContext":  {
-                                                     "purpose":  "Provides ICertOperationContext functionality",
+                       "IPiQOperationContext":  {
+                                                     "purpose":  "Provides IPiQOperationContext functionality",
                                                      "key_methods":  [
 
                                                                      ],
                                                      "key_properties":  [
                                                                             "PiQApi.Abstractions.Core -\u003e using",
                                                                             "PiQApi.Abstractions.Context -\u003e namespace",
-                                                                            "ICertOperationResources -\u003e ICertOperationValidator,",
-                                                                            "Identifier -\u003e ICertOperationIdentifier",
-                                                                            "State -\u003e ICertOperationState",
-                                                                            "Metrics -\u003e ICertOperationMetrics",
-                                                                            "CorrelationContext -\u003e ICertCorrelationContext"
+                                                                            "IPiQOperationResources -\u003e IPiQOperationValidator,",
+                                                                            "Identifier -\u003e IPiQOperationIdentifier",
+                                                                            "State -\u003e IPiQOperationState",
+                                                                            "Metrics -\u003e IPiQOperationMetrics",
+                                                                            "CorrelationContext -\u003e IPiQCorrelationContext"
                                                                         ],
                                                      "type":  "interface"
                                                  },
-                       "ICertOperationResources":  {
-                                                       "purpose":  "Provides ICertOperationResources functionality",
+                       "IPiQOperationResources":  {
+                                                       "purpose":  "Provides IPiQOperationResources functionality",
                                                        "key_methods":  [
                                                                            "GetResourceAsync\u003cT\u003e(string resourceId, CancellationToken cancellationToken = default) -\u003e Task\u003cT\u003e",
                                                                            "TrackResourceAsync\u003cT\u003e(T resource, CancellationToken cancellationToken = default) -\u003e Task\u003cT\u003e",
                                                                            "TryAcquireResourceAsync(string resourceId, TimeSpan timeout, CancellationToken cancellationToken = default) -\u003e Task\u003cbool\u003e",
                                                                            "ReleaseResourceAsync(string resourceId, CancellationToken cancellationToken = default) -\u003e Task",
-                                                                           "CreateResourceScopeAsync(IEnumerable\u003cstring\u003e resourceIds, CancellationToken cancellationToken = default) -\u003e Task\u003cICertResourceScope\u003e"
+                                                                           "CreateResourceScopeAsync(IEnumerable\u003cstring\u003e resourceIds, CancellationToken cancellationToken = default) -\u003e Task\u003cIPiQResourceScope\u003e"
                                                                        ],
                                                        "key_properties":  [
                                                                               "PiQApi.Abstractions.Core -\u003e using",
                                                                               "PiQApi.Abstractions.Context -\u003e namespace",
-                                                                              "ICertOperationResources -\u003e interface",
-                                                                              "ICertResource -\u003e class,",
-                                                                              "ICertResource -\u003e class,",
+                                                                              "IPiQOperationResources -\u003e interface",
+                                                                              "IPiQResource -\u003e class,",
+                                                                              "IPiQResource -\u003e class,",
                                                                               "default) -\u003e =",
                                                                               "default) -\u003e =",
                                                                               "default) -\u003e ="
                                                                           ],
                                                        "type":  "interface"
                                                    },
-                       "ICertOperationState":  {
-                                                   "purpose":  "Provides ICertOperationState functionality",
+                       "IPiQOperationState":  {
+                                                   "purpose":  "Provides IPiQOperationState functionality",
                                                    "key_methods":  [
                                                                        "UpdateState(OperationStatusType status, ErrorCodeType? errorCode = null, string? errorMessage = null) -\u003e void",
                                                                        "TransitionToRunning() -\u003e void",
@@ -213,7 +213,7 @@
                                                    "key_properties":  [
                                                                           "PiQApi.Abstractions.Enums -\u003e using",
                                                                           "PiQApi.Abstractions.Context -\u003e namespace",
-                                                                          "ICertOperationState -\u003e interface",
+                                                                          "IPiQOperationState -\u003e interface",
                                                                           "Status -\u003e OperationStatusType",
                                                                           "ErrorCode -\u003e ErrorCodeType?",
                                                                           "ErrorMessage -\u003e string?",
@@ -232,8 +232,8 @@
                                                                       ],
                                                    "type":  "interface"
                                                },
-                       "ICertOperationScope":  {
-                                                   "purpose":  "Provides ICertOperationScope functionality",
+                       "IPiQOperationScope":  {
+                                                   "purpose":  "Provides IPiQOperationScope functionality",
                                                    "key_methods":  [
 
                                                                    ],
@@ -241,13 +241,13 @@
                                                                           "PiQApi.Abstractions.Context -\u003e namespace",
                                                                           "IDisposable -\u003e :",
                                                                           "Name -\u003e string",
-                                                                          "Context -\u003e ICertOperationContext",
+                                                                          "Context -\u003e IPiQOperationContext",
                                                                           "IsActive -\u003e bool"
                                                                       ],
                                                    "type":  "interface"
                                                },
-                       "ICertOperationLogger":  {
-                                                    "purpose":  "Provides ICertOperationLogger functionality",
+                       "IPiQOperationLogger":  {
+                                                    "purpose":  "Provides IPiQOperationLogger functionality",
                                                     "key_methods":  [
                                                                         "LogOperationStartAsync() -\u003e Task",
                                                                         "LogOperationEndAsync(bool success) -\u003e Task",
@@ -258,7 +258,7 @@
                                                     "key_properties":  [
                                                                            "Microsoft.Extensions.Logging -\u003e using",
                                                                            "PiQApi.Abstractions.Context -\u003e namespace",
-                                                                           "ICertOperationLogger -\u003e interface",
+                                                                           "IPiQOperationLogger -\u003e interface",
                                                                            "success) -\u003e LogOperationEndAsync(bool",
                                                                            "exception) -\u003e LogOperationErrorAsync(Exception",
                                                                            "null) -\u003e =",

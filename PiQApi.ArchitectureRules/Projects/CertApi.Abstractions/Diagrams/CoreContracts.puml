@@ -1,7 +1,7 @@
-// CertApi.ArchitectureRules/Projects/CertApi.Abstractions/Diagrams/CoreContracts.puml
-@startuml CertApi.Abstractions Core Contracts
+// PiQApi.ArchitectureRules/Projects/PiQApi.Abstractions/Diagrams/CoreContracts.puml
+@startuml PiQApi.Abstractions Core Contracts
 
-title CertApi.Abstractions Core Contracts
+title PiQApi.Abstractions Core Contracts
 footer Generated from architectural guides - %date("yyyy.MM.dd")
 legend right
   Core interface relationships and
@@ -16,12 +16,12 @@ skinparam interface {
 }
 
 ' Core Result Types
-interface ICertResult {
+interface IPiQResult {
   +bool IsSuccess
   +IResultError? Error
 }
 
-interface "ICertResult<T>" as ICertResultT {
+interface "IPiQResult<T>" as IPiQResultT {
   +T? Value
 }
 
@@ -33,11 +33,11 @@ interface IResultError {
   +IReadOnlyDictionary<string,object> Context
 }
 
-ICertResultT --|> ICertResult
+IPiQResultT --|> IPiQResult
 
 ' Validation Contracts
 interface "IValidationRule<T>" as IValidationRule {
-  +Task<CertValidationResult> ValidateAsync()
+  +Task<PiQValidationResult> ValidateAsync()
 }
 
 interface "IValidationRuleSet<T>" as IValidationRuleSet {
@@ -45,48 +45,48 @@ interface "IValidationRuleSet<T>" as IValidationRuleSet {
 }
 
 interface IValidationProcessor {
-  +Task<CertValidationResult> ValidateAsync<T>()
+  +Task<PiQValidationResult> ValidateAsync<T>()
 }
 
-class CertValidationContext {
+class PiQValidationContext {
   +ValidationModeType Mode
-  +CertCorrelationId Id
+  +PiQCorrelationId Id
   +IReadOnlyDictionary<string,object> Properties
 }
 
-class CertValidationResult {
+class PiQValidationResult {
   +bool IsValid
   +IReadOnlyCollection<ValidationError> Errors
   +string CorrelationId
   +ValidationSeverityType Severity
 }
 
-IValidationRule ..> CertValidationResult : creates
-IValidationRule ..> CertValidationContext : uses
+IValidationRule ..> PiQValidationResult : creates
+IValidationRule ..> PiQValidationContext : uses
 IValidationProcessor ..> IValidationRule : executes
 IValidationProcessor ..> IValidationRuleSet : executes
 IValidationRuleSet *-- IValidationRule : contains
 
 ' Context Types
 interface ICorrelationContext {
-  +CertCorrelationId Id
+  +PiQCorrelationId Id
   +DateTimeOffset Timestamp
 }
 
 interface IOperationContext {
-  +CertOperationId Id
-  +CertCorrelationId CorrelationId
+  +PiQOperationId Id
+  +PiQCorrelationId CorrelationId
   +IDictionary<string,object> Properties
 }
 
 ' Factory Contracts
 interface "IResultFactory" as IResultFactory {
-  +ICertResult<T> Success<T>()
-  +ICertResult<T> Failure<T>()
-  +ICertResult<T> FromValidationResult<T>()
+  +IPiQResult<T> Success<T>()
+  +IPiQResult<T> Failure<T>()
+  +IPiQResult<T> FromValidationResult<T>()
 }
 
-IResultFactory ..> ICertResult : creates
-IResultFactory ..> ICertResultT : creates
+IResultFactory ..> IPiQResult : creates
+IResultFactory ..> IPiQResultT : creates
 
 @enduml

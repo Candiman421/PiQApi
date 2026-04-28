@@ -15,26 +15,26 @@
                      "usage_pattern":  "Import and use classes from this namespace to work with Threading functionality."
                  },
     "components":  {
-                       "CertAsyncLock":  {
-                                             "purpose":  "Provides CertAsyncLock functionality",
+                       "PiQAsyncLock":  {
+                                             "purpose":  "Provides PiQAsyncLock functionality",
                                              "key_methods":  [
                                                                  "Dispose() -\u003e void"
                                                              ],
                                              "key_properties":  [
-                                                                    "@lock) -\u003e AsyncLockReleaser(CertAsyncLock"
+                                                                    "@lock) -\u003e AsyncLockReleaser(PiQAsyncLock"
                                                                 ]
                                          },
-                       "CertAsyncLockFactory":  {
-                                                    "purpose":  "Provides CertAsyncLockFactory functionality",
+                       "PiQAsyncLockFactory":  {
+                                                    "purpose":  "Provides PiQAsyncLockFactory functionality",
                                                     "key_methods":  [
-                                                                        "Create() -\u003e ICertAsyncLock"
+                                                                        "Create() -\u003e IPiQAsyncLock"
                                                                     ]
                                                 },
-                       "CertAsyncResourceScope":  {
-                                                      "purpose":  "Provides CertAsyncResourceScope functionality",
+                       "PiQAsyncResourceScope":  {
+                                                      "purpose":  "Provides PiQAsyncResourceScope functionality",
                                                       "key_methods":  [
-                                                                          "CreateAsync(CertAsyncSemaphore semaphore,\n        ILogger\u003cCertAsyncResourceScope\u003e? logger = null,\n        CancellationToken cancellationToken = default) -\u003e Task\u003cCertAsyncResourceScope\u003e",
-                                                                          "Create(IEnumerable\u003cIDisposable\u003e resources,\n        ILogger\u003cCertAsyncResourceScope\u003e? logger = null) -\u003e CertAsyncResourceScope",
+                                                                          "CreateAsync(PiQAsyncSemaphore semaphore,\n        ILogger\u003cPiQAsyncResourceScope\u003e? logger = null,\n        CancellationToken cancellationToken = default) -\u003e Task\u003cPiQAsyncResourceScope\u003e",
+                                                                          "Create(IEnumerable\u003cIDisposable\u003e resources,\n        ILogger\u003cPiQAsyncResourceScope\u003e? logger = null) -\u003e PiQAsyncResourceScope",
                                                                           "AddResourceAsync\u003cT\u003e(T resource, CancellationToken cancellationToken = default) -\u003e Task\u003cT\u003e",
                                                                           "RemoveResourceAsync\u003cT\u003e(T resource, CancellationToken cancellationToken = default) -\u003e Task",
                                                                           "CleanupAsync(CancellationToken cancellationToken = default) -\u003e Task",
@@ -46,8 +46,8 @@
                                                                              "Created -\u003e DateTimeOffset"
                                                                          ]
                                                   },
-                       "CertAsyncSemaphore":  {
-                                                  "purpose":  "Provides CertAsyncSemaphore functionality",
+                       "PiQAsyncSemaphore":  {
+                                                  "purpose":  "Provides PiQAsyncSemaphore functionality",
                                                   "key_methods":  [
                                                                       "WaitAsync(CancellationToken cancellationToken = default) -\u003e Task\u003cIDisposable\u003e",
                                                                       "TryWaitAsync(TimeSpan timeout, CancellationToken cancellationToken = default) -\u003e Task\u003cbool\u003e",
@@ -55,7 +55,7 @@
                                                                       "Dispose() -\u003e void"
                                                                   ],
                                                   "key_properties":  [
-                                                                         "semaphore) -\u003e SemaphoreReleaser(CertAsyncSemaphore"
+                                                                         "semaphore) -\u003e SemaphoreReleaser(PiQAsyncSemaphore"
                                                                      ]
                                               }
                    }

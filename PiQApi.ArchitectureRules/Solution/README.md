@@ -1,7 +1,7 @@
-// CertApi.ArchitectureRules/Solution/README.md
-# CertApi Architecture Documentation
+// PiQApi.ArchitectureRules/Solution/README.md
+# PiQApi Architecture Documentation
 
-This project contains architectural guidelines, enforcement tests, and validation tools for the CertApi solution.
+This project contains architectural guidelines, enforcement tests, and validation tools for the PiQApi solution.
 
 ## Organization
 
@@ -21,9 +21,9 @@ This project contains architectural guidelines, enforcement tests, and validatio
 ## Guide Standards
 
 1. **Naming Convention**:
-   - Solution guides: `CertApi.Solution_Category_Name.json`
-   - Project guides: `CertApi.ProjectName_GuideName.json`
-   - Cross-cutting: `CertApi.Solution_CrossCutting_Name.json`
+   - Solution guides: `PiQApi.Solution_Category_Name.json`
+   - Project guides: `PiQApi.ProjectName_GuideName.json`
+   - Cross-cutting: `PiQApi.Solution_CrossCutting_Name.json`
 
 2. **Required Metadata**:
    - version

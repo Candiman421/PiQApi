@@ -15,14 +15,14 @@
                      "usage_pattern":  "Import and use classes from this namespace to work with Core functionality."
                  },
     "components":  {
-                       "CertCorrelationScopeDisposer":  {
-                                                            "purpose":  "Provides CertCorrelationScopeDisposer functionality",
+                       "PiQCorrelationScopeDisposer":  {
+                                                            "purpose":  "Provides PiQCorrelationScopeDisposer functionality",
                                                             "key_methods":  [
                                                                                 "Dispose() -\u003e void"
                                                                             ]
                                                         },
-                       "CertCorrelationContext":  {
-                                                      "purpose":  "Provides CertCorrelationContext functionality",
+                       "PiQCorrelationContext":  {
+                                                      "purpose":  "Provides PiQCorrelationContext functionality",
                                                       "key_methods":  [
                                                                           "AddProperty(string key, object value) -\u003e void",
                                                                           "AddProperties(IDictionary\u003cstring, object\u003e properties) -\u003e void",
@@ -33,10 +33,10 @@
                                                                           "SetCorrelationId(string id) -\u003e void"
                                                                       ]
                                                   },
-                       "CertResourceManager":  {
-                                                   "purpose":  "Provides CertResourceManager functionality",
+                       "PiQResourceManager":  {
+                                                   "purpose":  "Provides PiQResourceManager functionality",
                                                    "key_methods":  [
-                                                                       "CreateScopeAsync(string? scopeId = null, CancellationToken cancellationToken = default) -\u003e Task\u003cICertResourceScope\u003e",
+                                                                       "CreateScopeAsync(string? scopeId = null, CancellationToken cancellationToken = default) -\u003e Task\u003cIPiQResourceScope\u003e",
                                                                        "CleanupScopeAsync(string scopeId, CancellationToken cancellationToken = default) -\u003e Task",
                                                                        "CleanupAllScopesAsync(CancellationToken cancellationToken = default) -\u003e Task",
                                                                        "TrackResourceAsync\u003cT\u003e(T resource, CancellationToken cancellationToken = default) -\u003e Task\u003cT\u003e",
@@ -45,38 +45,38 @@
                                                                        "GetTrackedResources\u003cT\u003e() -\u003e IReadOnlyCollection\u003cT\u003e",
                                                                        "TryAcquireResourceAsync(string resourceId, TimeSpan timeout, CancellationToken cancellationToken = default) -\u003e Task\u003cbool\u003e",
                                                                        "ReleaseResourceAsync(string resourceId, CancellationToken cancellationToken = default) -\u003e Task",
-                                                                       "CreateResourceScopeAsync(IEnumerable\u003cstring\u003e resourceIds, CancellationToken cancellationToken = default) -\u003e Task\u003cICertResourceScope\u003e",
+                                                                       "CreateResourceScopeAsync(IEnumerable\u003cstring\u003e resourceIds, CancellationToken cancellationToken = default) -\u003e Task\u003cIPiQResourceScope\u003e",
                                                                        "DisposeAsync() -\u003e ValueTask"
                                                                    ]
                                                },
-                       "CertResourceContext":  {
-                                                   "purpose":  "Provides CertResourceContext functionality",
+                       "PiQResourceContext":  {
+                                                   "purpose":  "Provides PiQResourceContext functionality",
                                                    "key_methods":  [
                                                                        "GetResource\u003cT\u003e(string resourceId) -\u003e T",
                                                                        "TrackResourceAsync\u003cT\u003e(T resource, CancellationToken cancellationToken = default) -\u003e Task\u003cT\u003e",
                                                                        "GetTrackedResources\u003cT\u003e() -\u003e IReadOnlyCollection\u003cT\u003e",
                                                                        "TryAcquireResourceAsync(string resourceId, TimeSpan timeout, CancellationToken cancellationToken = default) -\u003e Task\u003cbool\u003e",
                                                                        "ReleaseResourceAsync(string resourceId, CancellationToken cancellationToken = default) -\u003e Task",
-                                                                       "CreateResourceScopeAsync(IEnumerable\u003cstring\u003e resourceIds, CancellationToken cancellationToken = default) -\u003e Task\u003cICertResourceScope\u003e",
+                                                                       "CreateResourceScopeAsync(IEnumerable\u003cstring\u003e resourceIds, CancellationToken cancellationToken = default) -\u003e Task\u003cIPiQResourceScope\u003e",
                                                                        "Dispose() -\u003e void"
                                                                    ],
                                                    "key_properties":  [
-                                                                          "CorrelationContext -\u003e ICertCorrelationContext",
-                                                                          "Metrics -\u003e ICertResourceMetrics"
+                                                                          "CorrelationContext -\u003e IPiQCorrelationContext",
+                                                                          "Metrics -\u003e IPiQResourceMetrics"
                                                                       ]
                                                },
-                       "CertCorrelationScopeState":  {
-                                                         "purpose":  "Provides CertCorrelationScopeState functionality",
+                       "PiQCorrelationScopeState":  {
+                                                         "purpose":  "Provides PiQCorrelationScopeState functionality",
                                                          "key_methods":  [
 
                                                                          ],
                                                          "key_properties":  [
                                                                                 "ParentId -\u003e string?",
-                                                                                "parentId) -\u003e CertCorrelationScopeState(string?"
+                                                                                "parentId) -\u003e PiQCorrelationScopeState(string?"
                                                                             ]
                                                      },
-                       "CertResourceScope":  {
-                                                 "purpose":  "Provides CertResourceScope functionality",
+                       "PiQResourceScope":  {
+                                                 "purpose":  "Provides PiQResourceScope functionality",
                                                  "key_methods":  [
                                                                      "AddResourceAsync\u003cT\u003e(T resource, CancellationToken cancellationToken = default) -\u003e Task\u003cT\u003e",
                                                                      "RemoveResourceAsync\u003cT\u003e(T resource, CancellationToken cancellationToken = default) -\u003e Task",
@@ -88,8 +88,8 @@
                                                                         "Created -\u003e DateTimeOffset"
                                                                     ]
                                              },
-                       "CertResourceMetrics":  {
-                                                   "purpose":  "Provides CertResourceMetrics functionality",
+                       "PiQResourceMetrics":  {
+                                                   "purpose":  "Provides PiQResourceMetrics functionality",
                                                    "key_methods":  [
                                                                        "IncrementCounter(string name, long increment = 1) -\u003e void",
                                                                        "RecordResourceAcquired(string resourceType) -\u003e int",
@@ -101,7 +101,7 @@
                                                                        "RecordOperation(string resourceType, string operationType, TimeSpan duration) -\u003e void",
                                                                        "RecordError(string resourceType, string errorType) -\u003e void",
                                                                        "ResetCounters() -\u003e void",
-                                                                       "GetMetricsSnapshotAsync(CancellationToken cancellationToken = default) -\u003e Task\u003cICertMetricsSnapshot\u003e"
+                                                                       "GetMetricsSnapshotAsync(CancellationToken cancellationToken = default) -\u003e Task\u003cIPiQMetricsSnapshot\u003e"
                                                                    ]
                                                }
                    },

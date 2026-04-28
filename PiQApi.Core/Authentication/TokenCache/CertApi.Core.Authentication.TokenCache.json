@@ -15,11 +15,11 @@
                      "usage_pattern":  "Import and use classes from this namespace to work with TokenCache functionality."
                  },
     "components":  {
-                       "CertMemoryTokenCache":  {
-                                                    "purpose":  "Provides CertMemoryTokenCache functionality",
+                       "PiQMemoryTokenCache":  {
+                                                    "purpose":  "Provides PiQMemoryTokenCache functionality",
                                                     "key_methods":  [
-                                                                        "GetTokenAsync(string cacheKey, CancellationToken cancellationToken = default) -\u003e Task\u003cCertTokenInfo?\u003e",
-                                                                        "SetTokenAsync(string cacheKey, CertTokenInfo token, CancellationToken cancellationToken = default) -\u003e Task",
+                                                                        "GetTokenAsync(string cacheKey, CancellationToken cancellationToken = default) -\u003e Task\u003cPiQTokenInfo?\u003e",
+                                                                        "SetTokenAsync(string cacheKey, PiQTokenInfo token, CancellationToken cancellationToken = default) -\u003e Task",
                                                                         "RemoveTokenAsync(string cacheKey, CancellationToken cancellationToken = default) -\u003e Task",
                                                                         "ClearAsync(CancellationToken cancellationToken = default) -\u003e Task",
                                                                         "GetCountAsync(CancellationToken cancellationToken = default) -\u003e Task\u003cint\u003e",

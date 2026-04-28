@@ -15,34 +15,34 @@
                      "usage_pattern":  "Import and use classes from this namespace to work with Rules functionality."
                  },
     "components":  {
-                       "CertCompositeValidationRule":  {
-                                                           "purpose":  "Provides CertCompositeValidationRule functionality",
+                       "PiQCompositeValidationRule":  {
+                                                           "purpose":  "Provides PiQCompositeValidationRule functionality",
                                                            "key_methods":  [
-                                                                               "Validate(T entity, CertValidationContext context) -\u003e ICertValidationResult",
-                                                                               "ValidateAsync(T entity,\n        CertValidationContext context,\n        CancellationToken cancellationToken = default) -\u003e Task\u003cICertValidationResult\u003e"
+                                                                               "Validate(T entity, PiQValidationContext context) -\u003e IPiQValidationResult",
+                                                                               "ValidateAsync(T entity,\n        PiQValidationContext context,\n        CancellationToken cancellationToken = default) -\u003e Task\u003cIPiQValidationResult\u003e"
                                                                            ]
                                                        },
-                       "CertFileExtensionValidationRule":  {
-                                                               "purpose":  "Provides CertFileExtensionValidationRule functionality",
+                       "PiQFileExtensionValidationRule":  {
+                                                               "purpose":  "Provides PiQFileExtensionValidationRule functionality",
                                                                "key_methods":  [
-                                                                                   "Validate(T entity, CertValidationContext context) -\u003e ICertValidationResult"
+                                                                                   "Validate(T entity, PiQValidationContext context) -\u003e IPiQValidationResult"
                                                                                ]
                                                            },
-                       "CertPropertyValidationRule":  {
-                                                          "purpose":  "Provides CertPropertyValidationRule functionality",
+                       "PiQPropertyValidationRule":  {
+                                                          "purpose":  "Provides PiQPropertyValidationRule functionality",
                                                           "key_methods":  [
                                                                               "Task\u003c(bool IsValid, string? ErrorMessage) -\u003e virtual",
-                                                                              "Validate(T entity, CertValidationContext context) -\u003e ICertValidationResult",
-                                                                              "ValidateAsync(T entity,\n        CertValidationContext context,\n        CancellationToken cancellationToken = default) -\u003e Task\u003cICertValidationResult\u003e"
+                                                                              "Validate(T entity, PiQValidationContext context) -\u003e IPiQValidationResult",
+                                                                              "ValidateAsync(T entity,\n        PiQValidationContext context,\n        CancellationToken cancellationToken = default) -\u003e Task\u003cIPiQValidationResult\u003e"
                                                                           ],
                                                           "key_properties":  [
                                                                                  "PropertyName -\u003e string"
                                                                              ]
                                                       },
-                       "CertHeaderValidationRule":  {
-                                                        "purpose":  "Provides CertHeaderValidationRule functionality",
+                       "PiQHeaderValidationRule":  {
+                                                        "purpose":  "Provides PiQHeaderValidationRule functionality",
                                                         "key_methods":  [
-                                                                            "Validate(T entity, CertValidationContext context) -\u003e ICertValidationResult"
+                                                                            "Validate(T entity, PiQValidationContext context) -\u003e IPiQValidationResult"
                                                                         ]
                                                     }
                    }

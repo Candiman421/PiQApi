@@ -18,7 +18,7 @@
                        "ValidationServiceCollectionExtensions":  {
                                                                      "purpose":  "Provides ValidationServiceCollectionExtensions functionality",
                                                                      "key_methods":  [
-                                                                                         "AddCertValidation(this IServiceCollection services) -\u003e IServiceCollection",
+                                                                                         "AddPiQValidation(this IServiceCollection services) -\u003e IServiceCollection",
                                                                                          "AddValidationRules\u003cTEntity\u003e(this IServiceCollection services,\n        params Type[] rules) -\u003e IServiceCollection"
                                                                                      ],
                                                                      "key_properties":  [
@@ -30,7 +30,7 @@
                                                                   "key_methods":  [
                                                                                       "AddContextServices(this IServiceCollection services) -\u003e IServiceCollection",
                                                                                       "AddOperationContextServices(this IServiceCollection services) -\u003e IServiceCollection",
-                                                                                      "ConfigureCorrelationContext(this IServiceCollection services,\n        Action\u003cConfiguration.CertCorrelationContextOptions\u003e configureOptions) -\u003e IServiceCollection"
+                                                                                      "ConfigureCorrelationContext(this IServiceCollection services,\n        Action\u003cConfiguration.PiQCorrelationContextOptions\u003e configureOptions) -\u003e IServiceCollection"
                                                                                   ],
                                                                   "key_properties":  [
                                                                                          "ContextServiceCollectionExtensions -\u003e class"
@@ -49,7 +49,7 @@
                                                                   "purpose":  "Provides OptionsServiceCollectionExtensions functionality",
                                                                   "key_methods":  [
                                                                                       "AddCoreOptions(this IServiceCollection services, IConfiguration? configuration = null) -\u003e IServiceCollection",
-                                                                                      "AddCertOptions\u003cTOptions\u003e(this IServiceCollection services,\n        IConfiguration? configuration = null,\n        string? sectionName = null) -\u003e IServiceCollection"
+                                                                                      "AddPiQOptions\u003cTOptions\u003e(this IServiceCollection services,\n        IConfiguration? configuration = null,\n        string? sectionName = null) -\u003e IServiceCollection"
                                                                                   ],
                                                                   "key_properties":  [
                                                                                          "OptionsServiceCollectionExtensions -\u003e class"

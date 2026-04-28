@@ -14,7 +14,7 @@ namespace PiQApi.ArchitectureRules.Projects.PiQApi.Abstractions.Tests
                 .Should()
                 .HaveNameStartingWith("I")
                 .Because("interfaces must be clearly identified");
-            
+
             rule.Check(ArchSystem);
         }
 
@@ -30,13 +30,13 @@ namespace PiQApi.ArchitectureRules.Projects.PiQApi.Abstractions.Tests
         }
 
         [Fact]
-        public void ValidationTypes_Should_UseCertPrefix()
+        public void ValidationTypes_Should_UsePiQPrefix()
         {
             var rule = Types()
                 .That().ResideInNamespace("PiQApi.Abstractions.Validation")
                 .And().AreNotInterfaces()
-                .Should().HaveNameStartingWith("Cert")
-                .Because("validation types must use Cert prefix to avoid framework collisions");
+                .Should().HaveNameStartingWith("PiQ")
+                .Because("validation types must use PiQ prefix to avoid framework collisions");
 
             rule.Check(ArchSystem);
         }

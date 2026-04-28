@@ -15,17 +15,17 @@
                      "usage_pattern":  "Import and use classes from this namespace to work with Time functionality."
                  },
     "components":  {
-                       "CertTimeProviderFactory":  {
-                                                       "purpose":  "Provides CertTimeProviderFactory functionality",
+                       "PiQTimeProviderFactory":  {
+                                                       "purpose":  "Provides PiQTimeProviderFactory functionality",
                                                        "key_methods":  [
-                                                                           "ConfigureStatic(ICertTimeProvider provider) -\u003e void",
-                                                                           "Configure(ICertTimeProvider provider) -\u003e void",
+                                                                           "ConfigureStatic(IPiQTimeProvider provider) -\u003e void",
+                                                                           "Configure(IPiQTimeProvider provider) -\u003e void",
                                                                            "ResetStatic() -\u003e void",
                                                                            "Reset() -\u003e void"
                                                                        ]
                                                    },
-                       "CertSystemTimeProvider":  {
-                                                      "purpose":  "Provides CertSystemTimeProvider functionality",
+                       "PiQSystemTimeProvider":  {
+                                                      "purpose":  "Provides PiQSystemTimeProvider functionality",
                                                       "key_methods":  [
                                                                           "GetTimestamp() -\u003e TimeSpan",
                                                                           "GetElapsedTime(TimeSpan timestamp) -\u003e TimeSpan"

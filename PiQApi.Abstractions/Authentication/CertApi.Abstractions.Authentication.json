@@ -15,15 +15,15 @@
                      "usage_pattern":  "Import and use classes from this namespace to work with Authentication functionality."
                  },
     "components":  {
-                       "ICertAuthenticationOptions":  {
-                                                          "purpose":  "Provides ICertAuthenticationOptions functionality",
+                       "IPiQAuthenticationOptions":  {
+                                                          "purpose":  "Provides IPiQAuthenticationOptions functionality",
                                                           "key_methods":  [
 
                                                                           ],
                                                           "key_properties":  [
                                                                                  "PiQApi.Abstractions.Enums -\u003e using",
                                                                                  "PiQApi.Abstractions.Authentication -\u003e namespace",
-                                                                                 "ICertAuthenticationOptions -\u003e interface",
+                                                                                 "IPiQAuthenticationOptions -\u003e interface",
                                                                                  "AuthType -\u003e AuthenticationMethodType",
                                                                                  "ClientId -\u003e string?",
                                                                                  "TenantId -\u003e string?",
@@ -32,24 +32,24 @@
                                                                              ],
                                                           "type":  "interface"
                                                       },
-                       "ICertAuthenticationProviderFactory":  {
-                                                                  "purpose":  "Provides ICertAuthenticationProviderFactory functionality",
+                       "IPiQAuthenticationProviderFactory":  {
+                                                                  "purpose":  "Provides IPiQAuthenticationProviderFactory functionality",
                                                                   "key_methods":  [
-                                                                                      "CreateProvider(AuthenticationMethodType authType) -\u003e ICertAuthenticationProvider",
-                                                                                      "CreateProvider(ICertAuthenticationOptions options) -\u003e ICertAuthenticationProvider"
+                                                                                      "CreateProvider(AuthenticationMethodType authType) -\u003e IPiQAuthenticationProvider",
+                                                                                      "CreateProvider(IPiQAuthenticationOptions options) -\u003e IPiQAuthenticationProvider"
                                                                                   ],
                                                                   "key_properties":  [
                                                                                          "PiQApi.Abstractions.Core -\u003e using",
                                                                                          "PiQApi.Abstractions.Enums -\u003e using",
                                                                                          "PiQApi.Abstractions.Authentication -\u003e namespace",
-                                                                                         "ICertCorrelationAware -\u003e :",
+                                                                                         "IPiQCorrelationAware -\u003e :",
                                                                                          "authType) -\u003e CreateProvider(AuthenticationMethodType",
-                                                                                         "options) -\u003e CreateProvider(ICertAuthenticationOptions"
+                                                                                         "options) -\u003e CreateProvider(IPiQAuthenticationOptions"
                                                                                      ],
                                                                   "type":  "interface"
                                                               },
-                       "ICertAuthenticationContext":  {
-                                                          "purpose":  "Provides ICertAuthenticationContext functionality",
+                       "IPiQAuthenticationContext":  {
+                                                          "purpose":  "Provides IPiQAuthenticationContext functionality",
                                                           "key_methods":  [
                                                                               "AcquireTokenAsync(CancellationToken cancellationToken = default) -\u003e Task\u003cstring\u003e",
                                                                               "ValidateTokenAsync(CancellationToken cancellationToken = default) -\u003e Task\u003cbool\u003e",
@@ -57,7 +57,7 @@
                                                                           ],
                                                           "key_properties":  [
                                                                                  "PiQApi.Abstractions.Authentication -\u003e namespace",
-                                                                                 "ICertAuthenticationContext -\u003e interface",
+                                                                                 "IPiQAuthenticationContext -\u003e interface",
                                                                                  "AccessToken -\u003e string",
                                                                                  "IsAuthenticated -\u003e bool",
                                                                                  "TokenExpiration -\u003e DateTime",
@@ -68,17 +68,17 @@
                                                                              ],
                                                           "type":  "interface"
                                                       },
-                       "ICertTokenProvider":  {
-                                                  "purpose":  "Provides ICertTokenProvider functionality",
+                       "IPiQTokenProvider":  {
+                                                  "purpose":  "Provides IPiQTokenProvider functionality",
                                                   "key_methods":  [
                                                                       "GetAccessTokenAsync(CancellationToken cancellationToken = default) -\u003e Task\u003cstring\u003e",
                                                                       "RefreshTokenAsync(string accessToken, CancellationToken cancellationToken = default) -\u003e Task\u003cstring\u003e",
-                                                                      "GetTokenAsync(ICertAuthenticationOptions options, CancellationToken ct) -\u003e Task\u003cICertTokenInfo\u003e",
-                                                                      "RefreshTokenAsync(ICertTokenInfo token, CancellationToken ct = default) -\u003e Task\u003cICertTokenInfo\u003e"
+                                                                      "GetTokenAsync(IPiQAuthenticationOptions options, CancellationToken ct) -\u003e Task\u003cIPiQTokenInfo\u003e",
+                                                                      "RefreshTokenAsync(IPiQTokenInfo token, CancellationToken ct = default) -\u003e Task\u003cIPiQTokenInfo\u003e"
                                                                   ],
                                                   "key_properties":  [
                                                                          "PiQApi.Abstractions.Authentication -\u003e namespace",
-                                                                         "ICertTokenProvider -\u003e interface",
+                                                                         "IPiQTokenProvider -\u003e interface",
                                                                          "default) -\u003e =",
                                                                          "default) -\u003e =",
                                                                          "ct) -\u003e CancellationToken",
@@ -86,24 +86,24 @@
                                                                      ],
                                                   "type":  "interface"
                                               },
-                       "ICertCredentialsFactory":  {
-                                                       "purpose":  "Provides ICertCredentialsFactory functionality",
+                       "IPiQCredentialsFactory":  {
+                                                       "purpose":  "Provides IPiQCredentialsFactory functionality",
                                                        "key_methods":  [
-                                                                           "CreateCredential(ICertAuthenticationOptions options) -\u003e object"
+                                                                           "CreateCredential(IPiQAuthenticationOptions options) -\u003e object"
                                                                        ],
                                                        "key_properties":  [
                                                                               "PiQApi.Abstractions.Authentication -\u003e namespace",
-                                                                              "ICertCredentialsFactory -\u003e interface",
-                                                                              "options) -\u003e CreateCredential(ICertAuthenticationOptions"
+                                                                              "IPiQCredentialsFactory -\u003e interface",
+                                                                              "options) -\u003e CreateCredential(IPiQAuthenticationOptions"
                                                                           ],
                                                        "type":  "interface"
                                                    },
-                       "ICertMultiServiceAuthenticationContext":  {
-                                                                      "purpose":  "Provides ICertMultiServiceAuthenticationContext functionality",
+                       "IPiQMultiServiceAuthenticationContext":  {
+                                                                      "purpose":  "Provides IPiQMultiServiceAuthenticationContext functionality",
                                                                       "key_methods":  [
-                                                                                          "GetAuthenticationContext(ServiceEndpointType serviceType) -\u003e ICertAuthenticationContext",
+                                                                                          "GetAuthenticationContext(ServiceEndpointType serviceType) -\u003e IPiQAuthenticationContext",
                                                                                           "AcquireTokenAsync(ServiceEndpointType serviceType, CancellationToken cancellationToken = default) -\u003e Task\u003cstring\u003e",
-                                                                                          "RegisterServiceAsync(ServiceEndpointType serviceType, ICertAuthenticationOptions options, CancellationToken cancellationToken = default) -\u003e Task",
+                                                                                          "RegisterServiceAsync(ServiceEndpointType serviceType, IPiQAuthenticationOptions options, CancellationToken cancellationToken = default) -\u003e Task",
                                                                                           "ValidateTokenAsync(ServiceEndpointType serviceType, CancellationToken cancellationToken = default) -\u003e Task\u003cbool\u003e",
                                                                                           "InvalidateTokenAsync(ServiceEndpointType serviceType, CancellationToken cancellationToken = default) -\u003e Task"
                                                                                       ],
@@ -111,8 +111,8 @@
                                                                                              "PiQApi.Abstractions.Core -\u003e using",
                                                                                              "PiQApi.Abstractions.Enums -\u003e using",
                                                                                              "PiQApi.Abstractions.Authentication -\u003e namespace",
-                                                                                             "ICertCorrelationAware -\u003e :",
-                                                                                             "RegisteredServices -\u003e ICertAuthenticationContext\u003e",
+                                                                                             "IPiQCorrelationAware -\u003e :",
+                                                                                             "RegisteredServices -\u003e IPiQAuthenticationContext\u003e",
                                                                                              "serviceType) -\u003e GetAuthenticationContext(ServiceEndpointType",
                                                                                              "default) -\u003e =",
                                                                                              "default) -\u003e =",
@@ -122,8 +122,8 @@
                                                                                          ],
                                                                       "type":  "interface"
                                                                   },
-                       "ICertTokenInfo":  {
-                                              "purpose":  "Provides ICertTokenInfo functionality",
+                       "IPiQTokenInfo":  {
+                                              "purpose":  "Provides IPiQTokenInfo functionality",
                                               "key_methods":  [
                                                                   "type(e.g. Bearer) -\u003e token",
                                                                   "HasScope(string scope) -\u003e bool",
@@ -133,7 +133,7 @@
                                               "key_properties":  [
                                                                      "PiQApi.Abstractions.Enums -\u003e using",
                                                                      "PiQApi.Abstractions.Authentication -\u003e namespace",
-                                                                     "ICertTokenInfo -\u003e interface",
+                                                                     "IPiQTokenInfo -\u003e interface",
                                                                      "AccessToken -\u003e string",
                                                                      "ExpiresOn -\u003e DateTime",
                                                                      "Scopes -\u003e IEnumerable\u003cstring\u003e",
@@ -142,36 +142,36 @@
                                                                      "ClientId -\u003e string",
                                                                      "AuthType -\u003e AuthenticationMethodType",
                                                                      "IsExpired -\u003e bool",
-                                                                     "SourceOptions -\u003e ICertAuthenticationOptions?",
+                                                                     "SourceOptions -\u003e IPiQAuthenticationOptions?",
                                                                      "scope) -\u003e HasScope(string",
                                                                      "key) -\u003e HasClaim(string",
                                                                      "key) -\u003e GetClaimValue(string"
                                                                  ],
                                               "type":  "interface"
                                           },
-                       "ICertTokenValidator":  {
-                                                   "purpose":  "Provides ICertTokenValidator functionality",
+                       "IPiQTokenValidator":  {
+                                                   "purpose":  "Provides IPiQTokenValidator functionality",
                                                    "key_methods":  [
-                                                                       "ValidateTokenAsync(ICertTokenInfo token, CancellationToken ct) -\u003e Task\u003cbool\u003e",
-                                                                       "InvalidateTokenAsync(ICertTokenInfo token, CancellationToken ct) -\u003e Task"
+                                                                       "ValidateTokenAsync(IPiQTokenInfo token, CancellationToken ct) -\u003e Task\u003cbool\u003e",
+                                                                       "InvalidateTokenAsync(IPiQTokenInfo token, CancellationToken ct) -\u003e Task"
                                                                    ],
                                                    "key_properties":  [
                                                                           "PiQApi.Abstractions.Authentication -\u003e namespace",
-                                                                          "ICertTokenValidator -\u003e interface",
+                                                                          "IPiQTokenValidator -\u003e interface",
                                                                           "valid -\u003e is",
                                                                           "ct) -\u003e CancellationToken",
                                                                           "ct) -\u003e CancellationToken"
                                                                       ],
                                                    "type":  "interface"
                                                },
-                       "ICertAuthenticationResult":  {
-                                                         "purpose":  "Provides ICertAuthenticationResult functionality",
+                       "IPiQAuthenticationResult":  {
+                                                         "purpose":  "Provides IPiQAuthenticationResult functionality",
                                                          "key_methods":  [
                                                                              "type(e.g., \"Bearer\") -\u003e token"
                                                                          ],
                                                          "key_properties":  [
                                                                                 "PiQApi.Abstractions.Authentication -\u003e namespace",
-                                                                                "ICertAuthenticationResult -\u003e interface",
+                                                                                "IPiQAuthenticationResult -\u003e interface",
                                                                                 "AccessToken -\u003e string",
                                                                                 "ExpiresOn -\u003e DateTimeOffset",
                                                                                 "RefreshToken -\u003e string?",
@@ -182,8 +182,8 @@
                                                                             ],
                                                          "type":  "interface"
                                                      },
-                       "ICertAuthenticationProvider":  {
-                                                           "purpose":  "Provides ICertAuthenticationProvider functionality",
+                       "IPiQAuthenticationProvider":  {
+                                                           "purpose":  "Provides IPiQAuthenticationProvider functionality",
                                                            "key_methods":  [
 
                                                                            ],
@@ -191,20 +191,20 @@
                                                                                   "PiQApi.Abstractions.Core -\u003e using",
                                                                                   "PiQApi.Abstractions.Enums -\u003e using",
                                                                                   "PiQApi.Abstractions.Authentication -\u003e namespace",
-                                                                                  "ICertCorrelationAware -\u003e ICertImpersonationProvider,",
+                                                                                  "IPiQCorrelationAware -\u003e IPiQImpersonationProvider,",
                                                                                   "AuthType -\u003e AuthenticationMethodType"
                                                                               ],
                                                            "type":  "interface"
                                                        },
-                       "ICertImpersonationProvider":  {
-                                                          "purpose":  "Provides ICertImpersonationProvider functionality",
+                       "IPiQImpersonationProvider":  {
+                                                          "purpose":  "Provides IPiQImpersonationProvider functionality",
                                                           "key_methods":  [
                                                                               "SupportsImpersonationAsync(CancellationToken ct = default) -\u003e Task\u003cbool\u003e",
                                                                               "ConfigureImpersonationAsync(string userId, CancellationToken ct) -\u003e Task"
                                                                           ],
                                                           "key_properties":  [
                                                                                  "PiQApi.Abstractions.Authentication -\u003e namespace",
-                                                                                 "ICertImpersonationProvider -\u003e interface",
+                                                                                 "IPiQImpersonationProvider -\u003e interface",
                                                                                  "supported -\u003e is",
                                                                                  "default) -\u003e =",
                                                                                  "ct) -\u003e CancellationToken"

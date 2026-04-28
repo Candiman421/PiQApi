@@ -8,14 +8,14 @@ namespace PiQApi.ArchitectureRules.Projects.PiQApi.Abstractions.Tests
     public class ExceptionTests : AbstractionsArchitectureTests
     {
         [Fact]
-        public void Exceptions_Should_InheritFromCertServiceException()
+        public void Exceptions_Should_InheritFromPiQServiceException()
         {
             var rule = Types()
                 .That().ResideInNamespace("PiQApi.Abstractions")
                 .And().AreAssignableTo(typeof(System.Exception))
                 .And().AreNotInterfaces()
-                .Should().BeAssignableTo("PiQApi.Abstractions.Exceptions.CertServiceException")
-                .Because("all exceptions should inherit from CertServiceException");
+                .Should().BeAssignableTo("PiQApi.Abstractions.Exceptions.PiQServiceException")
+                .Because("all exceptions should inherit from PiQServiceException");
 
             rule.Check(ArchSystem);
         }

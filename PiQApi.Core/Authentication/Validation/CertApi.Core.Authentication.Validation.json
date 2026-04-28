@@ -15,15 +15,15 @@
                      "usage_pattern":  "Import and use classes from this namespace to work with Validation functionality."
                  },
     "components":  {
-                       "CertTokenValidator":  {
-                                                  "purpose":  "Provides CertTokenValidator functionality",
+                       "PiQTokenValidator":  {
+                                                  "purpose":  "Provides PiQTokenValidator functionality",
                                                   "key_methods":  [
-                                                                      "ValidateTokenAsync(ICertTokenInfo token, CancellationToken ct) -\u003e Task\u003cbool\u003e",
-                                                                      "InvalidateTokenAsync(ICertTokenInfo token, CancellationToken ct) -\u003e Task",
-                                                                      "ValidateTokenAsync(CertTokenInfo token,\n        CancellationToken cancellationToken = default) -\u003e Task\u003cICertValidationResult\u003e",
-                                                                      "IsValidAsync(CertTokenInfo token, CancellationToken cancellationToken = default) -\u003e Task\u003cbool\u003e",
-                                                                      "ValidateToken(CertTokenInfo token) -\u003e ICertValidationResult",
-                                                                      "IsValid(CertTokenInfo token) -\u003e bool"
+                                                                      "ValidateTokenAsync(IPiQTokenInfo token, CancellationToken ct) -\u003e Task\u003cbool\u003e",
+                                                                      "InvalidateTokenAsync(IPiQTokenInfo token, CancellationToken ct) -\u003e Task",
+                                                                      "ValidateTokenAsync(PiQTokenInfo token,\n        CancellationToken cancellationToken = default) -\u003e Task\u003cIPiQValidationResult\u003e",
+                                                                      "IsValidAsync(PiQTokenInfo token, CancellationToken cancellationToken = default) -\u003e Task\u003cbool\u003e",
+                                                                      "ValidateToken(PiQTokenInfo token) -\u003e IPiQValidationResult",
+                                                                      "IsValid(PiQTokenInfo token) -\u003e bool"
                                                                   ]
                                               }
                    }

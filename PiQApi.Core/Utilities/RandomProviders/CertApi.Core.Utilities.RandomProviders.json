@@ -15,30 +15,30 @@
                      "usage_pattern":  "Import and use classes from this namespace to work with RandomProviders functionality."
                  },
     "components":  {
-                       "CertRandomProviderFactory":  {
-                                                         "purpose":  "Provides CertRandomProviderFactory functionality",
+                       "PiQRandomProviderFactory":  {
+                                                         "purpose":  "Provides PiQRandomProviderFactory functionality",
                                                          "key_methods":  [
-                                                                             "CreateFastProvider() -\u003e ICertRandomProvider",
-                                                                             "CreateSecureProvider() -\u003e ICertRandomProvider",
-                                                                             "CreateProvider(bool useCryptographic) -\u003e ICertRandomProvider",
-                                                                             "Configure(ICertRandomProvider fastProvider, ICertRandomProvider secureProvider) -\u003e void",
+                                                                             "CreateFastProvider() -\u003e IPiQRandomProvider",
+                                                                             "CreateSecureProvider() -\u003e IPiQRandomProvider",
+                                                                             "CreateProvider(bool useCryptographic) -\u003e IPiQRandomProvider",
+                                                                             "Configure(IPiQRandomProvider fastProvider, IPiQRandomProvider secureProvider) -\u003e void",
                                                                              "Reset() -\u003e void"
                                                                          ],
                                                          "key_properties":  [
-                                                                                "CertRandomProviderFactory -\u003e class"
+                                                                                "PiQRandomProviderFactory -\u003e class"
                                                                             ]
                                                      },
-                       "CertSystemRandomProvider":  {
-                                                        "purpose":  "Provides CertSystemRandomProvider functionality",
+                       "PiQSystemRandomProvider":  {
+                                                        "purpose":  "Provides PiQSystemRandomProvider functionality",
                                                         "key_methods":  [
                                                                             "NextInt() -\u003e int",
                                                                             "NextIntUnderMax(int maxValue) -\u003e int",
                                                                             "NextIntInRange(int minValue, int maxValue) -\u003e int",
                                                                             "NextBytes(byte[] buffer) -\u003e void",
                                                                             "NextDouble() -\u003e double",
-                                                                            "Create(bool useCryptographic,\n        ILogger\u003cCertSystemRandomProvider\u003e? logger = null,\n        ICertCorrelationContext? correlationContext = null) -\u003e ICertRandomProvider",
-                                                                            "CreateSecure(ILogger\u003cCertSystemRandomProvider\u003e? logger = null,\n        ICertCorrelationContext? correlationContext = null) -\u003e ICertRandomProvider",
-                                                                            "CreateFast(ILogger\u003cCertSystemRandomProvider\u003e? logger = null,\n        ICertCorrelationContext? correlationContext = null) -\u003e ICertRandomProvider"
+                                                                            "Create(bool useCryptographic,\n        ILogger\u003cPiQSystemRandomProvider\u003e? logger = null,\n        IPiQCorrelationContext? correlationContext = null) -\u003e IPiQRandomProvider",
+                                                                            "CreateSecure(ILogger\u003cPiQSystemRandomProvider\u003e? logger = null,\n        IPiQCorrelationContext? correlationContext = null) -\u003e IPiQRandomProvider",
+                                                                            "CreateFast(ILogger\u003cPiQSystemRandomProvider\u003e? logger = null,\n        IPiQCorrelationContext? correlationContext = null) -\u003e IPiQRandomProvider"
                                                                         ]
                                                     }
                    }

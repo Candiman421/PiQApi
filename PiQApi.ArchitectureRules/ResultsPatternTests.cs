@@ -9,35 +9,35 @@ namespace PiQApi.ArchitectureRules;
 public class ResultsPatternTests : BaseArchitectureTest
 {
     [Fact]
-    public void ICertResult_Should_Have_Required_Properties()
+    public void IPiQResult_Should_Have_Required_Properties()
     {
         var rule = Interfaces()
-            .That().HaveFullName("PiQApi.Abstractions.Results.ICertResult")
+            .That().HaveFullName("PiQApi.Abstractions.Results.IPiQResult")
             .Should().HavePropertyMemberWithName("IsSuccess")
             .AndShould().HavePropertyMemberWithName("Error")
-            .Because("ICertResult must have IsSuccess and Error properties");
+            .Because("IPiQResult must have IsSuccess and Error properties");
 
         AssertArchRule(rule);
     }
 
     [Fact]
-    public void Generic_ICertResult_Should_Extend_Base_ICertResult()
+    public void Generic_IPiQResult_Should_Extend_Base_IPiQResult()
     {
         var rule = Interfaces()
-            .That().HaveFullNameContaining("PiQApi.Abstractions.Results.ICertResult`1")
-            .Should().BeAssignableTo("PiQApi.Abstractions.Results.ICertResult")
-            .Because("Generic ICertResult<T> must inherit from ICertResult");
+            .That().HaveFullNameContaining("PiQApi.Abstractions.Results.IPiQResult`1")
+            .Should().BeAssignableTo("PiQApi.Abstractions.Results.IPiQResult")
+            .Because("Generic IPiQResult<T> must inherit from IPiQResult");
 
         AssertArchRule(rule);
     }
 
     [Fact]
-    public void Generic_ICertResult_Should_Have_Value_Property()
+    public void Generic_IPiQResult_Should_Have_Value_Property()
     {
         var rule = Interfaces()
-            .That().HaveFullNameContaining("PiQApi.Abstractions.Results.ICertResult`1")
+            .That().HaveFullNameContaining("PiQApi.Abstractions.Results.IPiQResult`1")
             .Should().HavePropertyMemberWithName("Value")
-            .Because("Generic ICertResult<T> must have a Value property");
+            .Because("Generic IPiQResult<T> must have a Value property");
 
         AssertArchRule(rule);
     }

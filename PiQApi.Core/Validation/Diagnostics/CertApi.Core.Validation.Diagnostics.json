@@ -15,11 +15,11 @@
                      "usage_pattern":  "Import and use classes from this namespace to work with Diagnostics functionality."
                  },
     "components":  {
-                       "CertValidationDiagnosticsService":  {
-                                                                "purpose":  "Provides CertValidationDiagnosticsService functionality",
+                       "PiQValidationDiagnosticsService":  {
+                                                                "purpose":  "Provides PiQValidationDiagnosticsService functionality",
                                                                 "key_methods":  [
-                                                                                    "GetDiagnosticInfo(ICertValidationResult result) -\u003e string",
-                                                                                    "GetErrorReport(ICertValidationResult result) -\u003e string"
+                                                                                    "GetDiagnosticInfo(IPiQValidationResult result) -\u003e string",
+                                                                                    "GetErrorReport(IPiQValidationResult result) -\u003e string"
                                                                                 ]
                                                             }
                    }

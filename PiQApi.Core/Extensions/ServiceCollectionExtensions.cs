@@ -17,7 +17,7 @@ public static class ServiceCollectionExtensions
     /// </summary>
     /// <param name="services">Service collection</param>
     /// <returns>Service collection for chaining</returns>
-    public static IServiceCollection AddCertValidation(this IServiceCollection services)
+    public static IServiceCollection AddPiQValidation(this IServiceCollection services)
     {
         // Add validation factory and processor
         services.AddSingleton<IPiQValidationResultFactory, PiQValidationResultFactory>();

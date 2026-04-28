@@ -14,7 +14,7 @@ public static class TestArchitecture
     private static Architecture CreateArchitecture()
     {
         // Load the PiQApi assemblies
-        var abstractionsAssembly = typeof(PiQApi.Abstractions.Results.ICertResult).Assembly;
+        var abstractionsAssembly = typeof(PiQApi.Abstractions.Results.IPiQResult).Assembly;
         var coreAssembly = typeof(PiQApi.Exchange.Core.Results.ExchangeResult).Assembly;
         var serviceAssembly = typeof(PiQApi.Exchange.Service.ServiceWrapper).Assembly;
         var operationsAssembly = typeof(PiQApi.Exchange.Operations.OperationBase).Assembly;

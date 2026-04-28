@@ -1,14 +1,14 @@
-// CertApi.Core/Documentation/OperationPatternsGuide.json
+// PiQApi.Core/Documentation/OperationPatternsGuide.json
 ```json
 {
-  "documentPath": "CertApi.Core/Documentation/OperationPatternsGuide.json",
+  "documentPath": "PiQApi.Core/Documentation/OperationPatternsGuide.json",
   "version": "1.0.0",
   "lastUpdated": "2025-04-06",
-  "purpose": "Define standardized patterns for implementing operations in the certification API",
+  "purpose": "Define standardized patterns for implementing operations in the piqification API",
   "guide_type": "pattern",
   "development_contexts": ["core", "exchange.core", "exchange.service", "testing", "all"],
-  "applies_to": ["CertApi.Core", "CertApi.Service"],
-  
+  "applies_to": ["PiQApi.Core", "PiQApi.Service"],
+
   "key_principles": {
     "lifecycle_management": {
       "description": "Operations follow a well-defined lifecycle (Initialize → Execute → Cleanup → Dispose)",
@@ -27,10 +27,10 @@
       "rationale": "Interface-based dependencies enable mocking and unit testing"
     }
   },
-  
+
   "components": {
-    "CertOperationBase": {
-      "interface": "ICertOperationBase",
+    "PiQOperationBase": {
+      "interface": "IPiQOperationBase",
       "purpose": "Base implementation for all operations with lifecycle management",
       "key_properties": [
         "CorrelationId - String - Unique identifier for correlating logs and metrics",
@@ -45,39 +45,39 @@
         "CleanupAsync(CancellationToken) - Task - Releases resources",
         "DisposeAsync() - ValueTask - Asynchronously disposes the operation"
       ],
-      "implementation": "CertOperationBase",
+      "implementation": "PiQOperationBase",
       "implementation_details": [
         "Implements IAsyncDisposable for async resource cleanup",
         "Tracks operation timing, status, and metrics",
-        "Thread-safe through ICertAsyncLock",
+        "Thread-safe through IPiQAsyncLock",
         "Comprehensive logging with LoggerMessage delegates"
       ]
     },
-    "CertOperationBase<TResult>": {
-      "interface": "ICertOperation<TResult>",
+    "PiQOperationBase<TResult>": {
+      "interface": "IPiQOperation<TResult>",
       "purpose": "Base implementation for operations that return a specific result type",
       "key_properties": [
-        "Inherits all properties from CertOperationBase"
+        "Inherits all properties from PiQOperationBase"
       ],
       "key_methods": [
         "ExecuteAsync(CancellationToken) - Task<TResult> - Executes the operation and returns result",
         "ExecuteWithTrackingAsync(Func<CancellationToken, Task<TResult>>, string, CancellationToken) - Task<TResult> - Helper for tracked execution"
       ],
-      "implementation": "CertOperationBase<TResult>",
+      "implementation": "PiQOperationBase<TResult>",
       "implementation_details": [
-        "Extends CertOperationBase with strongly-typed result handling",
+        "Extends PiQOperationBase with strongly-typed result handling",
         "Provides abstraction for executing operations with proper tracking"
       ]
     },
-    "CertValidationProcessor": {
-      "interface": "ICertValidationProcessor",
+    "PiQValidationProcessor": {
+      "interface": "IPiQValidationProcessor",
       "purpose": "Processes validation rules against entities",
       "key_methods": [
-        "RegisterRules<T>(IEnumerable<ICertValidationRule<T>>) - void - Registers validation rules for type T",
-        "Validate<T>(T, CertValidationContext) - ICertValidationResult - Validates entity synchronously",
-        "ValidateAsync<T>(T, CertValidationContext, CancellationToken) - Task<ICertValidationResult> - Validates entity asynchronously"
+        "RegisterRules<T>(IEnumerable<IPiQValidationRule<T>>) - void - Registers validation rules for type T",
+        "Validate<T>(T, PiQValidationContext) - IPiQValidationResult - Validates entity synchronously",
+        "ValidateAsync<T>(T, PiQValidationContext, CancellationToken) - Task<IPiQValidationResult> - Validates entity asynchronously"
       ],
-      "implementation": "CertValidationProcessor",
+      "implementation": "PiQValidationProcessor",
       "implementation_details": [
         "Thread-safe rule registration and execution",
         "Performance optimization with expression compilation",
@@ -86,7 +86,7 @@
       ]
     }
   },
-  
+
   "implementation_patterns": {
     "operation_execution": {
       "pattern": "Execute operations with tracking and error handling",
@@ -101,7 +101,7 @@
     },
     "async_validation": {
       "pattern": "Validate entities asynchronously with cancellation support",
-      "example_code": "public async Task<ICertValidationResult> ValidateAsync<T>(\n    T entity,\n    CertValidationContext context, \n    CancellationToken cancellationToken)\n{\n    // Get rules\n    var rules = GetRulesForType<T>().ToList();\n    \n    // Execute rules\n    var tasks = rules.Select(rule => \n        rule.ValidateAsync(entity, context, cancellationToken));\n    var results = await Task.WhenAll(tasks);\n    \n    // Combine results\n    return _factory.Combine(results);\n}",
+      "example_code": "public async Task<IPiQValidationResult> ValidateAsync<T>(\n    T entity,\n    PiQValidationContext context, \n    CancellationToken cancellationToken)\n{\n    // Get rules\n    var rules = GetRulesForType<T>().ToList();\n    \n    // Execute rules\n    var tasks = rules.Select(rule => \n        rule.ValidateAsync(entity, context, cancellationToken));\n    var results = await Task.WhenAll(tasks);\n    \n    // Combine results\n    return _factory.Combine(results);\n}",
       "key_aspects": [
         "Parallel rule execution with Task.WhenAll",
         "Proper cancellation support",
@@ -111,7 +111,7 @@
       "when_to_use": "When implementing validation that needs to be efficient and cancellable"
     }
   },
-  
+
   "common_pitfalls": {
     "missing_initialization": {
       "issue": "Using operations without calling InitializeAsync first",
@@ -127,17 +127,17 @@
     },
     "thread_safety_issues": {
       "issue": "Not properly synchronizing access to shared state",
-      "solution": "Use the ICertAsyncLock provided in the constructor for all state modifications"
+      "solution": "Use the IPiQAsyncLock provided in the constructor for all state modifications"
     }
   },
-  
+
   "architectural_standards": {
     "operation_composition": {
       "rule": "Complex operations should be composed of simpler operations",
       "rationale": "Promotes reusability and separation of concerns",
       "examples": {
-        "correct": "// Correct\npublic async Task<CertResult> ExecuteAsync()\n{\n    var subResult1 = await _subOperation1.ExecuteAsync();\n    var subResult2 = await _subOperation2.ExecuteAsync();\n    return CombineResults(subResult1, subResult2);\n}",
-        "incorrect": "// Incorrect\npublic async Task<CertResult> ExecuteAsync()\n{\n    // Implementing all functionality in one large method\n    // instead of using smaller operations\n    var data1 = await _repository1.GetDataAsync();\n    // Many more direct data access and processing calls\n    return new CertResult();\n}"
+        "correct": "// Correct\npublic async Task<PiQResult> ExecuteAsync()\n{\n    var subResult1 = await _subOperation1.ExecuteAsync();\n    var subResult2 = await _subOperation2.ExecuteAsync();\n    return CombineResults(subResult1, subResult2);\n}",
+        "incorrect": "// Incorrect\npublic async Task<PiQResult> ExecuteAsync()\n{\n    // Implementing all functionality in one large method\n    // instead of using smaller operations\n    var data1 = await _repository1.GetDataAsync();\n    // Many more direct data access and processing calls\n    return new PiQResult();\n}"
       }
     },
     "context_propagation": {
@@ -145,7 +145,7 @@
       "rationale": "Ensures correlation ID and metrics are preserved",
       "examples": {
         "correct": "// Correct\nawait _subOperation.ExecuteAsync(_context, cancellationToken);",
-        "incorrect": "// Incorrect\nawait _subOperation.ExecuteAsync(new CertOperationContext(), cancellationToken);"
+        "incorrect": "// Incorrect\nawait _subOperation.ExecuteAsync(new PiQOperationContext(), cancellationToken);"
       }
     }
   }

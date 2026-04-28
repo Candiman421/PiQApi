@@ -165,9 +165,9 @@ public sealed class PiQAsyncResourceScope : IAsyncDisposable, IPiQResourceScope,
         }
 
         // If the resource context is available and resource implements IPiQResource, track it
-        if (_context != null && resource is IPiQResource certResource)
+        if (_context != null && resource is IPiQResource piqResource)
         {
-            await _context.TrackResourceAsync(certResource, cancellationToken).ConfigureAwait(false);
+            await _context.TrackResourceAsync(piqResource, cancellationToken).ConfigureAwait(false);
         }
         // If the resource is disposable, add it to our resources collection
         else if (resource is IDisposable disposable)
@@ -195,9 +195,9 @@ public sealed class PiQAsyncResourceScope : IAsyncDisposable, IPiQResourceScope,
         }
 
         // If the resource context is available and resource implements IPiQResource, handle it there
-        if (_context != null && resource is IPiQResource certResource)
+        if (_context != null && resource is IPiQResource piqResource)
         {
-            await _context.ReleaseResourceAsync(certResource.ResourceId, cancellationToken).ConfigureAwait(false);
+            await _context.ReleaseResourceAsync(piqResource.ResourceId, cancellationToken).ConfigureAwait(false);
         }
         // If the resource is disposable, remove it from our collection
         else if (resource is IDisposable disposable)

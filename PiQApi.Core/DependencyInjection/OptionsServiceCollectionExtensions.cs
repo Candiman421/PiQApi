@@ -24,21 +24,21 @@ public static class OptionsServiceCollectionExtensions
     public static IServiceCollection AddCoreOptions(this IServiceCollection services, IConfiguration? configuration = null)
     {
         // Add simple options with data annotations validation
-        services.AddCertOptions<PiQTimeoutOptions>(configuration);
-        services.AddCertOptions<PiQRetryOptions>(configuration);
-        services.AddCertOptions<PiQBulkheadOptions>(configuration);
-        services.AddCertOptions<PiQCircuitBreakerOptions>(configuration);
-        services.AddCertOptions<PiQCacheOptions>(configuration);
-        services.AddCertOptions<PiQBatchOptions>(configuration);
-        services.AddCertOptions<PiQClientOptions>(configuration);
-        services.AddCertOptions<PiQClientCertificateOptions>(configuration);
-        services.AddCertOptions<PiQValidationOptions>(configuration);
-        services.AddCertOptions<PiQCorrelationContextOptions>(configuration);
+        services.AddPiQOptions<PiQTimeoutOptions>(configuration);
+        services.AddPiQOptions<PiQRetryOptions>(configuration);
+        services.AddPiQOptions<PiQBulkheadOptions>(configuration);
+        services.AddPiQOptions<PiQCircuitBreakerOptions>(configuration);
+        services.AddPiQOptions<PiQCacheOptions>(configuration);
+        services.AddPiQOptions<PiQBatchOptions>(configuration);
+        services.AddPiQOptions<PiQClientOptions>(configuration);
+        services.AddPiQOptions<PiQClientCertificateOptions>(configuration);
+        services.AddPiQOptions<PiQValidationOptions>(configuration);
+        services.AddPiQOptions<PiQCorrelationContextOptions>(configuration);
 
         // Add options with custom validators
-        services.AddCertOptionsWithValidator<PiQAuthenticationOptions, PiQAuthenticationOptionsValidator>(configuration);
-        services.AddCertOptionsWithValidator<PiQConnectionOptions, PiQConnectionOptionsValidator>(configuration);
-        services.AddCertOptionsWithValidator<PiQPolicyOptions, PiQPolicyOptionsValidator>(configuration);
+        services.AddPiQOptionsWithValidator<PiQAuthenticationOptions, PiQAuthenticationOptionsValidator>(configuration);
+        services.AddPiQOptionsWithValidator<PiQConnectionOptions, PiQConnectionOptionsValidator>(configuration);
+        services.AddPiQOptionsWithValidator<PiQPolicyOptions, PiQPolicyOptionsValidator>(configuration);
 
         return services;
     }
@@ -51,7 +51,7 @@ public static class OptionsServiceCollectionExtensions
     /// <param name="configuration">Optional configuration to bind from</param>
     /// <param name="sectionName">Optional section name</param>
     /// <returns>The service collection for chaining</returns>
-    public static IServiceCollection AddCertOptions<TOptions>(
+    public static IServiceCollection AddPiQOptions<TOptions>(
         this IServiceCollection services,
         IConfiguration? configuration = null,
         string? sectionName = null)
@@ -59,7 +59,7 @@ public static class OptionsServiceCollectionExtensions
     {
         // Use type name as section name if not provided
         sectionName ??= typeof(TOptions).Name
-            .Replace("Cert", "", StringComparison.Ordinal)
+            .Replace("PiQ", "", StringComparison.Ordinal)
             .Replace("Options", "", StringComparison.Ordinal);
 
         // Configure the options
@@ -85,14 +85,14 @@ public static class OptionsServiceCollectionExtensions
     /// <param name="configuration">Optional configuration to bind from</param>
     /// <param name="sectionName">Optional section name</param>
     /// <returns>The service collection for chaining</returns>
-    public static IServiceCollection AddCertOptionsWithValidator<TOptions, TValidator>(
+    public static IServiceCollection AddPiQOptionsWithValidator<TOptions, TValidator>(
         this IServiceCollection services,
         IConfiguration? configuration = null,
         string? sectionName = null)
         where TOptions : class, new()
         where TValidator : class, IValidateOptions<TOptions>
     {
-        services.AddCertOptions<TOptions>(configuration, sectionName);
+        services.AddPiQOptions<TOptions>(configuration, sectionName);
 
         services.TryAddEnumerable(
             ServiceDescriptor.Singleton<IValidateOptions<TOptions>, TValidator>());

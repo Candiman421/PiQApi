@@ -15,13 +15,13 @@
                      "usage_pattern":  "Import and use classes from this namespace to work with Service functionality."
                  },
     "components":  {
-                       "CertServiceResponse":  {
-                                                   "purpose":  "Provides CertServiceResponse functionality",
+                       "PiQServiceResponse":  {
+                                                   "purpose":  "Provides PiQServiceResponse functionality",
                                                    "key_methods":  [
-                                                                       "Success(string? correlationId = null) -\u003e CertServiceResponse",
-                                                                       "FromException(Exception? ex,\n        string? correlationId = null) -\u003e CertServiceResponse",
-                                                                       "WithProperty(string key, object value) -\u003e CertServiceResponse",
-                                                                       "WithProperties(IDictionary\u003cstring, object\u003e properties) -\u003e CertServiceResponse"
+                                                                       "Success(string? correlationId = null) -\u003e PiQServiceResponse",
+                                                                       "FromException(Exception? ex,\n        string? correlationId = null) -\u003e PiQServiceResponse",
+                                                                       "WithProperty(string key, object value) -\u003e PiQServiceResponse",
+                                                                       "WithProperties(IDictionary\u003cstring, object\u003e properties) -\u003e PiQServiceResponse"
                                                                    ],
                                                    "key_properties":  [
                                                                           "Status -\u003e ResultStatusType",
@@ -33,8 +33,8 @@
                                                                           "Result -\u003e object?"
                                                                       ]
                                                },
-                       "CertServiceResponseCollection":  {
-                                                             "purpose":  "Provides CertServiceResponseCollection functionality",
+                       "PiQServiceResponseCollection":  {
+                                                             "purpose":  "Provides PiQServiceResponseCollection functionality",
                                                              "key_methods":  [
                                                                                  "GetAllErrors() -\u003e IEnumerable\u003cstring\u003e",
                                                                                  "HasErrorOfType\u003cTError\u003e() -\u003e bool",
@@ -43,8 +43,8 @@
                                                                                  "GetAggregateStatus() -\u003e ResultStatusType"
                                                                              ]
                                                          },
-                       "CertErrorMappingService":  {
-                                                       "purpose":  "Provides CertErrorMappingService functionality",
+                       "PiQErrorMappingService":  {
+                                                       "purpose":  "Provides PiQErrorMappingService functionality",
                                                        "key_methods":  [
                                                                            "MapServiceErrorToErrorCodeType(ErrorCodeType serviceError) -\u003e ErrorCodeType",
                                                                            "CreateServiceExceptionFromResponse(Exception responseException) -\u003e Exception",

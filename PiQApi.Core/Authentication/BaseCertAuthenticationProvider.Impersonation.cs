@@ -1,7 +1,7 @@
-// PiQApi.Core/Authentication/BaseCertAuthenticationProvider.Impersonation.cs
+// PiQApi.Core/Authentication/BasePiQAuthenticationProvider.Impersonation.cs
 namespace PiQApi.Core.Authentication;
 
-public abstract partial class BaseCertAuthenticationProvider
+public abstract partial class BasePiQAuthenticationProvider
 {
     /// <summary>
     /// Determines whether impersonation is supported

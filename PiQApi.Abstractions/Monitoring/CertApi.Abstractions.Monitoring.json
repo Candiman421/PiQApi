@@ -15,42 +15,42 @@
                      "usage_pattern":  "Import and use classes from this namespace to work with Monitoring functionality."
                  },
     "components":  {
-                       "ICertCompositeMetricsTracker":  {
-                                                            "purpose":  "Provides ICertCompositeMetricsTracker functionality",
+                       "IPiQCompositeMetricsTracker":  {
+                                                            "purpose":  "Provides IPiQCompositeMetricsTracker functionality",
                                                             "key_methods":  [
                                                                                 "RecordCustomMetric(string name, double value) -\u003e void",
-                                                                                "AddTracker(ICertOperationMetrics tracker) -\u003e void"
+                                                                                "AddTracker(IPiQOperationMetrics tracker) -\u003e void"
                                                                             ],
                                                             "key_properties":  [
                                                                                    "PiQApi.Abstractions.Context -\u003e using",
                                                                                    "PiQApi.Abstractions.Monitoring -\u003e namespace",
-                                                                                   "ICertMetricsProvider -\u003e ICertCacheMetrics,",
+                                                                                   "IPiQMetricsProvider -\u003e IPiQCacheMetrics,",
                                                                                    "value) -\u003e double",
-                                                                                   "tracker) -\u003e AddTracker(ICertOperationMetrics"
+                                                                                   "tracker) -\u003e AddTracker(IPiQOperationMetrics"
                                                                                ],
                                                             "type":  "interface"
                                                         },
-                       "ICertMetricsProvider":  {
-                                                    "purpose":  "Provides ICertMetricsProvider functionality",
+                       "IPiQMetricsProvider":  {
+                                                    "purpose":  "Provides IPiQMetricsProvider functionality",
                                                     "key_methods":  [
-                                                                        "GetMetricsSnapshotAsync(CancellationToken cancellationToken = default) -\u003e Task\u003cICertMetricsSnapshot\u003e",
+                                                                        "GetMetricsSnapshotAsync(CancellationToken cancellationToken = default) -\u003e Task\u003cIPiQMetricsSnapshot\u003e",
                                                                         "ResetCounters() -\u003e void"
                                                                     ],
                                                     "key_properties":  [
                                                                            "PiQApi.Abstractions.Monitoring -\u003e namespace",
-                                                                           "ICertMetricsProvider -\u003e interface",
+                                                                           "IPiQMetricsProvider -\u003e interface",
                                                                            "default) -\u003e ="
                                                                        ],
                                                     "type":  "interface"
                                                 },
-                       "ICertCacheMetrics":  {
-                                                 "purpose":  "Provides ICertCacheMetrics functionality",
+                       "IPiQCacheMetrics":  {
+                                                 "purpose":  "Provides IPiQCacheMetrics functionality",
                                                  "key_methods":  [
                                                                      "RecordCacheActivity(bool isHit) -\u003e void"
                                                                  ],
                                                  "key_properties":  [
                                                                         "PiQApi.Abstractions.Monitoring -\u003e namespace",
-                                                                        "ICertMetricsProvider -\u003e :",
+                                                                        "IPiQMetricsProvider -\u003e :",
                                                                         "CacheHits -\u003e int",
                                                                         "CacheMisses -\u003e int",
                                                                         "CacheHitRate -\u003e double",
@@ -58,18 +58,18 @@
                                                                     ],
                                                  "type":  "interface"
                                              },
-                       "ICertMetricsSnapshot":  {
-                                                    "purpose":  "Provides ICertMetricsSnapshot functionality",
+                       "IPiQMetricsSnapshot":  {
+                                                    "purpose":  "Provides IPiQMetricsSnapshot functionality",
                                                     "key_methods":  [
-                                                                        "WithMetric(string name, object value) -\u003e ICertMetricsSnapshot",
-                                                                        "WithMetrics(IDictionary\u003cstring, object\u003e metrics) -\u003e ICertMetricsSnapshot",
+                                                                        "WithMetric(string name, object value) -\u003e IPiQMetricsSnapshot",
+                                                                        "WithMetrics(IDictionary\u003cstring, object\u003e metrics) -\u003e IPiQMetricsSnapshot",
                                                                         "GetMetric\u003cT\u003e(string name) -\u003e T",
                                                                         "TryGetMetric\u003cT\u003e(string name, out T? value) -\u003e bool",
                                                                         "HasMetric(string name) -\u003e bool"
                                                                     ],
                                                     "key_properties":  [
                                                                            "PiQApi.Abstractions.Monitoring -\u003e namespace",
-                                                                           "ICertMetricsSnapshot -\u003e interface",
+                                                                           "IPiQMetricsSnapshot -\u003e interface",
                                                                            "Timestamp -\u003e DateTimeOffset",
                                                                            "Metrics -\u003e object\u003e",
                                                                            "SuccessfulOperations -\u003e long",
@@ -86,8 +86,8 @@
                                                                        ],
                                                     "type":  "interface"
                                                 },
-                       "ICertConnectionMetrics":  {
-                                                      "purpose":  "Provides ICertConnectionMetrics functionality",
+                       "IPiQConnectionMetrics":  {
+                                                      "purpose":  "Provides IPiQConnectionMetrics functionality",
                                                       "key_methods":  [
                                                                           "RecordConnectionAcquired(TimeSpan acquisitionTime) -\u003e void",
                                                                           "RecordConnectionReleased(TimeSpan lifetime) -\u003e void",
@@ -95,7 +95,7 @@
                                                                       ],
                                                       "key_properties":  [
                                                                              "PiQApi.Abstractions.Monitoring -\u003e namespace",
-                                                                             "ICertMetricsProvider -\u003e :",
+                                                                             "IPiQMetricsProvider -\u003e :",
                                                                              "TotalConnections -\u003e int",
                                                                              "ActiveConnections -\u003e int",
                                                                              "FailedConnections -\u003e int",

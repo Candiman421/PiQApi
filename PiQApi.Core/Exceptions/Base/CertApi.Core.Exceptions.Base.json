@@ -15,14 +15,14 @@
                      "usage_pattern":  "Import and use classes from this namespace to work with Base functionality."
                  },
     "components":  {
-                       "CertServiceException":  {
-                                                    "purpose":  "Provides CertServiceException functionality",
+                       "PiQServiceException":  {
+                                                    "purpose":  "Provides PiQServiceException functionality",
                                                     "key_methods":  [
 
                                                                     ]
                                                 },
-                       "CertException":  {
-                                             "purpose":  "Provides CertException functionality",
+                       "PiQException":  {
+                                             "purpose":  "Provides PiQException functionality",
                                              "key_methods":  [
                                                                  "SetCorrelationId(string correlationId) -\u003e void"
                                                              ],
@@ -32,8 +32,8 @@
                                                                     "Timestamp -\u003e DateTimeOffset"
                                                                 ]
                                          },
-                       "CertCircuitBreakerOpenException":  {
-                                                               "purpose":  "Provides CertCircuitBreakerOpenException functionality",
+                       "PiQCircuitBreakerOpenException":  {
+                                                               "purpose":  "Provides PiQCircuitBreakerOpenException functionality",
                                                                "key_methods":  [
 
                                                                                ],
@@ -41,8 +41,8 @@
                                                                                       "CircuitName -\u003e string"
                                                                                   ]
                                                            },
-                       "CertServiceExceptionBase":  {
-                                                        "purpose":  "Provides CertServiceExceptionBase functionality",
+                       "PiQServiceExceptionBase":  {
+                                                        "purpose":  "Provides PiQServiceExceptionBase functionality",
                                                         "key_methods":  [
 
                                                                         ],

@@ -15,8 +15,8 @@
                      "usage_pattern":  "Import and use classes from this namespace to work with Interfaces functionality."
                  },
     "components":  {
-                       "ICertPolicyFactory":  {
-                                                  "purpose":  "Provides ICertPolicyFactory functionality",
+                       "IPiQPolicyFactory":  {
+                                                  "purpose":  "Provides IPiQPolicyFactory functionality",
                                                   "key_methods":  [
                                                                       "CreatePolicy\u003cT\u003e(ResiliencePolicyType policyType) -\u003e IAsyncPolicy\u003cT\u003e",
                                                                       "CreateDefaultPolicy\u003cT\u003e() -\u003e IAsyncPolicy\u003cT\u003e",
@@ -30,7 +30,7 @@
                                                                          "PiQApi.Abstractions.Enums -\u003e using",
                                                                          "Polly -\u003e using",
                                                                          "PiQApi.Core.Resilience.Interfaces -\u003e namespace",
-                                                                         "ICertPolicyFactory -\u003e interface",
+                                                                         "IPiQPolicyFactory -\u003e interface",
                                                                          "policyType) -\u003e CreatePolicy\u003cT\u003e(ResiliencePolicyType",
                                                                          "timeout) -\u003e CreateTimeoutPolicy\u003cT\u003e(TimeSpan",
                                                                          "ex) -\u003e IsTransientException(Exception"

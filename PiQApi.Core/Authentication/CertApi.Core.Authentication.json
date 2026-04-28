@@ -15,15 +15,15 @@
                      "usage_pattern":  "Import and use classes from this namespace to work with Authentication functionality."
                  },
     "components":  {
-                       "CertTokenInfo":  {
-                                             "purpose":  "Provides CertTokenInfo functionality",
+                       "PiQTokenInfo":  {
+                                             "purpose":  "Provides PiQTokenInfo functionality",
                                              "key_methods":  [
-                                                                 "WithUpdatedToken(string accessToken, DateTime expiresOn, IEnumerable\u003cstring\u003e scopes) -\u003e CertTokenInfo",
-                                                                 "WithClaim(string key, string value) -\u003e CertTokenInfo",
+                                                                 "WithUpdatedToken(string accessToken, DateTime expiresOn, IEnumerable\u003cstring\u003e scopes) -\u003e PiQTokenInfo",
+                                                                 "WithClaim(string key, string value) -\u003e PiQTokenInfo",
                                                                  "HasScope(string scope) -\u003e bool",
                                                                  "HasClaim(string key) -\u003e bool",
                                                                  "GetClaimValue(string key) -\u003e string?",
-                                                                 "CreateBuilder() -\u003e CertTokenInfoBuilder"
+                                                                 "CreateBuilder() -\u003e PiQTokenInfoBuilder"
                                                              ],
                                              "key_properties":  [
                                                                     "AccessToken -\u003e string",
@@ -33,13 +33,13 @@
                                                                     "TenantId -\u003e string",
                                                                     "ClientId -\u003e string",
                                                                     "AuthType -\u003e AuthenticationMethodType",
-                                                                    "SourceOptions -\u003e ICertAuthenticationOptions?",
+                                                                    "SourceOptions -\u003e IPiQAuthenticationOptions?",
                                                                     "CreatedOn -\u003e DateTime",
-                                                                    "CorrelationIdentifier -\u003e CertCorrelationId?"
+                                                                    "CorrelationIdentifier -\u003e PiQCorrelationId?"
                                                                 ]
                                          },
-                       "CertAuthenticationContext":  {
-                                                         "purpose":  "Provides CertAuthenticationContext functionality",
+                       "PiQAuthenticationContext":  {
+                                                         "purpose":  "Provides PiQAuthenticationContext functionality",
                                                          "key_methods":  [
                                                                              "AcquireTokenAsync(CancellationToken cancellationToken = default) -\u003e Task\u003cstring\u003e",
                                                                              "ValidateTokenAsync(CancellationToken cancellationToken = default) -\u003e Task\u003cbool\u003e",
@@ -50,70 +50,70 @@
                                                                                 "TokenExpiration -\u003e DateTime"
                                                                             ]
                                                      },
-                       "BaseCertAuthenticationProvider":  {
-                                                              "purpose":  "Provides BaseCertAuthenticationProvider functionality",
+                       "BasePiQAuthenticationProvider":  {
+                                                              "purpose":  "Provides BasePiQAuthenticationProvider functionality",
                                                               "key_methods":  [
-                                                                                  "ValidateTokenAsync(ICertTokenInfo token, CancellationToken ct) -\u003e Task\u003cbool\u003e",
-                                                                                  "InvalidateTokenAsync(ICertTokenInfo token, CancellationToken ct) -\u003e Task"
+                                                                                  "ValidateTokenAsync(IPiQTokenInfo token, CancellationToken ct) -\u003e Task\u003cbool\u003e",
+                                                                                  "InvalidateTokenAsync(IPiQTokenInfo token, CancellationToken ct) -\u003e Task"
                                                                               ]
                                                           },
-                       "CertAuthenticationProviderFactory":  {
-                                                                 "purpose":  "Provides CertAuthenticationProviderFactory functionality",
+                       "PiQAuthenticationProviderFactory":  {
+                                                                 "purpose":  "Provides PiQAuthenticationProviderFactory functionality",
                                                                  "key_methods":  [
-                                                                                     "CreateProvider(AuthenticationMethodType authType) -\u003e ICertAuthenticationProvider",
-                                                                                     "CreateProvider(ICertAuthenticationOptions options) -\u003e ICertAuthenticationProvider",
-                                                                                     "CreateProvider(CertAuthenticationOptions options) -\u003e ICertAuthenticationProvider"
+                                                                                     "CreateProvider(AuthenticationMethodType authType) -\u003e IPiQAuthenticationProvider",
+                                                                                     "CreateProvider(IPiQAuthenticationOptions options) -\u003e IPiQAuthenticationProvider",
+                                                                                     "CreateProvider(PiQAuthenticationOptions options) -\u003e IPiQAuthenticationProvider"
                                                                                  ],
                                                                  "key_properties":  [
-                                                                                        "CorrelationContext -\u003e ICertCorrelationContext"
+                                                                                        "CorrelationContext -\u003e IPiQCorrelationContext"
                                                                                     ]
                                                              },
-                       "CertMultiServiceAuthenticationContext":  {
-                                                                     "purpose":  "Provides CertMultiServiceAuthenticationContext functionality",
+                       "PiQMultiServiceAuthenticationContext":  {
+                                                                     "purpose":  "Provides PiQMultiServiceAuthenticationContext functionality",
                                                                      "key_methods":  [
-                                                                                         "GetAuthenticationContext(ServiceEndpointType serviceType) -\u003e ICertAuthenticationContext",
+                                                                                         "GetAuthenticationContext(ServiceEndpointType serviceType) -\u003e IPiQAuthenticationContext",
                                                                                          "AcquireTokenAsync(ServiceEndpointType serviceType, CancellationToken cancellationToken = default) -\u003e Task\u003cstring\u003e",
-                                                                                         "RegisterServiceAsync(ServiceEndpointType serviceType, ICertAuthenticationOptions options, CancellationToken cancellationToken = default) -\u003e Task",
+                                                                                         "RegisterServiceAsync(ServiceEndpointType serviceType, IPiQAuthenticationOptions options, CancellationToken cancellationToken = default) -\u003e Task",
                                                                                          "ValidateTokenAsync(ServiceEndpointType serviceType, CancellationToken cancellationToken = default) -\u003e Task\u003cbool\u003e",
                                                                                          "InvalidateTokenAsync(ServiceEndpointType serviceType, CancellationToken cancellationToken = default) -\u003e Task"
                                                                                      ],
                                                                      "key_properties":  [
-                                                                                            "CorrelationContext -\u003e ICertCorrelationContext"
+                                                                                            "CorrelationContext -\u003e IPiQCorrelationContext"
                                                                                         ]
                                                                  },
-                       "CertAuthenticationOptionsValidator":  {
-                                                                  "purpose":  "Provides CertAuthenticationOptionsValidator functionality",
+                       "PiQAuthenticationOptionsValidator":  {
+                                                                  "purpose":  "Provides PiQAuthenticationOptionsValidator functionality",
                                                                   "key_methods":  [
-                                                                                      "Validate(string? name, CertAuthenticationOptions options) -\u003e ValidateOptionsResult"
+                                                                                      "Validate(string? name, PiQAuthenticationOptions options) -\u003e ValidateOptionsResult"
                                                                                   ]
                                                               },
-                       "CertTokenInfoBuilder":  {
-                                                    "purpose":  "Provides CertTokenInfoBuilder functionality",
+                       "PiQTokenInfoBuilder":  {
+                                                    "purpose":  "Provides PiQTokenInfoBuilder functionality",
                                                     "key_methods":  [
-                                                                        "WithToken(string token) -\u003e CertTokenInfoBuilder",
-                                                                        "WithTokenType(string tokenType) -\u003e CertTokenInfoBuilder",
-                                                                        "WithExpiresAt(DateTime expiresAt) -\u003e CertTokenInfoBuilder",
-                                                                        "WithExpiresInSeconds(int expiresInSeconds) -\u003e CertTokenInfoBuilder",
-                                                                        "WithRefreshToken(string refreshToken) -\u003e CertTokenInfoBuilder",
-                                                                        "WithAuthenticationMethodType(AuthenticationMethodType authType) -\u003e CertTokenInfoBuilder",
-                                                                        "WithTenantId(string tenantId) -\u003e CertTokenInfoBuilder",
-                                                                        "WithClientId(string clientId) -\u003e CertTokenInfoBuilder",
-                                                                        "WithScopes(IReadOnlyList\u003cstring\u003e scopes) -\u003e CertTokenInfoBuilder",
-                                                                        "WithAuthenticationOptions(ICertAuthenticationOptions options) -\u003e CertTokenInfoBuilder",
-                                                                        "WithClaim(string key, string value) -\u003e CertTokenInfoBuilder",
-                                                                        "WithClaims(Dictionary\u003cstring, string\u003e claims) -\u003e CertTokenInfoBuilder",
-                                                                        "WithCorrelationId(CertCorrelationId correlationId) -\u003e CertTokenInfoBuilder",
-                                                                        "Build() -\u003e CertTokenInfo"
+                                                                        "WithToken(string token) -\u003e PiQTokenInfoBuilder",
+                                                                        "WithTokenType(string tokenType) -\u003e PiQTokenInfoBuilder",
+                                                                        "WithExpiresAt(DateTime expiresAt) -\u003e PiQTokenInfoBuilder",
+                                                                        "WithExpiresInSeconds(int expiresInSeconds) -\u003e PiQTokenInfoBuilder",
+                                                                        "WithRefreshToken(string refreshToken) -\u003e PiQTokenInfoBuilder",
+                                                                        "WithAuthenticationMethodType(AuthenticationMethodType authType) -\u003e PiQTokenInfoBuilder",
+                                                                        "WithTenantId(string tenantId) -\u003e PiQTokenInfoBuilder",
+                                                                        "WithClientId(string clientId) -\u003e PiQTokenInfoBuilder",
+                                                                        "WithScopes(IReadOnlyList\u003cstring\u003e scopes) -\u003e PiQTokenInfoBuilder",
+                                                                        "WithAuthenticationOptions(IPiQAuthenticationOptions options) -\u003e PiQTokenInfoBuilder",
+                                                                        "WithClaim(string key, string value) -\u003e PiQTokenInfoBuilder",
+                                                                        "WithClaims(Dictionary\u003cstring, string\u003e claims) -\u003e PiQTokenInfoBuilder",
+                                                                        "WithCorrelationId(PiQCorrelationId correlationId) -\u003e PiQTokenInfoBuilder",
+                                                                        "Build() -\u003e PiQTokenInfo"
                                                                     ],
                                                     "key_properties":  [
-                                                                           "CertTokenInfoBuilder -\u003e class"
+                                                                           "PiQTokenInfoBuilder -\u003e class"
                                                                        ]
                                                 },
-                       "CertAuthenticationResult":  {
-                                                        "purpose":  "Provides CertAuthenticationResult functionality",
+                       "PiQAuthenticationResult":  {
+                                                        "purpose":  "Provides PiQAuthenticationResult functionality",
                                                         "key_methods":  [
-                                                                            "Success(string accessToken,\n        DateTimeOffset expiresOn,\n        string? refreshToken = null,\n        string tokenType = \"Bearer\",\n        IEnumerable\u003cstring\u003e? scopes = null) -\u003e CertAuthenticationResult",
-                                                                            "Failure(string errorMessage) -\u003e CertAuthenticationResult"
+                                                                            "Success(string accessToken,\n        DateTimeOffset expiresOn,\n        string? refreshToken = null,\n        string tokenType = \"Bearer\",\n        IEnumerable\u003cstring\u003e? scopes = null) -\u003e PiQAuthenticationResult",
+                                                                            "Failure(string errorMessage) -\u003e PiQAuthenticationResult"
                                                                         ],
                                                         "key_properties":  [
                                                                                "AccessToken -\u003e string",
@@ -123,7 +123,7 @@
                                                                                "Scopes -\u003e IReadOnlyCollection\u003cstring\u003e",
                                                                                "IsSuccess -\u003e bool",
                                                                                "ErrorMessage -\u003e string?",
-                                                                               "errorMessage) -\u003e CertAuthenticationResult(string"
+                                                                               "errorMessage) -\u003e PiQAuthenticationResult(string"
                                                                            ]
                                                     }
                    },

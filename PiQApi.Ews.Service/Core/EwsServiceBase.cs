@@ -113,9 +113,9 @@ namespace PiQApi.Ews.Service.Core
 
                 await context.LogOperationErrorAsync(ex).ConfigureAwait(false);
 
-                if (ex is PiQException certException)
+                if (ex is PiQException piqException)
                 {
-                    certException.SetCorrelationId(context.CorrelationId);
+                    piqException.SetCorrelationId(context.CorrelationId);
                 }
                 else
                 {
@@ -193,9 +193,9 @@ namespace PiQApi.Ews.Service.Core
 
                 var mappedException = _errorMappingService.MapServiceException(ex, context.CorrelationId);
 
-                if (mappedException is PiQException certException)
+                if (mappedException is PiQException piqException)
                 {
-                    certException.SetCorrelationId(context.CorrelationId);
+                    piqException.SetCorrelationId(context.CorrelationId);
                 }
 
                 throw mappedException;
@@ -216,9 +216,9 @@ namespace PiQApi.Ews.Service.Core
                     operationName,
                     ex);
 
-                if (exception is PiQException certException)
+                if (exception is PiQException piqException)
                 {
-                    certException.SetCorrelationId(context.CorrelationId);
+                    piqException.SetCorrelationId(context.CorrelationId);
                 }
 
                 throw exception;
@@ -278,9 +278,9 @@ namespace PiQApi.Ews.Service.Core
 
                 var mappedException = _errorMappingService.MapServiceException(ex, context.CorrelationId);
 
-                if (mappedException is PiQException certException)
+                if (mappedException is PiQException piqException)
                 {
-                    certException.SetCorrelationId(context.CorrelationId);
+                    piqException.SetCorrelationId(context.CorrelationId);
                 }
 
                 throw mappedException;
@@ -301,9 +301,9 @@ namespace PiQApi.Ews.Service.Core
                     operationName,
                     ex);
 
-                if (exception is PiQException certException)
+                if (exception is PiQException piqException)
                 {
-                    certException.SetCorrelationId(context.CorrelationId);
+                    piqException.SetCorrelationId(context.CorrelationId);
                 }
 
                 throw exception;

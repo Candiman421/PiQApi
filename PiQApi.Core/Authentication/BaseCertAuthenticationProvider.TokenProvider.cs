@@ -1,9 +1,9 @@
-// PiQApi.Core/Authentication/BaseCertAuthenticationProvider.TokenProvider.cs
+// PiQApi.Core/Authentication/BasePiQAuthenticationProvider.TokenProvider.cs
 using PiQApi.Abstractions.Authentication;
 
 namespace PiQApi.Core.Authentication;
 
-public abstract partial class BaseCertAuthenticationProvider
+public abstract partial class BasePiQAuthenticationProvider
 {
     /// <summary>
     /// Gets an access token string

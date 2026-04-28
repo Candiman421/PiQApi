@@ -15,8 +15,8 @@
                      "usage_pattern":  "Import and use classes from this namespace to work with Context functionality."
                  },
     "components":  {
-                       "CertOperationMetrics":  {
-                                                    "purpose":  "Provides CertOperationMetrics functionality",
+                       "PiQOperationMetrics":  {
+                                                    "purpose":  "Provides PiQOperationMetrics functionality",
                                                     "key_methods":  [
                                                                         "RecordOperation(string operationName, TimeSpan duration, bool success) -\u003e void",
                                                                         "RecordCustomMetric(string metricName, double value) -\u003e void",
@@ -26,52 +26,52 @@
                                                                         "RecordTime(string name, TimeSpan elapsedTime) -\u003e void",
                                                                         "GetCounter(string name) -\u003e long",
                                                                         "GetTimerElapsed(string name) -\u003e TimeSpan",
-                                                                        "GetMetricsSnapshotAsync(CancellationToken cancellationToken = default) -\u003e Task\u003cICertMetricsSnapshot\u003e",
+                                                                        "GetMetricsSnapshotAsync(CancellationToken cancellationToken = default) -\u003e Task\u003cIPiQMetricsSnapshot\u003e",
                                                                         "ResetCounters() -\u003e void"
                                                                     ]
                                                 },
-                       "CertOperationContext":  {
-                                                    "purpose":  "Provides CertOperationContext functionality",
+                       "PiQOperationContext":  {
+                                                    "purpose":  "Provides PiQOperationContext functionality",
                                                     "key_methods":  [
-                                                                        "ValidateAsync\u003cT\u003e(T entity, ValidationModeType mode, CancellationToken cancellationToken = default) -\u003e Task\u003cICertValidationResult\u003e",
-                                                                        "ValidateRequiredAsync\u003cT\u003e(T entity, CancellationToken cancellationToken = default) -\u003e Task\u003cICertValidationResult\u003e",
-                                                                        "ValidateAndCreateResultAsync\u003cT\u003e(T entity, ValidationModeType mode, CancellationToken cancellationToken = default) -\u003e Task\u003cICertResult\u003cT\u003e\u003e",
-                                                                        "CreateValidationContext(ValidationModeType mode = ValidationModeType.Standard, CancellationToken? cancellationToken = null) -\u003e CertValidationContext"
+                                                                        "ValidateAsync\u003cT\u003e(T entity, ValidationModeType mode, CancellationToken cancellationToken = default) -\u003e Task\u003cIPiQValidationResult\u003e",
+                                                                        "ValidateRequiredAsync\u003cT\u003e(T entity, CancellationToken cancellationToken = default) -\u003e Task\u003cIPiQValidationResult\u003e",
+                                                                        "ValidateAndCreateResultAsync\u003cT\u003e(T entity, ValidationModeType mode, CancellationToken cancellationToken = default) -\u003e Task\u003cIPiQResult\u003cT\u003e\u003e",
+                                                                        "CreateValidationContext(ValidationModeType mode = ValidationModeType.Standard, CancellationToken? cancellationToken = null) -\u003e PiQValidationContext"
                                                                     ]
                                                 },
-                       "CertOperationValidator":  {
-                                                      "purpose":  "Provides CertOperationValidator functionality",
+                       "PiQOperationValidator":  {
+                                                      "purpose":  "Provides PiQOperationValidator functionality",
                                                       "key_methods":  [
-                                                                          "SetOperationContext(ICertOperationContext operationContext) -\u003e void",
-                                                                          "ValidateAsync\u003cT\u003e(T entity, ValidationModeType mode, CancellationToken cancellationToken = default) -\u003e Task\u003cICertValidationResult\u003e",
-                                                                          "ValidateRequiredAsync\u003cT\u003e(T entity, CancellationToken cancellationToken = default) -\u003e Task\u003cICertValidationResult\u003e",
-                                                                          "ValidateAndCreateResultAsync\u003cT\u003e(T entity, ValidationModeType mode, CancellationToken cancellationToken = default) -\u003e Task\u003cICertResult\u003cT\u003e\u003e",
-                                                                          "CreateValidationContext(ValidationModeType mode = ValidationModeType.Standard, CancellationToken? cancellationToken = null) -\u003e CertValidationContext"
+                                                                          "SetOperationContext(IPiQOperationContext operationContext) -\u003e void",
+                                                                          "ValidateAsync\u003cT\u003e(T entity, ValidationModeType mode, CancellationToken cancellationToken = default) -\u003e Task\u003cIPiQValidationResult\u003e",
+                                                                          "ValidateRequiredAsync\u003cT\u003e(T entity, CancellationToken cancellationToken = default) -\u003e Task\u003cIPiQValidationResult\u003e",
+                                                                          "ValidateAndCreateResultAsync\u003cT\u003e(T entity, ValidationModeType mode, CancellationToken cancellationToken = default) -\u003e Task\u003cIPiQResult\u003cT\u003e\u003e",
+                                                                          "CreateValidationContext(ValidationModeType mode = ValidationModeType.Standard, CancellationToken? cancellationToken = null) -\u003e PiQValidationContext"
                                                                       ]
                                                   },
-                       "CertOperationContextFactory":  {
-                                                           "purpose":  "Provides CertOperationContextFactory functionality",
+                       "PiQOperationContextFactory":  {
+                                                           "purpose":  "Provides PiQOperationContextFactory functionality",
                                                            "key_methods":  [
-                                                                               "Create(string operationName, ICertCorrelationContext correlationContext) -\u003e ICertOperationContext",
-                                                                               "CreateWithProperties(string operationName,\n        ICertCorrelationContext correlationContext,\n        IDictionary\u003cstring, object\u003e properties) -\u003e ICertOperationContext",
-                                                                               "CreateConfigured(string operationName,\n        ICertCorrelationContext correlationContext,\n        OperationType operationType,\n        TimeSpan? timeout = null,\n        ICertOperationContext? parent = null,\n        CancellationToken cancellationToken = default) -\u003e ICertOperationContext",
-                                                                               "CreateChild(ICertOperationContext parent,\n        string childOperationName,\n        OperationType? operationType = null) -\u003e ICertOperationContext",
-                                                                               "CreateStandalone(string operationName,\n        OperationType operationType = OperationType.Generic,\n        TimeSpan? timeout = null,\n        CancellationToken cancellationToken = default) -\u003e ICertOperationContext",
-                                                                               "CreateInitializedContextAsync(CancellationToken cancellationToken = default) -\u003e Task\u003cICertOperationContext\u003e"
+                                                                               "Create(string operationName, IPiQCorrelationContext correlationContext) -\u003e IPiQOperationContext",
+                                                                               "CreateWithProperties(string operationName,\n        IPiQCorrelationContext correlationContext,\n        IDictionary\u003cstring, object\u003e properties) -\u003e IPiQOperationContext",
+                                                                               "CreateConfigured(string operationName,\n        IPiQCorrelationContext correlationContext,\n        OperationType operationType,\n        TimeSpan? timeout = null,\n        IPiQOperationContext? parent = null,\n        CancellationToken cancellationToken = default) -\u003e IPiQOperationContext",
+                                                                               "CreateChild(IPiQOperationContext parent,\n        string childOperationName,\n        OperationType? operationType = null) -\u003e IPiQOperationContext",
+                                                                               "CreateStandalone(string operationName,\n        OperationType operationType = OperationType.Generic,\n        TimeSpan? timeout = null,\n        CancellationToken cancellationToken = default) -\u003e IPiQOperationContext",
+                                                                               "CreateInitializedContextAsync(CancellationToken cancellationToken = default) -\u003e Task\u003cIPiQOperationContext\u003e"
                                                                            ]
                                                        },
-                       "CertOperationScope":  {
-                                                  "purpose":  "Provides CertOperationScope functionality",
+                       "PiQOperationScope":  {
+                                                  "purpose":  "Provides PiQOperationScope functionality",
                                                   "key_methods":  [
                                                                       "Dispose() -\u003e void"
                                                                   ],
                                                   "key_properties":  [
                                                                          "Name -\u003e string",
-                                                                         "Context -\u003e ICertOperationContext"
+                                                                         "Context -\u003e IPiQOperationContext"
                                                                      ]
                                               },
-                       "CertOperationIdentifier":  {
-                                                       "purpose":  "Provides CertOperationIdentifier functionality",
+                       "PiQOperationIdentifier":  {
+                                                       "purpose":  "Provides PiQOperationIdentifier functionality",
                                                        "key_methods":  [
 
                                                                        ],
@@ -79,13 +79,13 @@
                                                                               "Id -\u003e string",
                                                                               "Name -\u003e string",
                                                                               "OperationType -\u003e OperationType",
-                                                                              "Parent -\u003e ICertOperationIdentifier?",
+                                                                              "Parent -\u003e IPiQOperationIdentifier?",
                                                                               "StartTime -\u003e DateTimeOffset",
                                                                               "Timeout -\u003e TimeSpan"
                                                                           ]
                                                    },
-                       "CertOperationState":  {
-                                                  "purpose":  "Provides CertOperationState functionality",
+                       "PiQOperationState":  {
+                                                  "purpose":  "Provides PiQOperationState functionality",
                                                   "key_methods":  [
                                                                       "UpdateState(OperationStatusType status, ErrorCodeType? errorCode = null, string? errorMessage = null) -\u003e void",
                                                                       "TransitionToRunning() -\u003e void",
@@ -103,23 +103,23 @@
                                                                          "StateTimestamp -\u003e DateTimeOffset"
                                                                      ]
                                               },
-                       "CertCorrelationScope":  {
-                                                    "purpose":  "Provides CertCorrelationScope functionality",
+                       "PiQCorrelationScope":  {
+                                                    "purpose":  "Provides PiQCorrelationScope functionality",
                                                     "key_methods":  [
                                                                         "Dispose() -\u003e void"
                                                                     ],
                                                     "key_properties":  [
-                                                                           "Context -\u003e ICertCorrelationContext"
+                                                                           "Context -\u003e IPiQCorrelationContext"
                                                                        ]
                                                 },
-                       "CertOperationResources":  {
-                                                      "purpose":  "Provides CertOperationResources functionality",
+                       "PiQOperationResources":  {
+                                                      "purpose":  "Provides PiQOperationResources functionality",
                                                       "key_methods":  [
                                                                           "GetResourceAsync\u003cT\u003e(string resourceId, CancellationToken cancellationToken = default) -\u003e Task\u003cT\u003e",
                                                                           "TrackResourceAsync\u003cT\u003e(T resource, CancellationToken cancellationToken = default) -\u003e Task\u003cT\u003e",
                                                                           "TryAcquireResourceAsync(string resourceId, TimeSpan timeout, CancellationToken cancellationToken = default) -\u003e Task\u003cbool\u003e",
                                                                           "ReleaseResourceAsync(string resourceId, CancellationToken cancellationToken = default) -\u003e Task",
-                                                                          "CreateResourceScopeAsync(IEnumerable\u003cstring\u003e resourceIds, CancellationToken cancellationToken = default) -\u003e Task\u003cICertResourceScope\u003e"
+                                                                          "CreateResourceScopeAsync(IEnumerable\u003cstring\u003e resourceIds, CancellationToken cancellationToken = default) -\u003e Task\u003cIPiQResourceScope\u003e"
                                                                       ]
                                                   }
                    }

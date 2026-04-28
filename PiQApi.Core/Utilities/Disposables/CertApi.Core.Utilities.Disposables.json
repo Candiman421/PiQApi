@@ -15,8 +15,8 @@
                      "usage_pattern":  "Import and use classes from this namespace to work with Disposables functionality."
                  },
     "components":  {
-                       "CertEmptyDisposable":  {
-                                                   "purpose":  "Provides CertEmptyDisposable functionality",
+                       "PiQEmptyDisposable":  {
+                                                   "purpose":  "Provides PiQEmptyDisposable functionality",
                                                    "key_methods":  [
                                                                        "Dispose() -\u003e void"
                                                                    ],
@@ -24,13 +24,13 @@
                                                                           "Instance -\u003e IDisposable"
                                                                       ]
                                                },
-                       "CertDisposableAction":  {
-                                                    "purpose":  "Provides CertDisposableAction functionality",
+                       "PiQDisposableAction":  {
+                                                    "purpose":  "Provides PiQDisposableAction functionality",
                                                     "key_methods":  [
                                                                         "Dispose() -\u003e void"
                                                                     ],
                                                     "key_properties":  [
-                                                                           "action) -\u003e CertDisposableAction(Action"
+                                                                           "action) -\u003e PiQDisposableAction(Action"
                                                                        ]
                                                 }
                    }

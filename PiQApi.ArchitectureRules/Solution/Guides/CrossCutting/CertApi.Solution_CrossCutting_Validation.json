@@ -71,7 +71,7 @@
       "base_contract": {
         "interface": "IValidationRule<T>",
         "methods": [
-          "Task<CertValidationResult> ValidateAsync(T item, CertValidationContext context, CancellationToken ct)"
+          "Task<PiQValidationResult> ValidateAsync(T item, PiQValidationContext context, CancellationToken ct)"
         ]
       },
       "concrete_rules": {
@@ -100,7 +100,7 @@
         ]
       },
       "aggregation": "Multiple results can be combined",
-      "error_handling": "Maps to ICertResult through factory"
+      "error_handling": "Maps to IPiQResult through factory"
     }
   },
   "layer_specific_patterns": {
@@ -160,7 +160,7 @@
     },
     "response_mapping": {
       "pattern": {
-        "validation_failure": "Map to ICertResult with errors",
+        "validation_failure": "Map to IPiQResult with errors",
         "success": "Proceed with operation",
         "partial_validation": "Include warnings in result"
       }

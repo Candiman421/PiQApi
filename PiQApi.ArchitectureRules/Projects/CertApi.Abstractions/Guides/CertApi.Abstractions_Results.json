@@ -12,22 +12,22 @@
   },
   "result_patterns": {
     "core_contracts": {
-      "ICertResult": {
+      "IPiQResult": {
         "purpose": "Base result type for all operations",
-        "location": "Results/ICertResult.cs",
+        "location": "Results/IPiQResult.cs",
         "members": [
           "bool IsSuccess - Operation outcome",
           "IResultError? Error - Failure details"
         ],
         "usage": "Base interface for all results",
-        "naming": "Cert prefix due to Result type collisions"
+        "naming": "PiQ prefix due to Result type collisions"
       },
-      "ICertResult<T>": {
+      "IPiQResult<T>": {
         "purpose": "Generic result with value",
-        "location": "Results/ICertResult{T}.cs",
+        "location": "Results/IPiQResult{T}.cs",
         "members": [
           "T? Value - Success payload",
-          "Inherits ICertResult members"
+          "Inherits IPiQResult members"
         ],
         "usage": "Operations returning values"
       },
@@ -49,9 +49,9 @@
         "purpose": "Create consistent result objects",
         "location": "Results/IResultFactory.cs",
         "methods": [
-          "ICertResult<T> Success<T>(T value)",
-          "ICertResult<T> Failure<T>(string code, string message)",
-          "ICertResult<T> FromValidationResult<T>(CertValidationResult validationResult)"
+          "IPiQResult<T> Success<T>(T value)",
+          "IPiQResult<T> Failure<T>(string code, string message)",
+          "IPiQResult<T> FromValidationResult<T>(PiQValidationResult validationResult)"
         ],
         "principles": [
           "Consistent result creation",
@@ -94,7 +94,7 @@
     "result_mapping": {
       "patterns": {
         "validation_to_result": {
-          "pattern": "Map validation results to ICertResult",
+          "pattern": "Map validation results to IPiQResult",
           "requirements": [
             "Preserve validation errors",
             "Maintain severity",

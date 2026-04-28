@@ -18,7 +18,7 @@
                        "ServiceCollectionExtensions":  {
                                                            "purpose":  "Provides ServiceCollectionExtensions functionality",
                                                            "key_methods":  [
-                                                                               "AddCertValidation(this IServiceCollection services) -\u003e IServiceCollection"
+                                                                               "AddPiQValidation(this IServiceCollection services) -\u003e IServiceCollection"
                                                                            ],
                                                            "key_properties":  [
                                                                                   "ServiceCollectionExtensions -\u003e class"

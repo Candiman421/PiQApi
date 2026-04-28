@@ -38,7 +38,7 @@ namespace PiQApi.Ews.Operations.Core.Base
                 LogLevel.Debug,
                 new EventId(101, nameof(IsOperationalAsync)),
                 "Operation is not operational: {ErrorMessage}");
-            
+
         private static readonly Action<ILogger, string, Exception?> LogInitialization =
             LoggerMessage.Define<string>(
                 LogLevel.Debug,
@@ -204,7 +204,7 @@ namespace PiQApi.Ews.Operations.Core.Base
         /// Checks if the operation is operational
         /// </summary>
         /// <param name="cancellationToken">Cancellation token</param>
-        [SuppressMessage("Design", "CA1031:Do not catch general exception types", 
+        [SuppressMessage("Design", "CA1031:Do not catch general exception types",
              Justification = "Method intentionally catches all exceptions to report operational status")]
         public virtual async Task<bool> IsOperationalAsync(CancellationToken cancellationToken = default)
         {
@@ -235,7 +235,7 @@ namespace PiQApi.Ews.Operations.Core.Base
             {
                 // Log the operation end
                 await Context.LogOperationEndAsync(false).ConfigureAwait(false);
-                
+
                 // Additional cleanup logic
                 await OnCleanupAsync(cancellationToken).ConfigureAwait(false);
             }
@@ -266,9 +266,9 @@ namespace PiQApi.Ews.Operations.Core.Base
                 nameof(EwsOperationBase),
                 operationName);
 
-            if (exception is PiQException certException)
+            if (exception is PiQException piqException)
             {
-                certException.SetCorrelationId(CorrelationId);
+                piqException.SetCorrelationId(CorrelationId);
             }
 
             return exception;
@@ -284,10 +284,10 @@ namespace PiQApi.Ews.Operations.Core.Base
             if (_disposed)
             {
                 var exception = new ObjectDisposedException(GetType().Name, $"Cannot access the operation in {memberName} after it has been disposed.");
-                
+
                 // Add correlation ID to the exception data
                 exception.Data["CorrelationId"] = CorrelationId;
-                
+
                 throw exception;
             }
         }
@@ -295,7 +295,7 @@ namespace PiQApi.Ews.Operations.Core.Base
         /// <summary>
         /// Disposes the operation
         /// </summary>
-        [SuppressMessage("Design", "CA1031:Do not catch general exception types", 
+        [SuppressMessage("Design", "CA1031:Do not catch general exception types",
             Justification = "Disposal methods should never throw exceptions")]
         public async ValueTask DisposeAsync()
         {

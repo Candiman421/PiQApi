@@ -15,40 +15,40 @@
                      "usage_pattern":  "Import and use classes from this namespace to work with Constants functionality."
                  },
     "components":  {
-                       "CertValidationLimits":  {
-                                                    "purpose":  "Provides CertValidationLimits functionality",
+                       "PiQValidationLimits":  {
+                                                    "purpose":  "Provides PiQValidationLimits functionality",
                                                     "key_methods":  [
 
                                                                     ],
                                                     "key_properties":  [
-                                                                           "CertValidationLimits -\u003e class"
+                                                                           "PiQValidationLimits -\u003e class"
                                                                        ]
                                                 },
-                       "CertValidationErrorCodes":  {
-                                                        "purpose":  "Provides CertValidationErrorCodes functionality",
+                       "PiQValidationErrorCodes":  {
+                                                        "purpose":  "Provides PiQValidationErrorCodes functionality",
                                                         "key_methods":  [
 
                                                                         ],
                                                         "key_properties":  [
-                                                                               "CertValidationErrorCodes -\u003e class"
+                                                                               "PiQValidationErrorCodes -\u003e class"
                                                                            ]
                                                     },
-                       "CertValidationMessages":  {
-                                                      "purpose":  "Provides CertValidationMessages functionality",
+                       "PiQValidationMessages":  {
+                                                      "purpose":  "Provides PiQValidationMessages functionality",
                                                       "key_methods":  [
 
                                                                       ],
                                                       "key_properties":  [
-                                                                             "CertValidationMessages -\u003e class"
+                                                                             "PiQValidationMessages -\u003e class"
                                                                          ]
                                                   },
-                       "CertFileExtensions":  {
-                                                  "purpose":  "Provides CertFileExtensions functionality",
+                       "PiQFileExtensions":  {
+                                                  "purpose":  "Provides PiQFileExtensions functionality",
                                                   "key_methods":  [
 
                                                                   ],
                                                   "key_properties":  [
-                                                                         "CertFileExtensions -\u003e class"
+                                                                         "PiQFileExtensions -\u003e class"
                                                                      ]
                                               }
                    }

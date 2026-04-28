@@ -15,8 +15,8 @@
                      "usage_pattern":  "Import and use classes from this namespace to work with Service functionality."
                  },
     "components":  {
-                       "ICertErrorMappingService":  {
-                                                        "purpose":  "Provides ICertErrorMappingService functionality",
+                       "IPiQErrorMappingService":  {
+                                                        "purpose":  "Provides IPiQErrorMappingService functionality",
                                                         "key_methods":  [
                                                                             "MapServiceErrorToErrorCodeType(ErrorCodeType serviceError) -\u003e ErrorCodeType",
                                                                             "CreateServiceExceptionFromResponse(Exception responseException) -\u003e Exception",
@@ -25,36 +25,36 @@
                                                         "key_properties":  [
                                                                                "PiQApi.Abstractions.Enums -\u003e using",
                                                                                "PiQApi.Abstractions.Service -\u003e namespace",
-                                                                               "ICertErrorMappingService -\u003e interface",
+                                                                               "IPiQErrorMappingService -\u003e interface",
                                                                                "serviceError) -\u003e MapServiceErrorToErrorCodeType(ErrorCodeType",
                                                                                "responseException) -\u003e CreateServiceExceptionFromResponse(Exception",
                                                                                "exception) -\u003e MapSystemExceptionToErrorCodeType(Exception"
                                                                            ],
                                                         "type":  "interface"
                                                     },
-                       "ICertPropertyManagementService":  {
-                                                              "purpose":  "Provides ICertPropertyManagementService functionality",
+                       "IPiQPropertyManagementService":  {
+                                                              "purpose":  "Provides IPiQPropertyManagementService functionality",
                                                               "key_methods":  [
                                                                                   "WithPropertiesAsync(object basePropertySet, IEnumerable\u003cstring\u003e properties, CancellationToken cancellationToken = default) -\u003e Task\u003cobject\u003e",
                                                                                   "WithExtendedPropertiesAsync(object basePropertySet, IEnumerable\u003cobject\u003e extendedProperties, CancellationToken cancellationToken = default) -\u003e Task\u003cobject\u003e"
                                                                               ],
                                                               "key_properties":  [
                                                                                      "PiQApi.Abstractions.Service -\u003e namespace",
-                                                                                     "ICertPropertyManagementService -\u003e interface",
+                                                                                     "IPiQPropertyManagementService -\u003e interface",
                                                                                      "default) -\u003e =",
                                                                                      "default) -\u003e ="
                                                                                  ],
                                                               "type":  "interface"
                                                           },
-                       "ICertServiceResponse":  {
-                                                    "purpose":  "Provides ICertServiceResponse functionality",
+                       "IPiQServiceResponse":  {
+                                                    "purpose":  "Provides IPiQServiceResponse functionality",
                                                     "key_methods":  [
                                                                         "successful(alias for IsSuccess) -\u003e was"
                                                                     ],
                                                     "key_properties":  [
                                                                            "PiQApi.Abstractions.Enums -\u003e using",
                                                                            "PiQApi.Abstractions.Service -\u003e namespace",
-                                                                           "ICertServiceResponse -\u003e interface",
+                                                                           "IPiQServiceResponse -\u003e interface",
                                                                            "Status -\u003e ResultStatusType",
                                                                            "ErrorCode -\u003e ErrorCodeType",
                                                                            "ErrorMessage -\u003e string",

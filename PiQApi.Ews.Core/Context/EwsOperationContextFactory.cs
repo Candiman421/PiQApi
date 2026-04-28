@@ -63,9 +63,9 @@ namespace PiQApi.Ews.Core.Context
         {
             // Create a core context
             var coreContext = await _coreContextFactory.CreateInitializedContextAsync(cancellationToken).ConfigureAwait(false);
-            
+
             // Ensure we have the correct type
-            if (coreContext is not PiQOperationContext certContext)
+            if (coreContext is not PiQOperationContext piqContext)
             {
                 throw new InvalidOperationException("Expected PiQOperationContext from factory");
             }
@@ -84,7 +84,7 @@ namespace PiQApi.Ews.Core.Context
 
             // Create and return the EWS operation context
             var ewsContext = new EwsOperationContext(
-                certContext,
+                piqContext,
                 ewsCorrelationContext,
                 metrics,
                 _resultFactory,
@@ -106,9 +106,9 @@ namespace PiQApi.Ews.Core.Context
 
             // Create core context using the correlation context
             var coreContext = _coreContextFactory.Create(operationName, ewsCorrelationContext);
-            
+
             // Ensure we have the correct type
-            if (coreContext is not PiQOperationContext certContext)
+            if (coreContext is not PiQOperationContext piqContext)
             {
                 throw new InvalidOperationException("Expected PiQOperationContext from factory");
             }
@@ -120,7 +120,7 @@ namespace PiQApi.Ews.Core.Context
 
             // Create EWS operation context
             var context = new EwsOperationContext(
-                certContext,
+                piqContext,
                 ewsCorrelationContext,
                 metrics,
                 _resultFactory,
@@ -157,7 +157,7 @@ namespace PiQApi.Ews.Core.Context
 
             // Create a new correlation ID
             var correlationId = _correlationIdFactory.Create();
-            
+
             // Create EWS correlation context
             var correlationContextLogger = _loggerFactory.CreateLogger<EwsCorrelationContext>();
             var correlationContext = new EwsCorrelationContext(
@@ -174,10 +174,10 @@ namespace PiQApi.Ews.Core.Context
 
             // Create operation ID and name
             var operationId = Guid.NewGuid().ToString("N");
-            
+
             // Create logger for operation context
             var contextLogger = _loggerFactory.CreateLogger<EwsOperationContext>();
-            
+
             // Create EWS operation context
             var context = new EwsOperationContext(
                 operationId,

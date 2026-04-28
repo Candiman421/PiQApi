@@ -152,7 +152,7 @@ public partial class PiQValidationChain
     }
 
     /// <summary>
-    /// Helper method to check if a validation result has errors of a certain severity
+    /// Helper method to check if a validation result has errors of a piqain severity
     /// </summary>
     private static bool HasErrorsOfSeverity(IPiQValidationResult result, ValidationSeverityType severity)
     {

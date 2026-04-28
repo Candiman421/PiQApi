@@ -15,31 +15,31 @@
                      "usage_pattern":  "Import and use classes from this namespace to work with Models functionality."
                  },
     "components":  {
-                       "CertTokenRequestContext":  {
-                                                       "purpose":  "Provides CertTokenRequestContext functionality",
+                       "PiQTokenRequestContext":  {
+                                                       "purpose":  "Provides PiQTokenRequestContext functionality",
                                                        "key_methods":  [
 
                                                                        ],
                                                        "key_properties":  [
-                                                                              "CertTokenRequestContext -\u003e class",
+                                                                              "PiQTokenRequestContext -\u003e class",
                                                                               "Scopes -\u003e IEnumerable\u003cstring\u003e",
                                                                               "TenantId -\u003e string?",
                                                                               "CorrelationId -\u003e string?"
                                                                           ]
                                                    },
-                       "CertAccessToken":  {
-                                               "purpose":  "Provides CertAccessToken functionality",
+                       "PiQAccessToken":  {
+                                               "purpose":  "Provides PiQAccessToken functionality",
                                                "key_methods":  [
 
                                                                ],
                                                "key_properties":  [
-                                                                      "CertAccessToken -\u003e class",
+                                                                      "PiQAccessToken -\u003e class",
                                                                       "Token -\u003e string",
                                                                       "ExpiresOn -\u003e DateTimeOffset"
                                                                   ]
                                            },
-                       "CertTokenCredential":  {
-                                                   "purpose":  "Provides CertTokenCredential functionality",
+                       "PiQTokenCredential":  {
+                                                   "purpose":  "Provides PiQTokenCredential functionality",
                                                    "key_methods":  [
 
                                                                    ]

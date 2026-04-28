@@ -1,7 +1,7 @@
-// CertApi.ArchitectureRules/Projects/CertApi.Abstractions/Diagrams/DomainModels.puml
-@startuml CertApi.Abstractions Domain Models
+// PiQApi.ArchitectureRules/Projects/PiQApi.Abstractions/Diagrams/DomainModels.puml
+@startuml PiQApi.Abstractions Domain Models
 
-title CertApi.Abstractions Domain Models
+title PiQApi.Abstractions Domain Models
 footer Generated from architectural guides - %date("yyyy.MM.dd")
 legend right
   Domain primitives and model relationships
@@ -16,31 +16,31 @@ skinparam class {
 
 ' Domain Primitives
 package "Domain Primitives" {
-  class CertCorrelationId <<value object>> {
+  class PiQCorrelationId <<value object>> {
     +string Value
     +{static} FromString()
     +ToString()
   }
 
-  class CertResourceId <<value object>> {
+  class PiQResourceId <<value object>> {
     +string Value
     +{static} FromString()
     +ToString()
   }
 
-  class CertOperationId <<value object>> {
+  class PiQOperationId <<value object>> {
     +string Value
     +{static} FromString()
     +ToString()
   }
 
-  class CertMailAddress <<value object>> {
+  class PiQMailAddress <<value object>> {
     +string Value
     +{static} FromString()
     +ToString()
   }
 
-  class CertStorageId <<value object>> {
+  class PiQStorageId <<value object>> {
     +string Value
     +{static} FromString()
     +ToString()
@@ -49,30 +49,30 @@ package "Domain Primitives" {
 
 ' Request/Response Models
 package "Request Models" {
-  class CertSendMessageRequest {
-    +CertCorrelationId CorrelationId
-    +CertMailAddress Sender
-    +IReadOnlyCollection<CertMailAddress> Recipients
+  class PiQSendMessageRequest {
+    +PiQCorrelationId CorrelationId
+    +PiQMailAddress Sender
+    +IReadOnlyCollection<PiQMailAddress> Recipients
     +string Subject
     +string Content
   }
 
-  class CertGetItemRequest {
-    +CertCorrelationId CorrelationId
-    +CertStorageId ItemId
+  class PiQGetItemRequest {
+    +PiQCorrelationId CorrelationId
+    +PiQStorageId ItemId
   }
 }
 
 package "Response Models" {
-  class CertSendMessageResponse {
-    +CertCorrelationId CorrelationId
+  class PiQSendMessageResponse {
+    +PiQCorrelationId CorrelationId
     +bool Success
-    +CertStorageId? MessageId
+    +PiQStorageId? MessageId
     +IResultError? Error
   }
 
-  class CertGetItemResponse {
-    +CertCorrelationId CorrelationId
+  class PiQGetItemResponse {
+    +PiQCorrelationId CorrelationId
     +bool Success
     +object? Item
     +IResultError? Error
@@ -109,13 +109,13 @@ package "Enums" {
 }
 
 ' Relationships
-CertSendMessageRequest *-- CertCorrelationId
-CertSendMessageRequest *-- CertMailAddress
-CertGetItemRequest *-- CertCorrelationId
-CertGetItemRequest *-- CertStorageId
+PiQSendMessageRequest *-- PiQCorrelationId
+PiQSendMessageRequest *-- PiQMailAddress
+PiQGetItemRequest *-- PiQCorrelationId
+PiQGetItemRequest *-- PiQStorageId
 
-CertSendMessageResponse *-- CertCorrelationId
-CertSendMessageResponse *-- CertStorageId
-CertGetItemResponse *-- CertCorrelationId
+PiQSendMessageResponse *-- PiQCorrelationId
+PiQSendMessageResponse *-- PiQStorageId
+PiQGetItemResponse *-- PiQCorrelationId
 
 @enduml

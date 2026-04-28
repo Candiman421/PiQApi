@@ -18,7 +18,7 @@
         "location": "Validation/IValidationRule.cs",
         "signature": {
           "methods": [
-            "Task<CertValidationResult> ValidateAsync(T item, CertValidationContext context, CancellationToken ct)"
+            "Task<PiQValidationResult> ValidateAsync(T item, PiQValidationContext context, CancellationToken ct)"
           ],
           "requirements": [
             "Pure validation only",
@@ -47,19 +47,19 @@
         "location": "Validation/IValidationProcessor.cs",
         "signature": {
           "methods": [
-            "Task<CertValidationResult> ValidateAsync<T>(T item, IValidationRule<T> rule, CertValidationContext context, CancellationToken ct)",
-            "Task<CertValidationResult> ValidateAsync<T>(T item, IValidationRuleSet<T> ruleSet, CertValidationContext context, CancellationToken ct)"
+            "Task<PiQValidationResult> ValidateAsync<T>(T item, IValidationRule<T> rule, PiQValidationContext context, CancellationToken ct)",
+            "Task<PiQValidationResult> ValidateAsync<T>(T item, IValidationRuleSet<T> ruleSet, PiQValidationContext context, CancellationToken ct)"
           ]
         }
       }
     },
     "validation_context": {
-      "CertValidationContext": {
+      "PiQValidationContext": {
         "purpose": "Carry validation state",
-        "location": "Validation/CertValidationContext.cs",
+        "location": "Validation/PiQValidationContext.cs",
         "properties": [
           "ValidationModeType Mode - Controls validation behavior",
-          "CertCorrelationId Id - Chain tracking",
+          "PiQCorrelationId Id - Chain tracking",
           "IReadOnlyDictionary<string, object> Properties - Context data"
         ],
         "requirements": [
@@ -71,9 +71,9 @@
       }
     },
     "validation_results": {
-      "CertValidationResult": {
+      "PiQValidationResult": {
         "purpose": "Validation outcome with details",
-        "location": "Validation/CertValidationResult.cs",
+        "location": "Validation/PiQValidationResult.cs",
         "properties": [
           "bool IsValid - Overall validation state",
           "IReadOnlyCollection<ValidationError> Errors - Validation failures",
@@ -86,7 +86,7 @@
             "Failure(IEnumerable<ValidationError> errors, string correlationId)"
           ],
           "combination": [
-            "CombineWith(CertValidationResult other)"
+            "CombineWith(PiQValidationResult other)"
           ]
         }
       },

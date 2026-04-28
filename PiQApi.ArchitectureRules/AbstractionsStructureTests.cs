@@ -13,7 +13,7 @@ public class AbstractionsStructureTests : BaseArchitectureTest
     {
         var rule = Interfaces()
             .That().HaveFullNameContaining("PiQApi.Abstractions.Results")
-            .And().HaveAnyNameOf("ICertResult", "ICertResult`1", "IResultError", "IResultFactory")
+            .And().HaveAnyNameOf("IPiQResult", "IPiQResult`1", "IResultError", "IResultFactory")
             .Should().Exist()
             .Because("Core result interfaces are required in the Abstractions layer");
 
@@ -51,9 +51,9 @@ public class AbstractionsStructureTests : BaseArchitectureTest
             .That().AreEnums()
             .And().ResideInNamespace("PiQApi.Abstractions.Enums")
             .And().HaveAnyNameOf(
-                "ValidationModeType", 
-                "ServiceOperationStatusType", 
-                "ConnectionStateType", 
+                "ValidationModeType",
+                "ServiceOperationStatusType",
+                "ConnectionStateType",
                 "ResourceStatusType")
             .Should().Exist()
             .Because("Required enum types must exist in the Abstractions layer");

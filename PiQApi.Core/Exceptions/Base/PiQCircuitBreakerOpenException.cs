@@ -43,9 +43,9 @@ public sealed class PiQCircuitBreakerOpenException : PiQServiceException
         CircuitName = "Default";
 
         // Preserve correlation ID from inner exception
-        if (inner is IPiQExceptionInfo certEx && !string.IsNullOrEmpty(certEx.CorrelationId))
+        if (inner is IPiQExceptionInfo piqEx && !string.IsNullOrEmpty(piqEx.CorrelationId))
         {
-            SetCorrelationId(certEx.CorrelationId);
+            SetCorrelationId(piqEx.CorrelationId);
         }
     }
 
@@ -74,9 +74,9 @@ public sealed class PiQCircuitBreakerOpenException : PiQServiceException
         AddData(nameof(CircuitName), CircuitName);
 
         // Preserve correlation ID from inner exception
-        if (inner is IPiQExceptionInfo certEx && !string.IsNullOrEmpty(certEx.CorrelationId))
+        if (inner is IPiQExceptionInfo piqEx && !string.IsNullOrEmpty(piqEx.CorrelationId))
         {
-            SetCorrelationId(certEx.CorrelationId);
+            SetCorrelationId(piqEx.CorrelationId);
         }
     }
 }

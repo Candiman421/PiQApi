@@ -15,20 +15,20 @@
                      "usage_pattern":  "Import and use classes from this namespace to work with Operations functionality."
                  },
     "components":  {
-                       "ICertOperation":  {
-                                              "purpose":  "Provides ICertOperation functionality",
+                       "IPiQOperation":  {
+                                              "purpose":  "Provides IPiQOperation functionality",
                                               "key_methods":  [
                                                                   "ExecuteAsync(CancellationToken cancellationToken = default) -\u003e Task\u003cTResult\u003e"
                                                               ],
                                               "key_properties":  [
                                                                      "PiQApi.Abstractions.Operations -\u003e namespace",
-                                                                     "ICertOperationBase -\u003e :",
+                                                                     "IPiQOperationBase -\u003e :",
                                                                      "default) -\u003e ="
                                                                  ],
                                               "type":  "interface"
                                           },
-                       "ICertOperationBase":  {
-                                                  "purpose":  "Provides ICertOperationBase functionality",
+                       "IPiQOperationBase":  {
+                                                  "purpose":  "Provides IPiQOperationBase functionality",
                                                   "key_methods":  [
                                                                       "InitializeAsync(CancellationToken cancellationToken = default) -\u003e Task",
                                                                       "CleanupAsync(CancellationToken cancellationToken = default) -\u003e Task"
@@ -37,7 +37,7 @@
                                                                          "System.Threading -\u003e using",
                                                                          "System.Threading.Tasks -\u003e using",
                                                                          "PiQApi.Abstractions.Operations -\u003e namespace",
-                                                                         "ICertOperationBase -\u003e interface",
+                                                                         "IPiQOperationBase -\u003e interface",
                                                                          "default) -\u003e =",
                                                                          "default) -\u003e ="
                                                                      ],

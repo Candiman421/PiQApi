@@ -102,7 +102,7 @@ public class PiQValidationContextFactory : IPiQValidationContextFactory
         LogGeneratingId(_logger, serviceVersion, null);
 
         // Create a new correlation ID
-        IPiQCorrelationId certCorrelationId = _correlationIdFactory.Create();
+        IPiQCorrelationId piqCorrelationId = _correlationIdFactory.Create();
 
         // Create basic validation context with the new correlation ID
         var baseContext = new PiQValidationContext(
@@ -110,7 +110,7 @@ public class PiQValidationContextFactory : IPiQValidationContextFactory
             0, // Initial depth
             10, // Default max depth
             false, // Default for aggregating errors
-            certCorrelationId.Id, // Use the ID string from correlation ID
+            piqCorrelationId.Id, // Use the ID string from correlation ID
             ImmutableDictionary<string, object>.Empty, // Start with empty context
             _timeProvider,
             cancellationToken);

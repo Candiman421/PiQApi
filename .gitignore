@@ -39,10 +39,10 @@ bld/
 /packages/
 /temp/
 
-# CertApi.Scripts utility directories (keep folders, ignore contents)
-/CertApi.Scripts/delete/*
-/CertApi.Scripts/flat/*
-/CertApi.Scripts/temp/*
+# PiQApi.Scripts utility directories (keep folders, ignore contents)
+/PiQApi.Scripts/delete/*
+/PiQApi.Scripts/flat/*
+/PiQApi.Scripts/temp/*
 
 # Keep .gitkeep files to preserve empty directories
 !/**/.gitkeep

@@ -15,14 +15,14 @@
                      "usage_pattern":  "Import and use classes from this namespace to work with Exceptions functionality."
                  },
     "components":  {
-                       "ICertExceptionInfo":  {
-                                                  "purpose":  "Provides ICertExceptionInfo functionality",
+                       "IPiQExceptionInfo":  {
+                                                  "purpose":  "Provides IPiQExceptionInfo functionality",
                                                   "key_methods":  [
 
                                                                   ],
                                                   "key_properties":  [
                                                                          "PiQApi.Abstractions.Exceptions -\u003e namespace",
-                                                                         "ICertExceptionInfo -\u003e interface",
+                                                                         "IPiQExceptionInfo -\u003e interface",
                                                                          "ErrorCode -\u003e string",
                                                                          "CorrelationId -\u003e string",
                                                                          "AdditionalData -\u003e object\u003e",

@@ -15,29 +15,29 @@
                      "usage_pattern":  "Import and use classes from this namespace to work with Factories functionality."
                  },
     "components":  {
-                       "ICertCorrelationIdFactory":  {
-                                                         "purpose":  "Provides ICertCorrelationIdFactory functionality",
+                       "IPiQCorrelationIdFactory":  {
+                                                         "purpose":  "Provides IPiQCorrelationIdFactory functionality",
                                                          "key_methods":  [
-                                                                             "Create() -\u003e ICertCorrelationId",
-                                                                             "CreateFromExisting(string existingId) -\u003e ICertCorrelationId"
+                                                                             "Create() -\u003e IPiQCorrelationId",
+                                                                             "CreateFromExisting(string existingId) -\u003e IPiQCorrelationId"
                                                                          ],
                                                          "key_properties":  [
                                                                                 "PiQApi.Abstractions.Core -\u003e using",
                                                                                 "PiQApi.Abstractions.Factories -\u003e namespace",
-                                                                                "ICertCorrelationIdFactory -\u003e interface",
+                                                                                "IPiQCorrelationIdFactory -\u003e interface",
                                                                                 "existingId) -\u003e CreateFromExisting(string"
                                                                             ],
                                                          "type":  "interface"
                                                      },
-                       "ICertExceptionFactory":  {
-                                                     "purpose":  "Provides ICertExceptionFactory functionality",
+                       "IPiQExceptionFactory":  {
+                                                     "purpose":  "Provides IPiQExceptionFactory functionality",
                                                      "key_methods":  [
                                                                          "CreateAuthenticationException(string message, string errorCode, Uri? serviceUri, string? tokenId, Exception? inner = null) -\u003e Exception",
                                                                          "CreateBuilderException(string message, string propertyName, string? errorCode = null, object? attemptedValue = null, Exception? inner = null) -\u003e Exception",
                                                                          "CreateConfigurationException(string message, string? errorCode = null, IEnumerable\u003cstring\u003e? errors = null, Exception? inner = null) -\u003e Exception",
                                                                          "CreateConnectionException(string message, Uri? serviceUri = null, string? requestId = null, Exception? inner = null) -\u003e Exception",
                                                                          "CreateServiceException(string message, string? errorCode = null, string? serviceName = null, string? operation = null, Exception? inner = null) -\u003e Exception",
-                                                                         "CreateValidationException(string message, string? entityType = null, IEnumerable\u003cCertValidationResult\u003e? errors = null, Exception? inner = null) -\u003e Exception",
+                                                                         "CreateValidationException(string message, string? entityType = null, IEnumerable\u003cPiQValidationResult\u003e? errors = null, Exception? inner = null) -\u003e Exception",
                                                                          "CreateResourceNotFoundException(string resourceType, string resourceId, Exception? inner = null) -\u003e Exception",
                                                                          "CreateResourceLockedException(string resourceId, string? lockOwner = null, Exception? inner = null) -\u003e Exception",
                                                                          "CreateResourceQuotaExceededException(string resourceType, long currentSize, long maxSize, Exception? inner = null) -\u003e Exception",
@@ -48,7 +48,7 @@
                                                      "key_properties":  [
                                                                             "PiQApi.Abstractions.Validation.Models -\u003e using",
                                                                             "PiQApi.Abstractions.Factories -\u003e namespace",
-                                                                            "ICertExceptionFactory -\u003e interface",
+                                                                            "IPiQExceptionFactory -\u003e interface",
                                                                             "null) -\u003e =",
                                                                             "null) -\u003e =",
                                                                             "null) -\u003e =",
@@ -64,48 +64,48 @@
                                                                         ],
                                                      "type":  "interface"
                                                  },
-                       "ICertValidationResultFactory":  {
-                                                            "purpose":  "Provides ICertValidationResultFactory functionality",
+                       "IPiQValidationResultFactory":  {
+                                                            "purpose":  "Provides IPiQValidationResultFactory functionality",
                                                             "key_methods":  [
-                                                                                "Success() -\u003e ICertValidationResult",
-                                                                                "FromError(string propertyName, string errorMessage, string errorCode = \"ValidationError\", ValidationSeverityType severity = ValidationSeverityType.Error) -\u003e ICertValidationResult",
-                                                                                "FromErrors(IEnumerable\u003cCertValidationError\u003e errors) -\u003e ICertValidationResult",
-                                                                                "FromException(Exception exception) -\u003e ICertValidationResult",
-                                                                                "Combine(params ICertValidationResult[] results) -\u003e ICertValidationResult",
-                                                                                "CreateCancelled(string correlationId) -\u003e ICertValidationResult",
-                                                                                "CreateBuilder(string? correlationId = null) -\u003e CertValidationResultBuilder"
+                                                                                "Success() -\u003e IPiQValidationResult",
+                                                                                "FromError(string propertyName, string errorMessage, string errorCode = \"ValidationError\", ValidationSeverityType severity = ValidationSeverityType.Error) -\u003e IPiQValidationResult",
+                                                                                "FromErrors(IEnumerable\u003cPiQValidationError\u003e errors) -\u003e IPiQValidationResult",
+                                                                                "FromException(Exception exception) -\u003e IPiQValidationResult",
+                                                                                "Combine(params IPiQValidationResult[] results) -\u003e IPiQValidationResult",
+                                                                                "CreateCancelled(string correlationId) -\u003e IPiQValidationResult",
+                                                                                "CreateBuilder(string? correlationId = null) -\u003e PiQValidationResultBuilder"
                                                                             ],
                                                             "key_properties":  [
                                                                                    "PiQApi.Abstractions.Enums -\u003e using",
                                                                                    "PiQApi.Abstractions.Validation -\u003e using",
                                                                                    "PiQApi.Abstractions.Validation.Models -\u003e using",
                                                                                    "PiQApi.Abstractions.Factories -\u003e namespace",
-                                                                                   "ICertValidationResultFactory -\u003e interface",
+                                                                                   "IPiQValidationResultFactory -\u003e interface",
                                                                                    "ValidationSeverityType.Error) -\u003e =",
-                                                                                   "errors) -\u003e FromErrors(IEnumerable\u003cCertValidationError\u003e",
+                                                                                   "errors) -\u003e FromErrors(IEnumerable\u003cPiQValidationError\u003e",
                                                                                    "exception) -\u003e FromException(Exception",
-                                                                                   "results) -\u003e ICertValidationResult[]",
+                                                                                   "results) -\u003e IPiQValidationResult[]",
                                                                                    "correlationId) -\u003e CreateCancelled(string",
                                                                                    "null) -\u003e ="
                                                                                ],
                                                             "type":  "interface"
                                                         },
-                       "ICertResultFactory":  {
-                                                  "purpose":  "Provides ICertResultFactory functionality",
+                       "IPiQResultFactory":  {
+                                                  "purpose":  "Provides IPiQResultFactory functionality",
                                                   "key_methods":  [
-                                                                      "Success\u003cT\u003e(T value, string? correlationId = null) -\u003e ICertResult\u003cT\u003e",
-                                                                      "Failure\u003cT\u003e(Exception exception, string? correlationId = null) -\u003e ICertResult\u003cT\u003e",
-                                                                      "Failure\u003cT\u003e(string code, string message, string? correlationId = null) -\u003e ICertResult\u003cT\u003e",
-                                                                      "Failure\u003cT\u003e(string message, ErrorCodeType errorCode, string? correlationId = null) -\u003e ICertResult\u003cT\u003e",
-                                                                      "ServiceSuccess\u003cT\u003e(T value, OperationStatusType status, string requestId, string? correlationId = null) -\u003e ICertServiceResult\u003cT\u003e",
-                                                                      "ServiceFailure\u003cT\u003e(string code, string message, OperationStatusType status, string requestId, string? correlationId = null) -\u003e ICertServiceResult\u003cT\u003e",
-                                                                      "ServiceFailure\u003cT\u003e(Exception exception, OperationStatusType status, string requestId, string? correlationId = null) -\u003e ICertServiceResult\u003cT\u003e"
+                                                                      "Success\u003cT\u003e(T value, string? correlationId = null) -\u003e IPiQResult\u003cT\u003e",
+                                                                      "Failure\u003cT\u003e(Exception exception, string? correlationId = null) -\u003e IPiQResult\u003cT\u003e",
+                                                                      "Failure\u003cT\u003e(string code, string message, string? correlationId = null) -\u003e IPiQResult\u003cT\u003e",
+                                                                      "Failure\u003cT\u003e(string message, ErrorCodeType errorCode, string? correlationId = null) -\u003e IPiQResult\u003cT\u003e",
+                                                                      "ServiceSuccess\u003cT\u003e(T value, OperationStatusType status, string requestId, string? correlationId = null) -\u003e IPiQServiceResult\u003cT\u003e",
+                                                                      "ServiceFailure\u003cT\u003e(string code, string message, OperationStatusType status, string requestId, string? correlationId = null) -\u003e IPiQServiceResult\u003cT\u003e",
+                                                                      "ServiceFailure\u003cT\u003e(Exception exception, OperationStatusType status, string requestId, string? correlationId = null) -\u003e IPiQServiceResult\u003cT\u003e"
                                                                   ],
                                                   "key_properties":  [
                                                                          "PiQApi.Abstractions.Enums -\u003e using",
                                                                          "PiQApi.Abstractions.Results -\u003e using",
                                                                          "PiQApi.Abstractions.Factories -\u003e namespace",
-                                                                         "ICertResultFactory -\u003e interface",
+                                                                         "IPiQResultFactory -\u003e interface",
                                                                          "null) -\u003e =",
                                                                          "null) -\u003e =",
                                                                          "null) -\u003e =",
