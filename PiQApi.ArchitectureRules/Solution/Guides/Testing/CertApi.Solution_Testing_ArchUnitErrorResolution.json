@@ -1,0 +1,161 @@
+// PiQApi.ArchitectureRules/Solution/Guides/Testing/PiQApi.Solution_Testing_ArchUnitErrorResolution.json
+{
+  "metadata": {
+    "path": "PiQApi.Architecture/Solution/Guides/Testing/PiQApi.Solution_Testing_ArchUnitErrorResolution.json",
+    "version": "1.0",
+    "last_updated": "2024-02-23",
+    "purpose": "Guide for fixing ArchUnit.NET compilation errors and establishing proper test patterns",
+    "dependencies": [
+      "PiQApi.Solution_Testing_ArchUnitGuide.json"
+    ]
+  },
+  "compilation_errors": {
+    "namespace_errors": {
+      "error_type": "CS0246",
+      "components": [
+        {
+          "missing_type": "IMethod",
+          "resolution": {
+            "correct_type": "MethodMember",
+            "namespace": "ArchUnitNET.Domain",
+            "explanation": "IMethod does not exist, use MethodMember for method analysis"
+          }
+        },
+        {
+          "missing_type": "ArchCondition<>",
+          "resolution": {
+            "required_class": "Create custom condition class extending ArchUnitNET.Fluent.Conditions.Condition<T>",
+            "example": [
+              "public class CustomCondition<T> : Condition<T> where T : ICanBeAnalyzed {",
+              "    private readonly string _description;",
+              "    private readonly Func<T, bool> _predicate;",
+              "",
+              "    public CustomCondition(string description, Func<T, bool> predicate) {",
+              "        _description = description;",
+              "        _predicate = predicate;",
+              "    }",
+              "",
+              "    public override string Description => _description;",
+              "",
+              "    public override bool Check(T obj, Architecture architecture) {",
+              "        return _predicate(obj);",
+              "    }",
+              "}"
+            ]
+          }
+        }
+      ]
+    },
+    "method_errors": {
+      "error_type": "CS1061",
+      "components": [
+        {
+          "missing_method": "MeetCondition",
+          "resolution": {
+            "correct_pattern": "Use Should().Be() or Should().HaveNameMatching() instead",
+            "example": "Types().That().Are(ValidationTypes).Should().Be(ImplementsInterface)"
+          }
+        },
+        {
+          "missing_methods": ["AreAsync", "AreNotAsync"],
+          "resolution": {
+            "pattern": "Create custom conditions for async checking",
+            "example": [
+              "private static Condition<MethodMember> IsAsync()",
+              "{",
+              "    return new CustomCondition<MethodMember>(",
+              "        \"be async\",",
+              "        method => method.ReturnType.ToString().StartsWith(\"System.Threading.Tasks\")",
+              "    );",
+              "}"
+            ]
+          }
+        }
+      ]
+    },
+    "argument_conversion": {
+      "error_type": "CS1503",
+      "issues": [
+        {
+          "conversion": "IObjectProvider<IMethod> to string",
+          "resolution": {
+            "pattern": "Use proper ArchUnit type providers",
+            "correct_usage": [
+              "MethodMembers()",
+              "    .That()",
+              "    .Are(AsyncMethods)",
+              "    .Should()",
+              "    .HaveNameMatching(\".*Async\")"
+            ]
+          }
+        }
+      ]
+    }
+  },
+  "required_namespaces": {
+    "test_files": [
+      "using ArchUnitNET.Domain;",
+      "using ArchUnitNET.Fluent;",
+      "using ArchUnitNET.Fluent.Conditions;",
+      "using ArchUnitNET.Fluent.Syntax.Elements;",
+      "using ArchUnitNET.xUnit;",
+      "using static ArchUnitNET.Fluent.ArchRuleDefinition;"
+    ]
+  },
+  "recommended_patterns": {
+    "condition_definitions": {
+      "custom_conditions": {
+        "pattern": "Create dedicated conditions class",
+        "implementation": {
+          "filename": "ArchitectureConditions.cs",
+          "content": [
+            "public static class ArchitectureConditions {",
+            "    public static Condition<MethodMember> BeAsync() { ... }",
+            "    public static Condition<IType> BeImmutable() { ... }",
+            "    public static Condition<IType> HaveNoFields() { ... }",
+            "}"
+          ]
+        }
+      }
+    },
+    "test_structure": {
+      "base_setup": {
+        "filename": "AbstractionsArchitectureTests.Base.cs",
+        "key_components": [
+          "Static Architecture instance",
+          "Layer definitions as IObjectProvider<T>",
+          "Helper methods for common assertions"
+        ]
+      },
+      "type_providers": {
+        "pattern": "Define reusable type collections",
+        "example": [
+          "private readonly IObjectProvider<IType> ValidationTypes = Types()",
+          "    .That()",
+          "    .ResideInNamespace(\"PiQApi.Abstractions.Validation\")",
+          "    .As(\"Validation Types\");"
+        ]
+      }
+    }
+  },
+  "fixes_required": {
+    "base_class": [
+      "Update namespaces to include all required imports",
+      "Replace ArchCondition<T> with Condition<T>",
+      "Update type providers to use correct types",
+      "Remove MeetCondition calls in favor of proper ArchUnit patterns"
+    ],
+    "async_patterns": [
+      "Create custom async checking conditions",
+      "Update method checks to use proper MethodMember types",
+      "Fix argument type mismatches in Should() statements"
+    ],
+    "next_steps": [
+      "1. Update base class with proper imports and condition definitions",
+      "2. Create dedicated conditions class for reusable checks",
+      "3. Fix async pattern tests using proper MethodMember types",
+      "4. Update all type providers to use correct ArchUnit types",
+      "5. Verify proper test execution using xUnit test runner"
+    ]
+  }
+}

@@ -1,0 +1,115 @@
+// PiQApi.ArchitectureRules/Solution/Guides/Testing/ArchitecturalTestingGuide.json
+{
+  "metadata": {
+    "version": "1.0",
+    "last_updated": "2024-02-23",
+    "purpose": "Define architectural testing patterns and guidelines"
+  },
+  "testing_patterns": {
+    "architecture_loading": {
+      "principles": {
+        "single_load": "Load architecture once at test class level",
+        "assembly_targeting": "Load only required assemblies",
+        "build_timing": "Build after all assemblies loaded"
+      },
+      "implementation": {
+        "pattern": [
+          "private static readonly Architecture ArchSystem = new ArchLoader()",
+          "    .LoadAssemblies(typeof(TargetType).Assembly)",
+          "    .Build();"
+        ],
+        "loader_options": [
+          "LoadAssemblies - Direct assembly loading",
+          "LoadAssembliesIncludingDependencies - Load dependency tree",
+          "LoadFilteredDirectory - Load by pattern matching",
+          "LoadNamespacesWithinAssembly - Targeted namespace loading"
+        ]
+      }
+    },
+    "layer_definition": {
+      "patterns": {
+        "object_providers": {
+          "description": "Define reusable architecture element providers",
+          "examples": [
+            {
+              "layer": "IObjectProvider<IType> CoreLayer",
+              "definition": "Types().That().ResideInNamespace(\"Core\").As(\"Core Layer\")"
+            },
+            {
+              "layer": "IObjectProvider<Class> ServiceClasses",
+              "definition": "Classes().That().ImplementInterface(\"IService\").As(\"Service Classes\")"
+            }
+          ]
+        }
+      }
+    },
+    "rule_types": {
+      "layer_dependency": {
+        "pattern": "Ensure proper layer dependencies",
+        "examples": [
+          "Types that are in layer X should not depend on layer Y",
+          "Classes in service layer should only call service interfaces",
+          "Core types should not reference implementation details"
+        ]
+      },
+      "naming_conventions": {
+        "pattern": "Enforce naming standards",
+        "examples": [
+          "Classes implementing interface I[Name] should be named [Name]Impl",
+          "Abstract classes should have Abstract or Base prefix",
+          "Interfaces should start with I"
+        ]
+      },
+      "structural": {
+        "pattern": "Enforce architectural structure",
+        "examples": [
+          "Service classes should be sealed",
+          "Domain models should be immutable",
+          "Validators should be stateless"
+        ]
+      }
+    },
+    "assertion_patterns": {
+      "base_assertions": {
+        "check": "archRule.Check(architecture)",
+        "conditions": {
+          "BeImmutable": "Verifies type immutability",
+          "NotHaveAnyFields": "Ensures no field declarations",
+          "HaveNameMatching": "Validates naming patterns"
+        }
+      },
+      "custom_conditions": {
+        "pattern": "Create reusable architectural conditions",
+        "implementation": {
+          "signature": "private static ArchCondition<IType> CustomCondition()",
+          "structure": [
+            "Define condition name/description",
+            "Implement check logic",
+            "Return condition instance"
+          ]
+        }
+      }
+    },
+    "test_organization": {
+      "file_structure": {
+        "base": {
+          "purpose": "Common test infrastructure and utilities",
+          "contents": [
+            "Architecture loading",
+            "Layer definitions",
+            "Helper methods",
+            "Custom conditions"
+          ]
+        },
+        "specialized": {
+          "naming": "ArchitectureTests.[Category].cs",
+          "examples": [
+            "ArchitectureTests.LayerDependencies.cs",
+            "ArchitectureTests.NamingConventions.cs",
+            "ArchitectureTests.Validation.cs"
+          ]
+        }
+      }
+    }
+  }
+}

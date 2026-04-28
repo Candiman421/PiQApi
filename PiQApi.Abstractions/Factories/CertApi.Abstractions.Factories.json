@@ -1,0 +1,120 @@
+{
+    "documentPath":  "docsflat/PiQApi.Abstractions.Factories.json",
+    "version":  "1.0.0",
+    "lastUpdated":  "2025-04-06",
+    "purpose":  "Summarizes the public API of PiQApi.Abstractions.Factories and provides usage guidance",
+    "guide_type":  "api-reference",
+    "development_contexts":  [
+                                 "development"
+                             ],
+    "applies_to":  [
+                       "PiQApi.Abstractions.Factories"
+                   ],
+    "overview":  {
+                     "description":  "The Factories namespace contains components for the PiQApi.Abstractions project.",
+                     "usage_pattern":  "Import and use classes from this namespace to work with Factories functionality."
+                 },
+    "components":  {
+                       "ICertCorrelationIdFactory":  {
+                                                         "purpose":  "Provides ICertCorrelationIdFactory functionality",
+                                                         "key_methods":  [
+                                                                             "Create() -\u003e ICertCorrelationId",
+                                                                             "CreateFromExisting(string existingId) -\u003e ICertCorrelationId"
+                                                                         ],
+                                                         "key_properties":  [
+                                                                                "PiQApi.Abstractions.Core -\u003e using",
+                                                                                "PiQApi.Abstractions.Factories -\u003e namespace",
+                                                                                "ICertCorrelationIdFactory -\u003e interface",
+                                                                                "existingId) -\u003e CreateFromExisting(string"
+                                                                            ],
+                                                         "type":  "interface"
+                                                     },
+                       "ICertExceptionFactory":  {
+                                                     "purpose":  "Provides ICertExceptionFactory functionality",
+                                                     "key_methods":  [
+                                                                         "CreateAuthenticationException(string message, string errorCode, Uri? serviceUri, string? tokenId, Exception? inner = null) -\u003e Exception",
+                                                                         "CreateBuilderException(string message, string propertyName, string? errorCode = null, object? attemptedValue = null, Exception? inner = null) -\u003e Exception",
+                                                                         "CreateConfigurationException(string message, string? errorCode = null, IEnumerable\u003cstring\u003e? errors = null, Exception? inner = null) -\u003e Exception",
+                                                                         "CreateConnectionException(string message, Uri? serviceUri = null, string? requestId = null, Exception? inner = null) -\u003e Exception",
+                                                                         "CreateServiceException(string message, string? errorCode = null, string? serviceName = null, string? operation = null, Exception? inner = null) -\u003e Exception",
+                                                                         "CreateValidationException(string message, string? entityType = null, IEnumerable\u003cCertValidationResult\u003e? errors = null, Exception? inner = null) -\u003e Exception",
+                                                                         "CreateResourceNotFoundException(string resourceType, string resourceId, Exception? inner = null) -\u003e Exception",
+                                                                         "CreateResourceLockedException(string resourceId, string? lockOwner = null, Exception? inner = null) -\u003e Exception",
+                                                                         "CreateResourceQuotaExceededException(string resourceType, long currentSize, long maxSize, Exception? inner = null) -\u003e Exception",
+                                                                         "CreateMailDeliveryException(string message, string? recipientEmail = null, Exception? inner = null) -\u003e Exception",
+                                                                         "CreatePropertyValidationException(string propertyName, string message, Exception? inner = null) -\u003e Exception",
+                                                                         "CreateObjectDisposedException(string objectName, string message, Exception? inner = null) -\u003e Exception"
+                                                                     ],
+                                                     "key_properties":  [
+                                                                            "PiQApi.Abstractions.Validation.Models -\u003e using",
+                                                                            "PiQApi.Abstractions.Factories -\u003e namespace",
+                                                                            "ICertExceptionFactory -\u003e interface",
+                                                                            "null) -\u003e =",
+                                                                            "null) -\u003e =",
+                                                                            "null) -\u003e =",
+                                                                            "null) -\u003e =",
+                                                                            "null) -\u003e =",
+                                                                            "null) -\u003e =",
+                                                                            "null) -\u003e =",
+                                                                            "null) -\u003e =",
+                                                                            "null) -\u003e =",
+                                                                            "null) -\u003e =",
+                                                                            "null) -\u003e =",
+                                                                            "null) -\u003e ="
+                                                                        ],
+                                                     "type":  "interface"
+                                                 },
+                       "ICertValidationResultFactory":  {
+                                                            "purpose":  "Provides ICertValidationResultFactory functionality",
+                                                            "key_methods":  [
+                                                                                "Success() -\u003e ICertValidationResult",
+                                                                                "FromError(string propertyName, string errorMessage, string errorCode = \"ValidationError\", ValidationSeverityType severity = ValidationSeverityType.Error) -\u003e ICertValidationResult",
+                                                                                "FromErrors(IEnumerable\u003cCertValidationError\u003e errors) -\u003e ICertValidationResult",
+                                                                                "FromException(Exception exception) -\u003e ICertValidationResult",
+                                                                                "Combine(params ICertValidationResult[] results) -\u003e ICertValidationResult",
+                                                                                "CreateCancelled(string correlationId) -\u003e ICertValidationResult",
+                                                                                "CreateBuilder(string? correlationId = null) -\u003e CertValidationResultBuilder"
+                                                                            ],
+                                                            "key_properties":  [
+                                                                                   "PiQApi.Abstractions.Enums -\u003e using",
+                                                                                   "PiQApi.Abstractions.Validation -\u003e using",
+                                                                                   "PiQApi.Abstractions.Validation.Models -\u003e using",
+                                                                                   "PiQApi.Abstractions.Factories -\u003e namespace",
+                                                                                   "ICertValidationResultFactory -\u003e interface",
+                                                                                   "ValidationSeverityType.Error) -\u003e =",
+                                                                                   "errors) -\u003e FromErrors(IEnumerable\u003cCertValidationError\u003e",
+                                                                                   "exception) -\u003e FromException(Exception",
+                                                                                   "results) -\u003e ICertValidationResult[]",
+                                                                                   "correlationId) -\u003e CreateCancelled(string",
+                                                                                   "null) -\u003e ="
+                                                                               ],
+                                                            "type":  "interface"
+                                                        },
+                       "ICertResultFactory":  {
+                                                  "purpose":  "Provides ICertResultFactory functionality",
+                                                  "key_methods":  [
+                                                                      "Success\u003cT\u003e(T value, string? correlationId = null) -\u003e ICertResult\u003cT\u003e",
+                                                                      "Failure\u003cT\u003e(Exception exception, string? correlationId = null) -\u003e ICertResult\u003cT\u003e",
+                                                                      "Failure\u003cT\u003e(string code, string message, string? correlationId = null) -\u003e ICertResult\u003cT\u003e",
+                                                                      "Failure\u003cT\u003e(string message, ErrorCodeType errorCode, string? correlationId = null) -\u003e ICertResult\u003cT\u003e",
+                                                                      "ServiceSuccess\u003cT\u003e(T value, OperationStatusType status, string requestId, string? correlationId = null) -\u003e ICertServiceResult\u003cT\u003e",
+                                                                      "ServiceFailure\u003cT\u003e(string code, string message, OperationStatusType status, string requestId, string? correlationId = null) -\u003e ICertServiceResult\u003cT\u003e",
+                                                                      "ServiceFailure\u003cT\u003e(Exception exception, OperationStatusType status, string requestId, string? correlationId = null) -\u003e ICertServiceResult\u003cT\u003e"
+                                                                  ],
+                                                  "key_properties":  [
+                                                                         "PiQApi.Abstractions.Enums -\u003e using",
+                                                                         "PiQApi.Abstractions.Results -\u003e using",
+                                                                         "PiQApi.Abstractions.Factories -\u003e namespace",
+                                                                         "ICertResultFactory -\u003e interface",
+                                                                         "null) -\u003e =",
+                                                                         "null) -\u003e =",
+                                                                         "null) -\u003e =",
+                                                                         "null) -\u003e =",
+                                                                         "null) -\u003e =",
+                                                                         "null) -\u003e =",
+                                                                         "null) -\u003e ="
+                                                                     ],
+                                                  "type":  "interface"
+                                              }
+                   }
+}

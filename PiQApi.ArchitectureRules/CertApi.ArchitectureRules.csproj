@@ -1,0 +1,33 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+    <IsPackable>false</IsPackable>
+    <IsTestProject>true</IsTestProject>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Remove="Projects\PiQApi.Abstractions\TestsNUnit\**" />
+    <Compile Remove="Projects\PiQApi.Abstractions\TestsXunit\**" />
+    <Compile Remove="Projects\PiQApi.Abstractions\Tests\**" />
+    <EmbeddedResource Remove="Projects\PiQApi.Abstractions\TestsNUnit\**" />
+    <EmbeddedResource Remove="Projects\PiQApi.Abstractions\TestsXunit\**" />
+    <EmbeddedResource Remove="Projects\PiQApi.Abstractions\Tests\**" />
+    <None Remove="Projects\PiQApi.Abstractions\TestsNUnit\**" />
+    <None Remove="Projects\PiQApi.Abstractions\TestsXunit\**" />
+    <None Remove="Projects\PiQApi.Abstractions\Tests\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="coverlet.collector" />
+    <PackageReference Include="Microsoft.NET.Test.Sdk" />
+    <PackageReference Include="xunit" />
+    <PackageReference Include="xunit.runner.visualstudio" />
+    <PackageReference Include="TngTech.ArchUnitNET" />
+    <PackageReference Include="TngTech.ArchUnitNET.xUnit" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\PiQApi.Abstractions\PiQApi.Abstractions.csproj" />
+  </ItemGroup>
+</Project>

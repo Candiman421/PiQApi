@@ -1,0 +1,37 @@
+{
+    "documentPath":  "docsflat/PiQApi.Abstractions.Utilities.Randomization.json",
+    "version":  "1.0.0",
+    "lastUpdated":  "2025-04-06",
+    "purpose":  "Summarizes the public API of PiQApi.Abstractions.Utilities.Randomization and provides usage guidance",
+    "guide_type":  "api-reference",
+    "development_contexts":  [
+                                 "development"
+                             ],
+    "applies_to":  [
+                       "PiQApi.Abstractions.Utilities.Randomization"
+                   ],
+    "overview":  {
+                     "description":  "The Randomization namespace contains components for the PiQApi.Abstractions.Utilities project.",
+                     "usage_pattern":  "Import and use classes from this namespace to work with Randomization functionality."
+                 },
+    "components":  {
+                       "ICertRandomProvider":  {
+                                                   "purpose":  "Provides ICertRandomProvider functionality",
+                                                   "key_methods":  [
+                                                                       "NextInt() -\u003e int",
+                                                                       "NextIntUnderMax(int maxValue) -\u003e int",
+                                                                       "NextIntInRange(int minValue, int maxValue) -\u003e int",
+                                                                       "NextBytes(byte[] buffer) -\u003e void",
+                                                                       "NextDouble() -\u003e double"
+                                                                   ],
+                                                   "key_properties":  [
+                                                                          "PiQApi.Abstractions.Utilities.Randomization -\u003e namespace",
+                                                                          "ICertRandomProvider -\u003e interface",
+                                                                          "maxValue) -\u003e NextIntUnderMax(int",
+                                                                          "maxValue) -\u003e int",
+                                                                          "buffer) -\u003e NextBytes(byte[]"
+                                                                      ],
+                                                   "type":  "interface"
+                                               }
+                   }
+}

@@ -1,0 +1,114 @@
+{
+    "documentPath":  "docsflat/PiQApi.Core.Core.json",
+    "version":  "1.0.0",
+    "lastUpdated":  "2025-04-06",
+    "purpose":  "Summarizes the public API of PiQApi.Core.Core and provides usage guidance",
+    "guide_type":  "api-reference",
+    "development_contexts":  [
+                                 "development"
+                             ],
+    "applies_to":  [
+                       "PiQApi.Core.Core"
+                   ],
+    "overview":  {
+                     "description":  "The Core namespace contains components for the PiQApi.Core project.",
+                     "usage_pattern":  "Import and use classes from this namespace to work with Core functionality."
+                 },
+    "components":  {
+                       "CertCorrelationScopeDisposer":  {
+                                                            "purpose":  "Provides CertCorrelationScopeDisposer functionality",
+                                                            "key_methods":  [
+                                                                                "Dispose() -\u003e void"
+                                                                            ]
+                                                        },
+                       "CertCorrelationContext":  {
+                                                      "purpose":  "Provides CertCorrelationContext functionality",
+                                                      "key_methods":  [
+                                                                          "AddProperty(string key, object value) -\u003e void",
+                                                                          "AddProperties(IDictionary\u003cstring, object\u003e properties) -\u003e void",
+                                                                          "GetProperty\u003cT\u003e(string key) -\u003e T",
+                                                                          "TryGetProperty\u003cT\u003e(string key, out T? value) -\u003e bool",
+                                                                          "SetParentCorrelation(string parentId) -\u003e void",
+                                                                          "HasProperty(string key) -\u003e bool",
+                                                                          "SetCorrelationId(string id) -\u003e void"
+                                                                      ]
+                                                  },
+                       "CertResourceManager":  {
+                                                   "purpose":  "Provides CertResourceManager functionality",
+                                                   "key_methods":  [
+                                                                       "CreateScopeAsync(string? scopeId = null, CancellationToken cancellationToken = default) -\u003e Task\u003cICertResourceScope\u003e",
+                                                                       "CleanupScopeAsync(string scopeId, CancellationToken cancellationToken = default) -\u003e Task",
+                                                                       "CleanupAllScopesAsync(CancellationToken cancellationToken = default) -\u003e Task",
+                                                                       "TrackResourceAsync\u003cT\u003e(T resource, CancellationToken cancellationToken = default) -\u003e Task\u003cT\u003e",
+                                                                       "RemoveTrackedResourceAsync\u003cT\u003e(T resource, CancellationToken cancellationToken = default) -\u003e Task",
+                                                                       "ResourceExistsAsync\u003cT\u003e(T resource, CancellationToken cancellationToken = default) -\u003e Task\u003cbool\u003e",
+                                                                       "GetTrackedResources\u003cT\u003e() -\u003e IReadOnlyCollection\u003cT\u003e",
+                                                                       "TryAcquireResourceAsync(string resourceId, TimeSpan timeout, CancellationToken cancellationToken = default) -\u003e Task\u003cbool\u003e",
+                                                                       "ReleaseResourceAsync(string resourceId, CancellationToken cancellationToken = default) -\u003e Task",
+                                                                       "CreateResourceScopeAsync(IEnumerable\u003cstring\u003e resourceIds, CancellationToken cancellationToken = default) -\u003e Task\u003cICertResourceScope\u003e",
+                                                                       "DisposeAsync() -\u003e ValueTask"
+                                                                   ]
+                                               },
+                       "CertResourceContext":  {
+                                                   "purpose":  "Provides CertResourceContext functionality",
+                                                   "key_methods":  [
+                                                                       "GetResource\u003cT\u003e(string resourceId) -\u003e T",
+                                                                       "TrackResourceAsync\u003cT\u003e(T resource, CancellationToken cancellationToken = default) -\u003e Task\u003cT\u003e",
+                                                                       "GetTrackedResources\u003cT\u003e() -\u003e IReadOnlyCollection\u003cT\u003e",
+                                                                       "TryAcquireResourceAsync(string resourceId, TimeSpan timeout, CancellationToken cancellationToken = default) -\u003e Task\u003cbool\u003e",
+                                                                       "ReleaseResourceAsync(string resourceId, CancellationToken cancellationToken = default) -\u003e Task",
+                                                                       "CreateResourceScopeAsync(IEnumerable\u003cstring\u003e resourceIds, CancellationToken cancellationToken = default) -\u003e Task\u003cICertResourceScope\u003e",
+                                                                       "Dispose() -\u003e void"
+                                                                   ],
+                                                   "key_properties":  [
+                                                                          "CorrelationContext -\u003e ICertCorrelationContext",
+                                                                          "Metrics -\u003e ICertResourceMetrics"
+                                                                      ]
+                                               },
+                       "CertCorrelationScopeState":  {
+                                                         "purpose":  "Provides CertCorrelationScopeState functionality",
+                                                         "key_methods":  [
+
+                                                                         ],
+                                                         "key_properties":  [
+                                                                                "ParentId -\u003e string?",
+                                                                                "parentId) -\u003e CertCorrelationScopeState(string?"
+                                                                            ]
+                                                     },
+                       "CertResourceScope":  {
+                                                 "purpose":  "Provides CertResourceScope functionality",
+                                                 "key_methods":  [
+                                                                     "AddResourceAsync\u003cT\u003e(T resource, CancellationToken cancellationToken = default) -\u003e Task\u003cT\u003e",
+                                                                     "RemoveResourceAsync\u003cT\u003e(T resource, CancellationToken cancellationToken = default) -\u003e Task",
+                                                                     "CleanupAsync(CancellationToken cancellationToken = default) -\u003e Task",
+                                                                     "DisposeAsync() -\u003e ValueTask"
+                                                                 ],
+                                                 "key_properties":  [
+                                                                        "ScopeId -\u003e string",
+                                                                        "Created -\u003e DateTimeOffset"
+                                                                    ]
+                                             },
+                       "CertResourceMetrics":  {
+                                                   "purpose":  "Provides CertResourceMetrics functionality",
+                                                   "key_methods":  [
+                                                                       "IncrementCounter(string name, long increment = 1) -\u003e void",
+                                                                       "RecordResourceAcquired(string resourceType) -\u003e int",
+                                                                       "RecordResourceReleased(string resourceType) -\u003e int",
+                                                                       "RecordTime(string name, TimeSpan elapsed) -\u003e void",
+                                                                       "RecordOperation(string operationName, TimeSpan duration, bool success) -\u003e void",
+                                                                       "RecordAcquisition(string resourceType, string resourceId) -\u003e void",
+                                                                       "RecordRelease(string resourceType, string resourceId) -\u003e void",
+                                                                       "RecordOperation(string resourceType, string operationType, TimeSpan duration) -\u003e void",
+                                                                       "RecordError(string resourceType, string errorType) -\u003e void",
+                                                                       "ResetCounters() -\u003e void",
+                                                                       "GetMetricsSnapshotAsync(CancellationToken cancellationToken = default) -\u003e Task\u003cICertMetricsSnapshot\u003e"
+                                                                   ]
+                                               }
+                   },
+    "subdirectories":  {
+                           "Models":  {
+                                          "description":  "Contains components related to Models",
+                                          "documentation_path":  "PiQApi.Core.Core.Models.Use.json"
+                                      }
+                       }
+}

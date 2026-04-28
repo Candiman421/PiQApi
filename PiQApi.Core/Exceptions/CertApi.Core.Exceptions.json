@@ -1,0 +1,30 @@
+{
+    "documentPath":  "docsflat/PiQApi.Core.Exceptions.json",
+    "version":  "1.0.0",
+    "lastUpdated":  "2025-04-06",
+    "purpose":  "Summarizes the public API of PiQApi.Core.Exceptions and provides usage guidance",
+    "guide_type":  "api-reference",
+    "development_contexts":  [
+                                 "development"
+                             ],
+    "applies_to":  [
+                       "PiQApi.Core.Exceptions"
+                   ],
+    "overview":  {
+                     "description":  "The Exceptions namespace contains components for the PiQApi.Core project.",
+                     "usage_pattern":  "Import and use classes from this namespace to work with Exceptions functionality."
+                 },
+    "components":  {
+
+                   },
+    "subdirectories":  {
+                           "Base":  {
+                                        "description":  "Contains components related to Base",
+                                        "documentation_path":  "PiQApi.Core.Exceptions.Base.Use.json"
+                                    },
+                           "Infrastructure":  {
+                                                  "description":  "Contains components related to Infrastructure",
+                                                  "documentation_path":  "PiQApi.Core.Exceptions.Infrastructure.Use.json"
+                                              }
+                       }
+}

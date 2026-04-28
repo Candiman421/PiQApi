@@ -1,0 +1,204 @@
+// PiQApi.ArchitectureRules/Projects/PiQApi.Abstractions/Guides/PiQApi.Abstractions_Architecture.json
+{
+  "metadata": {
+    "path": "PiQApi.Architecture/Projects/PiQApi.Abstractions/Guides/PiQApi.Abstractions_Architecture.json",
+    "version": "1.0",
+    "last_updated": "2024-02-22",
+    "purpose": "Define core architectural principles for Abstractions layer",
+    "dependencies": [
+      "PiQApi.Solution_Architecture_ExceptionHandling.20240222.json",
+      "PiQApi.Solution_CrossCutting_Validation.json"
+    ]
+  },
+  "project_principles": {
+    "core_purpose": {
+      "description": "Define core contracts and domain primitives with zero external dependencies",
+      "responsibilities": [
+        "Core interfaces and contracts",
+        "Result abstract types",
+        "Base validation contracts",
+        "Domain primitive types",
+        "Essential enums"
+      ],
+      "forbidden": [
+        "Concrete implementations",
+        "External dependencies",
+        "Technology-specific types",
+        "Business logic"
+      ]
+    },
+    "project_organization": {
+      "Core": {
+        "Models": {
+          "purpose": "Domain primitives",
+          "examples": [
+            "CorrelationId.cs - Strong-typed identifier",
+            "ResourceId.cs - Base resource identifier",
+            "OperationId.cs - Operation tracking"
+          ],
+          "requirements": [
+            "Value object semantics",
+            "Complete validation",
+            "Immutable design",
+            "String representation"
+          ]
+        },
+        "Interfaces": {
+          "purpose": "Core infrastructure contracts",
+          "examples": [
+            "ICorrelationContext.cs",
+            "ITraceContext.cs",
+            "IResultFactory.cs"
+          ]
+        }
+      },
+      "Results": {
+        "purpose": "Result pattern contracts",
+        "required_files": [
+          "ICertResult.cs",
+          "ICertResult{T}.cs",
+          "IResultError.cs",
+          "IResultFactory.cs"
+        ],
+        "rules": [
+          "Clear success/failure states",
+          "Rich error context",
+          "Generic payloads",
+          "Immutable design"
+        ]
+      },
+      "Validation": {
+        "contracts": [
+          "IValidationRule<T>",
+          "CertValidationContext",
+          "CertValidationResult"
+        ],
+        "rules": [
+          "Pure validation only",
+          "Context propagation",
+          "Result aggregation",
+          "Error collection"
+        ]
+      },
+      "Enums": {
+        "naming": "Must use Type suffix",
+        "required": [
+          "ValidationModeType",
+          "ServiceOperationStatusType",
+          "ConnectionStateType",
+          "ResourceStatusType"
+        ]
+      }
+    }
+  },
+  "interface_design": {
+    "naming_rules": {
+      "prefixes": {
+        "interface": "'I' prefix required",
+        "cert_prefix": "Use for framework collisions",
+        "exchange_prefix": "Use for Exchange-specific types"
+      },
+      "examples": {
+        "correct": [
+          "ICertResult - Framework collision",
+          "IMailOperations - Business domain",
+          "IValidationRule<T> - Framework contract"
+        ],
+        "incorrect": [
+          "IEWSWrapper - Too implementation specific",
+          "IEmailStuff - Unclear purpose",
+          "IProcessing - Too vague"
+        ]
+      }
+    },
+    "interface_segregation": {
+      "rules": [
+        "Single responsibility focus",
+        "Minimal method surface",
+        "Client-specific interfaces",
+        "Composable contracts"
+      ],
+      "when_to_split": [
+        "Different clients need different methods",
+        "Methods change for different reasons",
+        "Clear functional boundaries exist",
+        "Testing requires isolation"
+      ]
+    }
+  },
+  "domain_primitives": {
+    "design_rules": {
+      "value_objects": {
+        "requirements": [
+          "Immutable after construction",
+          "Value-based equality",
+          "Self-validating",
+          "Clear string format"
+        ],
+        "implementation": {
+          "pattern": "C# record types",
+          "validation": "Constructor validation",
+          "formatting": "Override ToString()",
+          "parsing": "Static factory methods"
+        }
+      },
+      "identifiers": {
+        "requirements": [
+          "Strong typing",
+          "Format validation",
+          "Clear type names",
+          "Comparable values"
+        ],
+        "examples": {
+          "correct": [
+            "public record CorrelationId(string Value)",
+            "public record ResourceId(string Value)"
+          ]
+        }
+      }
+    }
+  },
+  "validation": {
+    "contracts": {
+      "IValidationRule<T>": {
+        "purpose": "Single validation rule definition",
+        "methods": [
+          "Task<CertValidationResult> ValidateAsync(T item, CertValidationContext context, CancellationToken ct)"
+        ],
+        "implementation_rules": [
+          "Pure validation logic only",
+          "No side effects",
+          "Thread-safe design",
+          "Proper cancellation"
+        ]
+      },
+      "CertValidationContext": {
+        "purpose": "Validation state and settings",
+        "properties": [
+          "ValidationModeType Mode",
+          "CorrelationId Id",
+          "IReadOnlyDictionary<string,object> Properties"
+        ]
+      }
+    }
+  },
+  "forbidden_patterns": {
+    "implementation_types": {
+      "not_allowed": [
+        "Concrete classes (except records)",
+        "Static utility classes",
+        "Extension methods",
+        "Implementation logic"
+      ],
+      "rationale": "Keep abstractions pure and implementation-free"
+    },
+    "dependencies": {
+      "not_allowed": [
+        "External NuGet packages",
+        "Framework dependencies beyond Base Class Library",
+        "Technology-specific references",
+        "Implementation frameworks"
+      ]
+    }
+  }
+}

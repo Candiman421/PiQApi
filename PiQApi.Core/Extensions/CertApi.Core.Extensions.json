@@ -1,0 +1,28 @@
+{
+    "documentPath":  "docsflat/PiQApi.Core.Extensions.json",
+    "version":  "1.0.0",
+    "lastUpdated":  "2025-04-06",
+    "purpose":  "Summarizes the public API of PiQApi.Core.Extensions and provides usage guidance",
+    "guide_type":  "api-reference",
+    "development_contexts":  [
+                                 "development"
+                             ],
+    "applies_to":  [
+                       "PiQApi.Core.Extensions"
+                   ],
+    "overview":  {
+                     "description":  "The Extensions namespace contains components for the PiQApi.Core project.",
+                     "usage_pattern":  "Import and use classes from this namespace to work with Extensions functionality."
+                 },
+    "components":  {
+                       "ServiceCollectionExtensions":  {
+                                                           "purpose":  "Provides ServiceCollectionExtensions functionality",
+                                                           "key_methods":  [
+                                                                               "AddCertValidation(this IServiceCollection services) -\u003e IServiceCollection"
+                                                                           ],
+                                                           "key_properties":  [
+                                                                                  "ServiceCollectionExtensions -\u003e class"
+                                                                              ]
+                                                       }
+                   }
+}

@@ -1,0 +1,119 @@
+// PiQApi.ArchitectureRules/Solution/Fixit/versioning_strategy.json
+{
+  "metadata": {
+    "path": "PiQApi.Architecture/Solution/Fixit/versioning_strategy.json",
+    "version": "1.0",
+    "last_updated": "2024-02-22",
+    "priority": "critical"
+  },
+  "versioning_principles": {
+    "core_concept": {
+      "description": "Cascade-style versioning where newer files can selectively override older ones",
+      "benefits": [
+        "Minimal content duplication",
+        "Clear precedence rules",
+        "Easy to track changes",
+        "Memory efficient"
+      ]
+    },
+    "file_organization": {
+      "base_files": {
+        "location": "Base/",
+        "purpose": "Original complete guides",
+        "naming": "{OriginalName}.json"
+      },
+      "override_files": {
+        "location": "Updates/",
+        "purpose": "Only contains changes and additions",
+        "naming": "{OriginalName}.{YYYYMMDD}.json",
+        "content": "Only changed sections, not full file"
+      }
+    }
+  },
+  "precedence_rules": {
+    "evaluation_order": [
+      "Most recent override file",
+      "Previous override files in reverse chronological order",
+      "Base file"
+    ],
+    "section_handling": {
+      "explicit_override": {
+        "marker": "_override",
+        "behavior": "Completely replaces original section"
+      },
+      "additive": {
+        "marker": "_add",
+        "behavior": "Adds to original content"
+      },
+      "unchanged": {
+        "behavior": "Original content remains valid"
+      }
+    }
+  },
+  "tracking_mechanism": {
+    "active_file": "active_guides.json",
+    "contents": {
+      "guide_id": "Original guide identifier",
+      "base_file": "Path to base guide",
+      "active_overrides": [
+        "Array of override files in precedence order"
+      ],
+      "effective_date": "When this combination became active"
+    }
+  },
+  "implementation": {
+    "example": {
+      "base": {
+        "file": "PiQApi.Solution_Architecture_BuilderPatterns.json",
+        "content": "Complete original builder pattern guide"
+      },
+      "override": {
+        "file": "PiQApi.Solution_Architecture_BuilderPatterns.20240222.json",
+        "content": {
+          "implementation_patterns_override": {
+            "new_complete_section": "Only this section changes"
+          },
+          "validation_rules_add": {
+            "additional_rules": "These rules are added"
+          }
+        }
+      }
+    }
+  },
+  "new_chat_protocol": {
+    "initialization": {
+      "required_files": [
+        {
+          "name": "active_guides.json",
+          "purpose": "Current guide versions",
+          "usage": "Determine active file versions"
+        },
+        {
+          "name": "progress_tracker.json",
+          "purpose": "Current state and progress",
+          "usage": "Determine next actions"
+        }
+      ],
+      "sequence": [
+        "Load progress_tracker.json",
+        "Identify relevant guides for task",
+        "Apply versioning rules from newest to oldest",
+        "Follow consolidated guidance for task"
+      ]
+    },
+    "context_handling": {
+      "instructions": [
+        "Check progress_tracker.json first",
+        "Reference only active versions of guides",
+        "Apply override rules automatically",
+        "Ensure responses contain sufficient state info"
+      ],
+      "benefits": [
+        "Consistent starting point",
+        "Minimal context loading",
+        "Clear authority chain",
+        "Forward progress maintained"
+      ]
+    }
+  }
+}

@@ -1,0 +1,45 @@
+{
+    "documentPath":  "docsflat/PiQApi.Core.Utilities.RandomProviders.json",
+    "version":  "1.0.0",
+    "lastUpdated":  "2025-04-06",
+    "purpose":  "Summarizes the public API of PiQApi.Core.Utilities.RandomProviders and provides usage guidance",
+    "guide_type":  "api-reference",
+    "development_contexts":  [
+                                 "development"
+                             ],
+    "applies_to":  [
+                       "PiQApi.Core.Utilities.RandomProviders"
+                   ],
+    "overview":  {
+                     "description":  "The RandomProviders namespace contains components for the PiQApi.Core.Utilities project.",
+                     "usage_pattern":  "Import and use classes from this namespace to work with RandomProviders functionality."
+                 },
+    "components":  {
+                       "CertRandomProviderFactory":  {
+                                                         "purpose":  "Provides CertRandomProviderFactory functionality",
+                                                         "key_methods":  [
+                                                                             "CreateFastProvider() -\u003e ICertRandomProvider",
+                                                                             "CreateSecureProvider() -\u003e ICertRandomProvider",
+                                                                             "CreateProvider(bool useCryptographic) -\u003e ICertRandomProvider",
+                                                                             "Configure(ICertRandomProvider fastProvider, ICertRandomProvider secureProvider) -\u003e void",
+                                                                             "Reset() -\u003e void"
+                                                                         ],
+                                                         "key_properties":  [
+                                                                                "CertRandomProviderFactory -\u003e class"
+                                                                            ]
+                                                     },
+                       "CertSystemRandomProvider":  {
+                                                        "purpose":  "Provides CertSystemRandomProvider functionality",
+                                                        "key_methods":  [
+                                                                            "NextInt() -\u003e int",
+                                                                            "NextIntUnderMax(int maxValue) -\u003e int",
+                                                                            "NextIntInRange(int minValue, int maxValue) -\u003e int",
+                                                                            "NextBytes(byte[] buffer) -\u003e void",
+                                                                            "NextDouble() -\u003e double",
+                                                                            "Create(bool useCryptographic,\n        ILogger\u003cCertSystemRandomProvider\u003e? logger = null,\n        ICertCorrelationContext? correlationContext = null) -\u003e ICertRandomProvider",
+                                                                            "CreateSecure(ILogger\u003cCertSystemRandomProvider\u003e? logger = null,\n        ICertCorrelationContext? correlationContext = null) -\u003e ICertRandomProvider",
+                                                                            "CreateFast(ILogger\u003cCertSystemRandomProvider\u003e? logger = null,\n        ICertCorrelationContext? correlationContext = null) -\u003e ICertRandomProvider"
+                                                                        ]
+                                                    }
+                   }
+}

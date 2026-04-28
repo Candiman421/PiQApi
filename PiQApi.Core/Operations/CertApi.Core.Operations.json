@@ -1,0 +1,25 @@
+{
+    "documentPath":  "docsflat/PiQApi.Core.Operations.json",
+    "version":  "1.0.0",
+    "lastUpdated":  "2025-04-06",
+    "purpose":  "Summarizes the public API of PiQApi.Core.Operations and provides usage guidance",
+    "guide_type":  "api-reference",
+    "development_contexts":  [
+                                 "development"
+                             ],
+    "applies_to":  [
+                       "PiQApi.Core.Operations"
+                   ],
+    "overview":  {
+                     "description":  "The Operations namespace contains components for the PiQApi.Core project.",
+                     "usage_pattern":  "Import and use classes from this namespace to work with Operations functionality."
+                 },
+    "components":  {
+                       "CertOperationBase":  {
+                                                 "purpose":  "Provides CertOperationBase functionality",
+                                                 "key_methods":  [
+
+                                                                 ]
+                                             }
+                   }
+}

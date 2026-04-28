@@ -1,0 +1,35 @@
+{
+    "documentPath":  "docsflat/PiQApi.Core.Utilities.Time.json",
+    "version":  "1.0.0",
+    "lastUpdated":  "2025-04-06",
+    "purpose":  "Summarizes the public API of PiQApi.Core.Utilities.Time and provides usage guidance",
+    "guide_type":  "api-reference",
+    "development_contexts":  [
+                                 "development"
+                             ],
+    "applies_to":  [
+                       "PiQApi.Core.Utilities.Time"
+                   ],
+    "overview":  {
+                     "description":  "The Time namespace contains components for the PiQApi.Core.Utilities project.",
+                     "usage_pattern":  "Import and use classes from this namespace to work with Time functionality."
+                 },
+    "components":  {
+                       "CertTimeProviderFactory":  {
+                                                       "purpose":  "Provides CertTimeProviderFactory functionality",
+                                                       "key_methods":  [
+                                                                           "ConfigureStatic(ICertTimeProvider provider) -\u003e void",
+                                                                           "Configure(ICertTimeProvider provider) -\u003e void",
+                                                                           "ResetStatic() -\u003e void",
+                                                                           "Reset() -\u003e void"
+                                                                       ]
+                                                   },
+                       "CertSystemTimeProvider":  {
+                                                      "purpose":  "Provides CertSystemTimeProvider functionality",
+                                                      "key_methods":  [
+                                                                          "GetTimestamp() -\u003e TimeSpan",
+                                                                          "GetElapsedTime(TimeSpan timestamp) -\u003e TimeSpan"
+                                                                      ]
+                                                  }
+                   }
+}

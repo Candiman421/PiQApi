@@ -1,0 +1,55 @@
+{
+    "documentPath":  "docsflat/PiQApi.Core.Exceptions.Base.json",
+    "version":  "1.0.0",
+    "lastUpdated":  "2025-04-06",
+    "purpose":  "Summarizes the public API of PiQApi.Core.Exceptions.Base and provides usage guidance",
+    "guide_type":  "api-reference",
+    "development_contexts":  [
+                                 "development"
+                             ],
+    "applies_to":  [
+                       "PiQApi.Core.Exceptions.Base"
+                   ],
+    "overview":  {
+                     "description":  "The Base namespace contains components for the PiQApi.Core.Exceptions project.",
+                     "usage_pattern":  "Import and use classes from this namespace to work with Base functionality."
+                 },
+    "components":  {
+                       "CertServiceException":  {
+                                                    "purpose":  "Provides CertServiceException functionality",
+                                                    "key_methods":  [
+
+                                                                    ]
+                                                },
+                       "CertException":  {
+                                             "purpose":  "Provides CertException functionality",
+                                             "key_methods":  [
+                                                                 "SetCorrelationId(string correlationId) -\u003e void"
+                                                             ],
+                                             "key_properties":  [
+                                                                    "ErrorCode -\u003e string",
+                                                                    "CorrelationId -\u003e string",
+                                                                    "Timestamp -\u003e DateTimeOffset"
+                                                                ]
+                                         },
+                       "CertCircuitBreakerOpenException":  {
+                                                               "purpose":  "Provides CertCircuitBreakerOpenException functionality",
+                                                               "key_methods":  [
+
+                                                                               ],
+                                                               "key_properties":  [
+                                                                                      "CircuitName -\u003e string"
+                                                                                  ]
+                                                           },
+                       "CertServiceExceptionBase":  {
+                                                        "purpose":  "Provides CertServiceExceptionBase functionality",
+                                                        "key_methods":  [
+
+                                                                        ],
+                                                        "key_properties":  [
+                                                                               "ServiceName -\u003e string",
+                                                                               "Operation -\u003e string"
+                                                                           ]
+                                                    }
+                   }
+}

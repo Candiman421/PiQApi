@@ -1,0 +1,137 @@
+// PiQApi.ArchitectureRules/Solution/Common/progress_tracker.json
+{
+  "metadata": {
+    "path": "PiQApi.Architecture/Solution/Common/progress_tracker.json",
+    "version": "1.0",
+    "last_updated": "2024-02-22",
+    "purpose": "Track progress and enable seamless chat continuation"
+  },
+  "current_state": {
+    "phase": "1_initial_categorization",
+    "task": "Categorizing remaining guides",
+    "completion": "15%",
+    "active_files": [
+      "guide_status.json",
+      "consolidation_plan.json",
+      "versioning_strategy.json"
+    ],
+    "continuation": {
+      "last_response_id": "response_20240222_1",
+      "context": {
+        "task_state": "Reviewing guides 15-30 for categorization",
+        "last_processed": "BuilderPatterns_02.json",
+        "next_to_process": "ResourceManagement.json"
+      },
+      "pending_changes": {
+        "guide_status.json": {
+          "sections_modified": ["solution_guides.architecture"],
+          "needs_update": true
+        }
+      }
+    }
+  },
+  "execution_context": {
+    "current_task": {
+      "id": "TASK_20240222_1",
+      "description": "Categorizing architectural guides",
+      "progress": {
+        "total_items": 87,
+        "processed": 15,
+        "remaining": 72
+      },
+      "state": {
+        "last_decision": "Group builder patterns into single guide",
+        "next_decision_needed": "Categorize resource management guides"
+      }
+    },
+    "work_units": {
+      "completed": [
+        {
+          "id": "WU_20240222_1",
+          "task": "Initial setup files created",
+          "outputs": [
+            "versioning_strategy.json",
+            "guide_status.json",
+            "chat_protocol.json"
+          ]
+        },
+        {
+          "id": "WU_20240222_2",
+          "task": "Builder pattern guides analyzed",
+          "outputs": [
+            "Updated guide_status.json with builder pattern categorization"
+          ]
+        }
+      ],
+      "in_progress": {
+        "id": "WU_20240222_3",
+        "task": "Resource management guide analysis",
+        "status": "Started",
+        "completion": "30%",
+        "remaining_work": "Review implementation patterns"
+      }
+    }
+  },
+  "continuation_protocol": {
+    "chat_end_handling": {
+      "expected": [
+        "Update continuation.last_response_id",
+        "Document precise task state",
+        "List pending file changes",
+        "Save decision context"
+      ],
+      "unexpected": [
+        "Last chat content must contain enough info to relocate state",
+        "progress_tracker.json serves as source of truth",
+        "pending_changes tracks needed updates"
+      ]
+    },
+    "chat_resumption": {
+      "steps": [
+        "Load progress_tracker.json",
+        "Check continuation.last_response_id",
+        "Load only required active_files",
+        "Resume from continuation.context state"
+      ],
+      "context_preservation": {
+        "task_state": "Exact point in current task",
+        "decisions": "Last decisions and next needed",
+        "file_states": "Which files need updates"
+      }
+    }
+  },
+  "file_management": {
+    "priority_order": [
+      "progress_tracker.json - Load first always",
+      "active_files from current_state",
+      "additional files only when needed"
+    ],
+    "update_strategy": {
+      "in_chat": [
+        "Record changes in pending_changes",
+        "Update continuation context",
+        "Save key decisions"
+      ],
+      "between_chats": [
+        "Maintain enough detail in responses for state reconstruction",
+        "progress_tracker.json provides complete context",
+        "Pending changes show required updates"
+      ]
+    }
+  },
+  "next_steps": {
+    "immediate": {
+      "task": "Continue guide categorization",
+      "files_needed": [
+        "guide_status.json",
+        "consolidation_plan.json"
+      ],
+      "expected_output": "Updated guide_status.json with next batch of guides categorized"
+    },
+    "upcoming": [
+      "Complete guide categorization",
+      "Begin validation framework consolidation",
+      "Create first consolidated guide"
+    ]
+  }
+}

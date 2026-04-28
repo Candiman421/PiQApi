@@ -1,0 +1,50 @@
+// PiQApi.ArchitectureRules/Solution/Fixit/dependency_map.json
+{
+  "metadata": {
+    "version": "1.0",
+    "last_updated": "2024-02-22"
+  },
+  "dependency_types": {
+    "requires": "Guide must be implemented first",
+    "extends": "Guide adds to another guide",
+    "references": "Guide refers to concepts in another guide",
+    "impacts": "Changes affect another guide"
+  },
+  "solution_level": {
+    "PiQApi.Solution_Architecture_Principles": {
+      "id": "2",
+      "required_by": [
+        "All guides inherit from core principles"
+      ],
+      "extends": [],
+      "references": [],
+      "impacts": ["All implementation guides"]
+    }
+  },
+  "cross_cutting": {
+    "PiQApi.Solution_CrossCutting_ValidationFramework": {
+      "id": "17",
+      "requires": ["2"],
+      "extends": [],
+      "references": [
+        "31",
+        "54",
+        "59",
+        "66",
+        "69"
+      ],
+      "impacts": ["All validation implementations"]
+    }
+  },
+  "project_level": {
+    "PiQApi.Abstractions": {
+      "InterfacesGuide": {
+        "id": "51",
+        "requires": ["2", "3"],
+        "extends": [],
+        "references": ["15"],
+        "impacts": ["All interface implementations"]
+      }
+    }
+  }
+}

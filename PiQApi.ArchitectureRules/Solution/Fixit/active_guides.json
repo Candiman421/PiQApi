@@ -1,0 +1,61 @@
+// PiQApi.ArchitectureRules/Solution/Fixit/active_guides.json
+{
+  "metadata": {
+    "path": "PiQApi.Architecture/Solution/Fixit/active_guides.json",
+    "version": "1.0",
+    "last_updated": "2024-02-22"
+  },
+  "active_guides": {
+    "foundation": {
+      "error_handling": {
+        "base": "PiQApi.Solution_Architecture_ExceptionHandling.json",
+        "status": "Consolidated",
+        "used_sources": [
+          "modern_exception_architecture1",
+          "modern_exception_architecture2",
+          "modern_exception_architecture3"
+        ],
+        "next_version_date": "2024-02-23",
+        "pending_integrations": [
+          "ExceptionHandling.json",
+          "ErrorHandlingDetails.json",
+          "ErrorTransformation.json"
+        ]
+      },
+      "validation": {
+        "base": "PiQApi.Solution_CrossCutting_Validation.json",
+        "status": "PendingConsolidation",
+        "planned_date": "2024-02-23",
+        "source_guides": [
+          "ValidationFramework.json",
+          "ValidationFlowGuide.json"
+        ]
+      }
+    },
+    "implementation_patterns": {
+      "builders": {
+        "base": "PiQApi.Solution_Architecture_BuilderPatterns.json",
+        "status": "PendingConsolidation",
+        "planned_date": "2024-02-24",
+        "source_guides": [
+          "BuilderPatterns_01.json",
+          "BuilderPatterns_02.json",
+          "BuilderOrganization.json",
+          "BuilderCollaboration.json"
+        ]
+      }
+    }
+  },
+  "in_progress": {
+    "task": "Validation framework consolidation",
+    "dependencies": [
+      "Exception handling patterns (Completed)",
+      "Error aggregation rules (Completed)"
+    ],
+    "next_steps": [
+      "Create PiQApi.Solution_CrossCutting_Validation.json",
+      "Integrate with exception handling patterns",
+      "Update guide_status.json"
+    ]
+  }
+}

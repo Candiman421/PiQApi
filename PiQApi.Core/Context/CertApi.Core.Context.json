@@ -1,0 +1,126 @@
+{
+    "documentPath":  "docsflat/PiQApi.Core.Context.json",
+    "version":  "1.0.0",
+    "lastUpdated":  "2025-04-06",
+    "purpose":  "Summarizes the public API of PiQApi.Core.Context and provides usage guidance",
+    "guide_type":  "api-reference",
+    "development_contexts":  [
+                                 "development"
+                             ],
+    "applies_to":  [
+                       "PiQApi.Core.Context"
+                   ],
+    "overview":  {
+                     "description":  "The Context namespace contains components for the PiQApi.Core project.",
+                     "usage_pattern":  "Import and use classes from this namespace to work with Context functionality."
+                 },
+    "components":  {
+                       "CertOperationMetrics":  {
+                                                    "purpose":  "Provides CertOperationMetrics functionality",
+                                                    "key_methods":  [
+                                                                        "RecordOperation(string operationName, TimeSpan duration, bool success) -\u003e void",
+                                                                        "RecordCustomMetric(string metricName, double value) -\u003e void",
+                                                                        "IncrementCounter(string name, long increment = 1) -\u003e long",
+                                                                        "StartTimer(string name) -\u003e void",
+                                                                        "StopTimer(string name) -\u003e TimeSpan",
+                                                                        "RecordTime(string name, TimeSpan elapsedTime) -\u003e void",
+                                                                        "GetCounter(string name) -\u003e long",
+                                                                        "GetTimerElapsed(string name) -\u003e TimeSpan",
+                                                                        "GetMetricsSnapshotAsync(CancellationToken cancellationToken = default) -\u003e Task\u003cICertMetricsSnapshot\u003e",
+                                                                        "ResetCounters() -\u003e void"
+                                                                    ]
+                                                },
+                       "CertOperationContext":  {
+                                                    "purpose":  "Provides CertOperationContext functionality",
+                                                    "key_methods":  [
+                                                                        "ValidateAsync\u003cT\u003e(T entity, ValidationModeType mode, CancellationToken cancellationToken = default) -\u003e Task\u003cICertValidationResult\u003e",
+                                                                        "ValidateRequiredAsync\u003cT\u003e(T entity, CancellationToken cancellationToken = default) -\u003e Task\u003cICertValidationResult\u003e",
+                                                                        "ValidateAndCreateResultAsync\u003cT\u003e(T entity, ValidationModeType mode, CancellationToken cancellationToken = default) -\u003e Task\u003cICertResult\u003cT\u003e\u003e",
+                                                                        "CreateValidationContext(ValidationModeType mode = ValidationModeType.Standard, CancellationToken? cancellationToken = null) -\u003e CertValidationContext"
+                                                                    ]
+                                                },
+                       "CertOperationValidator":  {
+                                                      "purpose":  "Provides CertOperationValidator functionality",
+                                                      "key_methods":  [
+                                                                          "SetOperationContext(ICertOperationContext operationContext) -\u003e void",
+                                                                          "ValidateAsync\u003cT\u003e(T entity, ValidationModeType mode, CancellationToken cancellationToken = default) -\u003e Task\u003cICertValidationResult\u003e",
+                                                                          "ValidateRequiredAsync\u003cT\u003e(T entity, CancellationToken cancellationToken = default) -\u003e Task\u003cICertValidationResult\u003e",
+                                                                          "ValidateAndCreateResultAsync\u003cT\u003e(T entity, ValidationModeType mode, CancellationToken cancellationToken = default) -\u003e Task\u003cICertResult\u003cT\u003e\u003e",
+                                                                          "CreateValidationContext(ValidationModeType mode = ValidationModeType.Standard, CancellationToken? cancellationToken = null) -\u003e CertValidationContext"
+                                                                      ]
+                                                  },
+                       "CertOperationContextFactory":  {
+                                                           "purpose":  "Provides CertOperationContextFactory functionality",
+                                                           "key_methods":  [
+                                                                               "Create(string operationName, ICertCorrelationContext correlationContext) -\u003e ICertOperationContext",
+                                                                               "CreateWithProperties(string operationName,\n        ICertCorrelationContext correlationContext,\n        IDictionary\u003cstring, object\u003e properties) -\u003e ICertOperationContext",
+                                                                               "CreateConfigured(string operationName,\n        ICertCorrelationContext correlationContext,\n        OperationType operationType,\n        TimeSpan? timeout = null,\n        ICertOperationContext? parent = null,\n        CancellationToken cancellationToken = default) -\u003e ICertOperationContext",
+                                                                               "CreateChild(ICertOperationContext parent,\n        string childOperationName,\n        OperationType? operationType = null) -\u003e ICertOperationContext",
+                                                                               "CreateStandalone(string operationName,\n        OperationType operationType = OperationType.Generic,\n        TimeSpan? timeout = null,\n        CancellationToken cancellationToken = default) -\u003e ICertOperationContext",
+                                                                               "CreateInitializedContextAsync(CancellationToken cancellationToken = default) -\u003e Task\u003cICertOperationContext\u003e"
+                                                                           ]
+                                                       },
+                       "CertOperationScope":  {
+                                                  "purpose":  "Provides CertOperationScope functionality",
+                                                  "key_methods":  [
+                                                                      "Dispose() -\u003e void"
+                                                                  ],
+                                                  "key_properties":  [
+                                                                         "Name -\u003e string",
+                                                                         "Context -\u003e ICertOperationContext"
+                                                                     ]
+                                              },
+                       "CertOperationIdentifier":  {
+                                                       "purpose":  "Provides CertOperationIdentifier functionality",
+                                                       "key_methods":  [
+
+                                                                       ],
+                                                       "key_properties":  [
+                                                                              "Id -\u003e string",
+                                                                              "Name -\u003e string",
+                                                                              "OperationType -\u003e OperationType",
+                                                                              "Parent -\u003e ICertOperationIdentifier?",
+                                                                              "StartTime -\u003e DateTimeOffset",
+                                                                              "Timeout -\u003e TimeSpan"
+                                                                          ]
+                                                   },
+                       "CertOperationState":  {
+                                                  "purpose":  "Provides CertOperationState functionality",
+                                                  "key_methods":  [
+                                                                      "UpdateState(OperationStatusType status, ErrorCodeType? errorCode = null, string? errorMessage = null) -\u003e void",
+                                                                      "TransitionToRunning() -\u003e void",
+                                                                      "TransitionToComplete() -\u003e void",
+                                                                      "TransitionToFailed(ErrorCodeType errorCode = ErrorCodeType.InternalServerError) -\u003e void",
+                                                                      "TransitionToFailed(ErrorCodeType errorCode, string errorMessage) -\u003e void",
+                                                                      "ValidateTransition(OperationStatusType newStatus) -\u003e bool"
+                                                                  ],
+                                                  "key_properties":  [
+                                                                         "Status -\u003e OperationStatusType",
+                                                                         "ErrorCode -\u003e ErrorCodeType?",
+                                                                         "ErrorMessage -\u003e string?",
+                                                                         "StartTime -\u003e DateTimeOffset",
+                                                                         "EndTime -\u003e DateTimeOffset?",
+                                                                         "StateTimestamp -\u003e DateTimeOffset"
+                                                                     ]
+                                              },
+                       "CertCorrelationScope":  {
+                                                    "purpose":  "Provides CertCorrelationScope functionality",
+                                                    "key_methods":  [
+                                                                        "Dispose() -\u003e void"
+                                                                    ],
+                                                    "key_properties":  [
+                                                                           "Context -\u003e ICertCorrelationContext"
+                                                                       ]
+                                                },
+                       "CertOperationResources":  {
+                                                      "purpose":  "Provides CertOperationResources functionality",
+                                                      "key_methods":  [
+                                                                          "GetResourceAsync\u003cT\u003e(string resourceId, CancellationToken cancellationToken = default) -\u003e Task\u003cT\u003e",
+                                                                          "TrackResourceAsync\u003cT\u003e(T resource, CancellationToken cancellationToken = default) -\u003e Task\u003cT\u003e",
+                                                                          "TryAcquireResourceAsync(string resourceId, TimeSpan timeout, CancellationToken cancellationToken = default) -\u003e Task\u003cbool\u003e",
+                                                                          "ReleaseResourceAsync(string resourceId, CancellationToken cancellationToken = default) -\u003e Task",
+                                                                          "CreateResourceScopeAsync(IEnumerable\u003cstring\u003e resourceIds, CancellationToken cancellationToken = default) -\u003e Task\u003cICertResourceScope\u003e"
+                                                                      ]
+                                                  }
+                   }
+}

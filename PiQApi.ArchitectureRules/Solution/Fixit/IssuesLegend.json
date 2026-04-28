@@ -1,0 +1,35 @@
+// PiQApi.ArchitectureRules/Solution/Fixit/IssuesLegend.json
+{
+  "metadata": {
+    "version": "1.0",
+    "last_updated": "2024-02-22"
+  },
+  "issue_categories": {
+    "structural": {
+      "S001": "Incorrect guide placement - wrong scope level",
+      "S002": "Missing required metadata fields",
+      "S003": "Inconsistent JSON structure",
+      "S004": "Invalid file naming pattern",
+      "S005": "Missing required sections"
+    },
+    "content": {
+      "C001": "Overlapping content with other guides",
+      "C002": "Conflicting instructions or patterns",
+      "C003": "Incomplete or unclear guidance",
+      "C004": "Missing concrete examples",
+      "C005": "Outdated technical guidance"
+    },
+    "scope": {
+      "P001": "Project-level guide in solution scope",
+      "P002": "Solution-level guide in project scope",
+      "P003": "Cross-cutting concern needs separation",
+      "P004": "Missing scope declaration"
+    },
+    "references": {
+      "R001": "Invalid guide reference",
+      "R002": "Missing dependent guide",
+      "R003": "Circular reference between guides",
+      "R004": "Broken pattern reference"
+    }
+  }
+}
