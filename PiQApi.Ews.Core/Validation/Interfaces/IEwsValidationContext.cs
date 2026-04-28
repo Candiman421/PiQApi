@@ -11,7 +11,7 @@ namespace PiQApi.Ews.Core.Validation.Interfaces
     /// Interface for EWS-specific validation context
     /// Extends the core validation context with EWS-specific properties and methods
     /// </summary>
-    public interface IEwsValidationContext : ICertValidationContext
+    public interface IEwsValidationContext : IPiQValidationContext
     {
         /// <summary>
         /// Gets the Exchange server version to validate against

@@ -6,7 +6,7 @@ namespace PiQApi.Ews.Service.Core.Options
     /// <summary>
     /// Options for EWS connection management
     /// </summary>
-    public class EwsConnectionOptions : CertConnectionOptions
+    public class EwsConnectionOptions : PiQConnectionOptions
     {
         /// <summary>
         /// Gets or sets whether circuit breaker is enabled

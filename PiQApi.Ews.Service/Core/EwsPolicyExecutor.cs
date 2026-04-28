@@ -12,7 +12,7 @@ namespace PiQApi.Ews.Service.Core
     /// </summary>
     public class EwsPolicyExecutor : IEwsPolicyExecutor
     {
-        private readonly ICertResiliencePolicyExecutor _corePolicyExecutor;
+        private readonly IPiQResiliencePolicyExecutor _corePolicyExecutor;
         private readonly ILogger<EwsPolicyExecutor> _logger;
         private readonly IEwsPolicyTypeMapper _policyTypeMapper;
 
@@ -36,7 +36,7 @@ namespace PiQApi.Ews.Service.Core
         /// <param name="logger">Logger</param>
         /// <param name="policyTypeMapper">Policy type mapper</param>
         public EwsPolicyExecutor(
-            ICertResiliencePolicyExecutor corePolicyExecutor,
+            IPiQResiliencePolicyExecutor corePolicyExecutor,
             ILogger<EwsPolicyExecutor> logger,
             IEwsPolicyTypeMapper EwsPolicyTypeMapper)
         {

@@ -10,9 +10,9 @@ namespace PiQApi.Ews.Core.Models
 {
     /// <summary>
     /// Snapshot of EWS connection metrics at a specific point in time
-    /// Implements ICertMetricsSnapshot for metrics reporting
+    /// Implements IPiQMetricsSnapshot for metrics reporting
     /// </summary>
-    public class EwsConnectionMetricsSnapshot : ICertMetricsSnapshot
+    public class EwsConnectionMetricsSnapshot : IPiQMetricsSnapshot
     {
         private readonly ReadOnlyDictionary<string, object> _metrics;
         private readonly ReadOnlyDictionary<string, long> _failureReasons;
@@ -68,7 +68,7 @@ namespace PiQApi.Ews.Core.Models
                 ? new ReadOnlyDictionary<string, long>(new Dictionary<string, long>(failureReasons))
                 : new ReadOnlyDictionary<string, long>(new Dictionary<string, long>());
 
-            // Set ICertMetricsSnapshot properties
+            // Set IPiQMetricsSnapshot properties
             Timestamp = timestamp == default ? DateTimeOffset.UtcNow : timestamp;
             SuccessfulOperations = successfulOperations;
             FailedOperations = failedOperations;
@@ -121,7 +121,7 @@ namespace PiQApi.Ews.Core.Models
             ValidationFailures = original.ValidationFailures;
             _failureReasons = original._failureReasons;
 
-            // Copy ICertMetricsSnapshot properties
+            // Copy IPiQMetricsSnapshot properties
             Timestamp = original.Timestamp;
             SuccessfulOperations = original.SuccessfulOperations;
             FailedOperations = original.FailedOperations;
@@ -192,7 +192,7 @@ namespace PiQApi.Ews.Core.Models
         /// </summary>
         public IReadOnlyDictionary<string, long> FailureReasons => _failureReasons;
 
-        #region ICertMetricsSnapshot Implementation
+        #region IPiQMetricsSnapshot Implementation
 
         /// <summary>
         /// Gets the timestamp when the snapshot was created
@@ -244,7 +244,7 @@ namespace PiQApi.Ews.Core.Models
         /// <param name="name">Metric name</param>
         /// <param name="value">Metric value</param>
         /// <returns>A new snapshot with the additional metric</returns>
-        public ICertMetricsSnapshot WithMetric(string name, object value)
+        public IPiQMetricsSnapshot WithMetric(string name, object value)
         {
             ArgumentException.ThrowIfNullOrEmpty(name);
             ArgumentNullException.ThrowIfNull(value);
@@ -258,7 +258,7 @@ namespace PiQApi.Ews.Core.Models
         /// </summary>
         /// <param name="metrics">Metrics to add</param>
         /// <returns>A new snapshot with the additional metrics</returns>
-        public ICertMetricsSnapshot WithMetrics(IDictionary<string, object> metrics)
+        public IPiQMetricsSnapshot WithMetrics(IDictionary<string, object> metrics)
         {
             ArgumentNullException.ThrowIfNull(metrics);
 

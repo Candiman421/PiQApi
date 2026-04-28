@@ -11,7 +11,7 @@ public abstract partial class BaseCertAuthenticationProvider
     /// <summary>
     /// Refreshes a token
     /// </summary>
-    public virtual async Task<ICertTokenInfo> RefreshTokenAsync(ICertTokenInfo token, CancellationToken ct = default)
+    public virtual async Task<IPiQTokenInfo> RefreshTokenAsync(IPiQTokenInfo token, CancellationToken ct = default)
     {
         ArgumentNullException.ThrowIfNull(token);
 
@@ -29,13 +29,13 @@ public abstract partial class BaseCertAuthenticationProvider
                 var refreshedToken = await GetTokenAsync(token.SourceOptions, ct).ConfigureAwait(false);
 
                 // Ensure correlation ID is passed to the new token
-                if (refreshedToken is CertTokenInfo certToken &&
+                if (refreshedToken is PiQTokenInfo certToken &&
                     certToken.CorrelationIdentifier == null &&
-                    token is CertTokenInfo originalCertToken &&
+                    token is PiQTokenInfo originalCertToken &&
                     originalCertToken.CorrelationIdentifier != null)
                 {
                     // Copy correlation ID if possible
-                    var builder = CertTokenInfo.CreateBuilder()
+                    var builder = PiQTokenInfo.CreateBuilder()
                         .WithToken(certToken.AccessToken)
                         .WithExpiresAt(certToken.ExpiresOn)
                         .WithScopes(certToken.Scopes as IReadOnlyList<string> ?? certToken.Scopes.ToList())
@@ -54,7 +54,7 @@ public abstract partial class BaseCertAuthenticationProvider
 
             // Create a token with minimal info indicating failure
             // This maintains existing behavior but in a result-oriented way
-            var expiredToken = new CertTokenInfo(
+            var expiredToken = new PiQTokenInfo(
                 token.AccessToken,
                 TimeProvider.UtcNow.AddMinutes(-1), // Explicitly set as expired
                 token.Scopes,
@@ -86,21 +86,21 @@ public abstract partial class BaseCertAuthenticationProvider
     /// <summary>
     /// Creates a token with correlation ID
     /// </summary>
-    protected static CertTokenInfo CreateTokenWithCorrelation(
+    protected static PiQTokenInfo CreateTokenWithCorrelation(
         string accessToken,
         DateTime expiresOn,
         IEnumerable<string> scopes,
         string tenantId,
         string clientId,
         AuthenticationMethodType authType,
-        ICertCorrelationContext correlationContext)
+        IPiQCorrelationContext correlationContext)
     {
         ArgumentNullException.ThrowIfNull(correlationContext);
 
         // Use the constructor that takes just a string ID
-        var correlationId = new CertCorrelationId(correlationContext.CorrelationId);
+        var correlationId = new PiQCorrelationId(correlationContext.CorrelationId);
 
-        return new CertTokenInfo(
+        return new PiQTokenInfo(
             accessToken,
             expiresOn,
             scopes,

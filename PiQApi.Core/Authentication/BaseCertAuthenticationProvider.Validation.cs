@@ -8,7 +8,7 @@ public abstract partial class BaseCertAuthenticationProvider
     /// <summary>
     /// Validates a token
     /// </summary>
-    public virtual Task<bool> ValidateTokenAsync(ICertTokenInfo token, CancellationToken ct)
+    public virtual Task<bool> ValidateTokenAsync(IPiQTokenInfo token, CancellationToken ct)
     {
         ArgumentNullException.ThrowIfNull(token);
         ct.ThrowIfCancellationRequested();
@@ -32,7 +32,7 @@ public abstract partial class BaseCertAuthenticationProvider
     /// <summary>
     /// Invalidates a token
     /// </summary>
-    public virtual Task InvalidateTokenAsync(ICertTokenInfo token, CancellationToken ct)
+    public virtual Task InvalidateTokenAsync(IPiQTokenInfo token, CancellationToken ct)
     {
         ArgumentNullException.ThrowIfNull(token);
         ct.ThrowIfCancellationRequested();

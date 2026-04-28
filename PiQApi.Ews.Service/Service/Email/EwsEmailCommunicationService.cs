@@ -20,7 +20,7 @@ namespace PiQApi.Ews.Service.Service.Email
     public class EwsEmailCommunicationService : EwsServiceBase, IEwsEmailCommunicationService
     {
         private readonly IEwsValidationContextFactory _validationContextFactory;
-        private readonly ICertValidationProcessor _validationProcessor;
+        private readonly IPiQValidationProcessor _validationProcessor;
         private readonly ILogger<EwsEmailCommunicationService> _logger;
 
         /// <summary>
@@ -30,9 +30,9 @@ namespace PiQApi.Ews.Service.Service.Email
             IExchangeServiceWrapper serviceWrapper,
             IEwsErrorMappingService errorMappingService,
             IEwsPolicyExecutor policyExecutor,
-            ICertExceptionFactory exceptionFactory,
+            IPiQExceptionFactory exceptionFactory,
             IEwsValidationContextFactory validationContextFactory,
-            ICertValidationProcessor validationProcessor,
+            IPiQValidationProcessor validationProcessor,
             ILogger<EwsEmailCommunicationService> logger)
             : base(serviceWrapper, errorMappingService, policyExecutor, exceptionFactory, logger)
         {
@@ -309,7 +309,7 @@ namespace PiQApi.Ews.Service.Service.Email
         /// <summary>
         /// Creates a validation context for the specified scope
         /// </summary>
-        private CertValidationContext CreateValidationContext(
+        private PiQValidationContext CreateValidationContext(
             IEwsOperationContext context,
             string scope,
             CancellationToken cancellationToken)
@@ -349,7 +349,7 @@ namespace PiQApi.Ews.Service.Service.Email
         /// Handles validation result by throwing appropriate exception if validation failed
         /// </summary>
         private void HandleValidationResult(
-            CertValidationResult validationResult,
+            PiQValidationResult validationResult,
             string entityType,
             string correlationId)
         {
@@ -358,7 +358,7 @@ namespace PiQApi.Ews.Service.Service.Email
                 _logger.LogWarning("{EntityType} validation failed. CorrelationId: {CorrelationId}, Errors: {ErrorCount}",
                     entityType, correlationId, validationResult.Errors.Count);
 
-                var exception = new CertValidationException(
+                var exception = new PiQValidationException(
                     $"{entityType} validation failed",
                     validationResult.Errors);
 

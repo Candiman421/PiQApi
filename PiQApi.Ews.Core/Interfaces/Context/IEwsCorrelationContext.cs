@@ -7,7 +7,7 @@ namespace PiQApi.Ews.Core.Interfaces.Context
     /// Interface for Exchange Web Services correlation context
     /// Extends the base correlation context with EWS-specific properties and methods
     /// </summary>
-    public interface IEwsCorrelationContext : ICertCorrelationContext
+    public interface IEwsCorrelationContext : IPiQCorrelationContext
     {
         /// <summary>
         /// Gets the tenant ID associated with the correlation

@@ -56,8 +56,8 @@ namespace PiQApi.Ews.Operations.Mail.Operations
             IEwsPropertySetService propertySetService,
             IEwsResultFactory resultFactory,
             ILogger<EwsMailOperations> logger,
-            ICertExceptionFactory exceptionFactory,
-            ICertValidationProcessor validationProcessor)
+            IPiQExceptionFactory exceptionFactory,
+            IPiQValidationProcessor validationProcessor)
             : base(context, serviceWrapper, logger, exceptionFactory, validationProcessor)
         {
             _emailCreateService = emailCreateService ?? throw new ArgumentNullException(nameof(emailCreateService));
@@ -103,7 +103,7 @@ namespace PiQApi.Ews.Operations.Mail.Operations
             {
                 Logger.LogError(ex, "Error creating email message. CorrelationId: {CorrelationId}", CorrelationId);
 
-                if (ex is CertException certException)
+                if (ex is PiQException certException)
                 {
                     return _resultFactory.Failure<EmailMessage>(certException, Context.CorrelationId);
                 }
@@ -166,7 +166,7 @@ namespace PiQApi.Ews.Operations.Mail.Operations
             {
                 Logger.LogError(ex, "Error creating backdated email message. CorrelationId: {CorrelationId}", CorrelationId);
 
-                if (ex is CertException certException)
+                if (ex is PiQException certException)
                 {
                     return _resultFactory.Failure<EmailMessage>(certException, Context.CorrelationId);
                 }
@@ -206,7 +206,7 @@ namespace PiQApi.Ews.Operations.Mail.Operations
             {
                 Logger.LogError(ex, "Error saving email message as draft. CorrelationId: {CorrelationId}", CorrelationId);
 
-                if (ex is CertException certException)
+                if (ex is PiQException certException)
                 {
                     return _resultFactory.Failure(certException, Context.CorrelationId);
                 }
@@ -246,7 +246,7 @@ namespace PiQApi.Ews.Operations.Mail.Operations
             {
                 Logger.LogError(ex, "Error sending email message. CorrelationId: {CorrelationId}", CorrelationId);
 
-                if (ex is CertException certException)
+                if (ex is PiQException certException)
                 {
                     return _resultFactory.Failure(certException, Context.CorrelationId);
                 }
@@ -289,7 +289,7 @@ namespace PiQApi.Ews.Operations.Mail.Operations
             {
                 Logger.LogError(ex, "Error getting email message. CorrelationId: {CorrelationId}", CorrelationId);
 
-                if (ex is CertException certException)
+                if (ex is PiQException certException)
                 {
                     return _resultFactory.Failure<EmailMessage>(certException, Context.CorrelationId);
                 }

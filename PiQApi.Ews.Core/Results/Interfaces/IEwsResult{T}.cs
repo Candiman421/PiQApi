@@ -11,7 +11,7 @@ namespace PiQApi.Ews.Core.Results.Interfaces
     /// Interface for EWS operation results with a value
     /// </summary>
     /// <typeparam name="T">Type of result value</typeparam>
-    public interface IEwsResult<out T> : IEwsResult, ICertResult<T>
+    public interface IEwsResult<out T> : IEwsResult, IPiQResult<T>
     {
         /// <summary>
         /// Creates a new result with additional property

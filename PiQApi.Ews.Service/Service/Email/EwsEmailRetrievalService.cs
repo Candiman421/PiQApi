@@ -22,7 +22,7 @@ namespace PiQApi.Ews.Service.Service.Email
     {
         private readonly IEwsPropertySetService _propertySetService;
         private readonly IEwsValidationContextFactory _validationContextFactory;
-        private readonly ICertValidationProcessor _validationProcessor;
+        private readonly IPiQValidationProcessor _validationProcessor;
         private readonly ILogger<EwsEmailRetrievalService> _logger;
 
         /// <summary>
@@ -32,10 +32,10 @@ namespace PiQApi.Ews.Service.Service.Email
             IExchangeServiceWrapper serviceWrapper,
             IEwsErrorMappingService errorMappingService,
             IEwsPolicyExecutor policyExecutor,
-            ICertExceptionFactory exceptionFactory,
+            IPiQExceptionFactory exceptionFactory,
             IEwsPropertySetService propertySetService,
             IEwsValidationContextFactory validationContextFactory,
-            ICertValidationProcessor validationProcessor,
+            IPiQValidationProcessor validationProcessor,
             ILogger<EwsEmailRetrievalService> logger)
             : base(serviceWrapper, errorMappingService, policyExecutor, exceptionFactory, logger)
         {
@@ -219,7 +219,7 @@ namespace PiQApi.Ews.Service.Service.Email
                     _logger.LogWarning("Invalid page size: {PageSize}. CorrelationId: {CorrelationId}",
                         pageSize, context.CorrelationId);
 
-                    var exception = new CertValidationException("Page size must be between 1 and 1000");
+                    var exception = new PiQValidationException("Page size must be between 1 and 1000");
                     exception.SetCorrelationId(context.CorrelationId);
                     throw exception;
                 }
@@ -310,12 +310,12 @@ namespace PiQApi.Ews.Service.Service.Email
                     _logger.LogWarning("Property set validation failed. CorrelationId: {CorrelationId}, Errors: {ErrorCount}",
                         context.CorrelationId, validationResult.Errors.Count);
 
-                    var exception = new CertValidationException("Property set validation failed", validationResult.Errors);
+                    var exception = new PiQValidationException("Property set validation failed", validationResult.Errors);
                     exception.SetCorrelationId(context.CorrelationId);
                     throw exception;
                 }
             }
-            catch (CertException ex)
+            catch (PiQException ex)
             {
                 ex.SetCorrelationId(context.CorrelationId);
                 throw;
@@ -353,12 +353,12 @@ namespace PiQApi.Ews.Service.Service.Email
                     _logger.LogWarning("Item ID validation failed. CorrelationId: {CorrelationId}, Errors: {ErrorCount}",
                         context.CorrelationId, validationResult.Errors.Count);
 
-                    var exception = new CertValidationException("Item ID validation failed", validationResult.Errors);
+                    var exception = new PiQValidationException("Item ID validation failed", validationResult.Errors);
                     exception.SetCorrelationId(context.CorrelationId);
                     throw exception;
                 }
             }
-            catch (CertException ex)
+            catch (PiQException ex)
             {
                 ex.SetCorrelationId(context.CorrelationId);
                 throw;
@@ -396,12 +396,12 @@ namespace PiQApi.Ews.Service.Service.Email
                     _logger.LogWarning("Search filter validation failed. CorrelationId: {CorrelationId}, Errors: {ErrorCount}",
                         context.CorrelationId, validationResult.Errors.Count);
 
-                    var exception = new CertValidationException("Search filter validation failed", validationResult.Errors);
+                    var exception = new PiQValidationException("Search filter validation failed", validationResult.Errors);
                     exception.SetCorrelationId(context.CorrelationId);
                     throw exception;
                 }
             }
-            catch (CertException ex)
+            catch (PiQException ex)
             {
                 ex.SetCorrelationId(context.CorrelationId);
                 throw;

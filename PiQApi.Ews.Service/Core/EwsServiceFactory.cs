@@ -18,7 +18,7 @@ namespace PiQApi.Ews.Service.Core
     {
         private readonly ILogger<EwsServiceFactory> _logger;
         private readonly ILoggerFactory _loggerFactory;
-        private readonly ICertExceptionFactory _exceptionFactory;
+        private readonly IPiQExceptionFactory _exceptionFactory;
         private readonly IEwsErrorMappingService _errorMappingService;
         private readonly IEwsPolicyExecutor _policyExecutor;
         private readonly IEwsPolicyTypeMapper _policyTypeMapper;
@@ -49,7 +49,7 @@ namespace PiQApi.Ews.Service.Core
         public EwsServiceFactory(
             ILogger<EwsServiceFactory> logger,
             ILoggerFactory loggerFactory,
-            ICertExceptionFactory exceptionFactory,
+            IPiQExceptionFactory exceptionFactory,
             IEwsErrorMappingService errorMappingService,
             IEwsPolicyExecutor policyExecutor,
             IEwsPolicyTypeMapper EwsPolicyTypeMapper,
@@ -100,7 +100,7 @@ namespace PiQApi.Ews.Service.Core
             {
                 _logCreationError(_logger, ex.Message, ex);
 
-                if (ex is CertException)
+                if (ex is PiQException)
                 {
                     throw;
                 }
@@ -143,7 +143,7 @@ namespace PiQApi.Ews.Service.Core
             {
                 _logCreationError(_logger, ex.Message, ex);
 
-                if (ex is CertException)
+                if (ex is PiQException)
                 {
                     throw;
                 }
@@ -184,9 +184,9 @@ namespace PiQApi.Ews.Service.Core
             CancellationToken cancellationToken)
         {
             // Get authentication options from context or use defaults
-            CertAuthenticationOptions authOptions;
+            PiQAuthenticationOptions authOptions;
 
-            if (context.TryGetPropertyValue<CertAuthenticationOptions>("AuthenticationOptions", out var options) &&
+            if (context.TryGetPropertyValue<PiQAuthenticationOptions>("AuthenticationOptions", out var options) &&
                 options != null)
             {
                 authOptions = options;
@@ -194,7 +194,7 @@ namespace PiQApi.Ews.Service.Core
             else
             {
                 // Use defaults from configuration
-                authOptions = new CertAuthenticationOptions
+                authOptions = new PiQAuthenticationOptions
                 {
                     AuthType = _options.AuthType,
                     ClientId = _options.ClientId,
@@ -231,7 +231,7 @@ namespace PiQApi.Ews.Service.Core
                 IExchangeServiceWrapper serviceWrapper,
                 IEwsErrorMappingService errorMappingService,
                 IEwsPolicyExecutor policyExecutor,
-                ICertExceptionFactory exceptionFactory,
+                IPiQExceptionFactory exceptionFactory,
                 ILogger logger,
                 IEwsPolicyTypeMapper EwsPolicyTypeMapper)
                 : base(serviceWrapper, errorMappingService, policyExecutor, exceptionFactory, logger, EwsPolicyTypeMapper)

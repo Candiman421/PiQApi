@@ -21,7 +21,7 @@ namespace PiQApi.Ews.Service.Service.Email
     public class EwsEmailManagementService : EwsServiceBase, IEwsEmailManagementService
     {
         private readonly IEwsValidationContextFactory _validationContextFactory;
-        private readonly ICertValidationProcessor _validationProcessor;
+        private readonly IPiQValidationProcessor _validationProcessor;
         private readonly ILogger<EwsEmailManagementService> _logger;
 
         /// <summary>
@@ -31,9 +31,9 @@ namespace PiQApi.Ews.Service.Service.Email
             IExchangeServiceWrapper serviceWrapper,
             IEwsErrorMappingService errorMappingService,
             IEwsPolicyExecutor policyExecutor,
-            ICertExceptionFactory exceptionFactory,
+            IPiQExceptionFactory exceptionFactory,
             IEwsValidationContextFactory validationContextFactory,
-            ICertValidationProcessor validationProcessor,
+            IPiQValidationProcessor validationProcessor,
             ILogger<EwsEmailManagementService> logger)
             : base(serviceWrapper, errorMappingService, policyExecutor, exceptionFactory, logger)
         {
@@ -260,12 +260,12 @@ namespace PiQApi.Ews.Service.Service.Email
                     _logger.LogWarning("Message validation failed. CorrelationId: {CorrelationId}, Errors: {ErrorCount}",
                         context.CorrelationId, validationResult.Errors.Count);
 
-                    var exception = new CertValidationException("Message validation failed", validationResult.Errors);
+                    var exception = new PiQValidationException("Message validation failed", validationResult.Errors);
                     exception.SetCorrelationId(context.CorrelationId);
                     throw exception;
                 }
             }
-            catch (CertException ex)
+            catch (PiQException ex)
             {
                 ex.SetCorrelationId(context.CorrelationId);
                 throw;
@@ -303,12 +303,12 @@ namespace PiQApi.Ews.Service.Service.Email
                     _logger.LogWarning("Item ID validation failed. CorrelationId: {CorrelationId}, Errors: {ErrorCount}",
                         context.CorrelationId, validationResult.Errors.Count);
 
-                    var exception = new CertValidationException("Item ID validation failed", validationResult.Errors);
+                    var exception = new PiQValidationException("Item ID validation failed", validationResult.Errors);
                     exception.SetCorrelationId(context.CorrelationId);
                     throw exception;
                 }
             }
-            catch (CertException ex)
+            catch (PiQException ex)
             {
                 ex.SetCorrelationId(context.CorrelationId);
                 throw;
@@ -346,12 +346,12 @@ namespace PiQApi.Ews.Service.Service.Email
                     _logger.LogWarning("Folder ID validation failed. CorrelationId: {CorrelationId}, Errors: {ErrorCount}",
                         context.CorrelationId, validationResult.Errors.Count);
 
-                    var exception = new CertValidationException("Folder ID validation failed", validationResult.Errors);
+                    var exception = new PiQValidationException("Folder ID validation failed", validationResult.Errors);
                     exception.SetCorrelationId(context.CorrelationId);
                     throw exception;
                 }
             }
-            catch (CertException ex)
+            catch (PiQException ex)
             {
                 ex.SetCorrelationId(context.CorrelationId);
                 throw;

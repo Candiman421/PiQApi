@@ -18,10 +18,10 @@ public static class CorrelationServiceCollectionExtensions
     public static IServiceCollection AddCorrelationServices(this IServiceCollection services)
     {
         // Register correlation context as scoped to maintain correlation ID within a request
-        _ = services.AddScoped<ICertCorrelationContext, CertCorrelationContext>();
+        _ = services.AddScoped<IPiQCorrelationContext, PiQCorrelationContext>();
 
         // Register correlation ID factory as singleton
-        _ = services.AddSingleton<ICertCorrelationIdFactory, CertCorrelationIdFactory>();
+        _ = services.AddSingleton<IPiQCorrelationIdFactory, PiQCorrelationIdFactory>();
 
         return services;
     }

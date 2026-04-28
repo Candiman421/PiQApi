@@ -11,7 +11,7 @@ namespace PiQApi.Ews.Core.Core
         /// <summary>
         /// Gets the base correlation context options
         /// </summary>
-        public CertCorrelationContextOptions BaseOptions { get; }
+        public PiQCorrelationContextOptions BaseOptions { get; }
 
         /// <summary>
         /// Gets or sets the default tenant ID
@@ -30,16 +30,16 @@ namespace PiQApi.Ews.Core.Core
         /// </summary>
         public EwsCorrelationContextOptions()
         {
-            BaseOptions = new CertCorrelationContextOptions();
+            BaseOptions = new PiQCorrelationContextOptions();
         }
 
         /// <summary>
         /// Initializes a new instance of the <see cref="EwsCorrelationContextOptions"/> class with base options
         /// </summary>
         /// <param name="baseOptions">Base correlation context options</param>
-        public EwsCorrelationContextOptions(CertCorrelationContextOptions baseOptions)
+        public EwsCorrelationContextOptions(PiQCorrelationContextOptions baseOptions)
         {
-            BaseOptions = baseOptions ?? new CertCorrelationContextOptions();
+            BaseOptions = baseOptions ?? new PiQCorrelationContextOptions();
         }
 
         /// <summary>

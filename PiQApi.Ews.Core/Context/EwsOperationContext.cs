@@ -19,7 +19,7 @@ namespace PiQApi.Ews.Core.Context
     /// </summary>
     public partial class EwsOperationContext : IEwsOperationContext
     {
-        private readonly CertOperationContext _baseContext;
+        private readonly PiQOperationContext _baseContext;
         private readonly ILogger _logger;
         private readonly IEwsOperationMetrics _metrics;
         private readonly IEwsCorrelationContext _correlationContext;
@@ -43,50 +43,50 @@ namespace PiQApi.Ews.Core.Context
         /// <summary>
         /// Gets the operation identifier
         /// </summary>
-        public ICertOperationIdentifier Identifier => _baseContext.Identifier;
+        public IPiQOperationIdentifier Identifier => _baseContext.Identifier;
 
         /// <summary>
         /// Gets the operation lifecycle manager
         /// </summary>
-        public ICertOperationLifecycle Lifecycle => _baseContext;
+        public IPiQOperationLifecycle Lifecycle => _baseContext;
 
         /// <summary>
         /// Gets the operation state
         /// </summary>
-        public ICertOperationState State => _baseContext.State;
+        public IPiQOperationState State => _baseContext.State;
 
         /// <summary>
         /// Gets the correlation context
         /// </summary>
-        public ICertCorrelationContext CorrelationContext => _correlationContext;
+        public IPiQCorrelationContext CorrelationContext => _correlationContext;
 
         /// <summary>
         /// Gets the validation context
         /// </summary>
-        public ICertValidationContext ValidationContext => 
+        public IPiQValidationContext ValidationContext => 
             _baseContext.HasProperty("ValidationContext") ? 
-            _baseContext.GetPropertyValue<ICertValidationContext>("ValidationContext") : 
+            _baseContext.GetPropertyValue<IPiQValidationContext>("ValidationContext") : 
             null;
 
         /// <summary>
         /// Gets the operation resources
         /// </summary>
-        public ICertOperationResources Resources => _baseContext;
+        public IPiQOperationResources Resources => _baseContext;
 
         /// <summary>
         /// Gets the operation logger
         /// </summary>
-        public ICertOperationLogger Logger => _baseContext;
+        public IPiQOperationLogger Logger => _baseContext;
 
         /// <summary>
         /// Gets the operation validator
         /// </summary>
-        public ICertOperationValidator Validator => null; // Simplified - removed validation requirement
+        public IPiQOperationValidator Validator => null; // Simplified - removed validation requirement
 
         /// <summary>
         /// Gets the operation metrics
         /// </summary>
-        ICertOperationMetrics ICertOperationContext.Metrics => _baseContext.Metrics;
+        IPiQOperationMetrics IPiQOperationContext.Metrics => _baseContext.Metrics;
 
         /// <summary>
         /// Gets the EWS-specific metrics
@@ -121,7 +121,7 @@ namespace PiQApi.Ews.Core.Context
         /// <param name="metrics">EWS-specific metrics</param>
         /// <param name="logger">Logger</param>
         public EwsOperationContext(
-            CertOperationContext baseContext,
+            PiQOperationContext baseContext,
             IEwsCorrelationContext correlationContext,
             IEwsOperationMetrics metrics,
             ILogger logger)
@@ -142,7 +142,7 @@ namespace PiQApi.Ews.Core.Context
         public EwsOperationContext(
             string operationId,
             string operationName,
-            ICertCorrelationContext correlationContext,
+            IPiQCorrelationContext correlationContext,
             ILogger logger)
         {
             ArgumentException.ThrowIfNullOrEmpty(operationId, nameof(operationId));
@@ -274,7 +274,7 @@ namespace PiQApi.Ews.Core.Context
             return _baseContext?.CreateScope(name) ?? new DummyScope();
         }
 
-        #region ICertOperationProperties Implementation
+        #region IPiQOperationProperties Implementation
 
         /// <summary>
         /// Adds a property to the operation context
@@ -338,7 +338,7 @@ namespace PiQApi.Ews.Core.Context
 
         #endregion
 
-        #region ICertOperationLifecycle Implementation
+        #region IPiQOperationLifecycle Implementation
 
         /// <summary>
         /// Initializes the operation
@@ -405,14 +405,14 @@ namespace PiQApi.Ews.Core.Context
         /// </summary>
         /// <param name="childOperationName">Child operation name</param>
         /// <returns>A child operation context</returns>
-        public ICertOperationContext CreateChildContext(string childOperationName)
+        public IPiQOperationContext CreateChildContext(string childOperationName)
         {
             return _baseContext?.CreateChildContext(childOperationName) ?? this;
         }
 
         #endregion
 
-        #region ICertOperationLogger Implementation
+        #region IPiQOperationLogger Implementation
 
         /// <summary>
         /// Logs an operation error
@@ -446,7 +446,7 @@ namespace PiQApi.Ews.Core.Context
 
         #endregion
 
-        #region ICertOperationValidator Implementation
+        #region IPiQOperationValidator Implementation
 
         /// <summary>
         /// Validates an object
@@ -456,7 +456,7 @@ namespace PiQApi.Ews.Core.Context
         /// <param name="mode">Validation mode</param>
         /// <param name="cancellationToken">Cancellation token</param>
         /// <returns>A task representing the asynchronous operation</returns>
-        public Task<ICertValidationResult> ValidateAsync<T>(T entity, ValidationModeType mode, CancellationToken cancellationToken) where T : class
+        public Task<IPiQValidationResult> ValidateAsync<T>(T entity, ValidationModeType mode, CancellationToken cancellationToken) where T : class
         {
             // Simplified - no validation
             throw new NotSupportedException("Validation is not supported in simplified mode");
@@ -469,7 +469,7 @@ namespace PiQApi.Ews.Core.Context
         /// <param name="entity">Object to validate</param>
         /// <param name="cancellationToken">Cancellation token</param>
         /// <returns>A task representing the asynchronous operation</returns>
-        public Task<ICertValidationResult> ValidateRequiredAsync<T>(T entity, CancellationToken cancellationToken) where T : class
+        public Task<IPiQValidationResult> ValidateRequiredAsync<T>(T entity, CancellationToken cancellationToken) where T : class
         {
             // Simplified - no validation
             throw new NotSupportedException("Validation is not supported in simplified mode");
@@ -483,7 +483,7 @@ namespace PiQApi.Ews.Core.Context
         /// <param name="mode">Validation mode</param>
         /// <param name="cancellationToken">Cancellation token</param>
         /// <returns>A task representing the asynchronous operation</returns>
-        public Task<ICertResult<T>> ValidateAndCreateResultAsync<T>(T entity, ValidationModeType mode, CancellationToken cancellationToken) where T : class
+        public Task<IPiQResult<T>> ValidateAndCreateResultAsync<T>(T entity, ValidationModeType mode, CancellationToken cancellationToken) where T : class
         {
             // Simplified - no validation
             throw new NotSupportedException("Validation is not supported in simplified mode");
@@ -495,7 +495,7 @@ namespace PiQApi.Ews.Core.Context
         /// <param name="mode">Validation mode</param>
         /// <param name="cancellationToken">Cancellation token</param>
         /// <returns>A validation context</returns>
-        public ICertValidationContext CreateValidationContext(ValidationModeType mode = ValidationModeType.Standard, CancellationToken? cancellationToken = null)
+        public IPiQValidationContext CreateValidationContext(ValidationModeType mode = ValidationModeType.Standard, CancellationToken? cancellationToken = null)
         {
             // Simplified - no validation
             throw new NotSupportedException("Validation is not supported in simplified mode");
@@ -503,7 +503,7 @@ namespace PiQApi.Ews.Core.Context
 
         #endregion
 
-        #region ICertOperationResources Implementation
+        #region IPiQOperationResources Implementation
 
         /// <summary>
         /// Gets a resource
@@ -512,7 +512,7 @@ namespace PiQApi.Ews.Core.Context
         /// <param name="resourceId">Resource ID</param>
         /// <param name="cancellationToken">Cancellation token</param>
         /// <returns>A task representing the asynchronous operation</returns>
-        public Task<T> GetResourceAsync<T>(string resourceId, CancellationToken cancellationToken) where T : class, ICertResource
+        public Task<T> GetResourceAsync<T>(string resourceId, CancellationToken cancellationToken) where T : class, IPiQResource
         {
             return _baseContext?.GetResourceAsync<T>(resourceId, cancellationToken) ?? 
                    Task.FromException<T>(new NotSupportedException("Resources not supported in simplified mode"));
@@ -525,7 +525,7 @@ namespace PiQApi.Ews.Core.Context
         /// <param name="resource">Resource</param>
         /// <param name="cancellationToken">Cancellation token</param>
         /// <returns>A task representing the asynchronous operation</returns>
-        public Task<T> TrackResourceAsync<T>(T resource, CancellationToken cancellationToken) where T : class, ICertResource
+        public Task<T> TrackResourceAsync<T>(T resource, CancellationToken cancellationToken) where T : class, IPiQResource
         {
             return _baseContext?.TrackResourceAsync(resource, cancellationToken) ?? Task.FromResult(resource);
         }
@@ -560,10 +560,10 @@ namespace PiQApi.Ews.Core.Context
         /// <param name="resourceIds">Resource IDs</param>
         /// <param name="cancellationToken">Cancellation token</param>
         /// <returns>A task representing the asynchronous operation</returns>
-        public Task<ICertResourceScope> CreateResourceScopeAsync(IEnumerable<string> resourceIds, CancellationToken cancellationToken)
+        public Task<IPiQResourceScope> CreateResourceScopeAsync(IEnumerable<string> resourceIds, CancellationToken cancellationToken)
         {
             return _baseContext?.CreateResourceScopeAsync(resourceIds, cancellationToken) ?? 
-                   Task.FromException<ICertResourceScope>(new NotSupportedException("Resources not supported in simplified mode"));
+                   Task.FromException<IPiQResourceScope>(new NotSupportedException("Resources not supported in simplified mode"));
         }
 
 #endregion

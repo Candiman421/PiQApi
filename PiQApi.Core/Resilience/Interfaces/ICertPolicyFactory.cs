@@ -1,4 +1,4 @@
-// PiQApi.Core/Resilience/Interfaces/ICertPolicyFactory.cs
+// PiQApi.Core/Resilience/Interfaces/IPiQPolicyFactory.cs
 using PiQApi.Abstractions.Enums;
 using Polly;
 
@@ -7,7 +7,7 @@ namespace PiQApi.Core.Resilience.Interfaces;
 /// <summary>
 /// Factory interface for creating resilience policies
 /// </summary>
-public interface ICertPolicyFactory
+public interface IPiQPolicyFactory
 {
     /// <summary>
     /// Creates a policy for the specified policy type

@@ -17,11 +17,11 @@ public static class ResilienceServiceCollectionExtensions
     public static IServiceCollection AddCoreResilienceServices(this IServiceCollection services)
     {
         // Register policy factory and executor
-        _ = services.AddSingleton<ICertPolicyFactory, CertPolicyFactory>();
-        _ = services.AddSingleton<ICertResiliencePolicyExecutor, CertResiliencePolicyExecutor>();
+        _ = services.AddSingleton<IPiQPolicyFactory, PiQPolicyFactory>();
+        _ = services.AddSingleton<IPiQResiliencePolicyExecutor, PiQResiliencePolicyExecutor>();
 
         // Register policy options
-        _ = services.AddOptions<CertPolicyOptions>();
+        _ = services.AddOptions<PiQPolicyOptions>();
 
         return services;
     }

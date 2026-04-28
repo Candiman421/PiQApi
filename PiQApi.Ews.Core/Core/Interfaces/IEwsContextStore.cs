@@ -7,7 +7,7 @@ namespace PiQApi.Ews.Core.Core.Interfaces
     /// Interface for storing and retrieving the current EWS correlation context
     /// Extends the base context store interface for EWS-specific functionality
     /// </summary>
-    public interface IEwsContextStore : ICertContextStore
+    public interface IEwsContextStore : IPiQContextStore
     {
         /// <summary>
         /// Gets the current EWS correlation context

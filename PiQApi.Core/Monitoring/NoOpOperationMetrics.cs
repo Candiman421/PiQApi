@@ -5,16 +5,16 @@ using PiQApi.Abstractions.Monitoring;
 namespace PiQApi.Core.Monitoring;
 
 /// <summary>
-/// No-operation implementation of ICertOperationMetrics for use when metrics are disabled
+/// No-operation implementation of IPiQOperationMetrics for use when metrics are disabled
 /// </summary>
-public sealed class NoOpOperationMetrics : ICertOperationMetrics
+public sealed class NoOpOperationMetrics : IPiQOperationMetrics
 {
     private static readonly NoOpOperationMetrics _instance = new NoOpOperationMetrics();
     private static readonly Dictionary<string, object> _emptySnapshot = new Dictionary<string, object>();
     private static readonly Dictionary<string, long> _emptyCounters = new Dictionary<string, long>();
     private static readonly Dictionary<string, TimeSpan> _emptyTimers = new Dictionary<string, TimeSpan>();
     private static readonly Dictionary<string, double> _emptyCustomMetrics = new Dictionary<string, double>();
-    private static readonly CertMetricsSnapshot _emptyMetricsSnapshot = new CertMetricsSnapshot();
+    private static readonly PiQMetricsSnapshot _emptyMetricsSnapshot = new PiQMetricsSnapshot();
 
     /// <summary>
     /// Gets the singleton instance of NoOpOperationMetrics
@@ -84,6 +84,6 @@ public sealed class NoOpOperationMetrics : ICertOperationMetrics
     public IDictionary<string, object> CreateSnapshot() => _emptySnapshot;
 
     /// <inheritdoc/>
-    public Task<ICertMetricsSnapshot> GetMetricsSnapshotAsync(CancellationToken cancellationToken = default) =>
-        Task.FromResult<ICertMetricsSnapshot>(_emptyMetricsSnapshot);
+    public Task<IPiQMetricsSnapshot> GetMetricsSnapshotAsync(CancellationToken cancellationToken = default) =>
+        Task.FromResult<IPiQMetricsSnapshot>(_emptyMetricsSnapshot);
 }

@@ -14,7 +14,7 @@ namespace PiQApi.Ews.Core.Results
     /// Implementation of EWS operation result with a value
     /// </summary>
     /// <typeparam name="T">Type of result value</typeparam>
-    public class EwsResult<T> : CertResult<T>, IEwsResult<T>
+    public class EwsResult<T> : PiQResult<T>, IEwsResult<T>
     {
         /// <summary>
         /// Gets the operation status
@@ -70,7 +70,7 @@ namespace PiQApi.Ews.Core.Results
         /// <param name="ewsResponseCode">Optional EWS response code</param>
         /// <param name="ewsRequestId">Optional EWS request ID</param>
         public EwsResult(
-            ICertResultError error, 
+            IPiQResultError error, 
             string correlationId, 
             OperationStatusType status = OperationStatusType.Failed, 
             string? requestId = null,
@@ -99,7 +99,7 @@ namespace PiQApi.Ews.Core.Results
         protected EwsResult(
             bool isSuccess,
             T? value,
-            ICertResultError? error,
+            IPiQResultError? error,
             string correlationId,
             OperationStatusType status,
             string? requestId,

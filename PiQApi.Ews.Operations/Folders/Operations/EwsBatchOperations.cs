@@ -54,8 +54,8 @@ namespace PiQApi.Ews.Operations.Folders.Operations
             IEwsPropertySetService propertySetService,
             IEwsResultFactory resultFactory,
             ILogger<EwsBatchOperations> logger,
-            ICertExceptionFactory exceptionFactory,
-            ICertValidationProcessor validationProcessor)
+            IPiQExceptionFactory exceptionFactory,
+            IPiQValidationProcessor validationProcessor)
             : base(context, serviceWrapper, logger, exceptionFactory, validationProcessor)
         {
             _emailCreateService = emailCreateService ?? throw new ArgumentNullException(nameof(emailCreateService));
@@ -105,7 +105,7 @@ namespace PiQApi.Ews.Operations.Folders.Operations
             {
                 Logger.LogError(ex, "Error during batch import. CorrelationId: {CorrelationId}", CorrelationId);
 
-                if (ex is CertException certException)
+                if (ex is PiQException certException)
                 {
                     return _resultFactory.Failure<BatchImportResult>(certException, Context.CorrelationId);
                 }
@@ -185,7 +185,7 @@ namespace PiQApi.Ews.Operations.Folders.Operations
             {
                 Logger.LogError(ex, "Error during batch metadata import. CorrelationId: {CorrelationId}", CorrelationId);
 
-                if (ex is CertException certException)
+                if (ex is PiQException certException)
                 {
                     return _resultFactory.Failure<BatchImportResult>(certException, Context.CorrelationId);
                 }

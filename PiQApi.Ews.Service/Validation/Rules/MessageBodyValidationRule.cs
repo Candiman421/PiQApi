@@ -19,14 +19,14 @@ namespace PiQApi.Ews.Service.Validation.Rules
             _logger = logger ?? throw new ArgumentNullException(nameof(logger));
         }
 
-        public override CertValidationResult Validate(
+        public override PiQValidationResult Validate(
             MessageBody entity,
-            CertValidationContext context)
+            PiQValidationContext context)
         {
             ArgumentNullException.ThrowIfNull(entity);
             ArgumentNullException.ThrowIfNull(context);
 
-            var result = new CertValidationResult(true, context.CorrelationId);
+            var result = new PiQValidationResult(true, context.CorrelationId);
 
             // Check body text length
             if (entity.Text.Length > _maxBodyLength)

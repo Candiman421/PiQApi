@@ -19,11 +19,11 @@ namespace PiQApi.Ews.Core.Context
     /// </summary>
     public class EwsOperationContextFactory : IEwsOperationContextFactory
     {
-        private readonly ICertOperationContextFactory _coreContextFactory;
-        private readonly ICertCorrelationIdFactory _correlationIdFactory;
+        private readonly IPiQOperationContextFactory _coreContextFactory;
+        private readonly IPiQCorrelationIdFactory _correlationIdFactory;
         private readonly ILoggerFactory _loggerFactory;
-        private readonly ICertResultFactory _resultFactory;
-        private readonly ICertValidationService _validationService;
+        private readonly IPiQResultFactory _resultFactory;
+        private readonly IPiQValidationService _validationService;
 
         // LoggerMessage delegates for better performance
         private static readonly Action<ILogger, string, string, Exception?> LogCreatedContext =
@@ -41,11 +41,11 @@ namespace PiQApi.Ews.Core.Context
         /// <param name="resultFactory">Result factory for creating operation results</param>
         /// <param name="validationService">Validation service</param>
         public EwsOperationContextFactory(
-            ICertOperationContextFactory coreContextFactory,
-            ICertCorrelationIdFactory correlationIdFactory,
+            IPiQOperationContextFactory coreContextFactory,
+            IPiQCorrelationIdFactory correlationIdFactory,
             ILoggerFactory loggerFactory,
-            ICertResultFactory resultFactory,
-            ICertValidationService validationService)
+            IPiQResultFactory resultFactory,
+            IPiQValidationService validationService)
         {
             _coreContextFactory = coreContextFactory ?? throw new ArgumentNullException(nameof(coreContextFactory));
             _correlationIdFactory = correlationIdFactory ?? throw new ArgumentNullException(nameof(correlationIdFactory));
@@ -65,9 +65,9 @@ namespace PiQApi.Ews.Core.Context
             var coreContext = await _coreContextFactory.CreateInitializedContextAsync(cancellationToken).ConfigureAwait(false);
             
             // Ensure we have the correct type
-            if (coreContext is not CertOperationContext certContext)
+            if (coreContext is not PiQOperationContext certContext)
             {
-                throw new InvalidOperationException("Expected CertOperationContext from factory");
+                throw new InvalidOperationException("Expected PiQOperationContext from factory");
             }
 
             // Create an EWS correlation context
@@ -108,9 +108,9 @@ namespace PiQApi.Ews.Core.Context
             var coreContext = _coreContextFactory.Create(operationName, ewsCorrelationContext);
             
             // Ensure we have the correct type
-            if (coreContext is not CertOperationContext certContext)
+            if (coreContext is not PiQOperationContext certContext)
             {
-                throw new InvalidOperationException("Expected CertOperationContext from factory");
+                throw new InvalidOperationException("Expected PiQOperationContext from factory");
             }
 
             // Create EWS metrics

@@ -24,7 +24,7 @@ namespace PiQApi.Ews.Operations.Core.Base
         private readonly object _stateLock = new();
         private bool _disposed;
         private bool _initialized;
-        private readonly CertOperationBase _baseOperation;
+        private readonly PiQOperationBase _baseOperation;
 
         // LoggerMessage delegates for better performance
         private static readonly Action<ILogger, string, Exception?> LogDisposeError =
@@ -59,12 +59,12 @@ namespace PiQApi.Ews.Operations.Core.Base
         /// <summary>
         /// Gets the exception factory
         /// </summary>
-        protected ICertExceptionFactory ExceptionFactory { get; }
+        protected IPiQExceptionFactory ExceptionFactory { get; }
 
         /// <summary>
         /// Gets the validation processor
         /// </summary>
-        protected ICertValidationProcessor ValidationProcessor { get; }
+        protected IPiQValidationProcessor ValidationProcessor { get; }
 
         /// <summary>
         /// Initializes a new instance of the <see cref="EwsOperationBase"/> class
@@ -79,9 +79,9 @@ namespace PiQApi.Ews.Operations.Core.Base
             IEwsOperationContext context,
             IExchangeServiceWrapper serviceWrapper,
             ILogger logger,
-            ICertExceptionFactory exceptionFactory,
-            ICertValidationProcessor validationProcessor,
-            CertOperationBase baseOperation)
+            IPiQExceptionFactory exceptionFactory,
+            IPiQValidationProcessor validationProcessor,
+            PiQOperationBase baseOperation)
         {
             Context = context ?? throw new ArgumentNullException(nameof(context));
             ServiceWrapper = serviceWrapper ?? throw new ArgumentNullException(nameof(serviceWrapper));
@@ -266,7 +266,7 @@ namespace PiQApi.Ews.Operations.Core.Base
                 nameof(EwsOperationBase),
                 operationName);
 
-            if (exception is CertException certException)
+            if (exception is PiQException certException)
             {
                 certException.SetCorrelationId(CorrelationId);
             }

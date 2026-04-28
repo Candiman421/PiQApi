@@ -16,7 +16,7 @@ namespace PiQApi.Ews.Core.Validation
     /// EWS-specific validation context that extends the base validation context
     /// with additional EWS-specific validation properties and behaviors.
     /// </summary>
-    public sealed class EwsValidationContext : CertValidationContext, IEwsValidationContext
+    public sealed class EwsValidationContext : PiQValidationContext, IEwsValidationContext
     {
         /// <summary>
         /// Gets the Exchange server version to validate against
@@ -66,7 +66,7 @@ namespace PiQApi.Ews.Core.Validation
             bool aggregateAllErrors,
             string correlationId,
             ImmutableDictionary<string, object> additionalContext,
-            ICertTimeProvider timeProvider,
+            IPiQTimeProvider timeProvider,
             ExchangeVersion exchangeVersion,
             string? ewsScope = null,
             bool validatePermissions = false,
@@ -89,7 +89,7 @@ namespace PiQApi.Ews.Core.Validation
         /// <param name="cancellationToken">Cancellation token</param>
         public EwsValidationContext(ExchangeVersion exchangeVersion, CancellationToken cancellationToken = default)
             : this(ValidationModeType.Standard, 0, 10, false, Guid.NewGuid().ToString(),
-                  ImmutableDictionary<string, object>.Empty, new CertDefaultTimeProvider(), 
+                  ImmutableDictionary<string, object>.Empty, new PiQDefaultTimeProvider(), 
                   exchangeVersion, null, false, true, true, cancellationToken)
         {
         }
@@ -102,7 +102,7 @@ namespace PiQApi.Ews.Core.Validation
         /// <param name="cancellationToken">Cancellation token</param>
         public EwsValidationContext(string correlationId, ExchangeVersion exchangeVersion, CancellationToken cancellationToken = default)
             : this(ValidationModeType.Standard, 0, 10, false, correlationId,
-                  ImmutableDictionary<string, object>.Empty, new CertDefaultTimeProvider(), 
+                  ImmutableDictionary<string, object>.Empty, new PiQDefaultTimeProvider(), 
                   exchangeVersion, null, false, true, true, cancellationToken)
         {
         }
@@ -116,7 +116,7 @@ namespace PiQApi.Ews.Core.Validation
         /// <param name="cancellationToken">Cancellation token</param>
         public EwsValidationContext(ValidationModeType validationMode, ExchangeVersion exchangeVersion, string? ewsScope = null, CancellationToken cancellationToken = default)
             : this(validationMode, 0, 10, false, Guid.NewGuid().ToString(),
-                  ImmutableDictionary<string, object>.Empty, new CertDefaultTimeProvider(),
+                  ImmutableDictionary<string, object>.Empty, new PiQDefaultTimeProvider(),
                   exchangeVersion, ewsScope, false, true, true, cancellationToken)
         {
         }
@@ -139,7 +139,7 @@ namespace PiQApi.Ews.Core.Validation
                 AggregateAllErrors,
                 CorrelationId,
                 (ImmutableDictionary<string, object>)Context,
-                new CertDefaultTimeProvider(),
+                new PiQDefaultTimeProvider(),
                 ExchangeVersion,
                 EwsScope,
                 ValidatePermissions,
@@ -162,7 +162,7 @@ namespace PiQApi.Ews.Core.Validation
                 AggregateAllErrors,
                 CorrelationId,
                 (ImmutableDictionary<string, object>)Context,
-                new CertDefaultTimeProvider(),
+                new PiQDefaultTimeProvider(),
                 ExchangeVersion,
                 EwsScope,
                 ValidatePermissions,
@@ -185,7 +185,7 @@ namespace PiQApi.Ews.Core.Validation
                 AggregateAllErrors,
                 CorrelationId,
                 (ImmutableDictionary<string, object>)Context,
-                new CertDefaultTimeProvider(),
+                new PiQDefaultTimeProvider(),
                 ExchangeVersion,
                 EwsScope,
                 ValidatePermissions,
@@ -215,7 +215,7 @@ namespace PiQApi.Ews.Core.Validation
                 AggregateAllErrors,
                 CorrelationId,
                 newContext,
-                new CertDefaultTimeProvider(),
+                new PiQDefaultTimeProvider(),
                 ExchangeVersion,
                 EwsScope,
                 ValidatePermissions,
@@ -254,7 +254,7 @@ namespace PiQApi.Ews.Core.Validation
                 AggregateAllErrors,
                 CorrelationId,
                 builder.ToImmutable(),
-                new CertDefaultTimeProvider(),
+                new PiQDefaultTimeProvider(),
                 ExchangeVersion,
                 EwsScope,
                 ValidatePermissions,
@@ -279,7 +279,7 @@ namespace PiQApi.Ews.Core.Validation
                 AggregateAllErrors,
                 CorrelationId,
                 (ImmutableDictionary<string, object>)Context,
-                new CertDefaultTimeProvider(),
+                new PiQDefaultTimeProvider(),
                 ExchangeVersion,
                 ewsScope,
                 ValidatePermissions,
@@ -302,7 +302,7 @@ namespace PiQApi.Ews.Core.Validation
                 AggregateAllErrors,
                 CorrelationId,
                 (ImmutableDictionary<string, object>)Context,
-                new CertDefaultTimeProvider(),
+                new PiQDefaultTimeProvider(),
                 ExchangeVersion,
                 EwsScope,
                 validatePermissions,
@@ -325,7 +325,7 @@ namespace PiQApi.Ews.Core.Validation
                 AggregateAllErrors,
                 CorrelationId,
                 (ImmutableDictionary<string, object>)Context,
-                new CertDefaultTimeProvider(),
+                new PiQDefaultTimeProvider(),
                 ExchangeVersion,
                 EwsScope,
                 ValidatePermissions,
@@ -348,7 +348,7 @@ namespace PiQApi.Ews.Core.Validation
                 AggregateAllErrors,
                 CorrelationId,
                 (ImmutableDictionary<string, object>)Context,
-                new CertDefaultTimeProvider(),
+                new PiQDefaultTimeProvider(),
                 ExchangeVersion,
                 EwsScope,
                 ValidatePermissions,
@@ -357,16 +357,16 @@ namespace PiQApi.Ews.Core.Validation
                 CancellationToken);
         }
 
-        // Explicit interface implementation for ICertValidationContext methods
+        // Explicit interface implementation for IPiQValidationContext methods
         // to ensure they return the more specific IEwsValidationContext
 
-        ICertValidationContext ICertValidationContext.CreateChildContext() => CreateChildContext();
+        IPiQValidationContext IPiQValidationContext.CreateChildContext() => CreateChildContext();
 
-        ICertValidationContext ICertValidationContext.WithContextValue(string key, object value) => WithContextValue(key, value);
+        IPiQValidationContext IPiQValidationContext.WithContextValue(string key, object value) => WithContextValue(key, value);
 
-        ICertValidationContext ICertValidationContext.WithMode(ValidationModeType mode) => WithValidationMode(mode);
+        IPiQValidationContext IPiQValidationContext.WithMode(ValidationModeType mode) => WithValidationMode(mode);
 
-        ICertValidationContext ICertValidationContext.WithCancellationToken(CancellationToken cancellationToken) 
+        IPiQValidationContext IPiQValidationContext.WithCancellationToken(CancellationToken cancellationToken) 
             => WithCancellationToken(cancellationToken);
     }
 }

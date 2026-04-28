@@ -1,10 +1,10 @@
-// PiQApi.Core/Authentication/TokenCache/Interfaces/ICertTokenCache.cs
+// PiQApi.Core/Authentication/TokenCache/Interfaces/IPiQTokenCache.cs
 namespace PiQApi.Core.Authentication.TokenCache.Interfaces;
 
 /// <summary>
 /// Interface for token caching
 /// </summary>
-public interface ICertTokenCache
+public interface IPiQTokenCache
 {
     /// <summary>
     /// Gets a token from the cache
@@ -12,7 +12,7 @@ public interface ICertTokenCache
     /// <param name="cacheKey">Cache key</param>
     /// <param name="cancellationToken">Cancellation token</param>
     /// <returns>The token if found and not expired; otherwise null</returns>
-    Task<CertTokenInfo?> GetTokenAsync(string cacheKey, CancellationToken cancellationToken = default);
+    Task<PiQTokenInfo?> GetTokenAsync(string cacheKey, CancellationToken cancellationToken = default);
 
     /// <summary>
     /// Sets a token in the cache
@@ -21,7 +21,7 @@ public interface ICertTokenCache
     /// <param name="token">Token to cache</param>
     /// <param name="cancellationToken">Cancellation token</param>
     /// <returns>A task representing the operation</returns>
-    Task SetTokenAsync(string cacheKey, CertTokenInfo token, CancellationToken cancellationToken = default);
+    Task SetTokenAsync(string cacheKey, PiQTokenInfo token, CancellationToken cancellationToken = default);
 
     /// <summary>
     /// Removes a token from the cache

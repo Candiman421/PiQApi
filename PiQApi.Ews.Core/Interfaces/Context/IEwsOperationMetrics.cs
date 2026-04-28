@@ -13,7 +13,7 @@ namespace PiQApi.Ews.Core.Interfaces.Context
     /// Interface for Exchange Web Services operation metrics
     /// Extends the core operation metrics interface with EWS-specific functionality
     /// </summary>
-    public interface IEwsOperationMetrics : ICertOperationMetrics
+    public interface IEwsOperationMetrics : IPiQOperationMetrics
     {
         /// <summary>
         /// Gets the count of throttling events that have occurred
@@ -77,7 +77,7 @@ namespace PiQApi.Ews.Core.Interfaces.Context
         /// </summary>
         /// <param name="cancellationToken">Cancellation token</param>
         /// <returns>Metrics snapshot with EWS-specific metrics</returns>
-        new Task<ICertMetricsSnapshot> GetMetricsSnapshotAsync(CancellationToken cancellationToken = default);
+        new Task<IPiQMetricsSnapshot> GetMetricsSnapshotAsync(CancellationToken cancellationToken = default);
 
         /// <summary>
         /// Resets all EWS-specific counters

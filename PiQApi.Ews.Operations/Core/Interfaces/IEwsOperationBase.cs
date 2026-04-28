@@ -8,7 +8,7 @@ namespace PiQApi.Ews.Operations.Core.Interfaces
     /// <summary>
     /// Base interface for all Exchange operations
     /// </summary>
-    public interface IEwsOperationBase : ICertOperationBase, IAsyncDisposable
+    public interface IEwsOperationBase : IPiQOperationBase, IAsyncDisposable
     {
         /// <summary>
         /// Gets the operation ID

@@ -20,11 +20,11 @@ public static class ServiceCollectionExtensions
     public static IServiceCollection AddCertValidation(this IServiceCollection services)
     {
         // Add validation factory and processor
-        services.AddSingleton<ICertValidationResultFactory, CertValidationResultFactory>();
-        services.AddSingleton<ICertValidationProcessor, CertValidationProcessor>();
-        services.AddSingleton<ICertValidationContextFactory, CertValidationContextFactory>();
-        services.AddSingleton<ICertValidationService, CertValidationService>();
-        services.AddSingleton<ICertValidationRuleFactory, CertValidationRuleFactory>();
+        services.AddSingleton<IPiQValidationResultFactory, PiQValidationResultFactory>();
+        services.AddSingleton<IPiQValidationProcessor, PiQValidationProcessor>();
+        services.AddSingleton<IPiQValidationContextFactory, PiQValidationContextFactory>();
+        services.AddSingleton<IPiQValidationService, PiQValidationService>();
+        services.AddSingleton<IPiQValidationRuleFactory, PiQValidationRuleFactory>();
 
         return services;
     }

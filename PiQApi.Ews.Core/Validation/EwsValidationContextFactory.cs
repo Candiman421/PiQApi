@@ -17,9 +17,9 @@ namespace PiQApi.Ews.Core.Validation
     /// </summary>
     public class EwsValidationContextFactory : IEwsValidationContextFactory
     {
-        private readonly ICertCorrelationIdFactory _correlationIdFactory;
+        private readonly IPiQCorrelationIdFactory _correlationIdFactory;
         private readonly ILogger<EwsValidationContextFactory> _logger;
-        private readonly ICertTimeProvider _timeProvider;
+        private readonly IPiQTimeProvider _timeProvider;
 
         // LoggerMessage delegates for better performance
         private static readonly Action<ILogger, ExchangeVersion, Exception?> LogCreateDefault =
@@ -53,9 +53,9 @@ namespace PiQApi.Ews.Core.Validation
         /// <param name="logger">Logger for validation events</param>
         /// <param name="timeProvider">Time provider</param>
         public EwsValidationContextFactory(
-            ICertCorrelationIdFactory correlationIdFactory,
+            IPiQCorrelationIdFactory correlationIdFactory,
             ILogger<EwsValidationContextFactory> logger,
-            ICertTimeProvider timeProvider)
+            IPiQTimeProvider timeProvider)
         {
             _correlationIdFactory = correlationIdFactory ?? throw new ArgumentNullException(nameof(correlationIdFactory));
             _logger = logger ?? throw new ArgumentNullException(nameof(logger));

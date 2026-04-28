@@ -11,7 +11,7 @@ namespace PiQApi.Ews.Core.Models
     /// <summary>
     /// Metrics for EWS connections
     /// </summary>
-    public class EwsConnectionMetrics : ICertConnectionMetrics, ICertMetricsProvider
+    public class EwsConnectionMetrics : IPiQConnectionMetrics, IPiQMetricsProvider
     {
         private long _connectionsCreated;
         private long _connectionsAcquired;
@@ -150,7 +150,7 @@ namespace PiQApi.Ews.Core.Models
         /// </summary>
         /// <param name="cancellationToken">Token to cancel the operation</param>
         /// <returns>A task containing the metrics snapshot</returns>
-        public Task<ICertMetricsSnapshot> GetMetricsSnapshotAsync(CancellationToken cancellationToken = default)
+        public Task<IPiQMetricsSnapshot> GetMetricsSnapshotAsync(CancellationToken cancellationToken = default)
         {
             cancellationToken.ThrowIfCancellationRequested();
 
@@ -179,7 +179,7 @@ namespace PiQApi.Ews.Core.Models
                 totalDurationMs: _totalDurationMs,
                 operationCount: _operationCount);
 
-            return Task.FromResult<ICertMetricsSnapshot>(snapshot);
+            return Task.FromResult<IPiQMetricsSnapshot>(snapshot);
         }
 
         /// <summary>

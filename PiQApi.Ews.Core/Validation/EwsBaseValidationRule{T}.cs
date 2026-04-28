@@ -16,7 +16,7 @@ namespace PiQApi.Ews.Core.Validation
     /// Base class for EWS-specific validation rules (simplified implementation)
     /// </summary>
     /// <typeparam name="T">Type to validate</typeparam>
-    public abstract class EwsBaseValidationRule<T> : CertValidationRule<T> where T : class
+    public abstract class EwsBaseValidationRule<T> : PiQValidationRule<T> where T : class
     {
         private readonly ILogger _logger;
         
@@ -25,7 +25,7 @@ namespace PiQApi.Ews.Core.Validation
         /// </summary>
         /// <param name="logger">Logger for validation events</param>
         /// <param name="resultFactory">Validation result factory</param>
-        protected EwsBaseValidationRule(ILogger logger, ICertValidationResultFactory resultFactory) 
+        protected EwsBaseValidationRule(ILogger logger, IPiQValidationResultFactory resultFactory) 
             : base(logger, resultFactory)
         {
             _logger = logger ?? throw new ArgumentNullException(nameof(logger));
@@ -37,7 +37,7 @@ namespace PiQApi.Ews.Core.Validation
         /// <param name="entity">Entity to validate</param>
         /// <param name="context">Validation context</param>
         /// <returns>Validation result</returns>
-        public override ICertValidationResult Validate(T entity, ICertValidationContext context)
+        public override IPiQValidationResult Validate(T entity, IPiQValidationContext context)
         {
             // Simplified implementation always returns success
             return ResultFactory.Success();
@@ -50,9 +50,9 @@ namespace PiQApi.Ews.Core.Validation
         /// <param name="context">Validation context</param>
         /// <param name="cancellationToken">Cancellation token</param>
         /// <returns>Validation result</returns>
-        public override async Task<ICertValidationResult> ValidateAsync(
+        public override async Task<IPiQValidationResult> ValidateAsync(
             T entity, 
-            ICertValidationContext context, 
+            IPiQValidationContext context, 
             CancellationToken cancellationToken = default)
         {
             // Simplified implementation always returns success
@@ -62,7 +62,7 @@ namespace PiQApi.Ews.Core.Validation
         /// <summary>
         /// Required override of ValidateInternal, but not used in simplified implementation
         /// </summary>
-        protected override ICertValidationResult ValidateInternal(T entity, ICertValidationContext context)
+        protected override IPiQValidationResult ValidateInternal(T entity, IPiQValidationContext context)
         {
             return ResultFactory.Success();
         }

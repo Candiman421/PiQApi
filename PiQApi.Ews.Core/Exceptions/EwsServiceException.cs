@@ -9,7 +9,7 @@ namespace PiQApi.Ews.Core.Exceptions
     /// <summary>
     /// Exception wrapper for Exchange Web Services response exceptions
     /// </summary>
-    public class EwsServiceException : CertServiceExceptionBase
+    public class EwsServiceException : PiQServiceExceptionBase
     {
         /// <summary>
         /// Gets the original ServiceResponseException

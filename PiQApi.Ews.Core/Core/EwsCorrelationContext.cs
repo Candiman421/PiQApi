@@ -20,9 +20,9 @@ namespace PiQApi.Ews.Core.Core
         // Using AsyncLocal ensures context flows across async boundaries
         private static readonly AsyncLocal<EwsCorrelationContext?> _current = new AsyncLocal<EwsCorrelationContext?>();
 
-        private readonly CertCorrelationContext _coreContext;
+        private readonly PiQCorrelationContext _coreContext;
         private readonly ILogger<EwsCorrelationContext> _logger;
-        private readonly CertEmptyDisposable _emptyDisposable;
+        private readonly PiQEmptyDisposable _emptyDisposable;
         private string? _tenantId;
         private string? _requestId;
         private string? _userPrincipalName;
@@ -132,7 +132,7 @@ namespace PiQApi.Ews.Core.Core
         /// <param name="options">Optional configuration options</param>
         public EwsCorrelationContext(
             string correlationId,
-            ICertCorrelationIdFactory correlationIdFactory,
+            IPiQCorrelationIdFactory correlationIdFactory,
             ILogger<EwsCorrelationContext> logger,
             ILoggerFactory loggerFactory,
             string? tenantId = null,
@@ -148,17 +148,17 @@ namespace PiQApi.Ews.Core.Core
             var contextOptions = options?.Value ?? new EwsCorrelationContextOptions();
 
             // Create a core correlation context with options
-            _coreContext = new CertCorrelationContext(
+            _coreContext = new PiQCorrelationContext(
                 correlationIdFactory.CreateFromExisting(correlationId),
                 correlationIdFactory,
-                loggerFactory.CreateLogger<CertCorrelationContext>(),
+                loggerFactory.CreateLogger<PiQCorrelationContext>(),
                 Options.Create(contextOptions.BaseOptions));
 
             _logger = logger ?? throw new ArgumentNullException(nameof(logger));
             _tenantId = tenantId;
             _requestId = requestId;
             _userPrincipalName = userPrincipalName;
-            _emptyDisposable = (CertEmptyDisposable)CertEmptyDisposable.Instance;
+            _emptyDisposable = (PiQEmptyDisposable)PiQEmptyDisposable.Instance;
 
             // Set the current context in AsyncLocal storage
             SetCurrent(this);
@@ -189,7 +189,7 @@ namespace PiQApi.Ews.Core.Core
             }
         }
 
-        #region ICertCorrelationContext Implementation
+        #region IPiQCorrelationContext Implementation
 
         /// <summary>
         /// Adds a property to the correlation context

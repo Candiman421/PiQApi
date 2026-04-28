@@ -15,7 +15,7 @@ namespace PiQApi.Ews.Core.Results
     /// Implementation of generic Ews-specific result that extends the base generic service result
     /// </summary>
     /// <typeparam name="T">The type of the result value</typeparam>
-    public class EwsServiceResult<T> : CertServiceResult<T>, IEwsResult<T>
+    public class EwsServiceResult<T> : PiQServiceResult<T>, IEwsResult<T>
     {
         /// <summary>
         /// Gets the operation status
@@ -72,7 +72,7 @@ namespace PiQApi.Ews.Core.Results
         protected EwsServiceResult(
             bool isSuccess,
             T? value,
-            ICertResultError? error,
+            IPiQResultError? error,
             OperationStatusType status,
             string requestId,
             string correlationId,
@@ -127,8 +127,8 @@ namespace PiQApi.Ews.Core.Results
             }
 
             // Create success marker with correlation ID if provided
-            ICertResultError? successMarker = correlationId != null
-                ? CertResult.CreateSuccessMarker(correlationId)
+            IPiQResultError? successMarker = correlationId != null
+                ? PiQResult.CreateSuccessMarker(correlationId)
                 : null;
 
             return new EwsServiceResult<T>(
@@ -179,7 +179,7 @@ namespace PiQApi.Ews.Core.Results
             ArgumentException.ThrowIfNullOrEmpty(message);
             ArgumentException.ThrowIfNullOrEmpty(requestId);
 
-            var error = new CertError(code, message, correlationId);
+            var error = new PiQError(code, message, correlationId);
 
             return new EwsServiceResult<T>(
                 false,

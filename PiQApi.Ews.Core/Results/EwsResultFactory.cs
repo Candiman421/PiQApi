@@ -16,7 +16,7 @@ namespace PiQApi.Ews.Core.Results
     /// </summary>
     public class EwsResultFactory : IEwsResultFactory
     {
-        private readonly ICertResultFactory _certResultFactory;
+        private readonly IPiQResultFactory _certResultFactory;
         private readonly ILogger<EwsResultFactory> _logger;
 
         // LoggerMessage delegates for better performance
@@ -85,7 +85,7 @@ namespace PiQApi.Ews.Core.Results
         /// </summary>
         /// <param name="certResultFactory">Core result factory</param>
         /// <param name="logger">Logger</param>
-        public EwsResultFactory(ICertResultFactory certResultFactory, ILogger<EwsResultFactory> logger)
+        public EwsResultFactory(IPiQResultFactory certResultFactory, ILogger<EwsResultFactory> logger)
         {
             _certResultFactory = certResultFactory ?? throw new ArgumentNullException(nameof(certResultFactory));
             _logger = logger ?? throw new ArgumentNullException(nameof(logger));
@@ -126,7 +126,7 @@ namespace PiQApi.Ews.Core.Results
         public IEwsResult Failure(string errorCode, string errorMessage, string correlationId, OperationStatusType status = OperationStatusType.Failed)
         {
             LogFailureResult(_logger, errorCode, errorMessage, correlationId, null);
-            var error = new CertResultError(errorCode, errorMessage, correlationId);
+            var error = new PiQResultError(errorCode, errorMessage, correlationId);
             return new EwsResult(error, correlationId, status);
         }
 
@@ -231,7 +231,7 @@ namespace PiQApi.Ews.Core.Results
         {
             LogTypedCanceledResult(_logger, correlationId, null);
             
-            var cancelError = new CertResultError(
+            var cancelError = new PiQResultError(
                 "OperationCanceled", 
                 "Operation was canceled",
                 correlationId);

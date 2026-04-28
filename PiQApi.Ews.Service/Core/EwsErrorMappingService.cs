@@ -13,7 +13,7 @@ namespace PiQApi.Ews.Service.Core
     public class EwsErrorMappingService : IEwsErrorMappingService
     {
         private readonly ILogger<EwsErrorMappingService> _logger;
-        private readonly ICertExceptionFactory _exceptionFactory;
+        private readonly IPiQExceptionFactory _exceptionFactory;
 
         // Dictionary mapping Exchange service errors to error messages
         private static readonly Dictionary<ServiceError, string> ServiceErrorMessages = new()
@@ -78,7 +78,7 @@ namespace PiQApi.Ews.Service.Core
         /// <param name="exceptionFactory">Exception factory</param>
         public EwsErrorMappingService(
             ILogger<EwsErrorMappingService> logger,
-            ICertExceptionFactory exceptionFactory)
+            IPiQExceptionFactory exceptionFactory)
         {
             _logger = logger ?? throw new ArgumentNullException(nameof(logger));
             _exceptionFactory = exceptionFactory ?? throw new ArgumentNullException(nameof(exceptionFactory));
@@ -127,7 +127,7 @@ namespace PiQApi.Ews.Service.Core
                 exception);
 
             // Add correlation ID
-            if (!string.IsNullOrEmpty(correlationId) && mappedException is CertException certException)
+            if (!string.IsNullOrEmpty(correlationId) && mappedException is PiQException certException)
             {
                 certException.SetCorrelationId(correlationId);
             }
@@ -181,7 +181,7 @@ namespace PiQApi.Ews.Service.Core
                 innerException);
 
             // Add correlation ID
-            if (!string.IsNullOrEmpty(correlationId) && exception is CertException certException)
+            if (!string.IsNullOrEmpty(correlationId) && exception is PiQException certException)
             {
                 certException.SetCorrelationId(correlationId);
             }

@@ -51,7 +51,7 @@ public static class ContextServiceCollectionExtensions
     /// <returns>The service collection for chaining</returns>
     public static IServiceCollection ConfigureCorrelationContext(
         this IServiceCollection services,
-        Action<Configuration.CertCorrelationContextOptions> configureOptions)
+        Action<Configuration.PiQCorrelationContextOptions> configureOptions)
     {
         ArgumentNullException.ThrowIfNull(configureOptions);
 
@@ -67,9 +67,9 @@ public static class ContextServiceCollectionExtensions
     /// <param name="services">The service collection</param>
     private static void AddCorrelationServices(IServiceCollection services)
     {
-        services.TryAddSingleton<ICertCorrelationIdFactory, CertCorrelationIdFactory>();
-        services.TryAddScoped<ICertCorrelationContext, CertCorrelationContext>();
-        services.TryAddTransient<ICertCorrelationScope, CertCorrelationScope>();
+        services.TryAddSingleton<IPiQCorrelationIdFactory, PiQCorrelationIdFactory>();
+        services.TryAddScoped<IPiQCorrelationContext, PiQCorrelationContext>();
+        services.TryAddTransient<IPiQCorrelationScope, PiQCorrelationScope>();
     }
 
     /// <summary>
@@ -78,9 +78,9 @@ public static class ContextServiceCollectionExtensions
     /// <param name="services">The service collection</param>
     private static void AddOperationServices(IServiceCollection services)
     {
-        services.TryAddSingleton<ICertOperationContextFactory, CertOperationContextFactory>();
-        services.TryAddScoped<ICertOperationMetrics, CertOperationMetrics>();
-        services.TryAddScoped<ICertOperationState, CertOperationState>();
-        services.TryAddTransient<ICertOperationScope, CertOperationScope>();
+        services.TryAddSingleton<IPiQOperationContextFactory, PiQOperationContextFactory>();
+        services.TryAddScoped<IPiQOperationMetrics, PiQOperationMetrics>();
+        services.TryAddScoped<IPiQOperationState, PiQOperationState>();
+        services.TryAddTransient<IPiQOperationScope, PiQOperationScope>();
     }
 }

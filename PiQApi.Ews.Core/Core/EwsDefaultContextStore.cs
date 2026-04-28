@@ -17,10 +17,10 @@ namespace PiQApi.Ews.Core.Core
 
         /// <summary>
         /// Gets the current correlation context from AsyncLocal storage
-        /// Implements ICertContextStore.GetCurrentContext
+        /// Implements IPiQContextStore.GetCurrentContext
         /// </summary>
-        /// <returns>The current context as ICertCorrelationContext or null if not set</returns>
-        ICertCorrelationContext? ICertContextStore.GetCurrentContext() => GetCurrentContext();
+        /// <returns>The current context as IPiQCorrelationContext or null if not set</returns>
+        IPiQCorrelationContext? IPiQContextStore.GetCurrentContext() => GetCurrentContext();
 
         /// <summary>
         /// Sets the current Ews correlation context in AsyncLocal storage
@@ -35,12 +35,12 @@ namespace PiQApi.Ews.Core.Core
 
         /// <summary>
         /// Sets the current correlation context in AsyncLocal storage
-        /// Implements ICertContextStore.SetCurrentContext
+        /// Implements IPiQContextStore.SetCurrentContext
         /// </summary>
         /// <param name="context">The context to set as current</param>
         /// <exception cref="ArgumentException">Thrown when context is not an EwsCorrelationContext</exception>
         /// <exception cref="ArgumentNullException">Thrown when context is null</exception>
-        void ICertContextStore.SetCurrentContext(ICertCorrelationContext context)
+        void IPiQContextStore.SetCurrentContext(IPiQCorrelationContext context)
         {
             ArgumentNullException.ThrowIfNull(context);
             

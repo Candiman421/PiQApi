@@ -24,21 +24,21 @@ public static class OptionsServiceCollectionExtensions
     public static IServiceCollection AddCoreOptions(this IServiceCollection services, IConfiguration? configuration = null)
     {
         // Add simple options with data annotations validation
-        services.AddCertOptions<CertTimeoutOptions>(configuration);
-        services.AddCertOptions<CertRetryOptions>(configuration);
-        services.AddCertOptions<CertBulkheadOptions>(configuration);
-        services.AddCertOptions<CertCircuitBreakerOptions>(configuration);
-        services.AddCertOptions<CertCacheOptions>(configuration);
-        services.AddCertOptions<CertBatchOptions>(configuration);
-        services.AddCertOptions<CertClientOptions>(configuration);
-        services.AddCertOptions<CertClientCertificateOptions>(configuration);
-        services.AddCertOptions<CertValidationOptions>(configuration);
-        services.AddCertOptions<CertCorrelationContextOptions>(configuration);
+        services.AddCertOptions<PiQTimeoutOptions>(configuration);
+        services.AddCertOptions<PiQRetryOptions>(configuration);
+        services.AddCertOptions<PiQBulkheadOptions>(configuration);
+        services.AddCertOptions<PiQCircuitBreakerOptions>(configuration);
+        services.AddCertOptions<PiQCacheOptions>(configuration);
+        services.AddCertOptions<PiQBatchOptions>(configuration);
+        services.AddCertOptions<PiQClientOptions>(configuration);
+        services.AddCertOptions<PiQClientCertificateOptions>(configuration);
+        services.AddCertOptions<PiQValidationOptions>(configuration);
+        services.AddCertOptions<PiQCorrelationContextOptions>(configuration);
 
         // Add options with custom validators
-        services.AddCertOptionsWithValidator<CertAuthenticationOptions, CertAuthenticationOptionsValidator>(configuration);
-        services.AddCertOptionsWithValidator<CertConnectionOptions, CertConnectionOptionsValidator>(configuration);
-        services.AddCertOptionsWithValidator<CertPolicyOptions, CertPolicyOptionsValidator>(configuration);
+        services.AddCertOptionsWithValidator<PiQAuthenticationOptions, PiQAuthenticationOptionsValidator>(configuration);
+        services.AddCertOptionsWithValidator<PiQConnectionOptions, PiQConnectionOptionsValidator>(configuration);
+        services.AddCertOptionsWithValidator<PiQPolicyOptions, PiQPolicyOptionsValidator>(configuration);
 
         return services;
     }

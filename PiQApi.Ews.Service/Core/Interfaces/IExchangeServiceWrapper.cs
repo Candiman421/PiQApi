@@ -37,7 +37,7 @@ namespace PiQApi.Ews.Service.Core.Interfaces
         string CorrelationId { get; }
 
         // Auth methods
-        Task AuthenticateAsync(CertAuthenticationOptions options, CancellationToken cancellationToken = default);
+        Task AuthenticateAsync(PiQAuthenticationOptions options, CancellationToken cancellationToken = default);
         Task ConfigureImpersonationAsync(string userId, CancellationToken cancellationToken = default);
         Task ConfigureImpersonationAsync(string userId, ConnectingIdType idType, CancellationToken cancellationToken = default);
         Task ConfigureServiceAsync(string token, string tenantId, CancellationToken cancellationToken = default);
@@ -46,7 +46,7 @@ namespace PiQApi.Ews.Service.Core.Interfaces
         Task ConfigureTraceEnabledAsync(bool enabled, CancellationToken cancellationToken = default);
         Task<ExchangeVersion> GetServerVersionAsync(CancellationToken cancellationToken = default);
         Task InvalidateTokenAsync(string token, CancellationToken cancellationToken = default);
-        Task SetCredentialsAsync(string credentials, CertAuthenticationType authType = CertAuthenticationType.AppOnly, CancellationToken cancellationToken = default);
+        Task SetCredentialsAsync(string credentials, PiQAuthenticationType authType = PiQAuthenticationType.AppOnly, CancellationToken cancellationToken = default);
         Task SetOAuthCredentialsAsync(string token);
         Task ValidateConnectionAsync(CancellationToken cancellationToken = default);
         Task<bool> ValidateTokenAsync(string token, CancellationToken cancellationToken = default);

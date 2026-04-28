@@ -20,9 +20,9 @@ namespace PiQApi.Ews.Core.Context
     /// </summary>
     public class EwsOperationMetrics : IEwsOperationMetrics
     {
-        private readonly ICertOperationMetrics _baseMetrics;
+        private readonly IPiQOperationMetrics _baseMetrics;
         private readonly ILogger _logger;
-        private readonly ICertTimeProvider _timeProvider;
+        private readonly IPiQTimeProvider _timeProvider;
         private readonly ConcurrentDictionary<string, long> _ewsSpecificCounters = new ConcurrentDictionary<string, long>();
         private readonly ConcurrentDictionary<string, TimeSpan> _throttlingEvents = new ConcurrentDictionary<string, TimeSpan>();
         private int _throttlingEventCount;
@@ -78,14 +78,14 @@ namespace PiQApi.Ews.Core.Context
             string operationId,
             string operationName,
             ILogger logger,
-            ICertTimeProvider? timeProvider = null)
+            IPiQTimeProvider? timeProvider = null)
         {
             ArgumentException.ThrowIfNullOrEmpty(operationId);
             ArgumentException.ThrowIfNullOrEmpty(operationName);
 
             _logger = logger ?? throw new ArgumentNullException(nameof(logger));
-            _timeProvider = timeProvider ?? CertTimeProviderFactory.Current;
-            _baseMetrics = new PiQApi.Core.Context.CertOperationMetrics(operationId, operationName, _timeProvider);
+            _timeProvider = timeProvider ?? PiQTimeProviderFactory.Current;
+            _baseMetrics = new PiQApi.Core.Context.PiQOperationMetrics(operationId, operationName, _timeProvider);
         }
 
         /// <summary>
@@ -95,16 +95,16 @@ namespace PiQApi.Ews.Core.Context
         /// <param name="logger">Logger</param>
         /// <param name="timeProvider">Time provider</param>
         public EwsOperationMetrics(
-            ICertOperationMetrics baseMetrics,
+            IPiQOperationMetrics baseMetrics,
             ILogger logger,
-            ICertTimeProvider? timeProvider = null)
+            IPiQTimeProvider? timeProvider = null)
         {
             _baseMetrics = baseMetrics ?? throw new ArgumentNullException(nameof(baseMetrics));
             _logger = logger ?? throw new ArgumentNullException(nameof(logger));
-            _timeProvider = timeProvider ?? CertTimeProviderFactory.Current;
+            _timeProvider = timeProvider ?? PiQTimeProviderFactory.Current;
         }
 
-        #region ICertOperationMetrics Implementation
+        #region IPiQOperationMetrics Implementation
 
         /// <inheritdoc/>
         public long SuccessfulOperations => _baseMetrics.SuccessfulOperations;
@@ -265,7 +265,7 @@ namespace PiQApi.Ews.Core.Context
         }
 
         /// <inheritdoc/>
-        public Task<ICertMetricsSnapshot> GetMetricsSnapshotAsync(CancellationToken cancellationToken = default)
+        public Task<IPiQMetricsSnapshot> GetMetricsSnapshotAsync(CancellationToken cancellationToken = default)
         {
             return _baseMetrics.GetMetricsSnapshotAsync(cancellationToken);
         }
@@ -289,7 +289,7 @@ namespace PiQApi.Ews.Core.Context
                 string correlationId = "unknown"; // Try to extract from context if available
                 try
                 {
-                    var operationContext = PiQApi.Core.Core.CertCorrelationContext.Current;
+                    var operationContext = PiQApi.Core.Core.PiQCorrelationContext.Current;
                     if (operationContext != null)
                     {
                         correlationId = operationContext.CorrelationId;
@@ -337,7 +337,7 @@ namespace PiQApi.Ews.Core.Context
                 string correlationId = "unknown"; // Try to extract from context if available
                 try
                 {
-                    var operationContext = PiQApi.Core.Core.CertCorrelationContext.Current;
+                    var operationContext = PiQApi.Core.Core.PiQCorrelationContext.Current;
                     if (operationContext != null)
                     {
                         correlationId = operationContext.CorrelationId;

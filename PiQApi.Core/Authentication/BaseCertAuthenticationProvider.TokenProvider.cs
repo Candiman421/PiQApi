@@ -77,11 +77,11 @@ public abstract partial class BaseCertAuthenticationProvider
     /// <summary>
     /// Create minimal token info from an access token string
     /// </summary>
-    protected virtual ICertTokenInfo CreateMinimalTokenInfo(string accessToken)
+    protected virtual IPiQTokenInfo CreateMinimalTokenInfo(string accessToken)
     {
         // This is a default implementation - derived classes should override this
         // to provide proper token info creation logic
-        return new CertTokenInfo(
+        return new PiQTokenInfo(
             accessToken,
             DateTime.UtcNow.AddHours(1), // Default 1-hour expiration
             Array.Empty<string>(),       // Empty scopes
@@ -94,5 +94,5 @@ public abstract partial class BaseCertAuthenticationProvider
     /// <summary>
     /// Gets default authentication options
     /// </summary>
-    protected abstract ICertAuthenticationOptions GetDefaultOptions();
+    protected abstract IPiQAuthenticationOptions GetDefaultOptions();
 }

@@ -52,43 +52,43 @@ public static class CoreServiceCollectionExtensions
     public static IServiceCollection AddCoreServices(this IServiceCollection services)
     {
         // Register core factories
-        services.TryAddSingleton<ICertCorrelationIdFactory, CertCorrelationIdFactory>();
-        services.TryAddSingleton<ICertExceptionFactory, CertExceptionFactory>();
-        services.TryAddSingleton<ICertResultFactory, CertResultFactory>();
-        services.TryAddSingleton<ICertResultTransformer, CertResultTransformer>();
-        services.TryAddSingleton<ICertAsyncLockFactory, CertAsyncLockFactory>();
+        services.TryAddSingleton<IPiQCorrelationIdFactory, PiQCorrelationIdFactory>();
+        services.TryAddSingleton<IPiQExceptionFactory, PiQExceptionFactory>();
+        services.TryAddSingleton<IPiQResultFactory, PiQResultFactory>();
+        services.TryAddSingleton<IPiQResultTransformer, PiQResultTransformer>();
+        services.TryAddSingleton<IPiQAsyncLockFactory, PiQAsyncLockFactory>();
 
         // Register time and random providers
-        services.TryAddSingleton<ICertTimeProvider, CertSystemTimeProvider>();
-        services.TryAddSingleton<ICertRandomProvider>(sp =>
-            CertRandomProviderFactory.SecureProvider); // Default to secure
+        services.TryAddSingleton<IPiQTimeProvider, PiQSystemTimeProvider>();
+        services.TryAddSingleton<IPiQRandomProvider>(sp =>
+            PiQRandomProviderFactory.SecureProvider); // Default to secure
 
         // Also register the factory for custom provider creation
-        services.TryAddSingleton<ICertTimeProviderFactory, CertTimeProviderFactory>();
+        services.TryAddSingleton<IPiQTimeProviderFactory, PiQTimeProviderFactory>();
 
-        // Configure CertTimeProviderFactory with the real implementation
+        // Configure PiQTimeProviderFactory with the real implementation
         // This is done during service registration to ensure all static contexts
         // use the same time provider as DI contexts
         using (var tempProvider = services.BuildServiceProvider())
         {
-            var timeProvider = tempProvider.GetRequiredService<ICertTimeProvider>();
+            var timeProvider = tempProvider.GetRequiredService<IPiQTimeProvider>();
             // Use the static ConfigureStatic method, not the instance method
-            CertTimeProviderFactory.ConfigureStatic(timeProvider);
+            PiQTimeProviderFactory.ConfigureStatic(timeProvider);
         }
 
         // Register authentication services
-        services.TryAddScoped<ICertAuthenticationContext, CertAuthenticationContext>();
+        services.TryAddScoped<IPiQAuthenticationContext, PiQAuthenticationContext>();
 
         // Register token cache and validator interfaces
-        services.TryAddSingleton<ICertTokenCache, CertMemoryTokenCache>();
-        services.TryAddScoped<ICertTokenValidator, CertTokenValidator>();
+        services.TryAddSingleton<IPiQTokenCache, PiQMemoryTokenCache>();
+        services.TryAddScoped<IPiQTokenValidator, PiQTokenValidator>();
 
         // Register token cache options - using proper record initialization
-        services.AddOptions<CertCacheOptions>()
+        services.AddOptions<PiQCacheOptions>()
             .Configure(options =>
             {
                 // For records, use the 'with' expression to create a new instance
-                var defaultOptions = new CertCacheOptions
+                var defaultOptions = new PiQCacheOptions
                 {
                     DefaultExpirationMinutes = 60,
                     MaxItems = 1000
@@ -96,9 +96,9 @@ public static class CoreServiceCollectionExtensions
 
                 // Copy the values to the options instance - this is a workaround
                 // since we can't directly modify the options instance with init properties
-                typeof(CertCacheOptions).GetProperty(nameof(CertCacheOptions.DefaultExpirationMinutes))
+                typeof(PiQCacheOptions).GetProperty(nameof(PiQCacheOptions.DefaultExpirationMinutes))
                     ?.SetValue(options, defaultOptions.DefaultExpirationMinutes);
-                typeof(CertCacheOptions).GetProperty(nameof(CertCacheOptions.MaxItems))
+                typeof(PiQCacheOptions).GetProperty(nameof(PiQCacheOptions.MaxItems))
                     ?.SetValue(options, defaultOptions.MaxItems);
             })
             .ValidateDataAnnotations();
@@ -114,16 +114,16 @@ public static class CoreServiceCollectionExtensions
     public static IServiceCollection AddMetricsServices(this IServiceCollection services)
     {
         // Register individual trackers
-        services.TryAddSingleton<ICertConnectionMetrics, CertConnectionMetricsTracker>();
-        services.TryAddSingleton<ICertOperationMetrics, CertOperationMetrics>();
-        services.TryAddSingleton<ICertCacheMetrics, CertCacheMetricsTracker>();
+        services.TryAddSingleton<IPiQConnectionMetrics, PiQConnectionMetricsTracker>();
+        services.TryAddSingleton<IPiQOperationMetrics, PiQOperationMetrics>();
+        services.TryAddSingleton<IPiQCacheMetrics, PiQCacheMetricsTracker>();
 
         // Register composite tracker
-        services.TryAddSingleton<ICertCompositeMetricsTracker, CertCompositeMetricsTracker>();
+        services.TryAddSingleton<IPiQCompositeMetricsTracker, PiQCompositeMetricsTracker>();
 
         // Register interface resolvers
-        services.TryAddSingleton<ICertMetricsProvider>(sp =>
-            sp.GetRequiredService<ICertCompositeMetricsTracker>());
+        services.TryAddSingleton<IPiQMetricsProvider>(sp =>
+            sp.GetRequiredService<IPiQCompositeMetricsTracker>());
 
         return services;
     }
@@ -135,14 +135,14 @@ public static class CoreServiceCollectionExtensions
     /// <returns>The service collection for chaining</returns>
     public static IServiceCollection AddValidationServices(this IServiceCollection services)
     {
-        services.TryAddSingleton<ICertValidationProcessor, CertValidationProcessor>();
-        services.TryAddSingleton<ICertValidationRuleFactory, CertValidationRuleFactory>();
+        services.TryAddSingleton<IPiQValidationProcessor, PiQValidationProcessor>();
+        services.TryAddSingleton<IPiQValidationRuleFactory, PiQValidationRuleFactory>();
 
         // Add validation diagnostics service
-        services.TryAddSingleton<ICertValidationDiagnosticsService, Validation.Diagnostics.CertValidationDiagnosticsService>();
+        services.TryAddSingleton<IPiQValidationDiagnosticsService, Validation.Diagnostics.PiQValidationDiagnosticsService>();
 
         // Ensure validation context factory is registered
-        services.TryAddSingleton<ICertValidationContextFactory, CertValidationContextFactory>();
+        services.TryAddSingleton<IPiQValidationContextFactory, PiQValidationContextFactory>();
 
         return services;
     }

@@ -10,7 +10,7 @@ namespace PiQApi.Ews.Core.Results.Interfaces
     /// <summary>
     /// Base interface for all EWS operation results
     /// </summary>
-    public interface IEwsResult : ICertResult
+    public interface IEwsResult : IPiQResult
     {
         /// <summary>
         /// Gets the operation status

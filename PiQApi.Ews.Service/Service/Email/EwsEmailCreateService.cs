@@ -22,7 +22,7 @@ namespace PiQApi.Ews.Service.Service.Email
     {
         private readonly IEwsPropertySetService _propertySetService;
         private readonly IEwsValidationContextFactory _validationContextFactory;
-        private readonly ICertValidationProcessor _validationProcessor;
+        private readonly IPiQValidationProcessor _validationProcessor;
         private readonly ILogger<EwsEmailCreateService> _logger;
 
         /// <summary>
@@ -32,10 +32,10 @@ namespace PiQApi.Ews.Service.Service.Email
             IExchangeServiceWrapper serviceWrapper,
             IEwsErrorMappingService errorMappingService,
             IEwsPolicyExecutor policyExecutor,
-            ICertExceptionFactory exceptionFactory,
+            IPiQExceptionFactory exceptionFactory,
             IEwsPropertySetService propertySetService,
             IEwsValidationContextFactory validationContextFactory,
-            ICertValidationProcessor validationProcessor,
+            IPiQValidationProcessor validationProcessor,
             ILogger<EwsEmailCreateService> logger)
             : base(serviceWrapper, errorMappingService, policyExecutor, exceptionFactory, logger)
         {
@@ -232,12 +232,12 @@ namespace PiQApi.Ews.Service.Service.Email
                     _logger.LogWarning("Property set validation failed. CorrelationId: {CorrelationId}, Errors: {ErrorCount}",
                         context.CorrelationId, validationResult.Errors.Count);
 
-                    var exception = new CertValidationException("Property set validation failed", validationResult.Errors);
+                    var exception = new PiQValidationException("Property set validation failed", validationResult.Errors);
                     exception.SetCorrelationId(context.CorrelationId);
                     throw exception;
                 }
             }
-            catch (CertException ex)
+            catch (PiQException ex)
             {
                 ex.SetCorrelationId(context.CorrelationId);
                 throw;
@@ -275,12 +275,12 @@ namespace PiQApi.Ews.Service.Service.Email
                     _logger.LogWarning("Message validation failed. CorrelationId: {CorrelationId}, Errors: {ErrorCount}",
                         context.CorrelationId, validationResult.Errors.Count);
 
-                    var exception = new CertValidationException("Message validation failed", validationResult.Errors);
+                    var exception = new PiQValidationException("Message validation failed", validationResult.Errors);
                     exception.SetCorrelationId(context.CorrelationId);
                     throw exception;
                 }
             }
-            catch (CertException ex)
+            catch (PiQException ex)
             {
                 ex.SetCorrelationId(context.CorrelationId);
                 throw;

@@ -22,15 +22,15 @@ namespace PiQApi.Ews.Service.Core
     {
         private readonly ILogger<EwsConnectionManager> _logger;
         private readonly IEwsServiceFactory _serviceFactory;
-        private readonly ICertExceptionFactory _exceptionFactory;
-        private readonly ICertAsyncLockFactory _lockFactory;
+        private readonly IPiQExceptionFactory _exceptionFactory;
+        private readonly IPiQAsyncLockFactory _lockFactory;
         private readonly EwsConnectionOptions _options;
 
         private readonly ConcurrentBag<IEwsServiceBase> _servicePool;
         private readonly SemaphoreSlim _poolSemaphore;
         private readonly CancellationTokenSource _cancellationTokenSource;
         private readonly object _circuitBreakerLock = new();
-        private readonly ICertAsyncLock _stateLock;
+        private readonly IPiQAsyncLock _stateLock;
 
         private int _failureCount;
         private int _successCount;
@@ -98,8 +98,8 @@ namespace PiQApi.Ews.Service.Core
         public EwsConnectionManager(
             ILogger<EwsConnectionManager> logger,
             IEwsServiceFactory serviceFactory,
-            ICertExceptionFactory exceptionFactory,
-            ICertAsyncLockFactory lockFactory,
+            IPiQExceptionFactory exceptionFactory,
+            IPiQAsyncLockFactory lockFactory,
             IOptions<EwsConnectionOptions> options)
         {
             _logger = logger ?? throw new ArgumentNullException(nameof(logger));
@@ -222,7 +222,7 @@ namespace PiQApi.Ews.Service.Core
                     else
                     {
                         _circuitBreakerOpenLog(_logger, null);
-                        throw new CertCircuitBreakerOpenException(
+                        throw new PiQCircuitBreakerOpenException(
                             "Circuit breaker is open, connection acquisition denied",
                             "EwsConnectionManager");
                     }
@@ -299,7 +299,7 @@ namespace PiQApi.Ews.Service.Core
                 // Raise error event
                 OnConnectionError(ex, context.CorrelationId);
 
-                if (ex is CertCircuitBreakerOpenException || ex is CertException)
+                if (ex is PiQCircuitBreakerOpenException || ex is PiQException)
                 {
                     throw;
                 }
@@ -395,7 +395,7 @@ namespace PiQApi.Ews.Service.Core
 
             // Create a temporary context for warmup
             var context = new EwsOperationContext(
-                await Task.FromResult<ICertOperationContext>(null!),
+                await Task.FromResult<IPiQOperationContext>(null!),
                 await Task.FromResult<IEwsCorrelationContext>(null!),
                 _logger);
 

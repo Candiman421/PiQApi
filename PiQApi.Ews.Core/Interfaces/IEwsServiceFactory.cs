@@ -8,7 +8,7 @@ namespace PiQApi.Ews.Core.Interfaces
     /// Factory for creating Exchange Web Service instances
     /// Extends the core service factory interface with EWS-specific functionality
     /// </summary>
-    public interface IEwsServiceFactory : ICertServiceFactory
+    public interface IEwsServiceFactory : IPiQServiceFactory
     {
         /// <summary>
         /// Creates a new EWS service

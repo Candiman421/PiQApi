@@ -12,7 +12,7 @@ namespace PiQApi.Core.Authentication;
 /// <summary>
 /// Base implementation for authentication providers
 /// </summary>
-public abstract partial class BaseCertAuthenticationProvider : ICertAuthenticationProvider
+public abstract partial class BaseCertAuthenticationProvider : IPiQAuthenticationProvider
 {
     // Logger message delegates for better performance
     private static readonly Action<ILogger, string, string, Exception?> LogValidatingToken =
@@ -65,17 +65,17 @@ public abstract partial class BaseCertAuthenticationProvider : ICertAuthenticati
     /// <summary>
     /// Gets the correlation context
     /// </summary>
-    public ICertCorrelationContext CorrelationContext { get; }
+    public IPiQCorrelationContext CorrelationContext { get; }
 
     /// <summary>
     /// Gets the result factory
     /// </summary>
-    protected ICertResultFactory ResultFactory { get; }
+    protected IPiQResultFactory ResultFactory { get; }
 
     /// <summary>
     /// Gets the time provider
     /// </summary>
-    protected ICertTimeProvider TimeProvider { get; }
+    protected IPiQTimeProvider TimeProvider { get; }
 
     /// <summary>
     /// Gets the authentication type
@@ -92,14 +92,14 @@ public abstract partial class BaseCertAuthenticationProvider : ICertAuthenticati
     /// <exception cref="ArgumentNullException">Thrown when any parameter is null</exception>
     protected BaseCertAuthenticationProvider(
         ILogger logger,
-        ICertCorrelationContext correlationContext,
-        ICertResultFactory resultFactory,
-        ICertTimeProvider? timeProvider = null)
+        IPiQCorrelationContext correlationContext,
+        IPiQResultFactory resultFactory,
+        IPiQTimeProvider? timeProvider = null)
     {
         Logger = logger ?? throw new ArgumentNullException(nameof(logger));
         CorrelationContext = correlationContext ?? throw new ArgumentNullException(nameof(correlationContext));
         ResultFactory = resultFactory ?? throw new ArgumentNullException(nameof(resultFactory));
-        TimeProvider = timeProvider ?? CertTimeProviderFactory.Current;
+        TimeProvider = timeProvider ?? PiQTimeProviderFactory.Current;
     }
 
     /// <summary>
@@ -108,7 +108,7 @@ public abstract partial class BaseCertAuthenticationProvider : ICertAuthenticati
     /// <param name="options">Authentication options</param>
     /// <param name="ct">Cancellation token</param>
     /// <returns>Authentication token info</returns>
-    public virtual async Task<ICertTokenInfo> GetTokenAsync(ICertAuthenticationOptions options, CancellationToken ct)
+    public virtual async Task<IPiQTokenInfo> GetTokenAsync(IPiQAuthenticationOptions options, CancellationToken ct)
     {
         ArgumentNullException.ThrowIfNull(options);
 
@@ -165,5 +165,5 @@ public abstract partial class BaseCertAuthenticationProvider : ICertAuthenticati
     /// <param name="options">Authentication options</param>
     /// <param name="ct">Cancellation token</param>
     /// <returns>Authentication token info</returns>
-    protected abstract Task<ICertTokenInfo> GetTokenInternalAsync(ICertAuthenticationOptions options, CancellationToken ct);
+    protected abstract Task<IPiQTokenInfo> GetTokenInternalAsync(IPiQAuthenticationOptions options, CancellationToken ct);
 }

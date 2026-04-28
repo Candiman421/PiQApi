@@ -20,7 +20,7 @@ namespace PiQApi.Ews.Service.Core
         private readonly IExchangeServiceWrapper _serviceWrapper;
         private readonly IEwsErrorMappingService _errorMappingService;
         private readonly IEwsPolicyExecutor _policyExecutor;
-        private readonly ICertExceptionFactory _exceptionFactory;
+        private readonly IPiQExceptionFactory _exceptionFactory;
         private readonly ILogger _logger;
         private readonly IEwsPolicyTypeMapper _policyTypeMapper;
 
@@ -50,7 +50,7 @@ namespace PiQApi.Ews.Service.Core
             IExchangeServiceWrapper serviceWrapper,
             IEwsErrorMappingService errorMappingService,
             IEwsPolicyExecutor policyExecutor,
-            ICertExceptionFactory exceptionFactory,
+            IPiQExceptionFactory exceptionFactory,
             ILogger logger,
             IEwsPolicyTypeMapper EwsPolicyTypeMapper)
         {
@@ -113,7 +113,7 @@ namespace PiQApi.Ews.Service.Core
 
                 await context.LogOperationErrorAsync(ex).ConfigureAwait(false);
 
-                if (ex is CertException certException)
+                if (ex is PiQException certException)
                 {
                     certException.SetCorrelationId(context.CorrelationId);
                 }
@@ -126,7 +126,7 @@ namespace PiQApi.Ews.Service.Core
                         nameof(GetServiceAsync),
                         ex);
 
-                    if (exception is CertException wrappedException)
+                    if (exception is PiQException wrappedException)
                     {
                         wrappedException.SetCorrelationId(context.CorrelationId);
                     }
@@ -193,14 +193,14 @@ namespace PiQApi.Ews.Service.Core
 
                 var mappedException = _errorMappingService.MapServiceException(ex, context.CorrelationId);
 
-                if (mappedException is CertException certException)
+                if (mappedException is PiQException certException)
                 {
                     certException.SetCorrelationId(context.CorrelationId);
                 }
 
                 throw mappedException;
             }
-            catch (Exception ex) when (ex is not CertException)
+            catch (Exception ex) when (ex is not PiQException)
             {
                 timer.Stop();
                 context.Metrics.RecordOperation(operationName, timer.Elapsed, false);
@@ -216,7 +216,7 @@ namespace PiQApi.Ews.Service.Core
                     operationName,
                     ex);
 
-                if (exception is CertException certException)
+                if (exception is PiQException certException)
                 {
                     certException.SetCorrelationId(context.CorrelationId);
                 }
@@ -278,14 +278,14 @@ namespace PiQApi.Ews.Service.Core
 
                 var mappedException = _errorMappingService.MapServiceException(ex, context.CorrelationId);
 
-                if (mappedException is CertException certException)
+                if (mappedException is PiQException certException)
                 {
                     certException.SetCorrelationId(context.CorrelationId);
                 }
 
                 throw mappedException;
             }
-            catch (Exception ex) when (ex is not CertException)
+            catch (Exception ex) when (ex is not PiQException)
             {
                 timer.Stop();
                 context.Metrics.RecordOperation(operationName, timer.Elapsed, false);
@@ -301,7 +301,7 @@ namespace PiQApi.Ews.Service.Core
                     operationName,
                     ex);
 
-                if (exception is CertException certException)
+                if (exception is PiQException certException)
                 {
                     certException.SetCorrelationId(context.CorrelationId);
                 }
@@ -351,7 +351,7 @@ namespace PiQApi.Ews.Service.Core
                     context.CorrelationId);
 
                 // Retrieve authentication options from context properties
-                if (context.TryGetPropertyValue<PiQApi.Core.Authentication.CertAuthenticationOptions>("AuthenticationOptions", out var options) && options != null)
+                if (context.TryGetPropertyValue<PiQApi.Core.Authentication.PiQAuthenticationOptions>("AuthenticationOptions", out var options) && options != null)
                 {
                     await ExecuteWithEwsPolicyAsync(
                         context,

@@ -22,10 +22,10 @@ public static class ValidationServiceCollectionExtensions
         ArgumentNullException.ThrowIfNull(services);
 
         // Register core validation services
-        _ = services.AddSingleton<ICertValidationProcessor, CertValidationProcessor>();
-        _ = services.AddSingleton<ICertValidationRuleFactory, CertValidationRuleFactory>();
-        _ = services.AddSingleton<ICertValidationService, CertValidationService>();
-        _ = services.AddSingleton<ICertValidationDiagnosticsService, CertValidationDiagnosticsService>();
+        _ = services.AddSingleton<IPiQValidationProcessor, PiQValidationProcessor>();
+        _ = services.AddSingleton<IPiQValidationRuleFactory, PiQValidationRuleFactory>();
+        _ = services.AddSingleton<IPiQValidationService, PiQValidationService>();
+        _ = services.AddSingleton<IPiQValidationDiagnosticsService, PiQValidationDiagnosticsService>();
 
         return services;
     }
@@ -46,9 +46,9 @@ public static class ValidationServiceCollectionExtensions
 
         foreach (var ruleType in rules)
         {
-            if (typeof(ICertValidationRule<TEntity>).IsAssignableFrom(ruleType))
+            if (typeof(IPiQValidationRule<TEntity>).IsAssignableFrom(ruleType))
             {
-                _ = services.AddSingleton(typeof(ICertValidationRule<TEntity>), ruleType);
+                _ = services.AddSingleton(typeof(IPiQValidationRule<TEntity>), ruleType);
             }
         }
 

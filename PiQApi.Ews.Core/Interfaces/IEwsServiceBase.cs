@@ -11,7 +11,7 @@ namespace PiQApi.Ews.Core.Interfaces
     /// Base interface for all Exchange Web Services operations
     /// Extends the core service base interface with EWS-specific functionality
     /// </summary>
-    public interface IEwsServiceBase : ICertServiceBase
+    public interface IEwsServiceBase : IPiQServiceBase
     {
         /// <summary>
         /// Gets the current Exchange service instance

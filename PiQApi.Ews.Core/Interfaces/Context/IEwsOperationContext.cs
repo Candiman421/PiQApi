@@ -13,7 +13,7 @@ namespace PiQApi.Ews.Core.Interfaces.Context
     /// <summary>
     /// Interface for Exchange operation context
     /// </summary>
-    public interface IEwsOperationContext : ICertOperationContext
+    public interface IEwsOperationContext : IPiQOperationContext
     {
         /// <summary>
         /// Gets the EWS-specific metrics
@@ -33,17 +33,17 @@ namespace PiQApi.Ews.Core.Interfaces.Context
         /// <summary>
         /// Gets the correlation context
         /// </summary>
-        new ICertCorrelationContext CorrelationContext { get; }
+        new IPiQCorrelationContext CorrelationContext { get; }
 
         /// <summary>
         /// Gets the validation context
         /// </summary>
-        ICertValidationContext ValidationContext { get; }
+        IPiQValidationContext ValidationContext { get; }
 
         /// <summary>
         /// Gets the properties collection
         /// </summary>
-        new ICertOperationProperties Properties { get; }
+        new IPiQOperationProperties Properties { get; }
 
         /// <summary>
         /// Logs the start of an operation

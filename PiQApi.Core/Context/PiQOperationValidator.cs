@@ -1,0 +1,145 @@
+// PiQApi.Core/Context/PiQOperationValidator.cs
+using PiQApi.Abstractions.Context;
+using PiQApi.Abstractions.Core;
+using PiQApi.Abstractions.Enums;
+using PiQApi.Abstractions.Results;
+using PiQApi.Abstractions.Validation;
+using PiQApi.Abstractions.Validation.Models;
+using PiQApi.Core.Results;
+using PiQApi.Core.Validation;
+using System;
+using System.Collections.Generic;
+using System.Threading;
+using System.Threading.Tasks;
+
+namespace PiQApi.Core.Context
+{
+    /// <summary>
+    /// Implementation of validation functionality for operation contexts
+    /// </summary>
+    public class PiQOperationValidator : IPiQOperationValidator
+    {
+        private readonly IPiQValidationService _validationService;
+        private IPiQCorrelationContext _correlationContext; // Removed readonly to allow reassignment
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="PiQOperationValidator"/> class
+        /// </summary>
+        /// <param name="validationService">Validation service</param>
+        /// <param name="correlationContext">Correlation context</param>
+        public PiQOperationValidator(
+            IPiQValidationService validationService,
+            IPiQCorrelationContext correlationContext)
+        {
+            _validationService = validationService ?? throw new ArgumentNullException(nameof(validationService));
+            _correlationContext = correlationContext ?? throw new ArgumentNullException(nameof(correlationContext));
+        }
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="PiQOperationValidator"/> class
+        /// </summary>
+        /// <param name="validationService">Validation service</param>
+        public PiQOperationValidator(IPiQValidationService validationService)
+        {
+            _validationService = validationService ?? throw new ArgumentNullException(nameof(validationService));
+            _correlationContext = null!; // Will be provided later
+        }
+
+        /// <summary>
+        /// Sets the correlation context
+        /// </summary>
+        /// <param name="correlationContext">Correlation context</param>
+        public void SetCorrelationContext(IPiQCorrelationContext correlationContext)
+        {
+            ArgumentNullException.ThrowIfNull(correlationContext);
+
+            if (_correlationContext == null)
+            {
+                _correlationContext = correlationContext;
+            }
+        }
+
+        /// <summary>
+        /// Validates an entity asynchronously
+        /// </summary>
+        /// <typeparam name="T">Type of entity</typeparam>
+        /// <param name="entity">Entity to validate</param>
+        /// <param name="mode">Validation mode</param>
+        /// <param name="cancellationToken">Cancellation token</param>
+        /// <returns>Validation result</returns>
+        public async Task<IPiQValidationResult> ValidateAsync<T>(T entity, ValidationModeType mode, CancellationToken cancellationToken) where T : class
+        {
+            ArgumentNullException.ThrowIfNull(entity);
+
+            var context = CreateValidationContext(mode, cancellationToken);
+            return await _validationService.ValidateAsync(entity, context, cancellationToken).ConfigureAwait(false);
+        }
+
+        /// <summary>
+        /// Validates an entity as required asynchronously
+        /// </summary>
+        /// <typeparam name="T">Type of entity</typeparam>
+        /// <param name="entity">Entity to validate</param>
+        /// <param name="cancellationToken">Cancellation token</param>
+        /// <returns>Validation result</returns>
+        public Task<IPiQValidationResult> ValidateRequiredAsync<T>(T entity, CancellationToken cancellationToken) where T : class
+        {
+            return ValidateAsync(entity, ValidationModeType.Required, cancellationToken);
+        }
+
+        /// <summary>
+        /// Validates an entity and creates a result asynchronously
+        /// </summary>
+        /// <typeparam name="T">Type of entity</typeparam>
+        /// <param name="entity">Entity to validate</param>
+        /// <param name="mode">Validation mode</param>
+        /// <param name="cancellationToken">Cancellation token</param>
+        /// <returns>Result with the entity or validation errors</returns>
+        public async Task<IPiQResult<T>> ValidateAndCreateResultAsync<T>(T entity, ValidationModeType mode, CancellationToken cancellationToken) where T : class
+        {
+            ArgumentNullException.ThrowIfNull(entity);
+
+            var validationResult = await ValidateAsync(entity, mode, cancellationToken).ConfigureAwait(false);
+            string correlationId = _correlationContext?.CorrelationId ?? Guid.NewGuid().ToString("N");
+
+            // Create appropriate result based on validation
+            if (validationResult.IsValid)
+            {
+                return PiQResult<T>.CreateSuccess(entity, correlationId);
+            }
+            else
+            {
+                // Extract the first error if available
+                var errors = validationResult.Errors;
+                if (errors.Count > 0)
+                {
+                    var firstError = errors[0];
+                    return PiQResult<T>.CreateFailure(
+                        firstError.Code, 
+                        firstError.Message, 
+                        correlationId);
+                }
+
+                // Handle case with no specific errors
+                return PiQResult<T>.CreateFailure(
+                    "ValidationFailed",
+                    "Validation failed with no specific errors",
+                    correlationId);
+            }
+        }
+
+        /// <summary>
+        /// Creates a validation context
+        /// </summary>
+        /// <param name="mode">Validation mode</param>
+        /// <param name="cancellationToken">Cancellation token</param>
+        /// <returns>Validation context</returns>
+        public IPiQValidationContext CreateValidationContext(ValidationModeType mode = ValidationModeType.Standard, CancellationToken? cancellationToken = null)
+        {
+            string correlationId = _correlationContext?.CorrelationId ?? Guid.NewGuid().ToString("N");
+            var token = cancellationToken ?? CancellationToken.None;
+
+            return _validationService.CreateContext(mode, token);
+        }
+    }
+}

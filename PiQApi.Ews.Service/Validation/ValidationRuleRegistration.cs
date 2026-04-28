@@ -16,7 +16,7 @@ namespace PiQApi.Ews.Service.Validation
         /// <param name="serviceProvider">Service provider</param>
         public static void RegisterValidationRules(IServiceProvider serviceProvider)
         {
-            var processor = serviceProvider.GetRequiredService<ICertValidationProcessor>();
+            var processor = serviceProvider.GetRequiredService<IPiQValidationProcessor>();
 
             // Register email rules
             processor.RegisterRule(serviceProvider.GetRequiredService<EmailAddressCollectionValidationRule>());
