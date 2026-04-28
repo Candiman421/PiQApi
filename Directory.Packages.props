@@ -57,7 +57,7 @@
     <PackageVersion Include="Polly.Core" Version="8.5.2" />
     <!-- Utility Packages with security patches -->
     <PackageVersion Include="System.Text.Json" Version="9.0.3" />
-    <PackageVersion Include="System.Security.Cryptography.Xml" Version="8.0.0" />
+    <PackageVersion Include="System.Security.Cryptography.Xml" Version="8.0.1" />
     <PackageVersion Include="System.Formats.Asn1" Version="8.0.1" />
   </ItemGroup>
 </Project>
