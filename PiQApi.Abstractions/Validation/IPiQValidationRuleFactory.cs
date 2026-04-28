@@ -1,0 +1,22 @@
+// PiQApi.Abstractions/Validation/IPiQValidationRuleFactory.cs
+namespace PiQApi.Abstractions.Validation;
+
+/// <summary>
+/// Factory for creating validation rule instances
+/// </summary>
+public interface IPiQValidationRuleFactory
+{
+    /// <summary>
+    /// Creates a validation rule instance of the specified type
+    /// </summary>
+    /// <typeparam name="T">Type of the validation rule</typeparam>
+    /// <returns>Instance of the validation rule</returns>
+    T CreateRule<T>() where T : IPiQValidationRule;
+
+    /// <summary>
+    /// Creates validation rules for a specific entity type
+    /// </summary>
+    /// <typeparam name="TEntity">Entity type</typeparam>
+    /// <returns>Collection of validation rules</returns>
+    IEnumerable<IPiQValidationRule<TEntity>> GetRulesForEntity<TEntity>() where TEntity : class;
+}

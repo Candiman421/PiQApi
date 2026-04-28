@@ -8,9 +8,9 @@ namespace PiQApi.Abstractions.Results
     /// </summary>
     public interface IResultTransformer
     {
-        ICertResult<T> FromValidation<T>(CertValidationResult validation, T? value = default);
-        IExchangeResult<T> FromValidationToExchange<T>(CertValidationResult validation, T? value = default, string requestId = "");
-        ICertResult<TNew> Map<T, TNew>(ICertResult<T> result, Func<T, TNew> mapper);
+        IPiQResult<T> FromValidation<T>(PiQValidationResult validation, T? value = default);
+        IExchangeResult<T> FromValidationToExchange<T>(PiQValidationResult validation, T? value = default, string requestId = "");
+        IPiQResult<TNew> Map<T, TNew>(IPiQResult<T> result, Func<T, TNew> mapper);
         IExchangeResult<TNew> MapExchange<T, TNew>(IExchangeResult<T> result, Func<T, TNew> mapper);
     }
 }

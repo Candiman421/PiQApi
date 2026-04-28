@@ -11,7 +11,7 @@ namespace PiQApi.Abstractions.Validation.Interfaces
         /// </summary>
         /// <typeparam name="T">Entity type</typeparam>
         /// <param name="rules">Validation rules</param>
-        void RegisterRules<T>(IEnumerable<ICertValidationRule<T>> rules) where T : class;
+        void RegisterRules<T>(IEnumerable<IPiQValidationRule<T>> rules) where T : class;
 
         /// <summary>
         /// Validates an entity using registered rules
@@ -20,7 +20,7 @@ namespace PiQApi.Abstractions.Validation.Interfaces
         /// <param name="entity">Entity to validate</param>
         /// <param name="context">Validation context</param>
         /// <returns>Validation result</returns>
-        CertValidationResult Validate<T>(T entity, CertValidationContext context) where T : class;
+        PiQValidationResult Validate<T>(T entity, PiQValidationContext context) where T : class;
 
         /// <summary>
         /// Validates an entity asynchronously using registered rules
@@ -30,7 +30,7 @@ namespace PiQApi.Abstractions.Validation.Interfaces
         /// <param name="context">Validation context</param>
         /// <param name="cancellationToken">Cancellation token</param>
         /// <returns>Validation result</returns>
-        Task<CertValidationResult> ValidateAsync<T>(T entity, CertValidationContext context, CancellationToken cancellationToken = default) where T : class;
+        Task<PiQValidationResult> ValidateAsync<T>(T entity, PiQValidationContext context, CancellationToken cancellationToken = default) where T : class;
 
         /// <summary>
         /// Clears all registered validation rules

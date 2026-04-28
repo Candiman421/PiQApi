@@ -47,7 +47,7 @@ namespace PiQApi.Abstractions.Validation.Constants
             public const int MaxLocationLength = 255;
         }
 
-        public static class CertHeaders
+        public static class PiQHeaders
         {
             public const int MaxHeaderCount = 50;
             public const int MaxHeaderNameLength = 50;

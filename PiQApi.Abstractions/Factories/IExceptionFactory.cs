@@ -46,7 +46,7 @@ namespace PiQApi.Abstractions.Factories
         /// <summary>
         /// Creates a validation exception
         /// </summary>
-        Exception CreateValidationException(string message, string? entityType = null, IEnumerable<CertValidationResult>? errors = null, Exception? inner = null);
+        Exception CreateValidationException(string message, string? entityType = null, IEnumerable<PiQValidationResult>? errors = null, Exception? inner = null);
 
         /// <summary>
         /// Creates a resource not found exception

@@ -1,0 +1,20 @@
+// PiQApi.Abstractions/Monitoring/IPiQMetricsProvider.cs
+namespace PiQApi.Abstractions.Monitoring;
+
+/// <summary>
+/// Provides access to metrics snapshots with comprehensive tracking capabilities
+/// </summary>
+public interface IPiQMetricsProvider
+{
+    /// <summary>
+    /// Gets a snapshot of the current metrics asynchronously
+    /// </summary>
+    /// <param name="cancellationToken">Token to cancel the operation</param>
+    /// <returns>A task containing the metrics snapshot</returns>
+    Task<IPiQMetricsSnapshot> GetMetricsSnapshotAsync(CancellationToken cancellationToken = default);
+
+    /// <summary>
+    /// Resets all tracked metrics to their initial state
+    /// </summary>
+    void ResetCounters();
+}

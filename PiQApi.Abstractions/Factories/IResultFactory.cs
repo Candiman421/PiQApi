@@ -9,8 +9,8 @@ namespace PiQApi.Abstractions.Factories
     /// </summary>
     public interface IResultFactory
     {
-        ICertResult<T> Success<T>(T value);
-        ICertResult<T> Failure<T>(string code, string message);
+        IPiQResult<T> Success<T>(T value);
+        IPiQResult<T> Failure<T>(string code, string message);
         IExchangeResult<T> ExchangeSuccess<T>(T value, ServiceOperationStatusType status, string requestId);
         IExchangeResult<T> ExchangeFailure<T>(string code, string message, ServiceOperationStatusType status, string requestId);
     }

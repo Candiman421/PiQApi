@@ -11,13 +11,13 @@ namespace PiQApi.Abstractions.Validation.Interfaces
         /// </summary>
         /// <typeparam name="T">Type of the validation rule</typeparam>
         /// <returns>Instance of the validation rule</returns>
-        T CreateRule<T>() where T : ICertValidationRule;
+        T CreateRule<T>() where T : IPiQValidationRule;
 
         /// <summary>
         /// Creates validation rules for a specific entity type
         /// </summary>
         /// <typeparam name="TEntity">Entity type</typeparam>
         /// <returns>Collection of validation rules</returns>
-        IEnumerable<ICertValidationRule<TEntity>> GetRulesForEntity<TEntity>() where TEntity : class;
+        IEnumerable<IPiQValidationRule<TEntity>> GetRulesForEntity<TEntity>() where TEntity : class;
     }
 }

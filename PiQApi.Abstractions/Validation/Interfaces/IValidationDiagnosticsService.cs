@@ -11,13 +11,13 @@ namespace PiQApi.Abstractions.Validation.Interfaces
         /// </summary>
         /// <param name="result">The validation result to diagnose</param>
         /// <returns>A string containing diagnostic information</returns>
-        string GetDiagnosticInfo(CertValidationResult result);
+        string GetDiagnosticInfo(PiQValidationResult result);
 
         /// <summary>
         /// Gets a detailed error report from a validation result
         /// </summary>
         /// <param name="result">The validation result to analyze</param>
         /// <returns>A formatted error report</returns>
-        string GetErrorReport(CertValidationResult result);
+        string GetErrorReport(PiQValidationResult result);
     }
 }
