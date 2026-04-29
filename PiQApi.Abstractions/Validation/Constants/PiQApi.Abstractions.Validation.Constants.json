@@ -1,55 +1,55 @@
 {
-    "documentPath":  "docsflat/PiQApi.Abstractions.Validation.Constants.json",
-    "version":  "1.0.0",
-    "lastUpdated":  "2025-04-06",
-    "purpose":  "Summarizes the public API of PiQApi.Abstractions.Validation.Constants and provides usage guidance",
-    "guide_type":  "api-reference",
-    "development_contexts":  [
-                                 "development"
-                             ],
-    "applies_to":  [
-                       "PiQApi.Abstractions.Validation.Constants"
-                   ],
-    "overview":  {
-                     "description":  "The Constants namespace contains components for the PiQApi.Abstractions.Validation project.",
-                     "usage_pattern":  "Import and use classes from this namespace to work with Constants functionality."
-                 },
-    "components":  {
-                       "PiQValidationLimits":  {
-                                                    "purpose":  "Provides PiQValidationLimits functionality",
-                                                    "key_methods":  [
+    "documentPath": "docsflat/PiQApi.Abstractions.Validation.Constants.json",
+    "version": "1.0.0",
+    "lastUpdated": "2025-04-06",
+    "purpose": "Summarizes the public API of PiQApi.Abstractions.Validation.Constants and provides usage guidance",
+    "guide_type": "api-reference",
+    "development_contexts": [
+        "development"
+    ],
+    "applies_to": [
+        "PiQApi.Abstractions.Validation.Constants"
+    ],
+    "overview": {
+        "description": "The Constants namespace contains components for the PiQApi.Abstractions.Validation project.",
+        "usage_pattern": "Import and use classes from this namespace to work with Constants functionality."
+    },
+    "components": {
+        "PiQValidationLimits": {
+            "purpose": "Provides PiQValidationLimits functionality",
+            "key_methods": [
 
-                                                                    ],
-                                                    "key_properties":  [
-                                                                           "PiQValidationLimits -\u003e class"
-                                                                       ]
-                                                },
-                       "PiQValidationErrorCodes":  {
-                                                        "purpose":  "Provides PiQValidationErrorCodes functionality",
-                                                        "key_methods":  [
+            ],
+            "key_properties": [
+                "PiQValidationLimits -\u003e class"
+            ]
+        },
+        "PiQValidationErrorCodes": {
+            "purpose": "Provides PiQValidationErrorCodes functionality",
+            "key_methods": [
 
-                                                                        ],
-                                                        "key_properties":  [
-                                                                               "PiQValidationErrorCodes -\u003e class"
-                                                                           ]
-                                                    },
-                       "PiQValidationMessages":  {
-                                                      "purpose":  "Provides PiQValidationMessages functionality",
-                                                      "key_methods":  [
+            ],
+            "key_properties": [
+                "PiQValidationErrorCodes -\u003e class"
+            ]
+        },
+        "PiQValidationMessages": {
+            "purpose": "Provides PiQValidationMessages functionality",
+            "key_methods": [
 
-                                                                      ],
-                                                      "key_properties":  [
-                                                                             "PiQValidationMessages -\u003e class"
-                                                                         ]
-                                                  },
-                       "PiQFileExtensions":  {
-                                                  "purpose":  "Provides PiQFileExtensions functionality",
-                                                  "key_methods":  [
+            ],
+            "key_properties": [
+                "PiQValidationMessages -\u003e class"
+            ]
+        },
+        "PiQFileExtensions": {
+            "purpose": "Provides PiQFileExtensions functionality",
+            "key_methods": [
 
-                                                                  ],
-                                                  "key_properties":  [
-                                                                         "PiQFileExtensions -\u003e class"
-                                                                     ]
-                                              }
-                   }
+            ],
+            "key_properties": [
+                "PiQFileExtensions -\u003e class"
+            ]
+        }
+    }
 }

@@ -1,47 +1,47 @@
 {
-    "documentPath":  "docsflat/PiQApi.Abstractions.Operations.json",
-    "version":  "1.0.0",
-    "lastUpdated":  "2025-04-06",
-    "purpose":  "Summarizes the public API of PiQApi.Abstractions.Operations and provides usage guidance",
-    "guide_type":  "api-reference",
-    "development_contexts":  [
-                                 "development"
-                             ],
-    "applies_to":  [
-                       "PiQApi.Abstractions.Operations"
-                   ],
-    "overview":  {
-                     "description":  "The Operations namespace contains components for the PiQApi.Abstractions project.",
-                     "usage_pattern":  "Import and use classes from this namespace to work with Operations functionality."
-                 },
-    "components":  {
-                       "IPiQOperation":  {
-                                              "purpose":  "Provides IPiQOperation functionality",
-                                              "key_methods":  [
-                                                                  "ExecuteAsync(CancellationToken cancellationToken = default) -\u003e Task\u003cTResult\u003e"
-                                                              ],
-                                              "key_properties":  [
-                                                                     "PiQApi.Abstractions.Operations -\u003e namespace",
-                                                                     "IPiQOperationBase -\u003e :",
-                                                                     "default) -\u003e ="
-                                                                 ],
-                                              "type":  "interface"
-                                          },
-                       "IPiQOperationBase":  {
-                                                  "purpose":  "Provides IPiQOperationBase functionality",
-                                                  "key_methods":  [
-                                                                      "InitializeAsync(CancellationToken cancellationToken = default) -\u003e Task",
-                                                                      "CleanupAsync(CancellationToken cancellationToken = default) -\u003e Task"
-                                                                  ],
-                                                  "key_properties":  [
-                                                                         "System.Threading -\u003e using",
-                                                                         "System.Threading.Tasks -\u003e using",
-                                                                         "PiQApi.Abstractions.Operations -\u003e namespace",
-                                                                         "IPiQOperationBase -\u003e interface",
-                                                                         "default) -\u003e =",
-                                                                         "default) -\u003e ="
-                                                                     ],
-                                                  "type":  "interface"
-                                              }
-                   }
+    "documentPath": "docsflat/PiQApi.Abstractions.Operations.json",
+    "version": "1.0.0",
+    "lastUpdated": "2025-04-06",
+    "purpose": "Summarizes the public API of PiQApi.Abstractions.Operations and provides usage guidance",
+    "guide_type": "api-reference",
+    "development_contexts": [
+        "development"
+    ],
+    "applies_to": [
+        "PiQApi.Abstractions.Operations"
+    ],
+    "overview": {
+        "description": "The Operations namespace contains components for the PiQApi.Abstractions project.",
+        "usage_pattern": "Import and use classes from this namespace to work with Operations functionality."
+    },
+    "components": {
+        "IPiQOperation": {
+            "purpose": "Provides IPiQOperation functionality",
+            "key_methods": [
+                "ExecuteAsync(CancellationToken cancellationToken = default) -\u003e Task\u003cTResult\u003e"
+            ],
+            "key_properties": [
+                "PiQApi.Abstractions.Operations -\u003e namespace",
+                "IPiQOperationBase -\u003e :",
+                "default) -\u003e ="
+            ],
+            "type": "interface"
+        },
+        "IPiQOperationBase": {
+            "purpose": "Provides IPiQOperationBase functionality",
+            "key_methods": [
+                "InitializeAsync(CancellationToken cancellationToken = default) -\u003e Task",
+                "CleanupAsync(CancellationToken cancellationToken = default) -\u003e Task"
+            ],
+            "key_properties": [
+                "System.Threading -\u003e using",
+                "System.Threading.Tasks -\u003e using",
+                "PiQApi.Abstractions.Operations -\u003e namespace",
+                "IPiQOperationBase -\u003e interface",
+                "default) -\u003e =",
+                "default) -\u003e ="
+            ],
+            "type": "interface"
+        }
+    }
 }

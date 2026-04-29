@@ -1,270 +1,270 @@
 {
-    "documentPath":  "docsflat/PiQApi.Abstractions.Context.json",
-    "version":  "1.0.0",
-    "lastUpdated":  "2025-04-06",
-    "purpose":  "Summarizes the public API of PiQApi.Abstractions.Context and provides usage guidance",
-    "guide_type":  "api-reference",
-    "development_contexts":  [
-                                 "development"
-                             ],
-    "applies_to":  [
-                       "PiQApi.Abstractions.Context"
-                   ],
-    "overview":  {
-                     "description":  "The Context namespace contains components for the PiQApi.Abstractions project.",
-                     "usage_pattern":  "Import and use classes from this namespace to work with Context functionality."
-                 },
-    "components":  {
-                       "IPiQOperationMetrics":  {
-                                                     "purpose":  "Provides IPiQOperationMetrics functionality",
-                                                     "key_methods":  [
-                                                                         "RecordOperation(string operationName, TimeSpan duration, bool success) -\u003e void",
-                                                                         "RecordCustomMetric(string metricName, double value) -\u003e void",
-                                                                         "IncrementCounter(string name, long increment = 1) -\u003e long",
-                                                                         "StartTimer(string name) -\u003e void",
-                                                                         "StopTimer(string name) -\u003e TimeSpan",
-                                                                         "RecordTime(string name, TimeSpan elapsedTime) -\u003e void",
-                                                                         "GetCounter(string name) -\u003e long",
-                                                                         "GetTimerElapsed(string name) -\u003e TimeSpan",
-                                                                         "CreateSnapshot() -\u003e object\u003e"
-                                                                     ],
-                                                     "key_properties":  [
-                                                                            "PiQApi.Abstractions.Monitoring -\u003e using",
-                                                                            "PiQApi.Abstractions.Context -\u003e namespace",
-                                                                            "IPiQMetricsProvider -\u003e :",
-                                                                            "SuccessfulOperations -\u003e long",
-                                                                            "FailedOperations -\u003e long",
-                                                                            "OperationCount -\u003e long",
-                                                                            "SuccessRate -\u003e double",
-                                                                            "AverageOperationDurationMs -\u003e long",
-                                                                            "Duration -\u003e TimeSpan",
-                                                                            "CustomMetrics -\u003e double\u003e",
-                                                                            "Counters -\u003e long\u003e",
-                                                                            "Timers -\u003e TimeSpan\u003e",
-                                                                            "success) -\u003e bool",
-                                                                            "value) -\u003e double",
-                                                                            "1) -\u003e =",
-                                                                            "name) -\u003e StartTimer(string",
-                                                                            "name) -\u003e StopTimer(string",
-                                                                            "elapsedTime) -\u003e TimeSpan",
-                                                                            "name) -\u003e GetCounter(string",
-                                                                            "name) -\u003e GetTimerElapsed(string"
-                                                                        ],
-                                                     "type":  "interface"
-                                                 },
-                       "IPiQOperationValidator":  {
-                                                       "purpose":  "Provides IPiQOperationValidator functionality",
-                                                       "key_methods":  [
-                                                                           "ValidateAsync\u003cT\u003e(T entity, ValidationModeType mode, CancellationToken cancellationToken = default) -\u003e Task\u003cIPiQValidationResult\u003e",
-                                                                           "ValidateRequiredAsync\u003cT\u003e(T entity, CancellationToken cancellationToken = default) -\u003e Task\u003cIPiQValidationResult\u003e",
-                                                                           "ValidateAndCreateResultAsync\u003cT\u003e(T entity, ValidationModeType mode, CancellationToken cancellationToken = default) -\u003e Task\u003cIPiQResult\u003cT\u003e\u003e",
-                                                                           "CreateValidationContext(ValidationModeType mode = ValidationModeType.Standard, CancellationToken? cancellationToken = null) -\u003e PiQValidationContext"
-                                                                       ],
-                                                       "key_properties":  [
-                                                                              "PiQApi.Abstractions.Enums -\u003e using",
-                                                                              "PiQApi.Abstractions.Results -\u003e using",
-                                                                              "PiQApi.Abstractions.Validation -\u003e using",
-                                                                              "PiQApi.Abstractions.Validation.Models -\u003e using",
-                                                                              "PiQApi.Abstractions.Context -\u003e namespace",
-                                                                              "IPiQOperationValidator -\u003e interface",
-                                                                              "class -\u003e :",
-                                                                              "class -\u003e :",
-                                                                              "class -\u003e :",
-                                                                              "null) -\u003e ="
-                                                                          ],
-                                                       "type":  "interface"
-                                                   },
-                       "IPiQOperationProperties":  {
-                                                        "purpose":  "Provides IPiQOperationProperties functionality",
-                                                        "key_methods":  [
-                                                                            "AddProperty(string key, object value) -\u003e void",
-                                                                            "AddProperties(IDictionary\u003cstring, object\u003e properties) -\u003e void",
-                                                                            "GetPropertyValue\u003cT\u003e(string key) -\u003e T",
-                                                                            "TryGetPropertyValue\u003cT\u003e(string key, out T? value) -\u003e bool",
-                                                                            "HasProperty(string key) -\u003e bool"
-                                                                        ],
-                                                        "key_properties":  [
-                                                                               "PiQApi.Abstractions.Context -\u003e namespace",
-                                                                               "IPiQOperationProperties -\u003e interface",
-                                                                               "Properties -\u003e object\u003e",
-                                                                               "value) -\u003e object",
-                                                                               "properties) -\u003e object\u003e",
-                                                                               "key) -\u003e GetPropertyValue\u003cT\u003e(string",
-                                                                               "value) -\u003e T?",
-                                                                               "key) -\u003e HasProperty(string"
-                                                                           ],
-                                                        "type":  "interface"
-                                                    },
-                       "IPiQOperationIdentifier":  {
-                                                        "purpose":  "Provides IPiQOperationIdentifier functionality",
-                                                        "key_methods":  [
+    "documentPath": "docsflat/PiQApi.Abstractions.Context.json",
+    "version": "1.0.0",
+    "lastUpdated": "2025-04-06",
+    "purpose": "Summarizes the public API of PiQApi.Abstractions.Context and provides usage guidance",
+    "guide_type": "api-reference",
+    "development_contexts": [
+        "development"
+    ],
+    "applies_to": [
+        "PiQApi.Abstractions.Context"
+    ],
+    "overview": {
+        "description": "The Context namespace contains components for the PiQApi.Abstractions project.",
+        "usage_pattern": "Import and use classes from this namespace to work with Context functionality."
+    },
+    "components": {
+        "IPiQOperationMetrics": {
+            "purpose": "Provides IPiQOperationMetrics functionality",
+            "key_methods": [
+                "RecordOperation(string operationName, TimeSpan duration, bool success) -\u003e void",
+                "RecordCustomMetric(string metricName, double value) -\u003e void",
+                "IncrementCounter(string name, long increment = 1) -\u003e long",
+                "StartTimer(string name) -\u003e void",
+                "StopTimer(string name) -\u003e TimeSpan",
+                "RecordTime(string name, TimeSpan elapsedTime) -\u003e void",
+                "GetCounter(string name) -\u003e long",
+                "GetTimerElapsed(string name) -\u003e TimeSpan",
+                "CreateSnapshot() -\u003e object\u003e"
+            ],
+            "key_properties": [
+                "PiQApi.Abstractions.Monitoring -\u003e using",
+                "PiQApi.Abstractions.Context -\u003e namespace",
+                "IPiQMetricsProvider -\u003e :",
+                "SuccessfulOperations -\u003e long",
+                "FailedOperations -\u003e long",
+                "OperationCount -\u003e long",
+                "SuccessRate -\u003e double",
+                "AverageOperationDurationMs -\u003e long",
+                "Duration -\u003e TimeSpan",
+                "CustomMetrics -\u003e double\u003e",
+                "Counters -\u003e long\u003e",
+                "Timers -\u003e TimeSpan\u003e",
+                "success) -\u003e bool",
+                "value) -\u003e double",
+                "1) -\u003e =",
+                "name) -\u003e StartTimer(string",
+                "name) -\u003e StopTimer(string",
+                "elapsedTime) -\u003e TimeSpan",
+                "name) -\u003e GetCounter(string",
+                "name) -\u003e GetTimerElapsed(string"
+            ],
+            "type": "interface"
+        },
+        "IPiQOperationValidator": {
+            "purpose": "Provides IPiQOperationValidator functionality",
+            "key_methods": [
+                "ValidateAsync\u003cT\u003e(T entity, ValidationModeType mode, CancellationToken cancellationToken = default) -\u003e Task\u003cIPiQValidationResult\u003e",
+                "ValidateRequiredAsync\u003cT\u003e(T entity, CancellationToken cancellationToken = default) -\u003e Task\u003cIPiQValidationResult\u003e",
+                "ValidateAndCreateResultAsync\u003cT\u003e(T entity, ValidationModeType mode, CancellationToken cancellationToken = default) -\u003e Task\u003cIPiQResult\u003cT\u003e\u003e",
+                "CreateValidationContext(ValidationModeType mode = ValidationModeType.Standard, CancellationToken? cancellationToken = null) -\u003e PiQValidationContext"
+            ],
+            "key_properties": [
+                "PiQApi.Abstractions.Enums -\u003e using",
+                "PiQApi.Abstractions.Results -\u003e using",
+                "PiQApi.Abstractions.Validation -\u003e using",
+                "PiQApi.Abstractions.Validation.Models -\u003e using",
+                "PiQApi.Abstractions.Context -\u003e namespace",
+                "IPiQOperationValidator -\u003e interface",
+                "class -\u003e :",
+                "class -\u003e :",
+                "class -\u003e :",
+                "null) -\u003e ="
+            ],
+            "type": "interface"
+        },
+        "IPiQOperationProperties": {
+            "purpose": "Provides IPiQOperationProperties functionality",
+            "key_methods": [
+                "AddProperty(string key, object value) -\u003e void",
+                "AddProperties(IDictionary\u003cstring, object\u003e properties) -\u003e void",
+                "GetPropertyValue\u003cT\u003e(string key) -\u003e T",
+                "TryGetPropertyValue\u003cT\u003e(string key, out T? value) -\u003e bool",
+                "HasProperty(string key) -\u003e bool"
+            ],
+            "key_properties": [
+                "PiQApi.Abstractions.Context -\u003e namespace",
+                "IPiQOperationProperties -\u003e interface",
+                "Properties -\u003e object\u003e",
+                "value) -\u003e object",
+                "properties) -\u003e object\u003e",
+                "key) -\u003e GetPropertyValue\u003cT\u003e(string",
+                "value) -\u003e T?",
+                "key) -\u003e HasProperty(string"
+            ],
+            "type": "interface"
+        },
+        "IPiQOperationIdentifier": {
+            "purpose": "Provides IPiQOperationIdentifier functionality",
+            "key_methods": [
 
-                                                                        ],
-                                                        "key_properties":  [
-                                                                               "PiQApi.Abstractions.Enums -\u003e using",
-                                                                               "PiQApi.Abstractions.Context -\u003e namespace",
-                                                                               "IPiQOperationIdentifier -\u003e interface",
-                                                                               "Id -\u003e string",
-                                                                               "Name -\u003e string",
-                                                                               "OperationType -\u003e OperationType",
-                                                                               "Parent -\u003e IPiQOperationIdentifier?",
-                                                                               "StartTime -\u003e DateTimeOffset",
-                                                                               "Timeout -\u003e TimeSpan"
-                                                                           ],
-                                                        "type":  "interface"
-                                                    },
-                       "IPiQOperationContextFactory":  {
-                                                            "purpose":  "Provides IPiQOperationContextFactory functionality",
-                                                            "key_methods":  [
-                                                                                "Create(string operationName, IPiQCorrelationContext correlationContext) -\u003e IPiQOperationContext",
-                                                                                "CreateInitializedContextAsync(CancellationToken cancellationToken = default) -\u003e Task\u003cIPiQOperationContext\u003e"
-                                                                            ],
-                                                            "key_properties":  [
-                                                                                   "PiQApi.Abstractions.Core -\u003e using",
-                                                                                   "PiQApi.Abstractions.Context -\u003e namespace",
-                                                                                   "IPiQOperationContextFactory -\u003e interface",
-                                                                                   "correlationContext) -\u003e IPiQCorrelationContext",
-                                                                                   "default) -\u003e ="
-                                                                               ],
-                                                            "type":  "interface"
-                                                        },
-                       "IPiQOperationLifecycle":  {
-                                                       "purpose":  "Provides IPiQOperationLifecycle functionality",
-                                                       "key_methods":  [
-                                                                           "InitializeAsync(CancellationToken cancellationToken = default) -\u003e Task",
-                                                                           "ValidateAsync(CancellationToken cancellationToken = default) -\u003e Task",
-                                                                           "CreateChildContext(string operationName) -\u003e IPiQOperationContext",
-                                                                           "CreateScope() -\u003e IDisposable",
-                                                                           "CreateScope(string scopeName) -\u003e IDisposable"
-                                                                       ],
-                                                       "key_properties":  [
-                                                                              "PiQApi.Abstractions.Context -\u003e namespace",
-                                                                              "IPiQOperationLifecycle -\u003e interface",
-                                                                              "CancellationToken -\u003e CancellationToken",
-                                                                              "default) -\u003e =",
-                                                                              "default) -\u003e =",
-                                                                              "operationName) -\u003e CreateChildContext(string",
-                                                                              "scopeName) -\u003e CreateScope(string"
-                                                                          ],
-                                                       "type":  "interface"
-                                                   },
-                       "IPiQCorrelationScope":  {
-                                                     "purpose":  "Provides IPiQCorrelationScope functionality",
-                                                     "key_methods":  [
+            ],
+            "key_properties": [
+                "PiQApi.Abstractions.Enums -\u003e using",
+                "PiQApi.Abstractions.Context -\u003e namespace",
+                "IPiQOperationIdentifier -\u003e interface",
+                "Id -\u003e string",
+                "Name -\u003e string",
+                "OperationType -\u003e OperationType",
+                "Parent -\u003e IPiQOperationIdentifier?",
+                "StartTime -\u003e DateTimeOffset",
+                "Timeout -\u003e TimeSpan"
+            ],
+            "type": "interface"
+        },
+        "IPiQOperationContextFactory": {
+            "purpose": "Provides IPiQOperationContextFactory functionality",
+            "key_methods": [
+                "Create(string operationName, IPiQCorrelationContext correlationContext) -\u003e IPiQOperationContext",
+                "CreateInitializedContextAsync(CancellationToken cancellationToken = default) -\u003e Task\u003cIPiQOperationContext\u003e"
+            ],
+            "key_properties": [
+                "PiQApi.Abstractions.Core -\u003e using",
+                "PiQApi.Abstractions.Context -\u003e namespace",
+                "IPiQOperationContextFactory -\u003e interface",
+                "correlationContext) -\u003e IPiQCorrelationContext",
+                "default) -\u003e ="
+            ],
+            "type": "interface"
+        },
+        "IPiQOperationLifecycle": {
+            "purpose": "Provides IPiQOperationLifecycle functionality",
+            "key_methods": [
+                "InitializeAsync(CancellationToken cancellationToken = default) -\u003e Task",
+                "ValidateAsync(CancellationToken cancellationToken = default) -\u003e Task",
+                "CreateChildContext(string operationName) -\u003e IPiQOperationContext",
+                "CreateScope() -\u003e IDisposable",
+                "CreateScope(string scopeName) -\u003e IDisposable"
+            ],
+            "key_properties": [
+                "PiQApi.Abstractions.Context -\u003e namespace",
+                "IPiQOperationLifecycle -\u003e interface",
+                "CancellationToken -\u003e CancellationToken",
+                "default) -\u003e =",
+                "default) -\u003e =",
+                "operationName) -\u003e CreateChildContext(string",
+                "scopeName) -\u003e CreateScope(string"
+            ],
+            "type": "interface"
+        },
+        "IPiQCorrelationScope": {
+            "purpose": "Provides IPiQCorrelationScope functionality",
+            "key_methods": [
 
-                                                                     ],
-                                                     "key_properties":  [
-                                                                            "PiQApi.Abstractions.Core -\u003e using",
-                                                                            "PiQApi.Abstractions.Context -\u003e namespace",
-                                                                            "IDisposable -\u003e :",
-                                                                            "CorrelationId -\u003e string",
-                                                                            "Context -\u003e IPiQCorrelationContext",
-                                                                            "IsActive -\u003e bool"
-                                                                        ],
-                                                     "type":  "interface"
-                                                 },
-                       "IPiQOperationContext":  {
-                                                     "purpose":  "Provides IPiQOperationContext functionality",
-                                                     "key_methods":  [
+            ],
+            "key_properties": [
+                "PiQApi.Abstractions.Core -\u003e using",
+                "PiQApi.Abstractions.Context -\u003e namespace",
+                "IDisposable -\u003e :",
+                "CorrelationId -\u003e string",
+                "Context -\u003e IPiQCorrelationContext",
+                "IsActive -\u003e bool"
+            ],
+            "type": "interface"
+        },
+        "IPiQOperationContext": {
+            "purpose": "Provides IPiQOperationContext functionality",
+            "key_methods": [
 
-                                                                     ],
-                                                     "key_properties":  [
-                                                                            "PiQApi.Abstractions.Core -\u003e using",
-                                                                            "PiQApi.Abstractions.Context -\u003e namespace",
-                                                                            "IPiQOperationResources -\u003e IPiQOperationValidator,",
-                                                                            "Identifier -\u003e IPiQOperationIdentifier",
-                                                                            "State -\u003e IPiQOperationState",
-                                                                            "Metrics -\u003e IPiQOperationMetrics",
-                                                                            "CorrelationContext -\u003e IPiQCorrelationContext"
-                                                                        ],
-                                                     "type":  "interface"
-                                                 },
-                       "IPiQOperationResources":  {
-                                                       "purpose":  "Provides IPiQOperationResources functionality",
-                                                       "key_methods":  [
-                                                                           "GetResourceAsync\u003cT\u003e(string resourceId, CancellationToken cancellationToken = default) -\u003e Task\u003cT\u003e",
-                                                                           "TrackResourceAsync\u003cT\u003e(T resource, CancellationToken cancellationToken = default) -\u003e Task\u003cT\u003e",
-                                                                           "TryAcquireResourceAsync(string resourceId, TimeSpan timeout, CancellationToken cancellationToken = default) -\u003e Task\u003cbool\u003e",
-                                                                           "ReleaseResourceAsync(string resourceId, CancellationToken cancellationToken = default) -\u003e Task",
-                                                                           "CreateResourceScopeAsync(IEnumerable\u003cstring\u003e resourceIds, CancellationToken cancellationToken = default) -\u003e Task\u003cIPiQResourceScope\u003e"
-                                                                       ],
-                                                       "key_properties":  [
-                                                                              "PiQApi.Abstractions.Core -\u003e using",
-                                                                              "PiQApi.Abstractions.Context -\u003e namespace",
-                                                                              "IPiQOperationResources -\u003e interface",
-                                                                              "IPiQResource -\u003e class,",
-                                                                              "IPiQResource -\u003e class,",
-                                                                              "default) -\u003e =",
-                                                                              "default) -\u003e =",
-                                                                              "default) -\u003e ="
-                                                                          ],
-                                                       "type":  "interface"
-                                                   },
-                       "IPiQOperationState":  {
-                                                   "purpose":  "Provides IPiQOperationState functionality",
-                                                   "key_methods":  [
-                                                                       "UpdateState(OperationStatusType status, ErrorCodeType? errorCode = null, string? errorMessage = null) -\u003e void",
-                                                                       "TransitionToRunning() -\u003e void",
-                                                                       "TransitionToComplete() -\u003e void",
-                                                                       "TransitionToFailed(ErrorCodeType errorCode = ErrorCodeType.InternalServerError) -\u003e void",
-                                                                       "TransitionToFailed(ErrorCodeType errorCode, string errorMessage) -\u003e void",
-                                                                       "ValidateTransition(OperationStatusType newStatus) -\u003e bool"
-                                                                   ],
-                                                   "key_properties":  [
-                                                                          "PiQApi.Abstractions.Enums -\u003e using",
-                                                                          "PiQApi.Abstractions.Context -\u003e namespace",
-                                                                          "IPiQOperationState -\u003e interface",
-                                                                          "Status -\u003e OperationStatusType",
-                                                                          "ErrorCode -\u003e ErrorCodeType?",
-                                                                          "ErrorMessage -\u003e string?",
-                                                                          "IsInProgress -\u003e bool",
-                                                                          "IsCompleted -\u003e bool",
-                                                                          "IsFailed -\u003e bool",
-                                                                          "IsSuccessful -\u003e bool",
-                                                                          "StartTime -\u003e DateTimeOffset",
-                                                                          "EndTime -\u003e DateTimeOffset?",
-                                                                          "StateTimestamp -\u003e DateTimeOffset",
-                                                                          "StateDuration -\u003e TimeSpan",
-                                                                          "null) -\u003e =",
-                                                                          "ErrorCodeType.InternalServerError) -\u003e =",
-                                                                          "errorMessage) -\u003e string",
-                                                                          "newStatus) -\u003e ValidateTransition(OperationStatusType"
-                                                                      ],
-                                                   "type":  "interface"
-                                               },
-                       "IPiQOperationScope":  {
-                                                   "purpose":  "Provides IPiQOperationScope functionality",
-                                                   "key_methods":  [
+            ],
+            "key_properties": [
+                "PiQApi.Abstractions.Core -\u003e using",
+                "PiQApi.Abstractions.Context -\u003e namespace",
+                "IPiQOperationResources -\u003e IPiQOperationValidator,",
+                "Identifier -\u003e IPiQOperationIdentifier",
+                "State -\u003e IPiQOperationState",
+                "Metrics -\u003e IPiQOperationMetrics",
+                "CorrelationContext -\u003e IPiQCorrelationContext"
+            ],
+            "type": "interface"
+        },
+        "IPiQOperationResources": {
+            "purpose": "Provides IPiQOperationResources functionality",
+            "key_methods": [
+                "GetResourceAsync\u003cT\u003e(string resourceId, CancellationToken cancellationToken = default) -\u003e Task\u003cT\u003e",
+                "TrackResourceAsync\u003cT\u003e(T resource, CancellationToken cancellationToken = default) -\u003e Task\u003cT\u003e",
+                "TryAcquireResourceAsync(string resourceId, TimeSpan timeout, CancellationToken cancellationToken = default) -\u003e Task\u003cbool\u003e",
+                "ReleaseResourceAsync(string resourceId, CancellationToken cancellationToken = default) -\u003e Task",
+                "CreateResourceScopeAsync(IEnumerable\u003cstring\u003e resourceIds, CancellationToken cancellationToken = default) -\u003e Task\u003cIPiQResourceScope\u003e"
+            ],
+            "key_properties": [
+                "PiQApi.Abstractions.Core -\u003e using",
+                "PiQApi.Abstractions.Context -\u003e namespace",
+                "IPiQOperationResources -\u003e interface",
+                "IPiQResource -\u003e class,",
+                "IPiQResource -\u003e class,",
+                "default) -\u003e =",
+                "default) -\u003e =",
+                "default) -\u003e ="
+            ],
+            "type": "interface"
+        },
+        "IPiQOperationState": {
+            "purpose": "Provides IPiQOperationState functionality",
+            "key_methods": [
+                "UpdateState(OperationStatusType status, ErrorCodeType? errorCode = null, string? errorMessage = null) -\u003e void",
+                "TransitionToRunning() -\u003e void",
+                "TransitionToComplete() -\u003e void",
+                "TransitionToFailed(ErrorCodeType errorCode = ErrorCodeType.InternalServerError) -\u003e void",
+                "TransitionToFailed(ErrorCodeType errorCode, string errorMessage) -\u003e void",
+                "ValidateTransition(OperationStatusType newStatus) -\u003e bool"
+            ],
+            "key_properties": [
+                "PiQApi.Abstractions.Enums -\u003e using",
+                "PiQApi.Abstractions.Context -\u003e namespace",
+                "IPiQOperationState -\u003e interface",
+                "Status -\u003e OperationStatusType",
+                "ErrorCode -\u003e ErrorCodeType?",
+                "ErrorMessage -\u003e string?",
+                "IsInProgress -\u003e bool",
+                "IsCompleted -\u003e bool",
+                "IsFailed -\u003e bool",
+                "IsSuccessful -\u003e bool",
+                "StartTime -\u003e DateTimeOffset",
+                "EndTime -\u003e DateTimeOffset?",
+                "StateTimestamp -\u003e DateTimeOffset",
+                "StateDuration -\u003e TimeSpan",
+                "null) -\u003e =",
+                "ErrorCodeType.InternalServerError) -\u003e =",
+                "errorMessage) -\u003e string",
+                "newStatus) -\u003e ValidateTransition(OperationStatusType"
+            ],
+            "type": "interface"
+        },
+        "IPiQOperationScope": {
+            "purpose": "Provides IPiQOperationScope functionality",
+            "key_methods": [
 
-                                                                   ],
-                                                   "key_properties":  [
-                                                                          "PiQApi.Abstractions.Context -\u003e namespace",
-                                                                          "IDisposable -\u003e :",
-                                                                          "Name -\u003e string",
-                                                                          "Context -\u003e IPiQOperationContext",
-                                                                          "IsActive -\u003e bool"
-                                                                      ],
-                                                   "type":  "interface"
-                                               },
-                       "IPiQOperationLogger":  {
-                                                    "purpose":  "Provides IPiQOperationLogger functionality",
-                                                    "key_methods":  [
-                                                                        "LogOperationStartAsync() -\u003e Task",
-                                                                        "LogOperationEndAsync(bool success) -\u003e Task",
-                                                                        "LogOperationErrorAsync(Exception exception) -\u003e Task",
-                                                                        "CreateLoggingScope(IDictionary\u003cstring, object\u003e? additionalProperties = null) -\u003e IDisposable",
-                                                                        "IsEnabled(LogLevel logLevel) -\u003e bool"
-                                                                    ],
-                                                    "key_properties":  [
-                                                                           "Microsoft.Extensions.Logging -\u003e using",
-                                                                           "PiQApi.Abstractions.Context -\u003e namespace",
-                                                                           "IPiQOperationLogger -\u003e interface",
-                                                                           "success) -\u003e LogOperationEndAsync(bool",
-                                                                           "exception) -\u003e LogOperationErrorAsync(Exception",
-                                                                           "null) -\u003e =",
-                                                                           "logLevel) -\u003e IsEnabled(LogLevel"
-                                                                       ],
-                                                    "type":  "interface"
-                                                }
-                   }
+            ],
+            "key_properties": [
+                "PiQApi.Abstractions.Context -\u003e namespace",
+                "IDisposable -\u003e :",
+                "Name -\u003e string",
+                "Context -\u003e IPiQOperationContext",
+                "IsActive -\u003e bool"
+            ],
+            "type": "interface"
+        },
+        "IPiQOperationLogger": {
+            "purpose": "Provides IPiQOperationLogger functionality",
+            "key_methods": [
+                "LogOperationStartAsync() -\u003e Task",
+                "LogOperationEndAsync(bool success) -\u003e Task",
+                "LogOperationErrorAsync(Exception exception) -\u003e Task",
+                "CreateLoggingScope(IDictionary\u003cstring, object\u003e? additionalProperties = null) -\u003e IDisposable",
+                "IsEnabled(LogLevel logLevel) -\u003e bool"
+            ],
+            "key_properties": [
+                "Microsoft.Extensions.Logging -\u003e using",
+                "PiQApi.Abstractions.Context -\u003e namespace",
+                "IPiQOperationLogger -\u003e interface",
+                "success) -\u003e LogOperationEndAsync(bool",
+                "exception) -\u003e LogOperationErrorAsync(Exception",
+                "null) -\u003e =",
+                "logLevel) -\u003e IsEnabled(LogLevel"
+            ],
+            "type": "interface"
+        }
+    }
 }

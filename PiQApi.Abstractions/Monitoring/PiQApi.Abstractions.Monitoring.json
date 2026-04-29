@@ -1,110 +1,110 @@
 {
-    "documentPath":  "docsflat/PiQApi.Abstractions.Monitoring.json",
-    "version":  "1.0.0",
-    "lastUpdated":  "2025-04-06",
-    "purpose":  "Summarizes the public API of PiQApi.Abstractions.Monitoring and provides usage guidance",
-    "guide_type":  "api-reference",
-    "development_contexts":  [
-                                 "development"
-                             ],
-    "applies_to":  [
-                       "PiQApi.Abstractions.Monitoring"
-                   ],
-    "overview":  {
-                     "description":  "The Monitoring namespace contains components for the PiQApi.Abstractions project.",
-                     "usage_pattern":  "Import and use classes from this namespace to work with Monitoring functionality."
-                 },
-    "components":  {
-                       "IPiQCompositeMetricsTracker":  {
-                                                            "purpose":  "Provides IPiQCompositeMetricsTracker functionality",
-                                                            "key_methods":  [
-                                                                                "RecordCustomMetric(string name, double value) -\u003e void",
-                                                                                "AddTracker(IPiQOperationMetrics tracker) -\u003e void"
-                                                                            ],
-                                                            "key_properties":  [
-                                                                                   "PiQApi.Abstractions.Context -\u003e using",
-                                                                                   "PiQApi.Abstractions.Monitoring -\u003e namespace",
-                                                                                   "IPiQMetricsProvider -\u003e IPiQCacheMetrics,",
-                                                                                   "value) -\u003e double",
-                                                                                   "tracker) -\u003e AddTracker(IPiQOperationMetrics"
-                                                                               ],
-                                                            "type":  "interface"
-                                                        },
-                       "IPiQMetricsProvider":  {
-                                                    "purpose":  "Provides IPiQMetricsProvider functionality",
-                                                    "key_methods":  [
-                                                                        "GetMetricsSnapshotAsync(CancellationToken cancellationToken = default) -\u003e Task\u003cIPiQMetricsSnapshot\u003e",
-                                                                        "ResetCounters() -\u003e void"
-                                                                    ],
-                                                    "key_properties":  [
-                                                                           "PiQApi.Abstractions.Monitoring -\u003e namespace",
-                                                                           "IPiQMetricsProvider -\u003e interface",
-                                                                           "default) -\u003e ="
-                                                                       ],
-                                                    "type":  "interface"
-                                                },
-                       "IPiQCacheMetrics":  {
-                                                 "purpose":  "Provides IPiQCacheMetrics functionality",
-                                                 "key_methods":  [
-                                                                     "RecordCacheActivity(bool isHit) -\u003e void"
-                                                                 ],
-                                                 "key_properties":  [
-                                                                        "PiQApi.Abstractions.Monitoring -\u003e namespace",
-                                                                        "IPiQMetricsProvider -\u003e :",
-                                                                        "CacheHits -\u003e int",
-                                                                        "CacheMisses -\u003e int",
-                                                                        "CacheHitRate -\u003e double",
-                                                                        "isHit) -\u003e RecordCacheActivity(bool"
-                                                                    ],
-                                                 "type":  "interface"
-                                             },
-                       "IPiQMetricsSnapshot":  {
-                                                    "purpose":  "Provides IPiQMetricsSnapshot functionality",
-                                                    "key_methods":  [
-                                                                        "WithMetric(string name, object value) -\u003e IPiQMetricsSnapshot",
-                                                                        "WithMetrics(IDictionary\u003cstring, object\u003e metrics) -\u003e IPiQMetricsSnapshot",
-                                                                        "GetMetric\u003cT\u003e(string name) -\u003e T",
-                                                                        "TryGetMetric\u003cT\u003e(string name, out T? value) -\u003e bool",
-                                                                        "HasMetric(string name) -\u003e bool"
-                                                                    ],
-                                                    "key_properties":  [
-                                                                           "PiQApi.Abstractions.Monitoring -\u003e namespace",
-                                                                           "IPiQMetricsSnapshot -\u003e interface",
-                                                                           "Timestamp -\u003e DateTimeOffset",
-                                                                           "Metrics -\u003e object\u003e",
-                                                                           "SuccessfulOperations -\u003e long",
-                                                                           "FailedOperations -\u003e long",
-                                                                           "TotalDurationMs -\u003e long",
-                                                                           "OperationCount -\u003e long",
-                                                                           "SuccessRate -\u003e double",
-                                                                           "AverageOperationDurationMs -\u003e long",
-                                                                           "value) -\u003e object",
-                                                                           "metrics) -\u003e object\u003e",
-                                                                           "name) -\u003e GetMetric\u003cT\u003e(string",
-                                                                           "value) -\u003e T?",
-                                                                           "name) -\u003e HasMetric(string"
-                                                                       ],
-                                                    "type":  "interface"
-                                                },
-                       "IPiQConnectionMetrics":  {
-                                                      "purpose":  "Provides IPiQConnectionMetrics functionality",
-                                                      "key_methods":  [
-                                                                          "RecordConnectionAcquired(TimeSpan acquisitionTime) -\u003e void",
-                                                                          "RecordConnectionReleased(TimeSpan lifetime) -\u003e void",
-                                                                          "RecordConnectionFailure(string errorCode) -\u003e void"
-                                                                      ],
-                                                      "key_properties":  [
-                                                                             "PiQApi.Abstractions.Monitoring -\u003e namespace",
-                                                                             "IPiQMetricsProvider -\u003e :",
-                                                                             "TotalConnections -\u003e int",
-                                                                             "ActiveConnections -\u003e int",
-                                                                             "FailedConnections -\u003e int",
-                                                                             "LastFailureTime -\u003e DateTime",
-                                                                             "acquisitionTime) -\u003e RecordConnectionAcquired(TimeSpan",
-                                                                             "lifetime) -\u003e RecordConnectionReleased(TimeSpan",
-                                                                             "errorCode) -\u003e RecordConnectionFailure(string"
-                                                                         ],
-                                                      "type":  "interface"
-                                                  }
-                   }
+    "documentPath": "docsflat/PiQApi.Abstractions.Monitoring.json",
+    "version": "1.0.0",
+    "lastUpdated": "2025-04-06",
+    "purpose": "Summarizes the public API of PiQApi.Abstractions.Monitoring and provides usage guidance",
+    "guide_type": "api-reference",
+    "development_contexts": [
+        "development"
+    ],
+    "applies_to": [
+        "PiQApi.Abstractions.Monitoring"
+    ],
+    "overview": {
+        "description": "The Monitoring namespace contains components for the PiQApi.Abstractions project.",
+        "usage_pattern": "Import and use classes from this namespace to work with Monitoring functionality."
+    },
+    "components": {
+        "IPiQCompositeMetricsTracker": {
+            "purpose": "Provides IPiQCompositeMetricsTracker functionality",
+            "key_methods": [
+                "RecordCustomMetric(string name, double value) -\u003e void",
+                "AddTracker(IPiQOperationMetrics tracker) -\u003e void"
+            ],
+            "key_properties": [
+                "PiQApi.Abstractions.Context -\u003e using",
+                "PiQApi.Abstractions.Monitoring -\u003e namespace",
+                "IPiQMetricsProvider -\u003e IPiQCacheMetrics,",
+                "value) -\u003e double",
+                "tracker) -\u003e AddTracker(IPiQOperationMetrics"
+            ],
+            "type": "interface"
+        },
+        "IPiQMetricsProvider": {
+            "purpose": "Provides IPiQMetricsProvider functionality",
+            "key_methods": [
+                "GetMetricsSnapshotAsync(CancellationToken cancellationToken = default) -\u003e Task\u003cIPiQMetricsSnapshot\u003e",
+                "ResetCounters() -\u003e void"
+            ],
+            "key_properties": [
+                "PiQApi.Abstractions.Monitoring -\u003e namespace",
+                "IPiQMetricsProvider -\u003e interface",
+                "default) -\u003e ="
+            ],
+            "type": "interface"
+        },
+        "IPiQCacheMetrics": {
+            "purpose": "Provides IPiQCacheMetrics functionality",
+            "key_methods": [
+                "RecordCacheActivity(bool isHit) -\u003e void"
+            ],
+            "key_properties": [
+                "PiQApi.Abstractions.Monitoring -\u003e namespace",
+                "IPiQMetricsProvider -\u003e :",
+                "CacheHits -\u003e int",
+                "CacheMisses -\u003e int",
+                "CacheHitRate -\u003e double",
+                "isHit) -\u003e RecordCacheActivity(bool"
+            ],
+            "type": "interface"
+        },
+        "IPiQMetricsSnapshot": {
+            "purpose": "Provides IPiQMetricsSnapshot functionality",
+            "key_methods": [
+                "WithMetric(string name, object value) -\u003e IPiQMetricsSnapshot",
+                "WithMetrics(IDictionary\u003cstring, object\u003e metrics) -\u003e IPiQMetricsSnapshot",
+                "GetMetric\u003cT\u003e(string name) -\u003e T",
+                "TryGetMetric\u003cT\u003e(string name, out T? value) -\u003e bool",
+                "HasMetric(string name) -\u003e bool"
+            ],
+            "key_properties": [
+                "PiQApi.Abstractions.Monitoring -\u003e namespace",
+                "IPiQMetricsSnapshot -\u003e interface",
+                "Timestamp -\u003e DateTimeOffset",
+                "Metrics -\u003e object\u003e",
+                "SuccessfulOperations -\u003e long",
+                "FailedOperations -\u003e long",
+                "TotalDurationMs -\u003e long",
+                "OperationCount -\u003e long",
+                "SuccessRate -\u003e double",
+                "AverageOperationDurationMs -\u003e long",
+                "value) -\u003e object",
+                "metrics) -\u003e object\u003e",
+                "name) -\u003e GetMetric\u003cT\u003e(string",
+                "value) -\u003e T?",
+                "name) -\u003e HasMetric(string"
+            ],
+            "type": "interface"
+        },
+        "IPiQConnectionMetrics": {
+            "purpose": "Provides IPiQConnectionMetrics functionality",
+            "key_methods": [
+                "RecordConnectionAcquired(TimeSpan acquisitionTime) -\u003e void",
+                "RecordConnectionReleased(TimeSpan lifetime) -\u003e void",
+                "RecordConnectionFailure(string errorCode) -\u003e void"
+            ],
+            "key_properties": [
+                "PiQApi.Abstractions.Monitoring -\u003e namespace",
+                "IPiQMetricsProvider -\u003e :",
+                "TotalConnections -\u003e int",
+                "ActiveConnections -\u003e int",
+                "FailedConnections -\u003e int",
+                "LastFailureTime -\u003e DateTime",
+                "acquisitionTime) -\u003e RecordConnectionAcquired(TimeSpan",
+                "lifetime) -\u003e RecordConnectionReleased(TimeSpan",
+                "errorCode) -\u003e RecordConnectionFailure(string"
+            ],
+            "type": "interface"
+        }
+    }
 }
