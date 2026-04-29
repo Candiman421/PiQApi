@@ -1,0 +1,181 @@
+<!DOCTYPE html><html lang="en"><head><!--pk:meta file:syn-20260428-201501.html v:1 updated:2026.04.28-201501-->
+<meta charset="UTF-8"><title>PiQuix . Session 20260428-201501</title>
+<link rel="stylesheet" href="../../_assets/_shared.css">
+<script src="../../_assets/_shared.js" defer></script></head>
+<body><nav id="sidenav" data-prefix="../../" data-active="_core/core-synthesis.html"></nav><main id="main"><pre>
+=============================================================
+SESSION CLOSE - 20260428-201501
+=============================================================
+PIQUIXROOT HEAD: 09f801d  |  DATE: 2026.04.28-201501  |  MODE: EXECUTE+AUTOCOMMIT
+=============================================================
+- ROLLUP APPLIED -------------------------------------------
+
+- BROWSER UPLOADS (Desktop sessions: skip) ------------------
+
+- TIER 3 ---------------------------------------------------
+-> [PiQuix · PiQApi]  HEAD: 09f801d  Changes: 157
+-> [PiQuix · AxeTrapped · VoidCodex]  HEAD: 3413d32  Changes: 3
+- FILES CHANGED (PiQuixRoot) -------------------------------
+  .gitignore
+  PiQApi.Abstractions/.editorconfig
+  PiQApi.Abstractions/Authentication/CertApi.Abstractions.Authentication.json
+  PiQApi.Abstractions/Authentication/Interfaces/IAuthenticationContext.cs
+  PiQApi.Abstractions/Authentication/Interfaces/ITokenProvider.cs
+  PiQApi.Abstractions/Authentication/Models/CertApi.Abstractions.Authentication.Models.json
+  PiQApi.Abstractions/Authentication/Models/PiQApi.Abstractions.Authentication.Models.json
+  PiQApi.Abstractions/Authentication/PiQApi.Abstractions.Authentication.json
+  PiQApi.Abstractions/Configuration/CertApi.Abstractions.Configuration.json
+  PiQApi.Abstractions/Configuration/PiQApi.Abstractions.Configuration.json
+  PiQApi.Abstractions/Context/CertApi.Abstractions.Context.json
+  PiQApi.Abstractions/Context/PiQApi.Abstractions.Context.json
+  PiQApi.Abstractions/Core/CertApi.Abstractions.Core.json
+  PiQApi.Abstractions/Core/Interfaces/IAsyncLock.cs
+  PiQApi.Abstractions/Core/Interfaces/IAsyncLockFactory.cs
+  PiQApi.Abstractions/Core/Interfaces/ICorrelationContext.cs
+  PiQApi.Abstractions/Core/Interfaces/ITrackable.cs
+  PiQApi.Abstractions/Core/PiQApi.Abstractions.Core.json
+  PiQApi.Abstractions/Enums/CertApi.Abstractions.Enums.json
+  PiQApi.Abstractions/Enums/PiQApi.Abstractions.Enums.json
+  PiQApi.Abstractions/Exceptions/CertApi.Abstractions.Exceptions.json
+  PiQApi.Abstractions/Exceptions/PiQApi.Abstractions.Exceptions.json
+  PiQApi.Abstractions/Factories/CertApi.Abstractions.Factories.json
+  PiQApi.Abstractions/Factories/PiQApi.Abstractions.Factories.json
+  PiQApi.Abstractions/Monitoring/CertApi.Abstractions.Monitoring.json
+  PiQApi.Abstractions/Monitoring/PiQApi.Abstractions.Monitoring.json
+  PiQApi.Abstractions/Operations/CertApi.Abstractions.Operations.json
+  PiQApi.Abstractions/Operations/PiQApi.Abstractions.Operations.json
+  PiQApi.Abstractions/PiQApi.Abstractions.PiQApi.Abstractions.json
+  PiQApi.Abstractions/PiQApi.Abstractions.csproj
+  PiQApi.Abstractions/PiQApi.Abstractions.json
+  PiQApi.Abstractions/ProjectGuidelines.json
+  PiQApi.Abstractions/Resilience/CertApi.Abstractions.Resilience.json
+  PiQApi.Abstractions/Resilience/PiQApi.Abstractions.Resilience.json
+  PiQApi.Abstractions/Results/CertApi.Abstractions.Results.json
+  PiQApi.Abstractions/Results/IResultError.cs
+  PiQApi.Abstractions/Results/IResultTransformer.cs
+  PiQApi.Abstractions/Results/PiQApi.Abstractions.Results.json
+  PiQApi.Abstractions/Service/CertApi.Abstractions.Service.json
+  PiQApi.Abstractions/Service/PiQApi.Abstractions.Service.json
+  PiQApi.Abstractions/Utilities/CertApi.Abstractions.Utilities.Use.json
+  PiQApi.Abstractions/Utilities/CertApi.Abstractions.Utilities.json
+  PiQApi.Abstractions/Utilities/PiQApi.Abstractions.Utilities.Use.json
+  PiQApi.Abstractions/Utilities/PiQApi.Abstractions.Utilities.json
+  PiQApi.Abstractions/Utilities/Randomization/CertApi.Abstractions.Utilities.Randomization.json
+  PiQApi.Abstractions/Utilities/Randomization/PiQApi.Abstractions.Utilities.Randomization.json
+  PiQApi.Abstractions/Utilities/Time/CertApi.Abstractions.Utilities.Time.json
+  PiQApi.Abstractions/Utilities/Time/PiQApi.Abstractions.Utilities.Time.json
+  PiQApi.Abstractions/Validation/CertApi.Abstractions.Validation.json
+  PiQApi.Abstractions/Validation/Constants/CertApi.Abstractions.Validation.Constants.json
+  PiQApi.Abstractions/Validation/Constants/PiQApi.Abstractions.Validation.Constants.json
+  PiQApi.Abstractions/Validation/Interfaces/IPropertyValidationRule.cs
+  PiQApi.Abstractions/Validation/Interfaces/IValidationDiagnosticsService.cs
+  PiQApi.Abstractions/Validation/Interfaces/IValidationProcessor.cs
+  PiQApi.Abstractions/Validation/Interfaces/IValidationRuleFactory.cs
+  PiQApi.Abstractions/Validation/Models/CertApi.Abstractions.Validation.Models.json
+  PiQApi.Abstractions/Validation/Models/PiQApi.Abstractions.Validation.Models.json
+  PiQApi.Abstractions/Validation/PiQApi.Abstractions.Validation.json
+  PiQApi.Abstractions/Validation/ValidationError.cs
+  PiQApi.ArchitectureRules/AbstractionsStructureTests.cs
+  PiQApi.ArchitectureRules/ModelDesignTests.cs
+  PiQApi.ArchitectureRules/NamingConventionTests.cs
+  PiQApi.ArchitectureRules/Projects/PiQApi.Abstractions/Diagrams/CoreContracts.puml
+  PiQApi.ArchitectureRules/Projects/PiQApi.Abstractions/Diagrams/DomainModels.puml
+  PiQApi.ArchitectureRules/Projects/PiQApi.Abstractions/Diagrams/ValidationFramework.puml
+  PiQApi.ArchitectureRules/Projects/PiQApi.Abstractions/Guides/PiQApi.Abstractions_Architecture.json
+  PiQApi.ArchitectureRules/Projects/PiQApi.Abstractions/Guides/PiQApi.Abstractions_Interfaces.json
+  PiQApi.ArchitectureRules/Projects/PiQApi.Abstractions/Guides/PiQApi.Abstractions_Models.json
+  PiQApi.ArchitectureRules/Projects/PiQApi.Abstractions/Guides/PiQApi.Abstractions_Results.json
+  PiQApi.ArchitectureRules/Projects/PiQApi.Abstractions/Guides/PiQApi.Abstractions_Validation.json
+  PiQApi.ArchitectureRules/Projects/PiQApi.Abstractions/Tests/AbstractionsArchitectureTests.Base.cs
+  PiQApi.ArchitectureRules/Projects/PiQApi.Abstractions/Tests/AbstractionsArchitectureTests.Exceptions.cs
+  PiQApi.ArchitectureRules/Projects/PiQApi.Abstractions/Tests/AbstractionsArchitectureTests.LayerDependencies.cs
+  PiQApi.ArchitectureRules/Projects/PiQApi.Abstractions/Tests/AbstractionsArchitectureTests.NamingConventions.cs
+  PiQApi.ArchitectureRules/Projects/PiQApi.Abstractions/Tests/AbstractionsArchitectureTests.ValidationRules.cs
+  PiQApi.ArchitectureRules/Projects/PiQApi.Abstractions/Tests/ArchitectureTestHelper.cs
+  PiQApi.ArchitectureRules/Projects/PiQApi.Abstractions/Tests/Extensions/MemberExtensions.cs
+  PiQApi.ArchitectureRules/ResultsPatternTests.cs
+  PiQApi.ArchitectureRules/Solution/Diagrams/SolutionStructure.puml
+  PiQApi.ArchitectureRules/Solution/Guides/Architecture/PiQApi.Solution_Architecture_ExceptionHandling.20240222.json
+  PiQApi.ArchitectureRules/Solution/Guides/Architecture/PiQApi.Solution_Architecture_ExceptionHandling.json
+  PiQApi.ArchitectureRules/Solution/Guides/CrossCutting/PiQApi.Solution_CrossCutting_Validation.json
+  PiQApi.ArchitectureRules/Solution/Guides/Testing/PiQApi.Solution_Testing_ArchUnitErrorResolution.json
+  PiQApi.ArchitectureRules/Solution/Guides/Testing/PiQApi.Solution_Testing_ArchUnitGuide.json
+  PiQApi.ArchitectureRules/Solution/README.md
+  PiQApi.ArchitectureRules/TestArchitecture.cs
+  PiQApi.ArchitectureRules/ValidationFrameworkTests.cs
+  PiQApi.ArchitectureRules/project_file_list.txt
+  PiQApi.Core/Authentication/BasePiQAuthenticationProvider.Impersonation.cs
+  PiQApi.Core/Authentication/BasePiQAuthenticationProvider.Refresh.cs
+  PiQApi.Core/Authentication/BasePiQAuthenticationProvider.TokenProvider.cs
+  PiQApi.Core/Authentication/BasePiQAuthenticationProvider.Validation.cs
+  PiQApi.Core/Authentication/BasePiQAuthenticationProvider.cs
+  PiQApi.Core/Authentication/Credentials/Interfaces/PiQApi.Core.Authentication.Credentials.Interfaces.json
+  PiQApi.Core/Authentication/Credentials/PiQApi.Core.Authentication.Credentials.json
+  PiQApi.Core/Authentication/PiQApi.Core.Authentication.json
+  PiQApi.Core/Authentication/PiQAuthenticationContext.cs
+  PiQApi.Core/Authentication/TokenCache/Interfaces/IPiQTokenCache.cs
+  PiQApi.Core/Authentication/TokenCache/Interfaces/PiQApi.Core.Authentication.TokenCache.Interfaces.json
+  PiQApi.Core/Authentication/TokenCache/PiQApi.Core.Authentication.TokenCache.json
+  PiQApi.Core/Authentication/Validation/PiQApi.Core.Authentication.Validation.json
+  PiQApi.Core/Configuration/PiQApi.Core.Configuration.json
+  PiQApi.Core/Context/PiQApi.Core.Context.json
+  PiQApi.Core/Core/Models/PiQApi.Core.Models.json
+  PiQApi.Core/Core/PiQApi.Core.json
+  PiQApi.Core/Core/PiQDefaultContextStore.cs
+  PiQApi.Core/Core/PiQResourceManager.cs
+  PiQApi.Core/Core/PiQResourceScope.cs
+  PiQApi.Core/DependencyInjection/OptionsServiceCollectionExtensions.cs
+  PiQApi.Core/DependencyInjection/PiQApi.Core.DependencyInjection.json
+  PiQApi.Core/DependencyInjection/ValidationServiceCollectionExtensions.cs
+  PiQApi.Core/Exceptions/Base/PiQApi.Core.Exceptions.Base.json
+  PiQApi.Core/Exceptions/Base/PiQCircuitBreakerOpenException.cs
+  PiQApi.Core/Exceptions/Base/PiQException.cs
+  PiQApi.Core/Exceptions/Infrastructure/PiQApi.Core.Exceptions.Infrastructure.json
+  PiQApi.Core/Exceptions/Infrastructure/PiQGenericServiceException.cs
+  PiQApi.Core/Exceptions/PiQApi.Core.Exceptions.json
+  PiQApi.Core/Extensions/PiQApi.Core.Extensions.json
+  PiQApi.Core/Extensions/ServiceCollectionExtensions.cs
+  PiQApi.Core/Factories/PiQApi.Core.Factories.json
+  PiQApi.Core/Factories/PiQExceptionFactory.cs
+  PiQApi.Core/Factories/PiQResultFactory.cs
+  PiQApi.Core/Monitoring/PiQApi.Core.Monitoring.json
+  PiQApi.Core/Operations/OperationPatternsGuide.md
+  PiQApi.Core/Operations/PiQApi.Core.Operations.json
+  PiQApi.Core/PiQApi.Core.PiQApi.Core.json
+  PiQApi.Core/PiQApi.Core.csproj
+  PiQApi.Core/Resilience/Interfaces/IPiQPolicyFactory.cs
+  PiQApi.Core/Resilience/Interfaces/PiQApi.Core.Resilience.Interfaces.json
+  PiQApi.Core/Resilience/PiQApi.Core.Resilience.json
+  PiQApi.Core/Resources/PiQApi.Core.Resources.json
+  PiQApi.Core/Resources/PiQValidationMessages.resx
+  PiQApi.Core/Results/PiQApi.Core.Results.json
+  PiQApi.Core/Service/PiQApi.Core.Service.json
+  PiQApi.Core/Threading/PiQApi.Core.Threading.json
+  PiQApi.Core/Threading/PiQAsyncResourceScope.cs
+  PiQApi.Core/Utilities/Disposables/PiQApi.Core.Utilities.Disposables.json
+  PiQApi.Core/Utilities/PiQApi.Core.Utilities.Use.json
+  PiQApi.Core/Utilities/PiQApi.Core.Utilities.json
+  PiQApi.Core/Utilities/RandomProviders/PiQApi.Core.Utilities.RandomProviders.json
+  PiQApi.Core/Utilities/Time/PiQApi.Core.Utilities.Time.json
+  PiQApi.Core/Validation/Diagnostics/PiQApi.Core.Validation.Diagnostics.json
+  PiQApi.Core/Validation/Framework/PiQApi.Core.Validation.Framework.json
+  PiQApi.Core/Validation/Framework/PiQValidationChain.Sync.cs
+  PiQApi.Core/Validation/Interfaces/PiQApi.Core.Validation.Interfaces.json
+  PiQApi.Core/Validation/PiQApi.Core.Validation.json
+  PiQApi.Core/Validation/PiQValidationContextFactory.cs
+  PiQApi.Core/Validation/Rules/PiQApi.Core.Validation.Rules.json
+  PiQApi.Core/Validation/Services/PiQApi.Core.Validation.Services.json
+  PiQApi.Core/Validation/ValidationFrameworkArchitecture.md
+  PiQApi.Ews.Core/Context/EwsOperationContextFactory.cs
+  PiQApi.Ews.Core/Results/EwsResultFactory.cs
+  PiQApi.Ews.Operations/Core/Base/EwsOperationBase.cs
+  PiQApi.Ews.Operations/Folders/Operations/EwsBatchOperations.cs
+  PiQApi.Ews.Operations/Mail/Operations/EwsMailOperations.cs
+  PiQApi.Ews.Service/Core/EwsErrorMappingService.cs
+  PiQApi.Ews.Service/Core/EwsServiceBase.cs
+- CAPTURABLES ----------------------------------------------
+-> [add cross-project capturables here]
+=============================================================
+END SESSION 20260428-201501
+=============================================================
+</pre></main></body></html>
